@@ -29,8 +29,10 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 
 set(PROJECT_SOURCES
         main.cpp
-        ApplicationMenu.cpp
-        ApplicationMenu.h
+        views/ApplicationMenu.cpp
+        views/ApplicationMenu.h
+	library/buttons/MainMenuButton.cpp
+	library/buttons/MainMenuButton.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

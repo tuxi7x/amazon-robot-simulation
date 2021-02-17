@@ -1,4 +1,4 @@
-#include "ApplicationMenu.h"
+#include "views/ApplicationMenu.h"
 
 #include <QApplication>
 
