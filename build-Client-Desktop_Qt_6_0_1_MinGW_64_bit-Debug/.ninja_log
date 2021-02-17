@@ -1,6 +1,0 @@
-# ninja log v5
-2	1106	6352770447921846	Client_autogen/timestamp	4a3b389ddc0d0e71
-1117	4706	6352770483839685	CMakeFiles/Client.dir/ApplicationMenu.cpp.obj	8c811306ac52c6f
-1107	4752	6352770484299685	CMakeFiles/Client.dir/Client_autogen/mocs_compilation.cpp.obj	5b8824b32ab1415
-1113	4977	6352770486544431	CMakeFiles/Client.dir/main.cpp.obj	89123283ef29bb90
-4978	5405	6352770490573425	Client.exe	932edc410e94454
