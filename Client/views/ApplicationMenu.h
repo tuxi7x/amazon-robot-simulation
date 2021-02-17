@@ -6,6 +6,10 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include "library/buttons/MainMenuButton.h"
+#include "library/dialogs/HelpDialog.h"
+#include "library/dialogs/ConnectDialog.h"
+#include <QGraphicsOpacityEffect>
+#include <QIcon>
 
 class ApplicationMenu : public QMainWindow
 {
@@ -18,9 +22,17 @@ private:
     MainMenuButton* _editMapButton;
     MainMenuButton* _startSimFromFileButton;
     MainMenuButton* _joinRunningSimButton;
+    QGraphicsOpacityEffect* _opacityEffect;
+    HelpDialog* _helpDialog;
+    ConnectDialog* _connectDialog;
 
 public:
     ApplicationMenu(QWidget *parent = nullptr);
     ~ApplicationMenu();
+
+private slots:
+    void openHelpDialog();
+    void openConnectDialog();
+    void closeDialog();
 };
 #endif // APPLICATIONMENU_H

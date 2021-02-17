@@ -5,7 +5,8 @@ ApplicationMenu::ApplicationMenu(QWidget *parent)
 {
     setFixedSize(1024,728);
     setWindowTitle("Királykobrák");
-    setStyleSheet("background-color: #118ab2;");
+    setWindowIcon(QIcon(":/Resources/resources/logo.png"));
+
 
     _mainLayout = new QVBoxLayout();
     _mainLayout->setAlignment(Qt::AlignCenter);
@@ -14,6 +15,7 @@ ApplicationMenu::ApplicationMenu(QWidget *parent)
     _centralWidget = new QWidget();
     setCentralWidget(_centralWidget);
     _centralWidget->setLayout(_mainLayout);
+    _centralWidget->setStyleSheet("background-color: #118ab2;");
 
     _mainTitleLabel = new QLabel("Amazon robotizáció");
     _mainTitleLabel->setStyleSheet("color: white; font-size: 45px; font-weight: bold;");
@@ -24,11 +26,27 @@ ApplicationMenu::ApplicationMenu(QWidget *parent)
     _joinRunningSimButton = new MainMenuButton ("Csatlakozás futó szimulációhoz");
     _helpButton = new MainMenuButton("Súgó");
 
+    _opacityEffect = new QGraphicsOpacityEffect();
+    _opacityEffect->setOpacity(0.7);
+    _centralWidget->setGraphicsEffect(_opacityEffect);
+    _opacityEffect->setEnabled(false);
+
+    _helpDialog = new HelpDialog();
+    _helpDialog->setModal(true);
+    connect(_helpDialog,SIGNAL(rejected()),this,SLOT(closeDialog()));
+
+    _connectDialog = new ConnectDialog();
+    _connectDialog->setModal(true);
+    connect(_connectDialog,SIGNAL(rejected()),this,SLOT(closeDialog()));
+
     _mainLayout->addWidget(_mainTitleLabel);
     _mainLayout->addWidget(_editMapButton);
     _mainLayout->addWidget(_startSimFromFileButton);
     _mainLayout->addWidget(_joinRunningSimButton);
     _mainLayout->addWidget(_helpButton);
+
+    connect(_helpButton,SIGNAL(clicked()),this,SLOT(openHelpDialog()));
+    connect(_joinRunningSimButton, SIGNAL(clicked()),this,SLOT(openConnectDialog()));
 
 }
 
@@ -40,5 +58,19 @@ ApplicationMenu::~ApplicationMenu()
     delete _startSimFromFileButton;
     delete _joinRunningSimButton;
     delete _helpButton;
+}
+
+void ApplicationMenu::openHelpDialog() {
+    _opacityEffect->setEnabled(true);
+    _helpDialog->show();
+}
+
+void ApplicationMenu::openConnectDialog() {
+    _opacityEffect->setEnabled(true);
+    _connectDialog->show();
+}
+
+void ApplicationMenu::closeDialog() {
+    _opacityEffect->setEnabled(false);
 }
 

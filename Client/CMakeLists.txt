@@ -32,7 +32,14 @@ set(PROJECT_SOURCES
         views/ApplicationMenu.cpp
         views/ApplicationMenu.h
 	library/buttons/MainMenuButton.cpp
-	library/buttons/MainMenuButton.h
+        library/buttons/MainMenuButton.h
+        library/dialogs/DialogBase.cpp
+        library/dialogs/DialogBase.h
+        library/dialogs/HelpDialog.cpp
+        library/dialogs/HelpDialog.h
+        library/dialogs/ConnectDialog.cpp
+        library/dialogs/ConnectDialog.h
+        resources.qrc
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
