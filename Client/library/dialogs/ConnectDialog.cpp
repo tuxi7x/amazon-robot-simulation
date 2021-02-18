@@ -1,26 +1,31 @@
 #include "ConnectDialog.h"
 
+
 ConnectDialog::ConnectDialog() : DialogBase()
 {
     setWindowTitle("Csatlakozás futó szimulációhoz");
 
-    QLabel* ipLabel = new QLabel("Szerver IP címe");
-    QLineEdit* ipBox = new QLineEdit();
+    _ipLabel = new QLabel("Szerver IP címe");
+    _ipBox = new QLineEdit();
 
-    QLabel* portLabel = new QLabel("Port");
-    QLineEdit* portBox = new QLineEdit();
+    QRegularExpression ipregex ("(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])");
+    QRegularExpressionValidator* ipValidator = new QRegularExpressionValidator (ipregex);
 
-    QPushButton* connect = new QPushButton("Csatlakozás");
+    _ipBox->setValidator(ipValidator);
+
+    _portLabel = new QLabel("Port");
+    _portBox = new QLineEdit();
+
+    _connectButton = new QPushButton("Csatlakozás");
 
     _mainLayout = new QVBoxLayout();
 
-    _mainLayout->addWidget(ipLabel);
-    _mainLayout->addWidget(ipBox);
+    _mainLayout->addWidget(_ipLabel);
+    _mainLayout->addWidget(_ipBox);
+    _mainLayout->addWidget(_portLabel);
+    _mainLayout->addWidget(_portBox);
 
-    _mainLayout->addWidget(portLabel);
-    _mainLayout->addWidget(portBox);
-
-    _mainLayout->addWidget(connect);
+    _mainLayout->addWidget(_connectButton);
 
     _mainLayout->setAlignment(Qt::AlignCenter);
 
@@ -28,18 +33,27 @@ ConnectDialog::ConnectDialog() : DialogBase()
 
     setStyleSheet("color: white; font-size: 20px;" + style);
 
-    ipBox->setStyleSheet("QLineEdit { background: rgb(255, 255, 255); selection-background-color: rgb(233, 99, 0); color: black; border: 1px solid white; border-radius: 10px;}");
-    ipBox->setFixedWidth(ipBox->width() / 2);
-    ipBox->setFixedHeight(40);
-    portBox->setStyleSheet("QLineEdit { background: rgb(255, 255, 255); selection-background-color: rgb(233, 99, 0); color: black; border: 1px solid white; border-radius: 10px;}");
-    portBox->setFixedWidth(portBox->width() / 2);
-    portBox->setFixedHeight(40);
+    _ipBox->setStyleSheet("QLineEdit { background: rgb(255, 255, 255); selection-background-color: rgb(233, 99, 0); color: black; border: 1px solid white; border-radius: 10px;}");
+    _ipBox->setFixedWidth(_ipBox->width() / 2);
+    _ipBox->setFixedHeight(40);
+    _portBox->setStyleSheet("QLineEdit { background: rgb(255, 255, 255); selection-background-color: rgb(233, 99, 0); color: black; border: 1px solid white; border-radius: 10px;}");
+    _portBox->setFixedWidth(_portBox->width() / 2);
+    _portBox->setFixedHeight(40);
 
-    connect->setStyleSheet("QPushButton { background-color: #EF476F; border: 1px solid #EF476F; border-radius: 10px; margin-top: 10px;}");
-    connect->setFixedWidth(connect->width() / 2);
-    connect->setFixedHeight(45);
-    connect->setCursor(QCursor(Qt::PointingHandCursor));
+    _connectButton->setStyleSheet("QPushButton { background-color: #EF476F; border: 1px solid #EF476F; border-radius: 10px; margin-top: 10px;}");
+    _connectButton->setFixedWidth(_connectButton->width() / 2);
+    _connectButton->setFixedHeight(45);
+    _connectButton->setCursor(QCursor(Qt::PointingHandCursor));
 
     setFixedSize(this->size());
     setLayout(_mainLayout);
+
+    connect(_connectButton,SIGNAL(clicked()),this,SLOT(connectButtonPressed()));
+}
+
+void ConnectDialog::connectButtonPressed()
+{
+    ErrorDialog* errorDialog = new ErrorDialog("<b>Hiba:</b><br>A csatlakozás sikertelen!");
+    errorDialog->setModal(true);
+    errorDialog->show();
 }
