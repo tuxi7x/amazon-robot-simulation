@@ -58,12 +58,11 @@ ApplicationMenu::ApplicationMenu(QWidget *parent)
 
 ApplicationMenu::~ApplicationMenu()
 {
+    for (int i = 0;i < _mainLayout->count() ; i++ ) {
+        delete _mainLayout->itemAt(i);
+    }
     delete _mainLayout;
     delete _centralWidget;
-    delete _editMapButton;
-    delete _startSimFromFileButton;
-    delete _joinRunningSimButton;
-    delete _helpButton;
 }
 
 void ApplicationMenu::openHelpDialog() {

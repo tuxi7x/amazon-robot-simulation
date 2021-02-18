@@ -49,6 +49,14 @@ ConnectDialog::ConnectDialog() : DialogBase()
     connect(_connectButton,SIGNAL(clicked()),this,SLOT(connectButtonPressed()));
 }
 
+ConnectDialog::~ConnectDialog()
+{
+    for (int i = 0;i < _mainLayout->count() ; i++ ) {
+        delete _mainLayout->itemAt(i);
+    }
+    delete _mainLayout;
+}
+
 void ConnectDialog::connectButtonPressed()
 {
     ErrorDialog* errorDialog = new ErrorDialog("<b>Hiba:</b><br>A csatlakozás sikertelen!");

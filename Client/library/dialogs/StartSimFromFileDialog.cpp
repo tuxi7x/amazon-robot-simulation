@@ -62,6 +62,18 @@ StartSimFromFileDialog::StartSimFromFileDialog()
 
 }
 
+StartSimFromFileDialog::~StartSimFromFileDialog()
+{
+    for(int i=0; i< _browseFileLine->count(); i++) {
+        delete _browseFileLine->itemAt(i);
+    }
+
+    for (int i = 0;i < _mainLayout->count() ; i++ ) {
+        delete _mainLayout->itemAt(i);
+    }
+    delete _mainLayout;
+}
+
 void StartSimFromFileDialog::connectButtonPressed()
 {
 

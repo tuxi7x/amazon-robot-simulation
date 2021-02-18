@@ -13,6 +13,7 @@ class HelpDialog : public DialogBase
     Q_OBJECT
 public:
     HelpDialog();
+    ~HelpDialog();
 };
 
 #endif // HELPDIALOG_H

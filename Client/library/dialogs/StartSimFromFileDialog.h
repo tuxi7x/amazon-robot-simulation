@@ -18,6 +18,7 @@ class StartSimFromFileDialog : public DialogBase
     Q_OBJECT
 public:
     StartSimFromFileDialog();
+    ~StartSimFromFileDialog();
 
 private slots:
     void connectButtonPressed();
