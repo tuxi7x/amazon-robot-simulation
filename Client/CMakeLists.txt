@@ -39,6 +39,8 @@ set(PROJECT_SOURCES
         library/dialogs/HelpDialog.h
         library/dialogs/ConnectDialog.cpp
         library/dialogs/ConnectDialog.h
+        library/dialogs/ErrorDialog.cpp
+        library/dialogs/ErrorDialog.h
         resources.qrc
 )
 

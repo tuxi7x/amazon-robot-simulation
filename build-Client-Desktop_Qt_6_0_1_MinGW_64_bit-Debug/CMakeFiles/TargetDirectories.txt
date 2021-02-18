@@ -1,0 +1,5 @@
+D:/OneDrive - Eotvos Lorand Tudomanyegyetem/ELTE stuff/4. felev/Szoftvertechnologia/kiralykobrak/build-Client-Desktop_Qt_6_0_1_MinGW_64_bit-Debug/CMakeFiles/Client.dir
+D:/OneDrive - Eotvos Lorand Tudomanyegyetem/ELTE stuff/4. felev/Szoftvertechnologia/kiralykobrak/build-Client-Desktop_Qt_6_0_1_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
+D:/OneDrive - Eotvos Lorand Tudomanyegyetem/ELTE stuff/4. felev/Szoftvertechnologia/kiralykobrak/build-Client-Desktop_Qt_6_0_1_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
+D:/OneDrive - Eotvos Lorand Tudomanyegyetem/ELTE stuff/4. felev/Szoftvertechnologia/kiralykobrak/build-Client-Desktop_Qt_6_0_1_MinGW_64_bit-Debug/CMakeFiles/Client_autogen_timestamp_deps.dir
+D:/OneDrive - Eotvos Lorand Tudomanyegyetem/ELTE stuff/4. felev/Szoftvertechnologia/kiralykobrak/build-Client-Desktop_Qt_6_0_1_MinGW_64_bit-Debug/CMakeFiles/Client_autogen.dir
