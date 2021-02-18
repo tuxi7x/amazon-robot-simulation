@@ -53,7 +53,7 @@ ConnectDialog::ConnectDialog() : DialogBase()
 
 void ConnectDialog::connectButtonPressed()
 {
-    ErrorDialog* errorDialog = new ErrorDialog("<b>Hiba:</b><br>A csatlakozás sikertelen!.");
+    ErrorDialog* errorDialog = new ErrorDialog("<b>Hiba:</b><br>A csatlakozás sikertelen!");
     errorDialog->setModal(true);
     errorDialog->show();
 }
