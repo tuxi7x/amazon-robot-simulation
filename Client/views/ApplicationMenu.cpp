@@ -1,5 +1,6 @@
 #include "ApplicationMenu.h"
 
+
 ApplicationMenu::ApplicationMenu(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -39,6 +40,10 @@ ApplicationMenu::ApplicationMenu(QWidget *parent)
     _connectDialog->setModal(true);
     connect(_connectDialog,SIGNAL(rejected()),this,SLOT(closeDialog()));
 
+    _startSimFromFileDialog = new StartSimFromFileDialog();
+    _startSimFromFileDialog->setModal(true);
+    connect(_startSimFromFileDialog,SIGNAL(rejected()),this,SLOT(closeDialog()));
+
     _mainLayout->addWidget(_mainTitleLabel);
     _mainLayout->addWidget(_editMapButton);
     _mainLayout->addWidget(_startSimFromFileButton);
@@ -47,6 +52,7 @@ ApplicationMenu::ApplicationMenu(QWidget *parent)
 
     connect(_helpButton,SIGNAL(clicked()),this,SLOT(openHelpDialog()));
     connect(_joinRunningSimButton, SIGNAL(clicked()),this,SLOT(openConnectDialog()));
+    connect(_startSimFromFileButton, SIGNAL(clicked()), this, SLOT(openStartSimFromFileDialog()));
 
 }
 
@@ -68,6 +74,12 @@ void ApplicationMenu::openHelpDialog() {
 void ApplicationMenu::openConnectDialog() {
     _opacityEffect->setEnabled(true);
     _connectDialog->show();
+}
+
+void ApplicationMenu::openStartSimFromFileDialog()
+{
+    _opacityEffect->setEnabled(true);
+    _startSimFromFileDialog->show();
 }
 
 void ApplicationMenu::closeDialog() {

@@ -1,22 +1,30 @@
-#include "ConnectDialog.h"
+#include "StartSimFromFileDialog.h"
 
-
-ConnectDialog::ConnectDialog() : DialogBase()
+StartSimFromFileDialog::StartSimFromFileDialog()
 {
-    setWindowTitle("Csatlakozás futó szimulációhoz");
+    setWindowTitle("Szimuláció indítása fájlból betölve");
 
     _ipLabel = new QLabel("Szerver IP címe");
     _ipBox = new QLineEdit();
-
     QRegularExpression ipregex ("(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])");
     QRegularExpressionValidator* ipValidator = new QRegularExpressionValidator (ipregex);
-
     _ipBox->setValidator(ipValidator);
 
     _portLabel = new QLabel("Port");
     _portBox = new QLineEdit();
-
     _connectButton = new QPushButton("Csatlakozás");
+    _browseFileLabel = new QLabel ("Fájl tallózása");
+
+    _browseFileLine = new QHBoxLayout();
+    _browseFileButton = new QPushButton("Megnyitás");
+    _browseFileButton->setFixedSize(150,50);
+    _browseFileButton->setStyleSheet("background-color: white; border-radius: 10px; color: black; font-weight: bold;");
+    _browseFileButton->setCursor(QCursor(Qt::PointingHandCursor));
+    _selectedFileLabel = new QLabel ("Nincs kiválasztott fájl");
+    _selectedFileLabel->setStyleSheet("font-size: 15px");
+    _browseFileLine->addWidget(_browseFileButton);
+    _browseFileLine->addWidget(_selectedFileLabel);
+    _browseFileLine->setSpacing(20);
 
     _mainLayout = new QVBoxLayout();
     _mainLayout->setSpacing(10);
@@ -24,6 +32,8 @@ ConnectDialog::ConnectDialog() : DialogBase()
     _mainLayout->addWidget(_ipBox);
     _mainLayout->addWidget(_portLabel);
     _mainLayout->addWidget(_portBox);
+    _mainLayout->addWidget(_browseFileLabel);
+    _mainLayout->addLayout(_browseFileLine);
     _mainLayout->addWidget(_connectButton);
     _mainLayout->setAlignment(Qt::AlignCenter);
 
@@ -47,11 +57,33 @@ ConnectDialog::ConnectDialog() : DialogBase()
     setLayout(_mainLayout);
 
     connect(_connectButton,SIGNAL(clicked()),this,SLOT(connectButtonPressed()));
+    connect(_browseFileButton,SIGNAL(clicked()),this,SLOT(browseButtonPressed()));
+
+
 }
 
-void ConnectDialog::connectButtonPressed()
+void StartSimFromFileDialog::connectButtonPressed()
 {
-    ErrorDialog* errorDialog = new ErrorDialog("<b>Hiba:</b><br>A csatlakozás sikertelen!");
-    errorDialog->setModal(true);
-    errorDialog->show();
+
+}
+
+void StartSimFromFileDialog::browseButtonPressed()
+{
+
+    QFileDialog fileDialog(this);
+    fileDialog.setFileMode(QFileDialog::ExistingFile);
+    fileDialog.setNameFilter(tr("Szövegfájl (*.txt)"));
+    fileDialog.setWindowTitle("Pálya betöltése");
+
+    if(fileDialog.exec()) {
+        QStringList files = fileDialog.selectedFiles();
+        QFile file(files[0]);
+        QFileInfo fileinfo (file);
+        _selectedFileLabel->setText(fileinfo.fileName());
+
+        //TODO implement features here
+
+    }
+
+
 }
