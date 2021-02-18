@@ -63,6 +63,9 @@ ApplicationMenu::~ApplicationMenu()
     }
     delete _mainLayout;
     delete _centralWidget;
+    delete _helpDialog;
+    delete _connectDialog;
+    delete _startSimFromFileDialog;
 }
 
 void ApplicationMenu::openHelpDialog() {
