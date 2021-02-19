@@ -2,7 +2,7 @@
 
 StartSimFromFileDialog::StartSimFromFileDialog()
 {
-    setWindowTitle("Szimuláció indítása fájlból betölve");
+    setWindowTitle("Szimuláció indítása fájlból betöltve");
 
     _ipLabel = new QLabel("Szerver IP címe");
     _ipBox = new QLineEdit();
