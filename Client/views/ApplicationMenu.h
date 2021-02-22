@@ -8,6 +8,7 @@
 #include "library/buttons/MainMenuButton.h"
 #include "library/dialogs/HelpDialog.h"
 #include "library/dialogs/ConnectDialog.h"
+#include "library/dialogs/StartSimFromFileDialog.h"
 #include <QGraphicsOpacityEffect>
 #include <QIcon>
 
@@ -25,6 +26,7 @@ private:
     QGraphicsOpacityEffect* _opacityEffect;
     HelpDialog* _helpDialog;
     ConnectDialog* _connectDialog;
+    StartSimFromFileDialog* _startSimFromFileDialog;
 
 public:
     ApplicationMenu(QWidget *parent = nullptr);
@@ -33,6 +35,7 @@ public:
 private slots:
     void openHelpDialog();
     void openConnectDialog();
+    void openStartSimFromFileDialog();
     void closeDialog();
 };
 #endif // APPLICATIONMENU_H

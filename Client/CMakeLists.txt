@@ -41,6 +41,8 @@ set(PROJECT_SOURCES
         library/dialogs/ConnectDialog.h
         library/dialogs/ErrorDialog.cpp
         library/dialogs/ErrorDialog.h
+        library/dialogs/StartSimFromFileDialog.cpp
+        library/dialogs/StartSimFromFileDialog.h
         resources.qrc
 )
 

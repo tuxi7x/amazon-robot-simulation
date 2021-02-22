@@ -38,9 +38,10 @@ ErrorDialog::ErrorDialog(QString errorMsg)
 
 ErrorDialog::~ErrorDialog()
 {
+    for (int i = 0;i < _mainLayout->count() ; i++ ) {
+        delete _mainLayout->itemAt(i);
+    }
     delete _mainLayout;
-    delete _errorLabel;
-    delete _okButton;
 }
 
 void ErrorDialog::paintEvent(QPaintEvent *)

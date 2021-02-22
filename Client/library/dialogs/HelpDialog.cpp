@@ -35,8 +35,14 @@ HelpDialog::HelpDialog() : DialogBase()
     setStyleSheet("color: white; font-size: 20px;" + style);
 
 
-
-
     setFixedSize(this->size());
     setLayout(_mainLayout);
+}
+
+HelpDialog::~HelpDialog()
+{
+    for (int i = 0;i < _mainLayout->count() ; i++ ) {
+        delete _mainLayout->itemAt(i);
+    }
+    delete _mainLayout;
 }

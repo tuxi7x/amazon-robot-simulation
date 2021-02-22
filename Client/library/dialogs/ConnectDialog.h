@@ -14,6 +14,7 @@ class ConnectDialog : public DialogBase
     Q_OBJECT
 public:
     ConnectDialog();
+    ~ConnectDialog();
 
 private slots:
     void connectButtonPressed();
