@@ -43,6 +43,8 @@ set(PROJECT_SOURCES
         library/dialogs/ErrorDialog.h
         library/dialogs/StartSimFromFileDialog.cpp
         library/dialogs/StartSimFromFileDialog.h
+        views/MapEditor.cpp
+        views/MapEditor.h
         resources.qrc
 )
 

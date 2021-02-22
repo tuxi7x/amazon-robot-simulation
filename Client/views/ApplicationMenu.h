@@ -9,8 +9,10 @@
 #include "library/dialogs/HelpDialog.h"
 #include "library/dialogs/ConnectDialog.h"
 #include "library/dialogs/StartSimFromFileDialog.h"
+#include <QCloseEvent>
 #include <QGraphicsOpacityEffect>
 #include <QIcon>
+#include <QRect>
 
 class ApplicationMenu : public QMainWindow
 {
@@ -28,14 +30,24 @@ private:
     ConnectDialog* _connectDialog;
     StartSimFromFileDialog* _startSimFromFileDialog;
 
+
 public:
     ApplicationMenu(QWidget *parent = nullptr);
     ~ApplicationMenu();
+    MainMenuButton *editMapButton() const;
+
+public slots:
+    void openMainMenu(QRect windowPosition);
 
 private slots:
     void openHelpDialog();
     void openConnectDialog();
     void openStartSimFromFileDialog();
     void closeDialog();
+    void openEditor();
+
+signals:
+    void menuClosed(QRect windowPosition);
+
 };
 #endif // APPLICATIONMENU_H
