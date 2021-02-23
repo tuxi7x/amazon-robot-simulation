@@ -4,6 +4,14 @@
 #include <QCloseEvent>
 #include <QMainWindow>
 #include <QRect>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QGridLayout>
+#include <QPushButton>
+#include "../controllers/MapEditorController.h"
+#include <QVector>
+#include <QLabel>
+#include <QLineEdit>
 
 class MapEditor : public QMainWindow
 {
@@ -18,6 +26,26 @@ protected:
 
 private:
     QWidget* _centralWidget;
+
+    QHBoxLayout* _mainLayout;
+    QGridLayout* _mapGrid;
+    QVBoxLayout* _sidePanel;
+    QPushButton* _robotButton;
+    QPushButton* _shelfButton;
+    QPushButton* _dockerButton;
+    QPushButton* _dropOffPointButton;
+    QPushButton* _productButton;
+    QPushButton* _saveButton;
+    QPushButton* _backButton;
+    MapEditorController* _controller;
+    QVector<QPushButton*>* _buttons;
+    QVBoxLayout* _gridContainer;
+    QVBoxLayout* _changeSizeContainer;
+
+    QLabel* _changeSizeLabel;
+    QLineEdit* _changeSizeLineEdit;
+    QPushButton* _changeSizeButton;
+
 
 public slots:
     void openMapEditor(QRect windowPosition);

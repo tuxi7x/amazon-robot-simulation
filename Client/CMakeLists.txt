@@ -45,6 +45,8 @@ set(PROJECT_SOURCES
         library/dialogs/StartSimFromFileDialog.h
         views/MapEditor.cpp
         views/MapEditor.h
+        controllers/MapEditorController.cpp
+        controllers/MapEditorController.h
         resources.qrc
 )
 
