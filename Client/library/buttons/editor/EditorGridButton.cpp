@@ -2,31 +2,34 @@
 
 
 
-EditorGridButton::EditorGridButton()
+EditorGridButton::EditorGridButton(int row, int col) : QPushButton(), _row(row), _col(col)
 {
     setAcceptDrops(true);
 }
 
 void EditorGridButton::dragEnterEvent(QDragEnterEvent *event)
 {
-    _styleSheet = this->styleSheet();
-    setStyleSheet(_styleSheet + "background-color: grey;");
-    event->acceptProposedAction();
+   QPointer<QObject> item = event->mimeData()->parent();
+
+   if(item)
+   {
+       _styleSheet = this->styleSheet();
+       event->acceptProposedAction();
+       setStyleSheet(_styleSheet + "background-color: grey;");
+   }
+
 }
 
-void EditorGridButton::dragMoveEvent(QDragMoveEvent *event)
-{
-    //TODO implement this
-}
 
 void EditorGridButton::dragLeaveEvent(QDragLeaveEvent *event)
 {
     setStyleSheet(_styleSheet);
-    //TODO implement this
+    QPushButton::dragLeaveEvent(event);
 }
 
 void EditorGridButton::dropEvent(QDropEvent *event)
 {
-    setStyleSheet(_styleSheet + "background-color: green;");
-    //TODO implement this
+    setStyleSheet(_styleSheet);
+    SideBarButton* droppedButton = qobject_cast<SideBarButton*>(event->mimeData()->parent());
+    emit buttonDropped(_row,_col,droppedButton);
 }

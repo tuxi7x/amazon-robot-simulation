@@ -76,23 +76,17 @@ MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
 
     _mapGrid->setSpacing(0);
 
-
-
-    for (int i=0; i<6; i++) {
-        for (int j=0; j<6; j++) {
-            QPushButton* btn = new EditorGridButton();
-            btn->setStyleSheet("background-color: white; border: 1px solid black;");
-            btn->setFixedSize(QSize(105,105));
-            _mapGrid->addWidget(btn,i,j);
-        }
-    }
-
-
-
     _centralWidget = new QWidget;
     _centralWidget->setLayout(_mainLayout);
     setCentralWidget(_centralWidget);
     _centralWidget->setStyleSheet("background-color: #118ab2;");
+
+    connect(_controller, &MapEditorController::mapCreated, this, &MapEditor::onMapCreated);
+    connect(_controller, &MapEditorController::fieldChanged, this, &MapEditor::onFieldChanged);
+    connect(_changeSizeButton, &SideBarButton::pressed, this, &MapEditor::onChangeSizeButtonPressed);
+
+
+    _controller->createNewMap(_changeSizeLineEdit->text().toInt());
 
 }
 
@@ -111,6 +105,71 @@ void MapEditor::openMapEditor(QRect windowPosition)
 {
     setGeometry(windowPosition);
     QMainWindow::show();
+}
+
+void MapEditor::onButtonDroppedToMap(int row, int col, SideBarButton *droppedButton)
+{
+    if(droppedButton == _robotButton) {
+        _controller->addRobot(row,col);
+    } else if(droppedButton == _productButton) {
+        //TODO implement dialog to ask for products name here
+        _controller->addProduct(row,col,"");
+    } else if(droppedButton == _dropOffPointButton) {
+        _controller->addDropOffPoint(row,col);
+    } else if (droppedButton == _dockerButton) {
+        _controller->addDocker(row,col);
+    } else if (droppedButton == _shelfButton) {
+        _controller->addShelf(row,col);
+    }
+}
+
+void MapEditor::onMapCreated()
+{
+    int size = _controller->getSize();
+
+    for (int i = 0; i < _mapGrid->count(); i++)
+    {
+       _mapGrid->itemAt(i)->widget()->deleteLater();
+    }
+
+    _gridButtons.clear();
+
+    for (int i=0; i<size; i++) {
+        QVector<QPushButton*> line;
+        for (int j=0; j<size; j++) {
+            EditorGridButton* btn = new EditorGridButton(i,j);
+            connect(btn, &EditorGridButton::buttonDropped, this, &MapEditor::onButtonDroppedToMap);
+            btn->setStyleSheet("background-color: white; border: 1px solid black;");
+            btn->setFixedSize(QSize(630/size,630/size));
+            _mapGrid->addWidget(btn,i,j);
+            line.append(btn);
+        }
+        _gridButtons.append(line);
+    }
+}
+
+void MapEditor::onFieldChanged(int row, int col)
+{
+   MapEditorController::FieldTypes val = _controller->getField(row,col);
+
+   if(val == MapEditorController::Robot) {
+       _gridButtons[row][col]->setStyleSheet("border: 1px solid black; background-color: #ef476e;");
+   } else if (val == MapEditorController::Shelf) {
+       _gridButtons[row][col]->setStyleSheet("border: 1px solid black; background-color: #06d6a0;");
+   } else if (val == MapEditorController::DropOffPoint) {
+       _gridButtons[row][col]->setStyleSheet("border: 1px solid black; background-color: #907f9f;");
+   } else if(val == MapEditorController::Docker) {
+       _gridButtons[row][col]->setStyleSheet("border: 1px solid black; background-color: #f26419;");
+   } else if (val == MapEditorController::Empty) {
+       _gridButtons[row][col]->setStyleSheet("border: 1px solid black; background-color: white;");
+   }
+}
+
+
+
+void MapEditor::onChangeSizeButtonPressed()
+{
+    _controller->createNewMap(_changeSizeLineEdit->text().toInt());
 }
 
 

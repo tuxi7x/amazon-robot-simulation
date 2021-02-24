@@ -47,10 +47,17 @@ private:
     QLabel* _changeSizeLabel;
     QLineEdit* _changeSizeLineEdit;
     QPushButton* _changeSizeButton;
+    QVector<QVector<QPushButton*>> _gridButtons;
 
 
 public slots:
     void openMapEditor(QRect windowPosition);
+
+private slots:
+    void onButtonDroppedToMap (int row, int col, SideBarButton* droppedButton);
+    void onMapCreated();
+    void onFieldChanged(int row, int col);
+    void onChangeSizeButtonPressed();
 
 signals:
     void editorClosed(QRect windowPosition);

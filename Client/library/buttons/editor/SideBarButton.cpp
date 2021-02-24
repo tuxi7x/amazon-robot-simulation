@@ -19,9 +19,8 @@ void SideBarButton::mousePressEvent(QMouseEvent *event)
        QDrag* drag = new QDrag(parentWidget());
        drag->setPixmap(*_pixmap);
        QMimeData* mimeData = new QMimeData();
-       mimeData->setParent(parentWidget());
+       mimeData->setParent(this);
        drag->setMimeData(mimeData);
-       mimeData->setText("asdasd");
        drag->exec();
     }
 }

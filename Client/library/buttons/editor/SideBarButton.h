@@ -6,6 +6,7 @@
 #include <QWidget>
 #include <QMouseEvent>
 
+
 class SideBarButton : public QPushButton
 {
     Q_OBJECT
