@@ -11,8 +11,8 @@ MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
     _sidePanel = new QVBoxLayout();
     _robotButton = new SideBarButton("Robot", this);
     _dropOffPointButton = new SideBarButton("Célállomás",this);
-    _saveButton = new SideBarButton("Mentés",this);
-    _backButton = new SideBarButton("Vissza",this);
+    _saveButton = new QPushButton("Mentés",this);
+    _backButton = new QPushButton("Vissza",this);
     _productButton = new SideBarButton("Termék",this);
     _shelfButton = new SideBarButton("Polc",this);
     _dockerButton = new SideBarButton("Dokkoló",this);
