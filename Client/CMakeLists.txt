@@ -47,6 +47,10 @@ set(PROJECT_SOURCES
         views/MapEditor.h
         controllers/MapEditorController.cpp
         controllers/MapEditorController.h
+        library/buttons/editor/EditorGridButton.cpp
+        library/buttons/editor/EditorGridButton.h
+        library/buttons/editor/SideBarButton.cpp
+        library/buttons/editor/SideBarButton.h
         resources.qrc
 )
 

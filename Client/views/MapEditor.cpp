@@ -9,13 +9,13 @@ MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
     _mainLayout = new QHBoxLayout();
     _mapGrid = new QGridLayout();
     _sidePanel = new QVBoxLayout();
-    _robotButton = new QPushButton("Robot");
-    _dropOffPointButton = new QPushButton("Célállomás");
-    _saveButton = new QPushButton("Mentés");
-    _backButton = new QPushButton("Vissza");
-    _productButton = new QPushButton("Termék");
-    _shelfButton = new QPushButton("Polc");
-    _dockerButton = new QPushButton("Dokkoló");
+    _robotButton = new SideBarButton("Robot", this);
+    _dropOffPointButton = new SideBarButton("Célállomás",this);
+    _saveButton = new SideBarButton("Mentés",this);
+    _backButton = new SideBarButton("Vissza",this);
+    _productButton = new SideBarButton("Termék",this);
+    _shelfButton = new SideBarButton("Polc",this);
+    _dockerButton = new SideBarButton("Dokkoló",this);
 
     _controller = new MapEditorController();
     _buttons = new QVector<QPushButton*>();
@@ -80,7 +80,7 @@ MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
 
     for (int i=0; i<6; i++) {
         for (int j=0; j<6; j++) {
-            QPushButton* btn = new QPushButton();
+            QPushButton* btn = new EditorGridButton();
             btn->setStyleSheet("background-color: white; border: 1px solid black;");
             btn->setFixedSize(QSize(105,105));
             _mapGrid->addWidget(btn,i,j);

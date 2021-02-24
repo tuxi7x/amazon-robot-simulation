@@ -12,6 +12,8 @@
 #include <QVector>
 #include <QLabel>
 #include <QLineEdit>
+#include "library/buttons/editor/SideBarButton.h"
+#include "library/buttons/editor/EditorGridButton.h"
 
 class MapEditor : public QMainWindow
 {
@@ -30,11 +32,11 @@ private:
     QHBoxLayout* _mainLayout;
     QGridLayout* _mapGrid;
     QVBoxLayout* _sidePanel;
-    QPushButton* _robotButton;
-    QPushButton* _shelfButton;
-    QPushButton* _dockerButton;
-    QPushButton* _dropOffPointButton;
-    QPushButton* _productButton;
+    SideBarButton* _robotButton;
+    SideBarButton* _shelfButton;
+    SideBarButton* _dockerButton;
+    SideBarButton* _dropOffPointButton;
+    SideBarButton* _productButton;
     QPushButton* _saveButton;
     QPushButton* _backButton;
     MapEditorController* _controller;
