@@ -9,3 +9,8 @@ int ShelfFieldModel::getRow() const
 {
     return _row;
 }
+
+int ShelfFieldModel::getCol() const
+{
+    return _col;
+}

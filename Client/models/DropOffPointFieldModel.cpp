@@ -4,3 +4,18 @@ DropOffPointFieldModel::DropOffPointFieldModel(int row, int col, int product): _
 {
 
 }
+
+int DropOffPointFieldModel::getProduct() const
+{
+    return _product;
+}
+
+int DropOffPointFieldModel::getCol() const
+{
+    return _col;
+}
+
+int DropOffPointFieldModel::getRow() const
+{
+    return _row;
+}
