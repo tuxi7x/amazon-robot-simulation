@@ -1,0 +1,21 @@
+#include "RobotFieldModel.h"
+
+RobotFieldModel::RobotFieldModel(int row, int col, int orientation): _row(row), _col(col), _orientation(orientation)
+{
+
+}
+
+int RobotFieldModel::getRow() const
+{
+    return _row;
+}
+
+int RobotFieldModel::getCol() const
+{
+    return _col;
+}
+
+int RobotFieldModel::getOrientation() const
+{
+    return _orientation;
+}

@@ -51,6 +51,16 @@ set(PROJECT_SOURCES
         library/buttons/editor/EditorGridButton.h
         library/buttons/editor/SideBarButton.cpp
         library/buttons/editor/SideBarButton.h
+        models/RobotFieldModel.h
+        models/RobotFieldModel.cpp
+        models/DockerFieldModel.cpp
+        models/DockerFieldModel.h
+        models/ShelfFieldModel.cpp
+        models/ShelfFieldModel.h
+        models/DropOffPointFieldModel.cpp
+        models/DropOffPointFieldModel.h
+        models/ProductModel.cpp
+        models/ProductModel.h
         resources.qrc
 )
 
