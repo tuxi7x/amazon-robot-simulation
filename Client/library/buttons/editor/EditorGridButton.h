@@ -16,6 +16,11 @@ class EditorGridButton : public QPushButton
     Q_OBJECT
 public:
     EditorGridButton(int row, int col);
+    void setEmptyButtonStyleSheet();
+    void setRobotButtonStyleSheet();
+    void setDockerButtonStyleSheet();
+    void setShelfButtonStyleSheet();
+    void setDropOffPointButtonStyleSheet();
 
 protected:
     void dragEnterEvent(QDragEnterEvent* event) override;

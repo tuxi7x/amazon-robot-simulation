@@ -135,11 +135,10 @@ void MapEditor::onMapCreated()
     _gridButtons.clear();
 
     for (int i=0; i<size; i++) {
-        QVector<QPushButton*> line;
+        QVector<EditorGridButton*> line;
         for (int j=0; j<size; j++) {
             EditorGridButton* btn = new EditorGridButton(i,j);
             connect(btn, &EditorGridButton::buttonDropped, this, &MapEditor::onButtonDroppedToMap);
-            btn->setStyleSheet("background-color: white; border: 1px solid black;");
             btn->setFixedSize(QSize(630/size,630/size));
             _mapGrid->addWidget(btn,i,j);
             line.append(btn);
@@ -153,15 +152,15 @@ void MapEditor::onFieldChanged(int row, int col)
    MapEditorController::FieldTypes val = _controller->getField(row,col);
 
    if(val == MapEditorController::Robot) {
-       _gridButtons[row][col]->setStyleSheet("border: 1px solid black; background-color: #ef476e;");
+       _gridButtons[row][col]->setRobotButtonStyleSheet();
    } else if (val == MapEditorController::Shelf) {
-       _gridButtons[row][col]->setStyleSheet("border: 1px solid black; background-color: #06d6a0;");
+       _gridButtons[row][col]->setShelfButtonStyleSheet();
    } else if (val == MapEditorController::DropOffPoint) {
-       _gridButtons[row][col]->setStyleSheet("border: 1px solid black; background-color: #907f9f;");
+       _gridButtons[row][col]->setDropOffPointButtonStyleSheet();
    } else if(val == MapEditorController::Docker) {
-       _gridButtons[row][col]->setStyleSheet("border: 1px solid black; background-color: #f26419;");
+       _gridButtons[row][col]->setDockerButtonStyleSheet();
    } else if (val == MapEditorController::Empty) {
-       _gridButtons[row][col]->setStyleSheet("border: 1px solid black; background-color: white;");
+       _gridButtons[row][col]->setEmptyButtonStyleSheet();
    }
 }
 

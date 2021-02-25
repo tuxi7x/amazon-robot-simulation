@@ -4,7 +4,38 @@
 
 EditorGridButton::EditorGridButton(int row, int col) : QPushButton(), _row(row), _col(col)
 {
+    setStyleSheet("background-color: white; border: 1px solid black;");
     setAcceptDrops(true);
+}
+
+void EditorGridButton::setEmptyButtonStyleSheet()
+{
+    setStyleSheet("background-color: white; color:white; font-size: 30px; border: 1px solid black;");
+    setText("");
+}
+
+void EditorGridButton::setRobotButtonStyleSheet()
+{
+    setStyleSheet("background-color: #ef476e; color:white; font-size: 30px; border: 1px solid black;");
+    setText("R");
+}
+
+void EditorGridButton::setDockerButtonStyleSheet()
+{
+    setStyleSheet("background-color: #f26419; color:white; font-size: 30px; border: 1px solid black;");
+    setText("D");
+}
+
+void EditorGridButton::setShelfButtonStyleSheet()
+{
+    setStyleSheet("background-color: #06d6a0; color:white; font-size: 30px; border: 1px solid black;");
+    setText("Polc");
+}
+
+void EditorGridButton::setDropOffPointButtonStyleSheet()
+{
+    setStyleSheet("background-color: #907f9f; color:white; font-size: 30px; border: 1px solid black;");
+    setText("C");
 }
 
 void EditorGridButton::dragEnterEvent(QDragEnterEvent *event)

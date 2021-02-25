@@ -47,7 +47,7 @@ private:
     QLabel* _changeSizeLabel;
     QLineEdit* _changeSizeLineEdit;
     QPushButton* _changeSizeButton;
-    QVector<QVector<QPushButton*>> _gridButtons;
+    QVector<QVector<EditorGridButton*>> _gridButtons;
 
 
 public slots:
