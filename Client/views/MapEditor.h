@@ -12,6 +12,7 @@
 #include <QVector>
 #include <QLabel>
 #include <QLineEdit>
+#include <QMessageBox>
 #include "library/buttons/editor/SideBarButton.h"
 #include "library/buttons/editor/EditorGridButton.h"
 
@@ -21,9 +22,6 @@ class MapEditor : public QMainWindow
 public:
     explicit MapEditor(QWidget *parent = nullptr);
     ~MapEditor();
-
-protected:
-    void closeEvent(QCloseEvent *event) override;
 
 
 private:
@@ -58,6 +56,7 @@ private slots:
     void onMapCreated();
     void onFieldChanged(int row, int col);
     void onChangeSizeButtonPressed();
+    void backButtonPressed();
 
 signals:
     void editorClosed(QRect windowPosition);

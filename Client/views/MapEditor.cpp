@@ -84,6 +84,7 @@ MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
     connect(_controller, &MapEditorController::mapCreated, this, &MapEditor::onMapCreated);
     connect(_controller, &MapEditorController::fieldChanged, this, &MapEditor::onFieldChanged);
     connect(_changeSizeButton, &SideBarButton::pressed, this, &MapEditor::onChangeSizeButtonPressed);
+    connect(_backButton, &QPushButton::clicked, this, &MapEditor::backButtonPressed);
 
 
     _controller->createNewMap(_changeSizeLineEdit->text().toInt());
@@ -95,11 +96,7 @@ MapEditor::~MapEditor()
     delete _centralWidget;
 }
 
-void MapEditor::closeEvent(QCloseEvent *event)
-{
-    emit editorClosed(this->geometry());
-    QMainWindow::closeEvent(event);
-}
+
 
 void MapEditor::openMapEditor(QRect windowPosition)
 {
@@ -171,6 +168,15 @@ void MapEditor::onFieldChanged(int row, int col)
 void MapEditor::onChangeSizeButtonPressed()
 {
     _controller->createNewMap(_changeSizeLineEdit->text().toInt());
+}
+
+void MapEditor::backButtonPressed()
+{
+    if(QMessageBox::Yes == QMessageBox::question(this, "Vissza?", "Biztosan vissza szeretnél lépni?\nMinden nem mentett változtatás elveszik!", QMessageBox::Yes | QMessageBox::No)) {
+        emit editorClosed(this->geometry());
+        close();
+    }
+
 }
 
 
