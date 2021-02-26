@@ -1,9 +1,11 @@
 #include "ShelfFieldModel.h"
 
-ShelfFieldModel::ShelfFieldModel(int row, int col): _row(row), _col(col)
+ShelfFieldModel::ShelfFieldModel(int row, int col, QObject* parent): QObject(parent), _row(row), _col(col)
 {
 
 }
+
+
 
 int ShelfFieldModel::getRow() const
 {

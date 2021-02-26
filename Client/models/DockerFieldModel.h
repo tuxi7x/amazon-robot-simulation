@@ -3,13 +3,14 @@
 
 #include <QObject>
 
-class DockerFieldModel
+class DockerFieldModel: public QObject
 {
+    Q_OBJECT
 public:
-    DockerFieldModel(int row, int col);
-
+    DockerFieldModel(int row, int col, QObject* parent = nullptr);
     int getRow() const;
     int getCol() const;
+
 
 private:
     int _row;

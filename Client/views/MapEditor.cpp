@@ -138,6 +138,7 @@ void MapEditor::onMapCreated()
         QVector<EditorGridButton*> line;
         for (int j=0; j<size; j++) {
             EditorGridButton* btn = new EditorGridButton(i,j);
+            btn->setEmptyButtonStyleSheet();
             connect(btn, &EditorGridButton::buttonDropped, this, &MapEditor::onButtonDroppedToMap);
             btn->setFixedSize(QSize(630/size,630/size));
             _mapGrid->addWidget(btn,i,j);
@@ -149,7 +150,8 @@ void MapEditor::onMapCreated()
 
 void MapEditor::onFieldChanged(int row, int col)
 {
-   MapEditorController::FieldTypes val = _controller->getField(row,col);
+   QPair<MapEditorController::FieldTypes, QObject*> field = _controller->getField(row,col);
+   MapEditorController::FieldTypes val = field.first;
 
    if(val == MapEditorController::Robot) {
        _gridButtons[row][col]->setRobotButtonStyleSheet();

@@ -1,6 +1,12 @@
 #ifndef MAPEDITORCONTROLLER_H
 #define MAPEDITORCONTROLLER_H
+#include "models/DockerFieldModel.h"
+#include "models/DropOffPointFieldModel.h"
+#include "models/ProductModel.h"
+#include "models/RobotFieldModel.h"
+#include "models/ShelfFieldModel.h"
 
+#include <QMap>
 #include <QObject>
 
 class MapEditorController : public QObject
@@ -11,7 +17,7 @@ public:
     enum FieldTypes {Empty, Robot, Shelf, Docker, DropOffPoint};
 
     void createNewMap (int size);
-    FieldTypes getField (int row, int col);
+    QPair<FieldTypes, QObject*> getField (int row, int col);
     int getSize();
     void addRobot(int row, int col);
     void addShelf(int row, int col);
@@ -24,7 +30,12 @@ signals:
     void fieldChanged(int row, int col);
 
 private:
-    QVector<QVector<FieldTypes>> _field;
+    QVector<RobotFieldModel*> _robots;
+    QVector <ShelfFieldModel*> _shelves;
+    QVector <DockerFieldModel*> _dockers;
+    QVector <DropOffPointFieldModel*> _dropOffPoints;
+    QMap <int, ProductModel*> _products;
+
     int _size;
 
 

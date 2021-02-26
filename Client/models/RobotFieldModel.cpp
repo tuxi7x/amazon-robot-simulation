@@ -1,9 +1,11 @@
 #include "RobotFieldModel.h"
 
-RobotFieldModel::RobotFieldModel(int row, int col, int orientation): _row(row), _col(col), _orientation(orientation)
+RobotFieldModel::RobotFieldModel(int row, int col, int orientation, QObject* parent): QObject(parent), _row(row), _col(col), _orientation(orientation)
 {
 
 }
+
+
 
 int RobotFieldModel::getRow() const
 {

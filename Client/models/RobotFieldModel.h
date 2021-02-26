@@ -1,12 +1,15 @@
 #ifndef ROBOTFIELDMODEL_H
 #define ROBOTFIELDMODEL_H
 
+#include <QObject>
 
-class RobotFieldModel
+
+
+class RobotFieldModel: public QObject
 {
+    Q_OBJECT
 public:
-    RobotFieldModel(int row, int col, int orientation);
-
+    RobotFieldModel(int row, int col, int orientation, QObject* parent = nullptr);
     int getRow() const;
     int getCol() const;
     int getOrientation() const;

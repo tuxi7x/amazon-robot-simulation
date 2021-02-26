@@ -1,11 +1,15 @@
 #ifndef DROPOFFPOINTFIELDMODEL_H
 #define DROPOFFPOINTFIELDMODEL_H
 
+#include <QObject>
 
-class DropOffPointFieldModel
+
+
+class DropOffPointFieldModel: public QObject
 {
+    Q_OBJECT
 public:
-    DropOffPointFieldModel(int row, int col, int product);
+    DropOffPointFieldModel(int row, int col, int product, QObject* parent = nullptr);
 
     int getProduct() const;
     int getCol() const;

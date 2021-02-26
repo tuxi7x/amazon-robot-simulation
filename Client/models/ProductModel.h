@@ -1,13 +1,15 @@
 #ifndef PRODUCTMODEL_H
 #define PRODUCTMODEL_H
+#include <QObject>
 #include <QString>
 
 
 
-class ProductModel
+class ProductModel: public QObject
 {
+    Q_OBJECT
 public:
-    ProductModel(int id, QString name);
+    ProductModel(int id, QString name, QObject* parent = nullptr);
 
     QString getName() const;
     int getId() const;
