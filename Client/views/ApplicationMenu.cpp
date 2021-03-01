@@ -1,6 +1,7 @@
 #include "ApplicationMenu.h"
 
 
+
 ApplicationMenu::ApplicationMenu(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -53,6 +54,7 @@ ApplicationMenu::ApplicationMenu(QWidget *parent)
     connect(_helpButton,SIGNAL(clicked()),this,SLOT(openHelpDialog()));
     connect(_joinRunningSimButton, SIGNAL(clicked()),this,SLOT(openConnectDialog()));
     connect(_startSimFromFileButton, SIGNAL(clicked()), this, SLOT(openStartSimFromFileDialog()));
+    connect(_editMapButton,SIGNAL(clicked()),this,SLOT(openEditor()));
 
 }
 
@@ -87,4 +89,22 @@ void ApplicationMenu::openStartSimFromFileDialog()
 void ApplicationMenu::closeDialog() {
     _opacityEffect->setEnabled(false);
 }
+
+void ApplicationMenu::openEditor()
+{
+    emit menuClosed(this->geometry());
+    this->close();
+}
+
+MainMenuButton *ApplicationMenu::editMapButton() const
+{
+    return _editMapButton;
+}
+
+void ApplicationMenu::openMainMenu(QRect windowPosition)
+{
+    setGeometry(windowPosition);
+    QMainWindow::show();
+}
+
 
