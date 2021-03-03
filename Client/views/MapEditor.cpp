@@ -88,7 +88,7 @@ MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
     connect(_controller, &MapEditorController::fieldChanged, this, &MapEditor::onFieldChanged);
     connect(_changeSizeButton, &SideBarButton::pressed, this, &MapEditor::onChangeSizeButtonPressed);
     connect(_backButton, &QPushButton::clicked, this, &MapEditor::backButtonPressed);
-
+    connect(_saveButton, &QPushButton::clicked, this, &MapEditor::saveButtonPressed);
 
     _controller->createNewMap(_changeSizeLineEdit->text().toInt());
 
@@ -221,6 +221,18 @@ void MapEditor::backButtonPressed()
         emit editorClosed(this->geometry());
         close();
     }
+
+}
+
+void MapEditor::saveButtonPressed()
+{
+    QString message = _controller->validateBeforeSave();
+    if(message!="OK") {
+        ErrorDialog e (message);
+        e.exec();
+    }
+
+
 
 }
 

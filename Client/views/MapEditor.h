@@ -59,7 +59,7 @@ private slots:
     void onFieldChanged(int row, int col);
     void onChangeSizeButtonPressed();
     void backButtonPressed();
-
+    void saveButtonPressed();
 signals:
     void editorClosed(QRect windowPosition);
 

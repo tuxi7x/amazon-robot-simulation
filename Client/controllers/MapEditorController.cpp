@@ -135,3 +135,21 @@ QVector<QString> MapEditorController::getUnassignedProducts()
     }
     return l;
 }
+
+QString MapEditorController::validateBeforeSave()
+{
+    if(_robots.isEmpty()) {
+        return "Legalább egy robotot fel kell helyezni!";
+    }else if(_shelves.isEmpty()) {
+        return "Legalább egy polcot fel kell helyezni!";
+    }else if(_products.isEmpty()) {
+        return "Legalább egy terméket fel kell helyezni!";
+    }else if(_dockers.isEmpty()) {
+        return "Legalább egy töltőállomást fel kell helyezni!";
+    }else if(_dropOffPoints.isEmpty()) {
+        return "Legalább egy célállomást fel kell helyezni!";
+    }else if (_products.length() != _dropOffPoints.length()){
+        int tmp = _products.length()-_dropOffPoints.length();
+    return "Még " + QString::number(tmp) + " célállomást fel kell helyezni!";
+    }else return "OK";
+}

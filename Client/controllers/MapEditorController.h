@@ -25,6 +25,7 @@ public:
     bool validateProductPlacement(int row, int col);
     QVector<QString> getProductsOnShelf(int row, int col);
     QVector<QString> getUnassignedProducts();
+    QString validateBeforeSave();
 
 signals:
     void mapCreated();
