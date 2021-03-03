@@ -9,14 +9,14 @@ class ProductModel: public QObject
 {
     Q_OBJECT
 public:
-    ProductModel(int id, QString name, QObject* parent = nullptr);
+    ProductModel(QString name, int shelf, QObject* parent = nullptr);
 
     QString getName() const;
-    int getId() const;
+    int getShelf() const;
 
 private:
-    int _id;
     QString _name;
+    int _shelf;
 };
 
 #endif // PRODUCTMODEL_H

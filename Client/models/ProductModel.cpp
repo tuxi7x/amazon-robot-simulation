@@ -1,6 +1,6 @@
 #include "ProductModel.h"
 
-ProductModel::ProductModel(int id, QString name, QObject* parent): QObject(parent), _id(id), _name(name)
+ProductModel::ProductModel(QString name, int shelf, QObject* parent): QObject(parent), _name(name), _shelf(shelf)
 {
 
 }
@@ -12,7 +12,8 @@ QString ProductModel::getName() const
     return _name;
 }
 
-int ProductModel::getId() const
+int ProductModel::getShelf() const
 {
-    return _id;
+    return _shelf;
 }
+

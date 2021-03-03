@@ -32,10 +32,10 @@ void EditorGridButton::setShelfButtonStyleSheet()
     setText("Polc");
 }
 
-void EditorGridButton::setDropOffPointButtonStyleSheet()
+void EditorGridButton::setDropOffPointButtonStyleSheet(QString product)
 {
     setStyleSheet("background-color: #907f9f; color:white; font-size: 30px; border: 1px solid black;");
-    setText("C");
+    setText("C\n(" + product + ")");
 }
 
 void EditorGridButton::dragEnterEvent(QDragEnterEvent *event)
@@ -63,4 +63,14 @@ void EditorGridButton::dropEvent(QDropEvent *event)
     setStyleSheet(_styleSheet);
     SideBarButton* droppedButton = qobject_cast<SideBarButton*>(event->mimeData()->parent());
     emit buttonDropped(_row,_col,droppedButton);
+}
+
+int EditorGridButton::getCol() const
+{
+    return _col;
+}
+
+int EditorGridButton::getRow() const
+{
+    return _row;
 }

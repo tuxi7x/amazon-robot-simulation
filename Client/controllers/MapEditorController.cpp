@@ -76,15 +76,62 @@ void MapEditorController::addDocker(int row, int col)
     }
 }
 
-void MapEditorController::addDropOffPoint(int row, int col)
+void MapEditorController::addDropOffPoint(int row, int col, QString product)
 {
     if(getField(row,col).first == Empty) {
-        _dropOffPoints.append(new DropOffPointFieldModel(row,col,0)); //TODO implement dialog in map editor to bind drop off point to a product
+        _dropOffPoints.append(new DropOffPointFieldModel(row,col,product)); //TODO implement dialog in map editor to bind drop off point to a product
         emit fieldChanged(row,col);
     }
 }
 
-void MapEditorController::addProduct(int row, int col, QString productName)
+bool MapEditorController::addProduct(int row, int col, QString productName)
 {
-    // TODO implement this
+    int i = 0;
+    while (i < _shelves.size() && !(_shelves[i]->getRow() == row && _shelves[i]->getCol() == col)) {
+        i++;
+    }
+    bool valid = true;
+    for(int j = 0; j<_products.size();j++) {
+        valid = valid && (_products[j]->getName() != productName || _products[j]->getShelf() != i);
+    }
+
+    if(!valid) return false;
+    _products.append(new ProductModel(productName,i));
+    return true;
+
+}
+
+bool MapEditorController::validateProductPlacement(int row, int col)
+{
+    return getField(row,col).first == Shelf;
+}
+
+QVector<QString> MapEditorController::getProductsOnShelf(int row, int col)
+{
+    int i = 0;
+    while (i < _shelves.size() && !(_shelves[i]->getRow() == row && _shelves[i]->getCol() == col)) {
+        i++;
+    }
+    QVector<QString> l;
+
+    for(int j=0; j<_products.size();j++) {
+        if(_products[j]->getShelf() == i) {
+            l.append(_products[j]->getName());
+        }
+    }
+    return l;
+}
+
+QVector<QString> MapEditorController::getUnassignedProducts()
+{
+    QVector<QString> l;
+
+    for(int i=0; i<_products.size();i++) {
+        if(!l.contains(_products[i]->getName())) {
+            int j=0;
+            while(j<_dropOffPoints.size() && _dropOffPoints[j]->getProduct() != _products[i]->getName()) j++;
+            if(j == _dropOffPoints.size()) l.append(_products[i]->getName());
+        }
+    }
+    return l;
 }

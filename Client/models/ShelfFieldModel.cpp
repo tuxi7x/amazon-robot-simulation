@@ -16,3 +16,5 @@ int ShelfFieldModel::getCol() const
 {
     return _col;
 }
+
+

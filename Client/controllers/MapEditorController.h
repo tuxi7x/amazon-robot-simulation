@@ -5,8 +5,6 @@
 #include "models/ProductModel.h"
 #include "models/RobotFieldModel.h"
 #include "models/ShelfFieldModel.h"
-
-#include <QMap>
 #include <QObject>
 
 class MapEditorController : public QObject
@@ -22,8 +20,11 @@ public:
     void addRobot(int row, int col);
     void addShelf(int row, int col);
     void addDocker(int row, int col);
-    void addDropOffPoint(int row, int col);
-    void addProduct(int row, int col, QString productName);
+    void addDropOffPoint(int row, int col, QString product);
+    bool addProduct(int row, int col, QString productName);
+    bool validateProductPlacement(int row, int col);
+    QVector<QString> getProductsOnShelf(int row, int col);
+    QVector<QString> getUnassignedProducts();
 
 signals:
     void mapCreated();
@@ -34,8 +35,7 @@ private:
     QVector <ShelfFieldModel*> _shelves;
     QVector <DockerFieldModel*> _dockers;
     QVector <DropOffPointFieldModel*> _dropOffPoints;
-    QMap <int, ProductModel*> _products;
-
+    QVector <ProductModel*> _products;
     int _size;
 
 
