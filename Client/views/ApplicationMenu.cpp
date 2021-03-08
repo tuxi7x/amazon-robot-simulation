@@ -92,8 +92,7 @@ void ApplicationMenu::closeDialog() {
 
 void ApplicationMenu::openEditor()
 {
-    emit menuClosed(this->geometry());
-    this->close();
+    emit editorOpened(this->geometry());
 }
 
 MainMenuButton *ApplicationMenu::editMapButton() const

@@ -112,6 +112,11 @@ bool MapEditorController::validateProductPlacement(int row, int col)
     return getField(row,col).first == Shelf;
 }
 
+bool MapEditorController::fieldIsEmpty()
+{
+    return _robots.isEmpty() && _dockers.isEmpty() && _shelves.isEmpty();
+}
+
 QVector<QString> MapEditorController::getProductsOnShelf(int row, int col)
 {
     int i = 0;
