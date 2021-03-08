@@ -2,6 +2,7 @@
 #define PRODUCTMODEL_H
 #include <QObject>
 #include <QString>
+#include <QJsonObject>
 
 
 
@@ -13,6 +14,8 @@ public:
 
     QString getName() const;
     int getShelf() const;
+
+    void write(QJsonObject &json);
 
 private:
     QString _name;

@@ -153,3 +153,59 @@ QString MapEditorController::validateBeforeSave()
     return "Még " + QString::number(tmp) + " célállomást fel kell helyezni!";
     }else return "OK";
 }
+
+bool MapEditorController::saveToJSON(QFile* file) {
+
+    if (!file->open(QIODevice::WriteOnly)) {
+            return false;
+    }
+
+    QJsonObject simulationObject;
+    simulationObject["size"] = _size;
+
+    QJsonArray robotArray;
+        foreach (RobotFieldModel* robot, _robots) {
+            QJsonObject robotObject;
+            robot->write(robotObject);
+            robotArray.append(robotObject);
+        }
+    simulationObject["robots"] = robotArray;
+
+    QJsonArray shelfArray;
+        foreach (ShelfFieldModel* shelf, _shelves) {
+            QJsonObject shelfObject;
+            shelf->write(shelfObject);
+            shelfArray.append(shelfObject);
+        }
+    simulationObject["shelves"] = shelfArray;
+
+    QJsonArray dockerArray;
+        foreach (DockerFieldModel* docker, _dockers) {
+            QJsonObject dockerObject;
+            docker->write(dockerObject);
+            dockerArray.append(dockerObject);
+        }
+    simulationObject["dockers"] = dockerArray;
+
+    QJsonArray dropOffArray;
+        foreach (DropOffPointFieldModel* dropOff, _dropOffPoints) {
+            QJsonObject dropOffObject;
+            dropOff->write(dropOffObject);
+            dropOffArray.append(dropOffObject);
+        }
+    simulationObject["dropoffs"] = dropOffArray;
+
+    QJsonArray productArray;
+        foreach (ProductModel* product, _products) {
+            QJsonObject productObject;
+            product->write(productObject);
+            productArray.append(productObject);
+        }
+    simulationObject["products"] = productArray;
+
+    QJsonDocument saveDoc(simulationObject);
+    file->write(saveDoc.toJson());
+    file->close();
+
+    return true;
+}

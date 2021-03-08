@@ -21,3 +21,9 @@ int DropOffPointFieldModel::getRow() const
 {
     return _row;
 }
+
+void DropOffPointFieldModel::write(QJsonObject &json) {
+    json["row"] = _row;
+    json["col"] = _col;
+    json["product"] = _product;
+}

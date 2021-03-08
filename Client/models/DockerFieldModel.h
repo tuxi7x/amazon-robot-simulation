@@ -2,6 +2,7 @@
 #define DOCKERFIELDMODEL_H
 
 #include <QObject>
+#include <QJsonObject>
 
 class DockerFieldModel: public QObject
 {
@@ -10,6 +11,8 @@ public:
     DockerFieldModel(int row, int col, QObject* parent = nullptr);
     int getRow() const;
     int getCol() const;
+
+    void write(QJsonObject &json);
 
 
 private:

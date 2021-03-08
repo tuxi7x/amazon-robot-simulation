@@ -16,6 +16,7 @@
 #include "library/buttons/editor/SideBarButton.h"
 #include "library/buttons/editor/EditorGridButton.h"
 #include <QInputDialog>
+#include <QFileDialog>
 
 class MapEditor : public QMainWindow
 {

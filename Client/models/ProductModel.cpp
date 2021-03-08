@@ -17,3 +17,8 @@ int ProductModel::getShelf() const
     return _shelf;
 }
 
+void ProductModel::write(QJsonObject &json) {
+    json["name"] = _name;
+    json["shelf"] = _shelf;
+}
+

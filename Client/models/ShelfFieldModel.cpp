@@ -17,4 +17,9 @@ int ShelfFieldModel::getCol() const
     return _col;
 }
 
+void ShelfFieldModel::write(QJsonObject &json) {
+    json["row"] = _row;
+    json["col"] = _col;
+}
+
 

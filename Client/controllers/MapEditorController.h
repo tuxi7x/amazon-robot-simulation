@@ -6,6 +6,10 @@
 #include "models/RobotFieldModel.h"
 #include "models/ShelfFieldModel.h"
 #include <QObject>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QFile>
 
 class MapEditorController : public QObject
 {
@@ -26,6 +30,9 @@ public:
     QVector<QString> getProductsOnShelf(int row, int col);
     QVector<QString> getUnassignedProducts();
     QString validateBeforeSave();
+
+    void writeToJSON(QJsonObject &json);
+    bool saveToJSON(QFile* file);
 
 signals:
     void mapCreated();

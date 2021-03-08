@@ -2,6 +2,7 @@
 #define ROBOTFIELDMODEL_H
 
 #include <QObject>
+#include <QJsonObject>
 
 
 
@@ -13,6 +14,8 @@ public:
     int getRow() const;
     int getCol() const;
     int getOrientation() const;
+
+    void write(QJsonObject &json);
 
 private:
     int _row;

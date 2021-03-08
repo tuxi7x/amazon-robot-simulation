@@ -2,6 +2,7 @@
 #define DROPOFFPOINTFIELDMODEL_H
 
 #include <QObject>
+#include <QJsonObject>
 
 
 
@@ -14,6 +15,8 @@ public:
     QString getProduct() const;
     int getCol() const;
     int getRow() const;
+
+    void write(QJsonObject &json);
 
 private:
     int _row;

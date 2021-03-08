@@ -16,3 +16,8 @@ int DockerFieldModel::getCol() const
 {
     return _col;
 }
+
+void DockerFieldModel::write(QJsonObject &json) {
+    json["row"] = _row;
+    json["col"] = _col;
+}

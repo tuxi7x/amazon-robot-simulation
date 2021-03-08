@@ -230,7 +230,28 @@ void MapEditor::saveButtonPressed()
     if(message!="OK") {
         ErrorDialog e (message);
         e.exec();
+    } else {
+        QString fileName = QFileDialog::getSaveFileName(this,
+                tr("Save Simulation"), "",
+                tr("JSON file (*.json);;All Files (*)"));
+
+        if (fileName.isEmpty()) {
+            return;
+        }
+
+
+        QFile* file = new QFile(fileName);
+
+
+        if (_controller->saveToJSON(file)) {
+            QMessageBox::information(this, tr("Success"),
+                            tr("File successfully saved."));
+        } else {
+            QMessageBox::warning(this, tr("Unable to save file"),
+                            tr("Could not save file."));
+        }
     }
+
 
 
 
