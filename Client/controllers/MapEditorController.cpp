@@ -7,6 +7,12 @@ MapEditorController::MapEditorController(QObject *parent) : QObject(parent)
 
 void MapEditorController::createNewMap(int size)
 {
+    std::for_each(_robots.begin(),_robots.end(),[](RobotFieldModel* r){delete r;});
+    std::for_each(_shelves.begin(),_shelves.end(),[](ShelfFieldModel* s){delete s;});
+    std::for_each(_dockers.begin(),_dockers.end(),[](DockerFieldModel* d){delete d;});
+    std::for_each(_dropOffPoints.begin(),_dropOffPoints.end(),[](DropOffPointFieldModel* d){delete d;});
+    std::for_each(_products.begin(),_products.end(),[](ProductModel* p){delete p;});
+
     _size = size;
     _robots.clear();
     _shelves.clear();
@@ -104,6 +110,11 @@ bool MapEditorController::addProduct(int row, int col, QString productName)
 bool MapEditorController::validateProductPlacement(int row, int col)
 {
     return getField(row,col).first == Shelf;
+}
+
+bool MapEditorController::fieldIsEmpty()
+{
+    return _robots.isEmpty() && _dockers.isEmpty() && _shelves.isEmpty();
 }
 
 QVector<QString> MapEditorController::getProductsOnShelf(int row, int col)

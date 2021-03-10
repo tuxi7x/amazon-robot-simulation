@@ -217,9 +217,10 @@ void MapEditor::onChangeSizeButtonPressed()
 
 void MapEditor::backButtonPressed()
 {
-    if(QMessageBox::Yes == QMessageBox::question(this, "Vissza?", "Biztosan vissza szeretnél lépni?\nMinden nem mentett változtatás elveszik!", QMessageBox::Yes | QMessageBox::No)) {
+    if(_controller->fieldIsEmpty()) {
         emit editorClosed(this->geometry());
-        close();
+    } else if(QMessageBox::Yes == QMessageBox::question(this, "Vissza?", "Biztosan vissza szeretnél lépni?\nMinden nem mentett változtatás elveszik!", QMessageBox::Yes | QMessageBox::No)) {
+        emit editorClosed(this->geometry());
     }
 
 }

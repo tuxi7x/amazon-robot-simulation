@@ -27,6 +27,7 @@ public:
     void addDropOffPoint(int row, int col, QString product);
     bool addProduct(int row, int col, QString productName);
     bool validateProductPlacement(int row, int col);
+    bool fieldIsEmpty();
     QVector<QString> getProductsOnShelf(int row, int col);
     QVector<QString> getUnassignedProducts();
     QString validateBeforeSave();
