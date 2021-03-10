@@ -5,6 +5,15 @@ MapEditorController::MapEditorController(QObject *parent) : QObject(parent)
 
 }
 
+MapEditorController::~MapEditorController()
+{
+    std::for_each(_robots.begin(),_robots.end(),[](RobotFieldModel* r){delete r;});
+    std::for_each(_shelves.begin(),_shelves.end(),[](ShelfFieldModel* s){delete s;});
+    std::for_each(_dockers.begin(),_dockers.end(),[](DockerFieldModel* d){delete d;});
+    std::for_each(_dropOffPoints.begin(),_dropOffPoints.end(),[](DropOffPointFieldModel* d){delete d;});
+    std::for_each(_products.begin(),_products.end(),[](ProductModel* p){delete p;});
+}
+
 void MapEditorController::createNewMap(int size)
 {
     std::for_each(_robots.begin(),_robots.end(),[](RobotFieldModel* r){delete r;});

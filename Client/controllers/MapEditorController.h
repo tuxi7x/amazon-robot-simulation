@@ -17,6 +17,7 @@ class MapEditorController : public QObject
 public:
     explicit MapEditorController(QObject *parent = nullptr);
     enum FieldTypes {Empty, Robot, Shelf, Docker, DropOffPoint};
+    ~MapEditorController();
 
     void createNewMap (int size);
     QPair<FieldTypes, QObject*> getField (int row, int col);

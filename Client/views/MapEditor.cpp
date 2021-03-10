@@ -50,8 +50,6 @@ MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
     _sidePanel->addWidget(_saveButton);
     _sidePanel->addWidget(_backButton);
 
-
-
     _changeSizeButton->setFixedSize(QSize(140,30));
     _saveButton->setFixedSize(QSize(140,40));
     _backButton->setFixedSize(QSize(140,40));
@@ -96,6 +94,7 @@ MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
 
 MapEditor::~MapEditor()
 {
+    delete _controller;
     delete _centralWidget;
 }
 
@@ -252,9 +251,6 @@ void MapEditor::saveButtonPressed()
                             tr("Could not save file."));
         }
     }
-
-
-
 
 }
 
