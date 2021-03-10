@@ -25,6 +25,8 @@ private:
     QPushButton* _connectButton;
     QLabel* _ipLabel;
     QLabel* _portLabel;
+    QLabel* _indicator;
+    QMovie* _progressGif;
 
 };
 

@@ -1,5 +1,7 @@
 #include "ConnectDialog.h"
 
+#include <QMovie>
+
 
 ConnectDialog::ConnectDialog() : DialogBase()
 {
@@ -27,6 +29,13 @@ ConnectDialog::ConnectDialog() : DialogBase()
     _mainLayout->addWidget(_connectButton);
     _mainLayout->setAlignment(Qt::AlignCenter);
 
+    _indicator = new QLabel();
+    _indicator->setFixedSize(70,70);
+    _mainLayout->addWidget(_indicator);
+    _mainLayout->setAlignment(_indicator,Qt::AlignHCenter);
+    _progressGif = new QMovie(":/Resources/resources/loadingbar.gif");
+    _progressGif->setScaledSize(QSize(70,70));
+
     QString style = this->styleSheet();
 
     setStyleSheet("color: white; font-size: 20px;" + style);
@@ -51,6 +60,7 @@ ConnectDialog::ConnectDialog() : DialogBase()
 
 ConnectDialog::~ConnectDialog()
 {
+    delete _indicator->movie();
     for (int i = 0;i < _mainLayout->count() ; i++ ) {
         delete _mainLayout->itemAt(i);
     }
@@ -59,7 +69,11 @@ ConnectDialog::~ConnectDialog()
 
 void ConnectDialog::connectButtonPressed()
 {
+    _indicator->setMovie(_progressGif);
+    _progressGif->start();
     ErrorDialog* errorDialog = new ErrorDialog("<b>Hiba:</b><br>A csatlakozás sikertelen!");
     errorDialog->setModal(true);
-    errorDialog->show();
+    errorDialog->exec();
+    _progressGif->stop();
+    _indicator->setMovie(nullptr);
 }

@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/Resources">
         <file>resources/logo.png</file>
+        <file>resources/loadingbar.gif</file>
     </qresource>
 </RCC>
