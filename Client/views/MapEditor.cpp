@@ -1,5 +1,8 @@
 #include "MapEditor.h"
 
+#include <library/dialogs/ErrorDialog.h>
+#include <library/dialogs/ProductsOnShelfDialog.h>
+
 MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
 {
     setFixedSize(1024,728);
@@ -47,8 +50,6 @@ MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
     _sidePanel->addWidget(_saveButton);
     _sidePanel->addWidget(_backButton);
 
-
-
     _changeSizeButton->setFixedSize(QSize(140,30));
     _saveButton->setFixedSize(QSize(140,40));
     _backButton->setFixedSize(QSize(140,40));
@@ -85,7 +86,7 @@ MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
     connect(_controller, &MapEditorController::fieldChanged, this, &MapEditor::onFieldChanged);
     connect(_changeSizeButton, &SideBarButton::pressed, this, &MapEditor::onChangeSizeButtonPressed);
     connect(_backButton, &QPushButton::clicked, this, &MapEditor::backButtonPressed);
-
+    connect(_saveButton, &QPushButton::clicked, this, &MapEditor::saveButtonPressed);
 
     _controller->createNewMap(_changeSizeLineEdit->text().toInt());
 
@@ -93,6 +94,7 @@ MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
 
 MapEditor::~MapEditor()
 {
+    delete _controller;
     delete _centralWidget;
 }
 
@@ -108,16 +110,55 @@ void MapEditor::onButtonDroppedToMap(int row, int col, SideBarButton *droppedBut
 {
     if(droppedButton == _robotButton) {
         _controller->addRobot(row,col);
-    } else if(droppedButton == _productButton) {
-        //TODO implement dialog to ask for products name here
-        _controller->addProduct(row,col,"");
-    } else if(droppedButton == _dropOffPointButton) {
-        _controller->addDropOffPoint(row,col);
+    } else if(droppedButton == _dropOffPointButton && _controller->getField(row,col).first == MapEditorController::Empty) {
+
+        QVector<QString> productsToChooseFrom = _controller->getUnassignedProducts();
+
+        if(productsToChooseFrom.isEmpty()) {
+            ErrorDialog e ("Jelenleg minden termékhez van célállomás rendelve!");
+            e.exec();
+            return;
+        }
+        QInputDialog d;
+        d.setLabelText("Melyik termék célállomása legyen?");
+        d.setComboBoxItems(productsToChooseFrom);
+        d.setWindowTitle("Célállomás hozzáadása");
+        if(d.exec()) {
+            _controller->addDropOffPoint(row,col, d.textValue());
+        }
+
     } else if (droppedButton == _dockerButton) {
         _controller->addDocker(row,col);
     } else if (droppedButton == _shelfButton) {
         _controller->addShelf(row,col);
+    } else if(droppedButton == _productButton) {
+        if(_controller->validateProductPlacement(row,col)) {
+            bool ok;
+            QString name = QInputDialog::getText(this, "Termék neve", "Az új termék neve:", QLineEdit::Normal, "", &ok);
+            if(ok && !name.isEmpty()) {
+                if(!_controller->addProduct(row,col,name)) {
+                    ErrorDialog e ("A polcon már van ilyen termék!");
+                    e.exec();
+                }
+            }
+        }
+        else {
+            ErrorDialog e ("Terméket csak polcra lehet helyezni!");
+            e.exec();
+        }
     }
+}
+
+void MapEditor::onFieldButtonPressed()
+{
+    EditorGridButton* s = qobject_cast<EditorGridButton*> (sender());
+    if(_controller->getField(s->getRow(), s->getCol()).first == MapEditorController::Shelf) {
+        QVector<QString> productsOnThisShelf = _controller->getProductsOnShelf(s->getRow(), s->getCol());
+
+        ProductsOnShelfDialog posd (productsOnThisShelf);
+        posd.exec();
+    }
+
 }
 
 void MapEditor::onMapCreated()
@@ -137,6 +178,7 @@ void MapEditor::onMapCreated()
             EditorGridButton* btn = new EditorGridButton(i,j);
             btn->setEmptyButtonStyleSheet();
             connect(btn, &EditorGridButton::buttonDropped, this, &MapEditor::onButtonDroppedToMap);
+            connect(btn, &EditorGridButton::clicked, this, &MapEditor::onFieldButtonPressed);
             btn->setFixedSize(QSize(630/size,630/size));
             _mapGrid->addWidget(btn,i,j);
             line.append(btn);
@@ -154,8 +196,10 @@ void MapEditor::onFieldChanged(int row, int col)
        _gridButtons[row][col]->setRobotButtonStyleSheet();
    } else if (val == MapEditorController::Shelf) {
        _gridButtons[row][col]->setShelfButtonStyleSheet();
+       _gridButtons[row][col]->setCursor(QCursor(Qt::PointingHandCursor));
    } else if (val == MapEditorController::DropOffPoint) {
-       _gridButtons[row][col]->setDropOffPointButtonStyleSheet();
+       DropOffPointFieldModel* dopfm = qobject_cast<DropOffPointFieldModel*> (field.second);
+       _gridButtons[row][col]->setDropOffPointButtonStyleSheet(dopfm->getProduct());
    } else if(val == MapEditorController::Docker) {
        _gridButtons[row][col]->setDockerButtonStyleSheet();
    } else if (val == MapEditorController::Empty) {
@@ -172,9 +216,40 @@ void MapEditor::onChangeSizeButtonPressed()
 
 void MapEditor::backButtonPressed()
 {
-    if(QMessageBox::Yes == QMessageBox::question(this, "Vissza?", "Biztosan vissza szeretnél lépni?\nMinden nem mentett változtatás elveszik!", QMessageBox::Yes | QMessageBox::No)) {
+    if(_controller->fieldIsEmpty()) {
         emit editorClosed(this->geometry());
-        close();
+    } else if(QMessageBox::Yes == QMessageBox::question(this, "Vissza?", "Biztosan vissza szeretnél lépni?\nMinden nem mentett változtatás elveszik!", QMessageBox::Yes | QMessageBox::No)) {
+        emit editorClosed(this->geometry());
+    }
+
+}
+
+void MapEditor::saveButtonPressed()
+{
+    QString message = _controller->validateBeforeSave();
+    if(message!="OK") {
+        ErrorDialog e (message);
+        e.exec();
+    } else {
+        QString fileName = QFileDialog::getSaveFileName(this,
+                tr("Save Simulation"), "",
+                tr("JSON file (*.json);;All Files (*)"));
+
+        if (fileName.isEmpty()) {
+            return;
+        }
+
+
+        QFile* file = new QFile(fileName);
+
+
+        if (_controller->saveToJSON(file)) {
+            QMessageBox::information(this, tr("Success"),
+                            tr("File successfully saved."));
+        } else {
+            QMessageBox::warning(this, tr("Unable to save file"),
+                            tr("Could not save file."));
+        }
     }
 
 }

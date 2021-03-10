@@ -7,6 +7,8 @@
 #include <QNetworkInterface>
 #include <QAbstractSocket>
 #include <QDebug>
+#include <QString>
+#include "EventManager.h"
 
 class Server : public QObject
 {
@@ -18,9 +20,12 @@ private:
     void initServer();
 
     QTcpServer* _tcpServer;
+    EventManager* _eventManager;
 
 private slots:
     void startConnection();
+
+
 
 signals:
 

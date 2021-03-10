@@ -2,7 +2,7 @@
 #define SHELFFIELDMODEL_H
 
 #include <QObject>
-
+#include <QJsonObject>
 
 
 class ShelfFieldModel : public QObject
@@ -13,6 +13,8 @@ public:
 
     int getRow() const;
     int getCol() const;
+
+    void write(QJsonObject &json);
 
 private:
     int _row;

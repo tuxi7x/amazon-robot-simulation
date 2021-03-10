@@ -5,9 +5,11 @@
 #include "models/ProductModel.h"
 #include "models/RobotFieldModel.h"
 #include "models/ShelfFieldModel.h"
-
-#include <QMap>
 #include <QObject>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QFile>
 
 class MapEditorController : public QObject
 {
@@ -15,6 +17,7 @@ class MapEditorController : public QObject
 public:
     explicit MapEditorController(QObject *parent = nullptr);
     enum FieldTypes {Empty, Robot, Shelf, Docker, DropOffPoint};
+    ~MapEditorController();
 
     void createNewMap (int size);
     QPair<FieldTypes, QObject*> getField (int row, int col);
@@ -22,8 +25,16 @@ public:
     void addRobot(int row, int col);
     void addShelf(int row, int col);
     void addDocker(int row, int col);
-    void addDropOffPoint(int row, int col);
-    void addProduct(int row, int col, QString productName);
+    void addDropOffPoint(int row, int col, QString product);
+    bool addProduct(int row, int col, QString productName);
+    bool validateProductPlacement(int row, int col);
+    bool fieldIsEmpty();
+    QVector<QString> getProductsOnShelf(int row, int col);
+    QVector<QString> getUnassignedProducts();
+    QString validateBeforeSave();
+
+    void writeToJSON(QJsonObject &json);
+    bool saveToJSON(QFile* file);
 
 signals:
     void mapCreated();
@@ -34,8 +45,7 @@ private:
     QVector <ShelfFieldModel*> _shelves;
     QVector <DockerFieldModel*> _dockers;
     QVector <DropOffPointFieldModel*> _dropOffPoints;
-    QMap <int, ProductModel*> _products;
-
+    QVector <ProductModel*> _products;
     int _size;
 
 

@@ -23,6 +23,10 @@ set(PROJECT_SOURCES
     server.cpp
     server.h
     main.cpp
+    EventManager.cpp
+    EventManager.h
+    Controller.cpp
+    Controller.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

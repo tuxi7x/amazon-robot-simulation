@@ -47,7 +47,8 @@ private slots:
     void openEditor();
 
 signals:
-    void menuClosed(QRect windowPosition);
+    void editorOpened(QRect windowPosition);
+    void simulationOpened(QRect windowPosition); //TODO implement this when we have a simulation window
 
 };
 #endif // APPLICATIONMENU_H

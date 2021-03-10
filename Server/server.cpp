@@ -3,7 +3,7 @@
 Server::Server(QObject *parent) : QObject(parent)
 {
     _tcpServer = new QTcpServer(this);
-    if (!_tcpServer->listen()) {
+    if (!_tcpServer->listen(QHostAddress::Any, 1243)) {
             exit(1);
             return;
     }
@@ -25,19 +25,26 @@ Server::Server(QObject *parent) : QObject(parent)
 
     qInfo() << (tr("The server is running on IP: %1 Port: %2").arg(ipAddress).arg(_tcpServer->serverPort()));
 
+    _eventManager = new EventManager();
+
 
     connect(_tcpServer, &QTcpServer::newConnection, this, &Server::startConnection);
 
 }
 void Server::startConnection() {
     QByteArray block;
-    QDataStream out(&block, QIODevice::WriteOnly);
+    QDataStream out(&block, QIODevice::ReadWrite);
     out.setVersion(QDataStream::Qt_5_10);
 
     out << "Hello client";
-    QTcpSocket* clientConnection = _tcpServer->nextPendingConnection();
-    connect(clientConnection, &QAbstractSocket::disconnected, clientConnection, &QObject::deleteLater);
+    QTcpSocket* _connection = _tcpServer->nextPendingConnection();
+    _connection->write(block);
+    _eventManager->addConnection(_connection);
 
-    clientConnection->write(block);
-    clientConnection->disconnectFromHost();
+
+
+
+
 }
+
+

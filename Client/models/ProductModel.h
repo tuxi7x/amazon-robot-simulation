@@ -2,6 +2,7 @@
 #define PRODUCTMODEL_H
 #include <QObject>
 #include <QString>
+#include <QJsonObject>
 
 
 
@@ -9,14 +10,16 @@ class ProductModel: public QObject
 {
     Q_OBJECT
 public:
-    ProductModel(int id, QString name, QObject* parent = nullptr);
+    ProductModel(QString name, int shelf, QObject* parent = nullptr);
 
     QString getName() const;
-    int getId() const;
+    int getShelf() const;
+
+    void write(QJsonObject &json);
 
 private:
-    int _id;
     QString _name;
+    int _shelf;
 };
 
 #endif // PRODUCTMODEL_H

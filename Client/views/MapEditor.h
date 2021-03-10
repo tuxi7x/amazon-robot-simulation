@@ -15,6 +15,8 @@
 #include <QMessageBox>
 #include "library/buttons/editor/SideBarButton.h"
 #include "library/buttons/editor/EditorGridButton.h"
+#include <QInputDialog>
+#include <QFileDialog>
 
 class MapEditor : public QMainWindow
 {
@@ -53,11 +55,12 @@ public slots:
 
 private slots:
     void onButtonDroppedToMap (int row, int col, SideBarButton* droppedButton);
+    void onFieldButtonPressed();
     void onMapCreated();
     void onFieldChanged(int row, int col);
     void onChangeSizeButtonPressed();
     void backButtonPressed();
-
+    void saveButtonPressed();
 signals:
     void editorClosed(QRect windowPosition);
 

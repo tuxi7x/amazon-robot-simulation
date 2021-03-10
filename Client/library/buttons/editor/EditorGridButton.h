@@ -20,7 +20,10 @@ public:
     void setRobotButtonStyleSheet();
     void setDockerButtonStyleSheet();
     void setShelfButtonStyleSheet();
-    void setDropOffPointButtonStyleSheet();
+    void setDropOffPointButtonStyleSheet(QString product);
+
+    int getRow() const;
+    int getCol() const;
 
 protected:
     void dragEnterEvent(QDragEnterEvent* event) override;

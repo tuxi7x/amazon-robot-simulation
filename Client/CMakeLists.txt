@@ -61,6 +61,11 @@ set(PROJECT_SOURCES
         models/DropOffPointFieldModel.h
         models/ProductModel.cpp
         models/ProductModel.h
+        library/dialogs/ProductsOnShelfDialog.cpp
+        library/dialogs/ProductsOnShelfDialog.h
+        ViewWrapper.cpp
+        ViewWrapper.h
+
         resources.qrc
 )
 
