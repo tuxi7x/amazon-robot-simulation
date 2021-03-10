@@ -60,6 +60,9 @@ MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
     _dropOffPointButton->setFixedSize(QSize(140,40));
     _changeSizeLineEdit->setFixedSize(QSize(140,27));
 
+    _saveButton->setCursor(QCursor(Qt::PointingHandCursor));
+    _backButton->setCursor(QCursor(Qt::PointingHandCursor));
+
     _changeSizeLineEdit->setText("6");
 
     _changeSizeLabel->setStyleSheet("color: white; font-size:26px;");
