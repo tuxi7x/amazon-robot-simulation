@@ -31,7 +31,9 @@ public:
     bool fieldIsEmpty();
     QVector<QString> getProductsOnShelf(int row, int col);
     QVector<QString> getUnassignedProducts();
+    QVector<QString> getProducts();
     QString validateBeforeSave();
+
 
     void writeToJSON(QJsonObject &json);
     bool saveToJSON(QFile* file);

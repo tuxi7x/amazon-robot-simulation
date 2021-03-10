@@ -39,6 +39,7 @@ private:
     SideBarButton* _productButton;
     QPushButton* _saveButton;
     QPushButton* _backButton;
+    QPushButton* _settingOrders;
     MapEditorController* _controller;
     QVector<QPushButton*>* _buttons;
     QVBoxLayout* _gridContainer;
@@ -61,6 +62,7 @@ private slots:
     void onChangeSizeButtonPressed();
     void backButtonPressed();
     void saveButtonPressed();
+    void settingOrdersButtonPressed();
 signals:
     void editorClosed(QRect windowPosition);
 

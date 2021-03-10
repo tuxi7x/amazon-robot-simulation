@@ -2,6 +2,7 @@
 
 #include <library/dialogs/ErrorDialog.h>
 #include <library/dialogs/ProductsOnShelfDialog.h>
+#include <library/dialogs/OrderDialog.h>
 
 MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
 {
@@ -16,6 +17,7 @@ MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
     _dropOffPointButton = new SideBarButton("Célállomás",this);
     _saveButton = new QPushButton("Mentés",this);
     _backButton = new QPushButton("Vissza",this);
+    _settingOrders = new QPushButton("Rendelések", this);
     _productButton = new SideBarButton("Termék",this);
     _shelfButton = new SideBarButton("Polc",this);
     _dockerButton = new SideBarButton("Dokkoló",this);
@@ -47,10 +49,12 @@ MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
     _sidePanel->addWidget(_dockerButton);
     _sidePanel->addWidget(_dropOffPointButton);
     _sidePanel->addWidget(_productButton);
+    _sidePanel->addWidget(_settingOrders);
     _sidePanel->addWidget(_saveButton);
     _sidePanel->addWidget(_backButton);
 
     _changeSizeButton->setFixedSize(QSize(140,30));
+    _settingOrders->setFixedSize(QSize(140, 40));
     _saveButton->setFixedSize(QSize(140,40));
     _backButton->setFixedSize(QSize(140,40));
     _productButton->setFixedSize(QSize(140,40));
@@ -76,7 +80,8 @@ MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
     _productButton->setStyleSheet("background-color: #34B1FF; color: white; border: none; font-size:21px;");
     _saveButton->setStyleSheet("background-color: #12DF4B; color: white; border: none; font-size:21px;");
     _backButton->setStyleSheet("background-color: #DF1211; color: white; border: none; font-size:21px;");
-    _sidePanel->setSpacing(30);
+    _settingOrders->setStyleSheet("background-color: #8E3FCB; color: white; border: none; font-size:21px;");
+    _sidePanel->setSpacing(20);
     _sidePanel->setAlignment(Qt::AlignVCenter);
 
     _mapGrid->setSpacing(0);
@@ -91,7 +96,7 @@ MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
     connect(_changeSizeButton, &SideBarButton::pressed, this, &MapEditor::onChangeSizeButtonPressed);
     connect(_backButton, &QPushButton::clicked, this, &MapEditor::backButtonPressed);
     connect(_saveButton, &QPushButton::clicked, this, &MapEditor::saveButtonPressed);
-
+    connect(_settingOrders, &QPushButton::clicked, this, &MapEditor::settingOrdersButtonPressed);
     _controller->createNewMap(_changeSizeLineEdit->text().toInt());
 
 }
@@ -256,6 +261,15 @@ void MapEditor::saveButtonPressed()
         }
     }
 
+}
+
+void MapEditor::settingOrdersButtonPressed()
+{
+    QVector<QString> products = _controller->getProducts();
+    QVector<QString> orders;
+
+    OrderDialog od(products, orders);
+    od.exec();
 }
 
 

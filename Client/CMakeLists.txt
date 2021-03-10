@@ -65,6 +65,8 @@ set(PROJECT_SOURCES
         library/dialogs/ProductsOnShelfDialog.h
         ViewWrapper.cpp
         ViewWrapper.h
+        library/dialogs/OrderDialog.h
+        library/dialogs/OrderDialog.cpp
 
         resources.qrc
 )

@@ -156,6 +156,17 @@ QVector<QString> MapEditorController::getUnassignedProducts()
     return l;
 }
 
+QVector<QString> MapEditorController::getProducts()
+{
+
+    QVector<QString> l;
+
+    for(int j=0; j<_products.size();j++) {
+            l.append(_products[j]->getName());
+    }
+    return l;
+}
+
 QString MapEditorController::validateBeforeSave()
 {
     if(_robots.isEmpty()) {
