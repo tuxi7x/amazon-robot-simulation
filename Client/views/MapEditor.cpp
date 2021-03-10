@@ -62,6 +62,7 @@ MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
 
     _saveButton->setCursor(QCursor(Qt::PointingHandCursor));
     _backButton->setCursor(QCursor(Qt::PointingHandCursor));
+    _changeSizeButton->setCursor(QCursor(Qt::PointingHandCursor));
 
     _changeSizeLineEdit->setText("6");
 
