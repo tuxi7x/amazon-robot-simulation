@@ -1,7 +1,8 @@
 #include "StartSimFromFileDialog.h"
 
-StartSimFromFileDialog::StartSimFromFileDialog()
+StartSimFromFileDialog::StartSimFromFileDialog(QTcpSocket *connection)
 {
+    _connection = connection;
     setWindowTitle("Szimuláció indítása fájlból betöltve");
 
     _ipLabel = new QLabel("Szerver IP címe");
@@ -64,13 +65,6 @@ StartSimFromFileDialog::StartSimFromFileDialog()
 
 StartSimFromFileDialog::~StartSimFromFileDialog()
 {
-    for(int i=0; i< _browseFileLine->count(); i++) {
-        delete _browseFileLine->itemAt(i);
-    }
-
-    for (int i = 0;i < _mainLayout->count() ; i++ ) {
-        delete _mainLayout->itemAt(i);
-    }
     delete _mainLayout;
 }
 

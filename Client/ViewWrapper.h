@@ -4,12 +4,15 @@
 #include <QObject>
 #include "views/ApplicationMenu.h"
 #include "views/MapEditor.h"
+#include "views/SimulationWindow.h"
+#include "QtNetwork/QTcpSocket"
 
 class ViewWrapper : public QObject
 {
     Q_OBJECT
 public:
     explicit ViewWrapper(QObject *parent = nullptr);
+    ~ViewWrapper();
 
 signals:
 
@@ -21,6 +24,9 @@ private slots:
 private:
     ApplicationMenu* _menu;
     MapEditor* _editor;
+    SimulationWindow* _simulation;
+    QTcpSocket* _connection;
+
 
 };
 

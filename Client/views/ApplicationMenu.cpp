@@ -2,7 +2,7 @@
 
 
 
-ApplicationMenu::ApplicationMenu(QWidget *parent)
+ApplicationMenu::ApplicationMenu(QTcpSocket *connection, QWidget *parent)
     : QMainWindow(parent)
 {
     setFixedSize(1024,728);
@@ -37,11 +37,11 @@ ApplicationMenu::ApplicationMenu(QWidget *parent)
     _helpDialog->setModal(true);
     connect(_helpDialog,SIGNAL(rejected()),this,SLOT(closeDialog()));
 
-    _connectDialog = new ConnectDialog();
+    _connectDialog = new ConnectDialog(connection);
     _connectDialog->setModal(true);
     connect(_connectDialog,SIGNAL(rejected()),this,SLOT(closeDialog()));
 
-    _startSimFromFileDialog = new StartSimFromFileDialog();
+    _startSimFromFileDialog = new StartSimFromFileDialog(connection);
     _startSimFromFileDialog->setModal(true);
     connect(_startSimFromFileDialog,SIGNAL(rejected()),this,SLOT(closeDialog()));
 
@@ -60,14 +60,11 @@ ApplicationMenu::ApplicationMenu(QWidget *parent)
 
 ApplicationMenu::~ApplicationMenu()
 {
-    for (int i = 0;i < _mainLayout->count() ; i++ ) {
-        delete _mainLayout->itemAt(i);
-    }
-    delete _mainLayout;
-    delete _centralWidget;
     delete _helpDialog;
     delete _connectDialog;
     delete _startSimFromFileDialog;
+    delete _mainLayout;
+    delete _centralWidget;
 }
 
 void ApplicationMenu::openHelpDialog() {
@@ -77,7 +74,9 @@ void ApplicationMenu::openHelpDialog() {
 
 void ApplicationMenu::openConnectDialog() {
     _opacityEffect->setEnabled(true);
-    _connectDialog->show();
+    if(_connectDialog->exec() == QDialog::Accepted) {
+        emit connectedToSimulation(this->geometry()); //Pass connection as a parameter when its implemented!
+    }
 }
 
 void ApplicationMenu::openStartSimFromFileDialog()

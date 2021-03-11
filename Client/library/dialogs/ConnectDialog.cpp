@@ -3,10 +3,10 @@
 #include <QMovie>
 
 
-ConnectDialog::ConnectDialog() : DialogBase()
+ConnectDialog::ConnectDialog(QTcpSocket *connection) : DialogBase()
 {
+    _connection = connection;
     setWindowTitle("Csatlakozás futó szimulációhoz");
-
     _ipLabel = new QLabel("Szerver IP címe");
     _ipBox = new QLineEdit();
 
@@ -60,20 +60,19 @@ ConnectDialog::ConnectDialog() : DialogBase()
 
 ConnectDialog::~ConnectDialog()
 {
-    delete _indicator->movie();
-    for (int i = 0;i < _mainLayout->count() ; i++ ) {
-        delete _mainLayout->itemAt(i);
-    }
     delete _mainLayout;
 }
 
 void ConnectDialog::connectButtonPressed()
 {
-    _indicator->setMovie(_progressGif);
+    /*_indicator->setMovie(_progressGif);
     _progressGif->start();
     ErrorDialog* errorDialog = new ErrorDialog("<b>Hiba:</b><br>A csatlakozás sikertelen!");
     errorDialog->setModal(true);
     errorDialog->exec();
     _progressGif->stop();
-    _indicator->setMovie(nullptr);
+    _indicator->setMovie(nullptr);*/
+
+    //Need to implement connecting here. send accept if its succesful.
+    accept();
 }

@@ -12,7 +12,7 @@
 #include <QCloseEvent>
 #include <QGraphicsOpacityEffect>
 #include <QIcon>
-#include <QRect>
+#include <QtNetwork/QTcpSocket>
 
 class ApplicationMenu : public QMainWindow
 {
@@ -32,7 +32,7 @@ private:
 
 
 public:
-    ApplicationMenu(QWidget *parent = nullptr);
+    ApplicationMenu(QTcpSocket* connection, QWidget *parent = nullptr);
     ~ApplicationMenu();
     MainMenuButton *editMapButton() const;
 
@@ -48,7 +48,7 @@ private slots:
 
 signals:
     void editorOpened(QRect windowPosition);
-    void simulationOpened(QRect windowPosition); //TODO implement this when we have a simulation window
+    void connectedToSimulation (QRect windowPosition);
 
 };
 #endif // APPLICATIONMENU_H

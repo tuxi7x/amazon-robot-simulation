@@ -41,8 +41,5 @@ HelpDialog::HelpDialog() : DialogBase()
 
 HelpDialog::~HelpDialog()
 {
-    for (int i = 0;i < _mainLayout->count() ; i++ ) {
-        delete _mainLayout->itemAt(i);
-    }
     delete _mainLayout;
 }

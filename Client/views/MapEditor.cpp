@@ -1,8 +1,8 @@
 #include "MapEditor.h"
 
-#include <library/dialogs/ErrorDialog.h>
-#include <library/dialogs/ProductsOnShelfDialog.h>
-#include <library/dialogs/OrderDialog.h>
+#include "library/dialogs/ErrorDialog.h"
+#include "library/dialogs/ProductsOnShelfDialog.h"
+#include "library/dialogs/orderdialog.h"
 
 MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
 {
@@ -98,6 +98,8 @@ MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
     connect(_saveButton, &QPushButton::clicked, this, &MapEditor::saveButtonPressed);
     connect(_settingOrders, &QPushButton::clicked, this, &MapEditor::settingOrdersButtonPressed);
     _controller->createNewMap(_changeSizeLineEdit->text().toInt());
+
+
 
 }
 
