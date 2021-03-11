@@ -240,3 +240,10 @@ bool MapEditorController::saveToJSON(QFile* file) {
 
     return true;
 }
+void MapEditorController::setOrders(QVector<QString> orders)
+{
+    _orders.clear();
+    for(int i = 0; i< orders.length(); i++){
+        _orders.append(orders[i]);
+    }
+}

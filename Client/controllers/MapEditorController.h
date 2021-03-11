@@ -33,6 +33,7 @@ public:
     QVector<QString> getUnassignedProducts();
     QVector<QString> getProducts();
     QString validateBeforeSave();
+    void setOrders(QVector<QString> orders);
 
 
     void writeToJSON(QJsonObject &json);
@@ -48,7 +49,9 @@ private:
     QVector <DockerFieldModel*> _dockers;
     QVector <DropOffPointFieldModel*> _dropOffPoints;
     QVector <ProductModel*> _products;
+    QVector <QString> _orders;
     int _size;
+
 
 
 };

@@ -67,6 +67,7 @@ MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
     _saveButton->setCursor(QCursor(Qt::PointingHandCursor));
     _backButton->setCursor(QCursor(Qt::PointingHandCursor));
     _changeSizeButton->setCursor(QCursor(Qt::PointingHandCursor));
+    _settingOrders->setCursor(QCursor(Qt::PointingHandCursor));
 
     _changeSizeLineEdit->setText("6");
 
@@ -98,9 +99,6 @@ MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
     connect(_saveButton, &QPushButton::clicked, this, &MapEditor::saveButtonPressed);
     connect(_settingOrders, &QPushButton::clicked, this, &MapEditor::settingOrdersButtonPressed);
     _controller->createNewMap(_changeSizeLineEdit->text().toInt());
-
-
-
 }
 
 MapEditor::~MapEditor()
@@ -272,7 +270,10 @@ void MapEditor::settingOrdersButtonPressed()
 
     OrderDialog od(products, orders);
     od.exec();
+    orders = od.getOrders();
+    _controller->setOrders(orders);
 }
+
 
 
 
