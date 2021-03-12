@@ -2,7 +2,7 @@
 #define SIMULATIONWINDOW_H
 
 #include <QMainWindow>
-#include <QTcpSocket>
+#include "controllers/Connection.h"
 #include <QHBoxLayout>
 #include <QGridLayout>
 #include <QVBoxLayout>
@@ -12,12 +12,12 @@ class SimulationWindow : public QMainWindow
 {
     Q_OBJECT
 public:
-    explicit SimulationWindow(QTcpSocket* connection, QWidget *parent = nullptr);
+    explicit SimulationWindow(Connection* connection, QWidget *parent = nullptr);
 
 signals:
 
 private:
-    QTcpSocket* _connection;
+    Connection* _connection;
     QWidget* _centralWidget;
     QHBoxLayout* _mainLayout;
     QGridLayout* _mapGrid;

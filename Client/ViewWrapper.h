@@ -5,7 +5,7 @@
 #include "views/ApplicationMenu.h"
 #include "views/MapEditor.h"
 #include "views/SimulationWindow.h"
-#include "QtNetwork/QTcpSocket"
+#include "controllers/Connection.h"
 
 class ViewWrapper : public QObject
 {
@@ -25,7 +25,7 @@ private:
     ApplicationMenu* _menu;
     MapEditor* _editor;
     SimulationWindow* _simulation;
-    QTcpSocket* _connection;
+    Connection* _connection;
 
 
 };

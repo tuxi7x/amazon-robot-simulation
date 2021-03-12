@@ -1,6 +1,6 @@
 #include "StartSimFromFileDialog.h"
 
-StartSimFromFileDialog::StartSimFromFileDialog(QTcpSocket *connection)
+StartSimFromFileDialog::StartSimFromFileDialog(Connection *connection)
 {
     _connection = connection;
     setWindowTitle("Szimuláció indítása fájlból betöltve");

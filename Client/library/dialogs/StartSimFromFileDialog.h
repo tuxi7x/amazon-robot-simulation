@@ -12,13 +12,13 @@
 #include <QHBoxLayout>
 #include <QFileDialog>
 #include <QFile>
-#include <QTcpSocket>
+#include "controllers/Connection.h"
 
 class StartSimFromFileDialog : public DialogBase
 {
     Q_OBJECT
 public:
-    StartSimFromFileDialog(QTcpSocket* connection);
+    StartSimFromFileDialog(Connection* connection);
     ~StartSimFromFileDialog();
 
 private slots:
@@ -35,7 +35,7 @@ private:
     QPushButton* _browseFileButton;
     QLabel* _selectedFileLabel;
     QLabel* _browseFileLabel;
-    QTcpSocket* _connection;
+    Connection* _connection;
 
 };
 

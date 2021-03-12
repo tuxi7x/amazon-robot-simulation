@@ -2,7 +2,7 @@
 
 
 
-ApplicationMenu::ApplicationMenu(QTcpSocket *connection, QWidget *parent)
+ApplicationMenu::ApplicationMenu(Connection *connection, QWidget *parent)
     : QMainWindow(parent)
 {
     setFixedSize(1024,728);

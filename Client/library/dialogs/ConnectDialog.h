@@ -8,13 +8,13 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
-#include <QTcpSocket>
+#include "controllers/Connection.h"
 
 class ConnectDialog : public DialogBase
 {
     Q_OBJECT
 public:
-    ConnectDialog(QTcpSocket* connection);
+    ConnectDialog(Connection* connection);
     ~ConnectDialog();
 
 private slots:
@@ -28,7 +28,7 @@ private:
     QLabel* _portLabel;
     QLabel* _indicator;
     QMovie* _progressGif;
-    QTcpSocket* _connection;
+    Connection* _connection;
 
 };
 

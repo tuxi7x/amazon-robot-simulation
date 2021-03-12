@@ -3,7 +3,7 @@
 #include <QMovie>
 
 
-ConnectDialog::ConnectDialog(QTcpSocket *connection) : DialogBase()
+ConnectDialog::ConnectDialog(Connection *connection) : DialogBase()
 {
     _connection = connection;
     setWindowTitle("Csatlakozás futó szimulációhoz");
@@ -72,6 +72,8 @@ void ConnectDialog::connectButtonPressed()
     errorDialog->exec();
     _progressGif->stop();
     _indicator->setMovie(nullptr);*/
+
+    _connection->connect(_ipBox->text(), _portBox->text().toInt());
 
     //Need to implement connecting here. send accept if its succesful.
     accept();

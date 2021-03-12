@@ -12,7 +12,7 @@
 #include <QCloseEvent>
 #include <QGraphicsOpacityEffect>
 #include <QIcon>
-#include <QtNetwork/QTcpSocket>
+#include "controllers/Connection.h"
 
 class ApplicationMenu : public QMainWindow
 {
@@ -32,7 +32,7 @@ private:
 
 
 public:
-    ApplicationMenu(QTcpSocket* connection, QWidget *parent = nullptr);
+    ApplicationMenu(Connection* connection, QWidget *parent = nullptr);
     ~ApplicationMenu();
     MainMenuButton *editMapButton() const;
 

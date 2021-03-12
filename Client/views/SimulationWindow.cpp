@@ -1,6 +1,6 @@
 #include "SimulationWindow.h"
 
-SimulationWindow::SimulationWindow(QTcpSocket *connection, QWidget *parent) : QMainWindow(parent)
+SimulationWindow::SimulationWindow(Connection *connection, QWidget *parent) : QMainWindow(parent)
 {
     _connection = connection;
     setFixedSize(1024,728);

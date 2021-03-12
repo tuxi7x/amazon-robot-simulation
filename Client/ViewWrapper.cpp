@@ -2,7 +2,7 @@
 
 ViewWrapper::ViewWrapper(QObject *parent) : QObject(parent)
 {
-    _connection = new QTcpSocket();
+    _connection = new Connection();
     _menu = new ApplicationMenu(_connection);
     _simulation = nullptr;
     _editor = nullptr;

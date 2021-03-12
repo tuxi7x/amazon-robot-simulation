@@ -70,6 +70,8 @@ set(PROJECT_SOURCES
         library/dialogs/OrderDialog.cpp
         views/SimulationWindow.cpp
         views/SimulationWindow.h
+        controllers/Connection.cpp
+        controllers/Connection.h
 
         resources.qrc
 )
