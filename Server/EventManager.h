@@ -8,6 +8,7 @@
 #include <QDebug>
 #include <QByteArray>
 #include <QDataStream>
+#include <QVector>
 
 class EventManager : public QObject
 {

@@ -37,11 +37,46 @@ void EventManager::processMesage(QString header, QVector<QString> params, QTcpSo
     } else if (header == "ROBOT") {
         if (params.length() > 0 && params.length() % 2 == 0) {
             for (int i = 0; i < params.length(); i+=2) {
+                // rows and cols of robot placement
                 qDebug() << "row: " << params[i] << " col: " << params[i+1];
             }
         }
-    } else if (header == "HELLOALL") {
-        sendMessageToAll("HELLOALL", QVector<QString> {"Hello all!"});
+    } else if (header == "DOCKER" ) {
+        if (params.length() > 0 && params.length() % 2 == 0) {
+            for (int i = 0; i < params.length(); i+= 2) {
+                // rows and cols of docker placement
+                qDebug() << "row: " << params[i] << " col: " << params[i+1];
+            }
+        }
+    } else if (header == "ORDER") {
+        if (params.length() > 0) {
+                // vector for orders
+               QVector<QString> orders = QVector<QString>();
+               for (int i=0; i<params.length(); i++) {
+                   orders.append(params[i]);
+               }
+        }
+    } else if (header == "SHELF") {
+        if (params.length() > 0 && params.length() % 2 == 0) {
+            for (int i = 0; i < params.length(); i+=2) {
+                // rows and cols of shelves placement
+                qDebug() << "row: " << params[i] << " col: " << params[i+1];
+            }
+        }
+    } else if (header == "PRODUCT") {
+        if (params.length() > 0 && params.length() % 2 == 0) {
+            for (int i = 0; i < params.length(); i+=2) {
+                // name and shelf of product
+                qDebug() << "name: " << params[i] << " shelf: " << params[i+1];
+            }
+        }
+    } else if (header == "DROPOFF") {
+        if (params.length() > 0 && params.length() % 3 == 0) {
+            for (int i = 0; i < params.length(); i+=3) {
+                // rows and cols of shelves placement
+                qDebug() << "row: " << params[i] << " col: " << params[i+1] << " product:" << params[i+2];
+            }
+        }
     }
 }
 
