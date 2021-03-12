@@ -34,16 +34,10 @@ ApplicationMenu::ApplicationMenu(Connection *connection, QWidget *parent)
     _opacityEffect->setEnabled(false);
 
     _helpDialog = new HelpDialog();
-    _helpDialog->setModal(true);
-    connect(_helpDialog,SIGNAL(rejected()),this,SLOT(closeDialog()));
 
     _connectDialog = new ConnectDialog(connection);
-    _connectDialog->setModal(true);
-    connect(_connectDialog,SIGNAL(rejected()),this,SLOT(closeDialog()));
 
     _startSimFromFileDialog = new StartSimFromFileDialog(connection);
-    _startSimFromFileDialog->setModal(true);
-    connect(_startSimFromFileDialog,SIGNAL(rejected()),this,SLOT(closeDialog()));
 
     _mainLayout->addWidget(_mainTitleLabel);
     _mainLayout->addWidget(_editMapButton);
@@ -60,7 +54,13 @@ ApplicationMenu::ApplicationMenu(Connection *connection, QWidget *parent)
 
 ApplicationMenu::~ApplicationMenu()
 {
+    QLayoutItem* child;
+    while((child = _mainLayout->takeAt(0)) != nullptr) {
+        delete child->widget();
+        delete child;
+    }
     delete _helpDialog;
+    delete _opacityEffect;
     delete _connectDialog;
     delete _startSimFromFileDialog;
     delete _mainLayout;
@@ -69,7 +69,8 @@ ApplicationMenu::~ApplicationMenu()
 
 void ApplicationMenu::openHelpDialog() {
     _opacityEffect->setEnabled(true);
-    _helpDialog->show();
+    _helpDialog->exec();
+    _opacityEffect->setEnabled(false);
 }
 
 void ApplicationMenu::openConnectDialog() {
@@ -77,32 +78,24 @@ void ApplicationMenu::openConnectDialog() {
     if(_connectDialog->exec() == QDialog::Accepted) {
         emit connectedToSimulation(this->geometry()); //Pass connection as a parameter when its implemented!
     }
+    else _opacityEffect->setEnabled(false);
 }
 
 void ApplicationMenu::openStartSimFromFileDialog()
 {
     _opacityEffect->setEnabled(true);
-    _startSimFromFileDialog->show();
+    if(_startSimFromFileDialog->exec() == QDialog::Accepted) {
+
+    }
+    else _opacityEffect->setEnabled(false);
 }
 
-void ApplicationMenu::closeDialog() {
-    _opacityEffect->setEnabled(false);
-}
 
 void ApplicationMenu::openEditor()
 {
     emit editorOpened(this->geometry());
 }
 
-MainMenuButton *ApplicationMenu::editMapButton() const
-{
-    return _editMapButton;
-}
 
-void ApplicationMenu::openMainMenu(QRect windowPosition)
-{
-    setGeometry(windowPosition);
-    QMainWindow::show();
-}
 
 

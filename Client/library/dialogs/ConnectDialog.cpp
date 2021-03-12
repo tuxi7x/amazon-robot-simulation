@@ -60,6 +60,11 @@ ConnectDialog::ConnectDialog(Connection *connection) : DialogBase()
 
 ConnectDialog::~ConnectDialog()
 {
+    QLayoutItem *child;
+    while((child = _mainLayout->takeAt(0)) != nullptr) {
+        delete child->widget();
+        delete child;
+    }
     delete _mainLayout;
 }
 

@@ -50,6 +50,15 @@ OrderDialog::OrderDialog(QVector<QString> products, QVector<QString> orders) : D
 }
 OrderDialog::~OrderDialog()
 {
+    delete _add;
+    delete _remove;
+
+    QLayoutItem *child;
+    while((child = _layout->takeAt(0)) != nullptr) {
+        delete child->widget();
+        delete child;
+    }
+    delete _layout;
 
 }
 

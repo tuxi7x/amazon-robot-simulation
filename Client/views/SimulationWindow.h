@@ -13,8 +13,10 @@ class SimulationWindow : public QMainWindow
     Q_OBJECT
 public:
     explicit SimulationWindow(Connection* connection, QWidget *parent = nullptr);
+    ~SimulationWindow();
 
 signals:
+    void simulationClosed(QRect pos);
 
 private:
     Connection* _connection;
@@ -28,6 +30,8 @@ private:
     QPushButton* _finishSimButton;
     QPushButton* _disconnectButton;
     void createMap();
+
+
 
 };
 

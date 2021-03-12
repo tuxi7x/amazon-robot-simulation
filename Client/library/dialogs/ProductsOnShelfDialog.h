@@ -10,6 +10,7 @@ class ProductsOnShelfDialog : public DialogBase
     Q_OBJECT
 public:
     ProductsOnShelfDialog(QVector<QString> products);
+    ~ProductsOnShelfDialog();
 
 private:
     QListWidget* _list;

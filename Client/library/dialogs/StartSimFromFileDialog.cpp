@@ -65,6 +65,11 @@ StartSimFromFileDialog::StartSimFromFileDialog(Connection *connection)
 
 StartSimFromFileDialog::~StartSimFromFileDialog()
 {
+    QLayoutItem* child;
+    while((child = _mainLayout->takeAt(0)) != nullptr) {
+        delete child->widget();
+        delete child;
+    }
     delete _mainLayout;
 }
 

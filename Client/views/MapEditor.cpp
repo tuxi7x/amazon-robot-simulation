@@ -103,6 +103,28 @@ MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
 
 MapEditor::~MapEditor()
 {
+    QLayoutItem *child;
+    while((child = _changeSizeContainer->takeAt(0)) != nullptr) {
+        delete child->widget();
+        delete child;
+    }
+    while((child = _mapGrid->takeAt(0)) != nullptr) {
+        delete child->widget();
+        delete child;
+    }
+    while((child = _sidePanel->takeAt(0)) != nullptr) {
+        delete child->widget();
+        delete child;
+    }
+    while((child = _gridContainer->takeAt(0)) != nullptr) {
+        delete child->widget();
+        delete child;
+    }
+    while((child = _mainLayout->takeAt(0)) != nullptr) {
+        delete child->widget();
+        delete child;
+    }
+    delete _mainLayout;
     delete _controller;
     delete _centralWidget;
 }

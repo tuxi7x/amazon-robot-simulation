@@ -43,8 +43,34 @@ SimulationWindow::SimulationWindow(Connection *connection, QWidget *parent) : QM
     _sidePanel->addWidget(_finishSimButton);
     _sidePanel->addWidget(_disconnectButton);
 
+    connect(_disconnectButton,&QPushButton::clicked, this, [&](){emit simulationClosed(this->geometry());});
+    connect(_finishSimButton, &QPushButton::clicked, this, [&](){emit simulationClosed(this->geometry());});
+
     createMap();
 
+}
+
+SimulationWindow::~SimulationWindow()
+{
+    QLayoutItem* child;
+    while((child = _mapGrid->takeAt(0)) != nullptr) {
+        delete child->widget();
+        delete child;
+    }
+    while((child = _sidePanel->takeAt(0)) != nullptr) {
+        delete child->widget();
+        delete child;
+    }
+    while((child = _gridContainer->takeAt(0)) != nullptr) {
+        delete child->widget();
+        delete child;
+    }
+    while((child = _mainLayout->takeAt(0)) != nullptr) {
+        delete child->widget();
+        delete child;
+    }
+    delete _mainLayout;
+    delete _centralWidget;
 }
 
 void SimulationWindow::createMap()

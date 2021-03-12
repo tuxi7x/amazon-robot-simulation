@@ -38,8 +38,10 @@ ErrorDialog::ErrorDialog(QString errorMsg)
 
 ErrorDialog::~ErrorDialog()
 {
-    for (int i = 0;i < _mainLayout->count() ; i++ ) {
-      delete _mainLayout->itemAt(i);
+    QLayoutItem *child;
+    while((child = _mainLayout->takeAt(0)) != nullptr) {
+        delete child->widget();
+        delete child;
     }
     delete _mainLayout;
 }

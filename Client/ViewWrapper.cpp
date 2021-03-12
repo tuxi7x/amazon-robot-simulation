@@ -22,6 +22,7 @@ ViewWrapper::~ViewWrapper()
 void ViewWrapper::navigateToEditor(QRect pos)
 {
     delete _menu;
+    _menu = nullptr;
     _editor = new MapEditor;
     connect(_editor,&MapEditor::editorClosed,this,&ViewWrapper::navigateToMenu);
     _editor->setGeometry(pos);
@@ -43,7 +44,9 @@ void ViewWrapper::navigateToMenu(QRect pos)
 void ViewWrapper::navigateToSimulation(QRect pos)
 {
     delete _menu;
+    _menu = nullptr;
     _simulation = new SimulationWindow(_connection);
+    connect(_simulation,&SimulationWindow::simulationClosed,this,&ViewWrapper::navigateToMenu);
     _simulation->setGeometry(pos);
     _simulation->show();
 }
