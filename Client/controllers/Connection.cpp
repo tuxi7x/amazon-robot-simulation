@@ -22,16 +22,9 @@ void Connection::connectAndSend(QString host, int port, QFile file) {
 
 void Connection::ReadyRead() {
 
-    QByteArray block;
-    QDataStream out(&block, QIODevice::ReadWrite);
+    QString msg = "Hello szerver! :)";
 
-
-    out.setVersion(QDataStream::Qt_5_10);
-
-    out << "Hello Server";
-
-
-    _socket->write(block);
+    _socket->write(msg.toUtf8());
 
 }
 

@@ -17,7 +17,7 @@ void EventManager::ReadyRead(){
     QTcpSocket* _connection = qobject_cast<QTcpSocket*>(senderObj);
     QByteArray data = _connection->readAll();
 
-    QString str = QString::fromUtf8(data);
+    QString str = data;
 
     qDebug() << "[Server] Message from client: " << str;
 
