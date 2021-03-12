@@ -27,3 +27,10 @@ void DropOffPointFieldModel::write(QJsonObject &json) {
     json["col"] = _col;
     json["product"] = _product;
 }
+
+void DropOffPointFieldModel::read(const QJsonObject &json) {
+    _row = json["row"].toInt();
+    _col = json["col"].toInt();
+    _product = json["product"].toString();
+}
+

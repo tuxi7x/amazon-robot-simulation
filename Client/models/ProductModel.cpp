@@ -22,3 +22,9 @@ void ProductModel::write(QJsonObject &json) {
     json["shelf"] = _shelf;
 }
 
+void ProductModel::read(const QJsonObject &json) {
+    _name = json["name"].toString();
+    _shelf = json["shelf"].toInt();
+}
+
+

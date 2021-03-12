@@ -28,3 +28,10 @@ void RobotFieldModel::write(QJsonObject &json) {
     json["orientation"] = _orientation;
 }
 
+void RobotFieldModel::read(const QJsonObject &json) {
+    _row = json["row"].toInt();
+    _col = json["col"].toInt();
+    _orientation = json["orientation"].toInt();
+}
+
+

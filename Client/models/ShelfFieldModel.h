@@ -15,6 +15,7 @@ public:
     int getCol() const;
 
     void write(QJsonObject &json);
+    void read(const QJsonObject &json);
 
 private:
     int _row;
