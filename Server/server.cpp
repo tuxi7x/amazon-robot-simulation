@@ -32,18 +32,12 @@ Server::Server(QObject *parent) : QObject(parent)
 
 }
 void Server::startConnection() {
-    QByteArray block;
-    QDataStream out(&block, QIODevice::ReadWrite);
-    out.setVersion(QDataStream::Qt_5_10);
 
-    out << "Hello client";
     QTcpSocket* _connection = _tcpServer->nextPendingConnection();
-    _connection->write(block);
+    QString msg = "CONNECT SUCCESS";
+    QByteArray qba = msg.toUtf8();
+    _connection->write(qba);
     _eventManager->addConnection(_connection);
-
-
-
-
 
 }
 

@@ -19,11 +19,16 @@ public:
     void connect(QString host, int port);
     void connectAndSend(QString host, int port, QFile file);
 
+    void writeToServer(QString header, QVector<QString> params);
+    void processMessage(QString header, QVector<QString> params);
+
 private:
     QTcpSocket* _socket;
 
 private slots:
-    void ReadyRead();
+    void readFromServer();
+    void onConnect();
+
     void handleError();
 
 

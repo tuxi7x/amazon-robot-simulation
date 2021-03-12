@@ -14,10 +14,8 @@ void EventManager::addConnection(QTcpSocket *connection) {
 void EventManager::ReadyRead(){
 
     QObject* senderObj = sender();
-    QTcpSocket* _connection = qobject_cast<QTcpSocket*>(senderObj);
-    QByteArray data = _connection->readAll();
-
-    QString str = data;
+    QTcpSocket* connection = qobject_cast<QTcpSocket*>(senderObj);
+    QString str = QString::fromUtf8(connection->readAll());
 
     qDebug() << "[Server] Message from client: " << str;
 
@@ -25,7 +23,7 @@ void EventManager::ReadyRead(){
     QVector<QString> args = str.split(" ");
     QString header = args[0];
     args.remove(0);
-    processMesage(header, args, _connection);
+    processMesage(header, args, connection);
 
 }
 
@@ -48,19 +46,15 @@ void EventManager::processMesage(QString header, QVector<QString> params, QTcpSo
 }
 
 void EventManager::sendMessageToAll(QString header, QVector<QString> params) {
-    QByteArray block;
-    QDataStream out(&block, QIODevice::ReadWrite);
-    out.setVersion(QDataStream::Qt_5_10);
-
-    out << header << " ";
+    QString msg = header + " ";
     for (int i=0; i<params.length(); i++) {
-        out << params[i];
-        if (i != params.length()-1) {
-            out << " ";
+        msg += params[i];
+        if (i != params.length() -1) {
+            msg += " ";
         }
     }
 
     foreach (QTcpSocket* connection, _connections) {
-        connection->write(block);
+        connection->write(msg.toUtf8());
     }
 }
