@@ -22,4 +22,10 @@ void ShelfFieldModel::write(QJsonObject &json) {
     json["col"] = _col;
 }
 
+void ShelfFieldModel::read(const QJsonObject &json) {
+    _row = json["row"].toInt();
+    _col = json["col"].toInt();
+}
+
+
 

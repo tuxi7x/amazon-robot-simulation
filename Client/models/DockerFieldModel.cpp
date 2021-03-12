@@ -21,3 +21,8 @@ void DockerFieldModel::write(QJsonObject &json) {
     json["row"] = _row;
     json["col"] = _col;
 }
+
+void DockerFieldModel::read(const QJsonObject &json) {
+    _row = json["row"].toInt();
+    _col = json["col"].toInt();
+}
