@@ -78,7 +78,7 @@ void StartSimFromFileDialog::browseButtonPressed()
 
     QFileDialog fileDialog(this);
     fileDialog.setFileMode(QFileDialog::ExistingFile);
-    fileDialog.setNameFilter(tr("Szövegfájl (*.txt)"));
+    fileDialog.setNameFilter(tr("JSON fájl (*.json)"));
     fileDialog.setWindowTitle("Pálya betöltése");
 
     if(fileDialog.exec()) {

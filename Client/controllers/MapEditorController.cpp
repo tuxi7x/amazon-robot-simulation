@@ -234,6 +234,13 @@ bool MapEditorController::saveToJSON(QFile* file) {
         }
     simulationObject["products"] = productArray;
 
+
+    QJsonArray orderArray;
+    foreach(QString order, _orders) {
+        orderArray.append(order);
+    }
+    simulationObject["orders"] = orderArray;
+
     QJsonDocument saveDoc(simulationObject);
     file->write(saveDoc.toJson());
     file->close();
