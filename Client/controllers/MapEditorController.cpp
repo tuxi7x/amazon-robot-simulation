@@ -247,6 +247,11 @@ bool MapEditorController::saveToJSON(QFile* file) {
 
     return true;
 }
+
+QVector<QString> MapEditorController::getOrders() const
+{
+    return _orders;
+}
 void MapEditorController::setOrders(QVector<QString> orders)
 {
     _orders.clear();

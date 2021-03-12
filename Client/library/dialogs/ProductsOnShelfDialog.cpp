@@ -16,3 +16,13 @@ ProductsOnShelfDialog::ProductsOnShelfDialog(QVector<QString> products): DialogB
     }
     if(_list->count() == 0) _list->addItem("A polc üres!");
 }
+
+ProductsOnShelfDialog::~ProductsOnShelfDialog()
+{
+    QLayoutItem* child;
+    while((child = _mainLayout->takeAt(0)) != nullptr) {
+        delete child->widget();
+        delete child;
+    }
+    delete _mainLayout;
+}

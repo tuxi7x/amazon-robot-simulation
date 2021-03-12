@@ -34,16 +34,12 @@ private:
 public:
     ApplicationMenu(Connection* connection, QWidget *parent = nullptr);
     ~ApplicationMenu();
-    MainMenuButton *editMapButton() const;
 
-public slots:
-    void openMainMenu(QRect windowPosition);
 
 private slots:
     void openHelpDialog();
     void openConnectDialog();
     void openStartSimFromFileDialog();
-    void closeDialog();
     void openEditor();
 
 signals:

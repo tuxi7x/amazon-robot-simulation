@@ -34,10 +34,12 @@ public:
     QVector<QString> getProducts();
     QString validateBeforeSave();
     void setOrders(QVector<QString> orders);
-
+    QVector<QString> getOrders() const;
 
     void writeToJSON(QJsonObject &json);
     bool saveToJSON(QFile* file);
+
+
 
 signals:
     void mapCreated();

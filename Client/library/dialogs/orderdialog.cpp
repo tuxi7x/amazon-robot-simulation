@@ -37,10 +37,17 @@ OrderDialog::OrderDialog(QVector<QString> products, QVector<QString> orders) : D
 
 
     for(int i=0; i<products.size();i++) {
-        _productList->addItem(products[i]);
-        _products.append(products[i]);
+        if(!orders.contains(products[i])) {
+            _productList->addItem(products[i]);
+            _products.append(products[i]);
+        } else {
+            _orderList->addItem(orders[i]);
+            _orders.append(products[i]);
+
+        }
+
     }
-    if(_productList->count() == 0) _productList->addItem("Még nem lett termék felhelyezve.");
+    if(_productList->count() == 0 && _orderList->count() == 0) _productList->addItem("Még nem lett termék felhelyezve.");
 
     connect(_add, &QPushButton::clicked, this, &OrderDialog::addButtonPressed);
     connect(_remove, &QPushButton::clicked, this, &OrderDialog::removeButtonPressed);
@@ -50,6 +57,15 @@ OrderDialog::OrderDialog(QVector<QString> products, QVector<QString> orders) : D
 }
 OrderDialog::~OrderDialog()
 {
+    delete _add;
+    delete _remove;
+
+    QLayoutItem *child;
+    while((child = _layout->takeAt(0)) != nullptr) {
+        delete child->widget();
+        delete child;
+    }
+    delete _layout;
 
 }
 
@@ -85,7 +101,7 @@ void OrderDialog::okButtonPressed()
         i++;
     }
 
-    this->close();
+    accept();
 }
 
 void OrderDialog::productDoubleClicked()
@@ -99,7 +115,7 @@ void OrderDialog::productDoubleClicked()
 
 void OrderDialog::orderDoubleClicked()
 {
-    if(_products.length() != 0){
+    if(_orders.length() != 0){
     QListWidgetItem* selected = _orderList->takeItem(_orderList->currentRow());
     _productList->addItem(selected);
     update();
