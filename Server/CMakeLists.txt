@@ -27,6 +27,16 @@ set(PROJECT_SOURCES
     EventManager.h
     Controller.cpp
     Controller.h
+    models/Robot.cpp
+    models/Robot.h
+    models/Shelf.cpp
+    models/Shelf.h
+    models/DropOffPoint.cpp
+    models/DropOffPoint.h
+    models/Docker.cpp
+    models/Docker.h
+    models/Product.cpp
+    models/Product.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
