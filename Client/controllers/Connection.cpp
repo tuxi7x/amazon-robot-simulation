@@ -25,9 +25,11 @@ void Connection::ReadyRead() {
     QByteArray block;
     QDataStream out(&block, QIODevice::ReadWrite);
 
+
     out.setVersion(QDataStream::Qt_5_10);
 
     out << "Hello Server";
+
 
     _socket->write(block);
 
