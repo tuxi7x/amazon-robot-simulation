@@ -288,12 +288,13 @@ void MapEditor::saveButtonPressed()
 void MapEditor::settingOrdersButtonPressed()
 {
     QVector<QString> products = _controller->getProducts();
-    QVector<QString> orders;
+    QVector<QString> orders = _controller->getOrders();
 
     OrderDialog od(products, orders);
-    od.exec();
-    orders = od.getOrders();
-    _controller->setOrders(orders);
+    if(od.exec()) {
+        orders = od.getOrders();
+        _controller->setOrders(orders);
+    }
 }
 
 
