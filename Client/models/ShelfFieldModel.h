@@ -13,9 +13,13 @@ public:
 
     int getRow() const;
     int getCol() const;
+    void setRow(int row);
+    void setCol(int col);
 
     void write(QJsonObject &json);
     void read(const QJsonObject &json);
+
+
 
 private:
     int _row;

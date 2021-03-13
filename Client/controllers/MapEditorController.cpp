@@ -28,7 +28,7 @@ void MapEditorController::createNewMap(int size)
     _dockers.clear();
     _dropOffPoints.clear();
     _products.clear();
-
+    _selectedShelves.clear();
     emit mapCreated();
 
 }
@@ -124,6 +124,106 @@ bool MapEditorController::validateProductPlacement(int row, int col)
 bool MapEditorController::fieldIsEmpty()
 {
     return _robots.isEmpty() && _dockers.isEmpty() && _shelves.isEmpty();
+}
+
+void MapEditorController::toggleShelfSelection(ShelfFieldModel *s)
+{
+    int pos = _selectedShelves.indexOf(s);
+    if(pos == -1) {
+         _selectedShelves.append(s);
+    }
+    else {
+        _selectedShelves.removeAt(pos);
+    }
+
+    emit shelfSelectionChanged(s->getRow(),s->getCol(),pos == -1);
+}
+
+bool MapEditorController::moveSelectedShelves(int direction)
+{
+    //This is not fully correct yet. If there are 2 selected shelves next to eachother and we
+    //want to move to the direction of the other shelf then it fails now.
+    if(direction == 0) {
+        bool l = true;
+        int i = 0;
+        while(l && i < _selectedShelves.size()) {
+            ShelfFieldModel* s = _selectedShelves[i];
+            l = s->getRow() > 0 && getField(s->getRow()-1,s->getCol()).first == Empty;
+            i++;
+        }
+        if(!l) return false;
+        else {
+            for(int i=0; i<_selectedShelves.size(); i++) {
+                ShelfFieldModel* s = _selectedShelves[i];
+                s->setRow(s->getRow()-1);
+                emit fieldChanged(s->getRow()+1,s->getCol());
+                emit fieldChanged(s->getRow(),s->getCol());
+            }
+            return  true;
+        }
+
+    } else if (direction == 1) {
+        bool l = true;
+        int i = 0;
+        while(l && i <_selectedShelves.size()) {
+            ShelfFieldModel* s = _selectedShelves[i];
+            l = s->getCol() < _size-1 && getField(s->getRow(),s->getCol()+1).first == Empty;
+            i++;
+        }
+        if(!l) return false;
+        else {
+            for(int i=0; i<_selectedShelves.size(); i++) {
+                ShelfFieldModel* s = _selectedShelves[i];
+                s->setCol(s->getCol()+1);
+                emit fieldChanged(s->getRow(),s->getCol()-1);
+                emit fieldChanged(s->getRow(),s->getCol());
+            }
+            return true;
+        }
+
+    } else if (direction == 2) {
+        bool l = true;
+        int i = 0;
+        while(l && i <_selectedShelves.size()) {
+            ShelfFieldModel* s = _selectedShelves[i];
+            l = s->getRow() < _size-1 && getField(s->getRow()+1,s->getCol()).first == Empty;
+            i++;
+        }
+        if(!l) return false;
+        for(int i=0; i<_selectedShelves.size(); i++) {
+            ShelfFieldModel* s = _selectedShelves[i];
+            s->setRow(s->getRow()+1);
+            emit fieldChanged(s->getRow()-1,s->getCol());
+            emit fieldChanged(s->getRow(),s->getCol());
+        }
+        return true;
+
+    } else if (direction == 3) {
+        bool l = true;
+        int i = 0;
+        while(l && i <_selectedShelves.size()) {
+            ShelfFieldModel* s = _selectedShelves[i];
+            l = s->getCol() > 0 && getField(s->getRow(),s->getCol()-1).first == Empty;
+            i++;
+        }
+        if(!l) return false;
+            for(int i=0; i<_selectedShelves.size(); i++) {
+                ShelfFieldModel* s = _selectedShelves[i];
+                s->setCol(s->getCol()-1);
+                emit fieldChanged(s->getRow(),s->getCol()+1);
+                emit fieldChanged(s->getRow(),s->getCol());
+            }
+            return true;
+    }
+    return false;
+}
+
+bool MapEditorController::isASelectedShelf(int row, int col)
+{
+    for(int i=0;i<_selectedShelves.size();i++) {
+        if(_selectedShelves[i]->getRow() == row && _selectedShelves[i]->getCol() == col) return true;
+    }
+    return false;
 }
 
 QVector<QString> MapEditorController::getProductsOnShelf(int row, int col)

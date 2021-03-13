@@ -26,9 +26,15 @@ void EditorGridButton::setDockerButtonStyleSheet()
     setText("D");
 }
 
-void EditorGridButton::setShelfButtonStyleSheet()
+void EditorGridButton::setUnselectedShelfButtonStyleSheet()
 {
     setStyleSheet("background-color: #06d6a0; color:white; font-size: 30px; border: 1px solid black;");
+    setText("Polc");
+}
+
+void EditorGridButton::setSelectedShelfButtonStyleSheet()
+{
+    setStyleSheet("background-color: #06d6a0; color:white; font-size: 30px; border: 5px solid black;");
     setText("Polc");
 }
 

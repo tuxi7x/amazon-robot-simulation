@@ -17,6 +17,10 @@
 #include "library/buttons/editor/EditorGridButton.h"
 #include <QInputDialog>
 #include <QFileDialog>
+#include <QApplication>
+#include <QKeyEvent>
+#include <QEvent>
+#include <QWidget>
 
 class MapEditor : public QMainWindow
 {
@@ -41,7 +45,6 @@ private:
     QPushButton* _backButton;
     QPushButton* _settingOrders;
     MapEditorController* _controller;
-    QVector<QPushButton*>* _buttons;
     QVBoxLayout* _gridContainer;
     QVBoxLayout* _changeSizeContainer;
 
@@ -54,6 +57,7 @@ private:
 public slots:
     void openMapEditor(QRect windowPosition);
 
+
 private slots:
     void onButtonDroppedToMap (int row, int col, SideBarButton* droppedButton);
     void onFieldButtonPressed();
@@ -63,8 +67,12 @@ private slots:
     void backButtonPressed();
     void saveButtonPressed();
     void settingOrdersButtonPressed();
+    void onShelfSelectionChanged (int row, int col, bool selection);
 signals:
     void editorClosed(QRect windowPosition);
+
+protected:
+    void keyPressEvent(QKeyEvent*) override;
 
 
 };

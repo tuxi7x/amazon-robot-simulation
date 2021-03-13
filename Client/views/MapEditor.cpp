@@ -2,7 +2,7 @@
 
 #include "library/dialogs/ErrorDialog.h"
 #include "library/dialogs/ProductsOnShelfDialog.h"
-#include "library/dialogs/orderdialog.h"
+#include "library/dialogs/OrderDialog.h"
 
 MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
 {
@@ -23,7 +23,6 @@ MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
     _dockerButton = new SideBarButton("Dokkoló",this);
 
     _controller = new MapEditorController();
-    _buttons = new QVector<QPushButton*>();
 
     _changeSizeButton = new QPushButton("Beállít");
     _changeSizeLabel = new QLabel("Méret");
@@ -98,6 +97,7 @@ MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
     connect(_backButton, &QPushButton::clicked, this, &MapEditor::backButtonPressed);
     connect(_saveButton, &QPushButton::clicked, this, &MapEditor::saveButtonPressed);
     connect(_settingOrders, &QPushButton::clicked, this, &MapEditor::settingOrdersButtonPressed);
+    connect(_controller, &MapEditorController::shelfSelectionChanged, this, &MapEditor::onShelfSelectionChanged);
     _controller->createNewMap(_changeSizeLineEdit->text().toInt());
 }
 
@@ -183,11 +183,18 @@ void MapEditor::onButtonDroppedToMap(int row, int col, SideBarButton *droppedBut
 void MapEditor::onFieldButtonPressed()
 {
     EditorGridButton* s = qobject_cast<EditorGridButton*> (sender());
-    if(_controller->getField(s->getRow(), s->getCol()).first == MapEditorController::Shelf) {
-        QVector<QString> productsOnThisShelf = _controller->getProductsOnShelf(s->getRow(), s->getCol());
+    QPair<MapEditorController::FieldTypes, QObject*> res = _controller->getField(s->getRow(), s->getCol());
+    if(res.first == MapEditorController::Shelf) {
 
-        ProductsOnShelfDialog posd (productsOnThisShelf);
-        posd.exec();
+        //IF shift is pressed then the shelf gets selected, else the dialog opens that shows the products on this shelf
+        if(QApplication::keyboardModifiers() == Qt::ShiftModifier) {
+            ShelfFieldModel* selectedShelf = qobject_cast<ShelfFieldModel*> (res.second);
+            _controller->toggleShelfSelection(selectedShelf);
+        } else {
+            QVector<QString> productsOnThisShelf = _controller->getProductsOnShelf(s->getRow(), s->getCol());
+            ProductsOnShelfDialog posd (productsOnThisShelf);
+            posd.exec();
+        }
     }
 
 }
@@ -226,7 +233,8 @@ void MapEditor::onFieldChanged(int row, int col)
    if(val == MapEditorController::Robot) {
        _gridButtons[row][col]->setRobotButtonStyleSheet();
    } else if (val == MapEditorController::Shelf) {
-       _gridButtons[row][col]->setShelfButtonStyleSheet();
+        if(_controller->isASelectedShelf(row,col)) _gridButtons[row][col]->setSelectedShelfButtonStyleSheet();
+        else _gridButtons[row][col]->setUnselectedShelfButtonStyleSheet();
        _gridButtons[row][col]->setCursor(QCursor(Qt::PointingHandCursor));
    } else if (val == MapEditorController::DropOffPoint) {
        DropOffPointFieldModel* dopfm = qobject_cast<DropOffPointFieldModel*> (field.second);
@@ -235,6 +243,7 @@ void MapEditor::onFieldChanged(int row, int col)
        _gridButtons[row][col]->setDockerButtonStyleSheet();
    } else if (val == MapEditorController::Empty) {
        _gridButtons[row][col]->setEmptyButtonStyleSheet();
+       _gridButtons[row][col]->setCursor(QCursor(Qt::ArrowCursor));
    }
 }
 
@@ -263,8 +272,8 @@ void MapEditor::saveButtonPressed()
         e.exec();
     } else {
         QString fileName = QFileDialog::getSaveFileName(this,
-                tr("Save Simulation"), "",
-                tr("JSON file (*.json);;All Files (*)"));
+                tr("Szimuláció mentése"), "",
+                tr("JSON fájl (*.json);;Minden fájl (*)"));
 
         if (fileName.isEmpty()) {
             return;
@@ -275,11 +284,11 @@ void MapEditor::saveButtonPressed()
 
 
         if (_controller->saveToJSON(file)) {
-            QMessageBox::information(this, tr("Success"),
-                            tr("File successfully saved."));
+            QMessageBox::information(this, tr("Siker"),
+                            tr("Fájl sikeresen mentve."));
         } else {
-            QMessageBox::warning(this, tr("Unable to save file"),
-                            tr("Could not save file."));
+            QMessageBox::warning(this, tr("Sikertelen mentés"),
+                            tr("Nem sikerült menteni a fájlt."));
         }
     }
 
@@ -297,6 +306,33 @@ void MapEditor::settingOrdersButtonPressed()
     }
 }
 
+void MapEditor::onShelfSelectionChanged(int row, int col, bool selection)
+{
+    if (selection) _gridButtons[row][col]->setSelectedShelfButtonStyleSheet();
+    else _gridButtons[row][col]->setUnselectedShelfButtonStyleSheet();
+}
 
 
+void MapEditor:: keyPressEvent(QKeyEvent *event)
+{
+    QWidget::keyPressEvent(event);
+
+    int direction;
+
+    if(event->key() == 65) { //Letter a
+        direction = 3;
+    } else if(event->key() == 68) { //letter d
+        direction = 1;
+    } else if(event->key() == 87) { //letter w
+        direction = 0;
+    } else if(event->key() == 83) { //letter s
+        direction = 2;
+    } else return;
+
+    if(!_controller->moveSelectedShelves(direction)) {
+        ErrorDialog d ("Valamelyik kijelölt polc nem mozgatható a kívánt irányba, ezért a mozgatás nem hajtható végre!");
+        d.exec();
+    }
+
+}
 

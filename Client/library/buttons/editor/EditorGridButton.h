@@ -19,7 +19,8 @@ public:
     void setEmptyButtonStyleSheet();
     void setRobotButtonStyleSheet();
     void setDockerButtonStyleSheet();
-    void setShelfButtonStyleSheet();
+    void setUnselectedShelfButtonStyleSheet();
+    void setSelectedShelfButtonStyleSheet();
     void setDropOffPointButtonStyleSheet(QString product);
 
     int getRow() const;

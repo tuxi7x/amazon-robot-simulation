@@ -27,5 +27,15 @@ void ShelfFieldModel::read(const QJsonObject &json) {
     _col = json["col"].toInt();
 }
 
+void ShelfFieldModel::setRow(int row)
+{
+    _row = row;
+}
+
+void ShelfFieldModel::setCol(int col)
+{
+    _col = col;
+}
+
 
 

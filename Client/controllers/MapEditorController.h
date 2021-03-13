@@ -29,6 +29,9 @@ public:
     bool addProduct(int row, int col, QString productName);
     bool validateProductPlacement(int row, int col);
     bool fieldIsEmpty();
+    void toggleShelfSelection (ShelfFieldModel* s);
+    bool moveSelectedShelves (int direction);
+    bool isASelectedShelf(int row, int col);
     QVector<QString> getProductsOnShelf(int row, int col);
     QVector<QString> getUnassignedProducts();
     QVector<QString> getProducts();
@@ -44,10 +47,12 @@ public:
 signals:
     void mapCreated();
     void fieldChanged(int row, int col);
+    void shelfSelectionChanged (int row, int col, bool selected);
 
 private:
     QVector<RobotFieldModel*> _robots;
     QVector <ShelfFieldModel*> _shelves;
+    QVector <ShelfFieldModel*> _selectedShelves;
     QVector <DockerFieldModel*> _dockers;
     QVector <DropOffPointFieldModel*> _dropOffPoints;
     QVector <ProductModel*> _products;
