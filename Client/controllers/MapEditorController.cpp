@@ -149,6 +149,13 @@ bool MapEditorController::moveSelectedShelves(int direction)
         while(l && i < _selectedShelves.size()) {
             ShelfFieldModel* s = _selectedShelves[i];
             l = s->getRow() > 0 && getField(s->getRow()-1,s->getCol()).first == Empty;
+            if(!l && s->getRow() > 0) {
+                QPair<FieldTypes, QObject*> p = getField(s->getRow()-1,s->getCol());
+                if(p.first == Shelf) {
+                    ShelfFieldModel* ns = qobject_cast<ShelfFieldModel*> (p.second);
+                    l = isASelectedShelf(ns->getRow(),ns->getCol()) ? true : l;
+                }
+            }
             i++;
         }
         if(!l) return false;
@@ -168,6 +175,13 @@ bool MapEditorController::moveSelectedShelves(int direction)
         while(l && i <_selectedShelves.size()) {
             ShelfFieldModel* s = _selectedShelves[i];
             l = s->getCol() < _size-1 && getField(s->getRow(),s->getCol()+1).first == Empty;
+            if(!l && s->getCol() < _size-1) {
+                QPair<FieldTypes, QObject*> p = getField(s->getRow(),s->getCol()+1);
+                if(p.first == Shelf) {
+                    ShelfFieldModel* ns = qobject_cast<ShelfFieldModel*> (p.second);
+                    l = isASelectedShelf(ns->getRow(),ns->getCol()) ? true : l;
+                }
+            }
             i++;
         }
         if(!l) return false;
@@ -187,6 +201,13 @@ bool MapEditorController::moveSelectedShelves(int direction)
         while(l && i <_selectedShelves.size()) {
             ShelfFieldModel* s = _selectedShelves[i];
             l = s->getRow() < _size-1 && getField(s->getRow()+1,s->getCol()).first == Empty;
+            if(!l && s->getRow() < _size-1) {
+                QPair<FieldTypes, QObject*> p = getField(s->getRow()+1,s->getCol());
+                if(p.first == Shelf) {
+                    ShelfFieldModel* ns = qobject_cast<ShelfFieldModel*> (p.second);
+                    l = isASelectedShelf(ns->getRow(),ns->getCol()) ? true : l;
+                }
+            }
             i++;
         }
         if(!l) return false;
@@ -204,6 +225,13 @@ bool MapEditorController::moveSelectedShelves(int direction)
         while(l && i <_selectedShelves.size()) {
             ShelfFieldModel* s = _selectedShelves[i];
             l = s->getCol() > 0 && getField(s->getRow(),s->getCol()-1).first == Empty;
+            if(!l && s->getCol() > 0) {
+                QPair<FieldTypes, QObject*> p = getField(s->getRow(),s->getCol()-1);
+                if(p.first == Shelf) {
+                    ShelfFieldModel* ns = qobject_cast<ShelfFieldModel*> (p.second);
+                    l = isASelectedShelf(ns->getRow(),ns->getCol()) ? true : l;
+                }
+            }
             i++;
         }
         if(!l) return false;
