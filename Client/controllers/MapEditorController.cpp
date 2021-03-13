@@ -105,15 +105,32 @@ bool MapEditorController::addProduct(int row, int col, QString productName)
     while (i < _shelves.size() && !(_shelves[i]->getRow() == row && _shelves[i]->getCol() == col)) {
         i++;
     }
-    bool valid = true;
-    for(int j = 0; j<_products.size();j++) {
-        valid = valid && (_products[j]->getName() != productName || _products[j]->getShelf() != i);
+    if(!_selectedShelves.contains(_shelves[i])) { //putting a product on a shelf that is not selected
+        bool valid = true;
+        for(int j = 0; j<_products.size();j++) {
+            valid = valid && (_products[j]->getName() != productName || _products[j]->getShelf() != i);
+        }
+
+        if(!valid) return false;
+        _products.append(new ProductModel(productName,i));
+        return true;
+    } else {
+        bool valid = true;
+        i = 0;
+        while (i < _shelves.size() && valid)  {
+            valid = std::find_if(_products.begin(),_products.end(), [&](ProductModel* p){
+                 return _selectedShelves.contains(_shelves[i]) && p->getName() == productName && p->getShelf() == i;
+            }) == _products.end();
+            i++;
+        }
+        if(!valid) return false;
+        for(int i=0; i<_shelves.size();i++) {
+            if(_selectedShelves.contains(_shelves[i])) {
+                _products.append(new ProductModel(productName,i));
+            }
+        }
+        return true;
     }
-
-    if(!valid) return false;
-    _products.append(new ProductModel(productName,i));
-    return true;
-
 }
 
 bool MapEditorController::validateProductPlacement(int row, int col)
