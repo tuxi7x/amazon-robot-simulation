@@ -167,8 +167,12 @@ void MapEditor::onButtonDroppedToMap(int row, int col, SideBarButton *droppedBut
             bool ok;
             QString name = QInputDialog::getText(this, "Termék neve", "Az új termék neve:", QLineEdit::Normal, "", &ok);
             if(ok && !name.isEmpty()) {
-                if(!_controller->addProduct(row,col,name)) {
+                bool ok = _controller->addProduct(row,col,name);
+                if(!ok && !_controller->isASelectedShelf(row,col)) {
                     ErrorDialog e ("A polcon már van ilyen termék!");
+                    e.exec();
+                } else if(!ok) {
+                    ErrorDialog e ("Az egyik kijelölt polcon már van ilyen termék!");
                     e.exec();
                 }
             }
