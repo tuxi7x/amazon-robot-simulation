@@ -8,11 +8,10 @@ class Product : public QObject
     Q_OBJECT
 public:
     explicit Product(QObject *parent = nullptr);
-    Product(QString name);
-    Product(int id, QString name);
+    Product(QString name, int shelf);
 
 private:
-    int _id;
+    int _shelf;
     QString _name;
     bool _requested;
 

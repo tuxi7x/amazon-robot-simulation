@@ -9,9 +9,10 @@ class Docker : public QObject
     Q_OBJECT
 public:
     explicit Docker(QObject *parent = nullptr);
+    Docker(int row, int col);
 private:
-    int _id;
-    int _index;
+    int _row;
+    int _col;
     Robot _robot;
     int _timer;
 

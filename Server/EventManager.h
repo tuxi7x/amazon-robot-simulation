@@ -9,12 +9,13 @@
 #include <QByteArray>
 #include <QDataStream>
 #include <QVector>
+#include "Controller.h"
 
 class EventManager : public QObject
 {
     Q_OBJECT
 public:
-    explicit EventManager(QObject *parent = nullptr);
+    explicit EventManager(Controller* controller, QObject *parent = nullptr);
 
     void addConnection(QTcpSocket* connection);
 
@@ -25,6 +26,8 @@ private:
     QVector<QTcpSocket*> _connections;
     void processMesage(QString header, QVector<QString> params, QTcpSocket* connection);
     void sendMessageToAll(QString header, QVector<QString> params);
+
+    Controller* _controller;
 
 
 public slots:

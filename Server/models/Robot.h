@@ -10,16 +10,19 @@ class Robot : public QObject
     Q_OBJECT
 public:
    explicit Robot(QObject *parent = nullptr);
-   Robot(int id, int index, int direction, int battery);
+   Robot(int row, int col, int direction);
 
 private:
     int _id;
-    int _index;
+    int _row;
+    int _col;
     int _direction;
     int _battery;
     int _destinationIndex;
     Shelf* _currentShelf;
     Product* _currentProduct;
+
+    static int _idCounter;
 
 
 signals:

@@ -1,14 +1,19 @@
 #include "Robot.h"
 
+
+int Robot::_idCounter = 1;
+
 Robot::Robot(QObject *parent) : QObject(parent)
 {
 
 }
 
-Robot::Robot(int id, int index, int direction, int battery)
+Robot::Robot(int row, int col, int direction)
 {
-    _id = id;
-    _index = index;
+    _id = _idCounter++;
+    _row = row;
+    _col = col;
     _direction = direction;
-    _battery = battery;
+    _battery = 100;
 }
+

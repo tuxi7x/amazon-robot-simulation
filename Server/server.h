@@ -9,6 +9,7 @@
 #include <QDebug>
 #include <QString>
 #include "EventManager.h"
+#include "Controller.h"
 
 class Server : public QObject
 {
@@ -21,6 +22,7 @@ private:
 
     QTcpServer* _tcpServer;
     EventManager* _eventManager;
+    Controller* _controller;
 
 private slots:
     void startConnection();

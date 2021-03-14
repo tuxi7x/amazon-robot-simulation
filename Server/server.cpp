@@ -25,7 +25,9 @@ Server::Server(QObject *parent) : QObject(parent)
 
     qInfo() << (tr("The server is running on IP: %1 Port: %2").arg(ipAddress).arg(_tcpServer->serverPort()));
 
-    _eventManager = new EventManager();
+    _controller = new Controller();
+    _eventManager = new EventManager(_controller);
+
 
 
     connect(_tcpServer, &QTcpServer::newConnection, this, &Server::startConnection);

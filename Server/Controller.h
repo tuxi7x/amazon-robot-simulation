@@ -18,6 +18,13 @@ class Controller : public QObject
 public:
     explicit Controller(QObject *parent = nullptr);
 
+    void addRobot(int row, int col, int orientation);
+    void addDocker(int row, int col);
+    void addDropOffPoint(int row, int col, QString product);
+    void addShelf(int row, int col);
+    void addProduct(QString name, int shelf);
+    void addOrder(QString name);
+
 private:
     QVector<Robot*> _robots;
     QVector<Docker*> _dockers;

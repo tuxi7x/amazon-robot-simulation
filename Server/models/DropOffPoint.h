@@ -8,10 +8,12 @@ class DropOffPoint : public QObject
     Q_OBJECT
 public:
     explicit DropOffPoint(QObject *parent = nullptr);
+    DropOffPoint(int row, int col, QString product);
 
 private:
-    int _id;
-    int _index;
+    int _row;
+    int _col;
+    QString _product;
 
 signals:
 

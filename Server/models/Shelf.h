@@ -10,10 +10,11 @@ class Shelf : public QObject
     Q_OBJECT
 public:
     explicit Shelf(QObject *parent = nullptr);
+    Shelf(int row, int col);
 
 private:
-    int _id;
-    int _index;
+    int _row;
+    int _col;
     QVector<Product> _products;
     bool _isMoving;
 

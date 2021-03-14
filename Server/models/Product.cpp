@@ -5,14 +5,9 @@ Product::Product(QObject *parent) : QObject(parent)
 
 }
 
-Product::Product(QString name)
+Product::Product(QString name, int shelf)
 {
     _name = name;
-
+    _shelf = shelf;
 }
 
-Product::Product(int id, QString name)
-{
-    _id = id;
-    _name = name;
-}

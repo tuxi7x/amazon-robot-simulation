@@ -1,6 +1,6 @@
 #include "EventManager.h"
 
-EventManager::EventManager(QObject *parent) : QObject(parent)
+EventManager::EventManager(Controller* controller, QObject *parent) : QObject(parent), _controller(controller)
 {
 
 }
@@ -35,46 +35,62 @@ void EventManager::processMesage(QString header, QVector<QString> params, QTcpSo
         int size = params[0].toInt();
         qDebug() << "A pálya mérete: " << size;
     } else if (header == "ROBOT") {
-        if (params.length() > 0 && params.length() % 2 == 0) {
-            for (int i = 0; i < params.length(); i+=2) {
-                // rows and cols of robot placement
-                qDebug() << "row: " << params[i] << " col: " << params[i+1];
+        if (params.length() > 0 && params.length() % 3 == 0) {
+            for (int i = 0; i < params.length(); i+=3) {
+                /*
+                 * params[i]: row
+                 * params[i+1]: col
+                 * params[i+2]: orientation
+                 */
+                _controller->addRobot(params[i].toInt(), params[i+1].toInt(), params[i+2].toInt());
             }
         }
     } else if (header == "DOCKER" ) {
         if (params.length() > 0 && params.length() % 2 == 0) {
             for (int i = 0; i < params.length(); i+= 2) {
-                // rows and cols of docker placement
-                qDebug() << "row: " << params[i] << " col: " << params[i+1];
+                /*
+                 * params[i]: row
+                 * params[i+1]: col
+                 */
+                _controller->addDocker(params[i].toInt(), params[i+1].toInt());
             }
         }
     } else if (header == "ORDER") {
         if (params.length() > 0) {
-                // vector for orders
-               QVector<QString> orders = QVector<QString>();
                for (int i=0; i<params.length(); i++) {
-                   orders.append(params[i]);
+                   // params[i]: order
+                   _controller->addOrder(params[i]);
                }
         }
     } else if (header == "SHELF") {
         if (params.length() > 0 && params.length() % 2 == 0) {
             for (int i = 0; i < params.length(); i+=2) {
-                // rows and cols of shelves placement
-                qDebug() << "row: " << params[i] << " col: " << params[i+1];
+                /*
+                 * params[i]: row
+                 * params[i+1]: col
+                 */
+                _controller->addShelf(params[i].toInt(), params[i+1].toInt());
             }
         }
     } else if (header == "PRODUCT") {
         if (params.length() > 0 && params.length() % 2 == 0) {
             for (int i = 0; i < params.length(); i+=2) {
-                // name and shelf of product
-                qDebug() << "name: " << params[i] << " shelf: " << params[i+1];
+                /*
+                 * params[i]: name
+                 * params[i+1]: shelf
+                 */
+                _controller->addProduct(params[i], params[i].toInt());
             }
         }
     } else if (header == "DROPOFF") {
         if (params.length() > 0 && params.length() % 3 == 0) {
             for (int i = 0; i < params.length(); i+=3) {
-                // rows and cols of shelves placement
-                qDebug() << "row: " << params[i] << " col: " << params[i+1] << " product:" << params[i+2];
+                /*
+                 * params[i]: row
+                 * params[i+1]: col
+                 * params[i+2]: product
+                 */
+                _controller->addDropOffPoint(params[i].toInt(), params[i+1].toInt(), params[i+2]);
             }
         }
     }
