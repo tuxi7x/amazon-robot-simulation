@@ -37,6 +37,8 @@ private:
     QLabel* _browseFileLabel;
     Connection* _connection;
 
+    QFile* _file;
+
 };
 
 #endif // STARTSIMFROMFILEDIALOG_H

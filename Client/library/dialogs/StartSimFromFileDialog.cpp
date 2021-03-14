@@ -75,7 +75,12 @@ StartSimFromFileDialog::~StartSimFromFileDialog()
 
 void StartSimFromFileDialog::connectButtonPressed()
 {
+    QString ip = _ipBox->text();
+    int port = _portBox->text().toInt();
 
+    if (_file != nullptr) {
+        _connection->connectAndSend(ip,port,_file);
+    }
 }
 
 void StartSimFromFileDialog::browseButtonPressed()
@@ -88,8 +93,8 @@ void StartSimFromFileDialog::browseButtonPressed()
 
     if(fileDialog.exec()) {
         QStringList files = fileDialog.selectedFiles();
-        QFile file(files[0]);
-        QFileInfo fileinfo (file);
+        _file = new QFile(files[0]);
+        QFileInfo fileinfo (files[0]);
         _selectedFileLabel->setText(fileinfo.fileName());
 
         //TODO implement features here
