@@ -32,7 +32,6 @@ void EventManager::ReadyRead(){
         }
 
     }
-
 }
 
 void EventManager::processMesage(QString header, QVector<QString> params, QTcpSocket* sender) {
@@ -110,10 +109,10 @@ void EventManager::sendMessageToAll(QString header, QVector<QString> params) {
     QString msg = header + " ";
     for (int i=0; i<params.length(); i++) {
         msg += params[i];
-        if (i != params.length() -1) {
-            msg += " ";
-        }
+
     }
+
+    msg += "END";
 
     foreach (QTcpSocket* connection, _connections) {
         connection->write(msg.toUtf8());
