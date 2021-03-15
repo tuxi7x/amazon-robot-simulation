@@ -17,13 +17,21 @@ void EventManager::ReadyRead(){
     QTcpSocket* connection = qobject_cast<QTcpSocket*>(senderObj);
     QString str = QString::fromUtf8(connection->readAll());
 
-    qDebug() << "[Server] Message from client: " << str;
+    //qDebug() << "[Server] Message from client: " << str;
 
+    QVector<QString> allmsg = str.split("END");
 
-    QVector<QString> args = str.split(" ");
-    QString header = args[0];
-    args.remove(0);
-    processMesage(header, args, connection);
+    foreach (QString msg, allmsg) {
+        if (msg != "") {
+            msg = msg.trimmed();
+            QVector<QString> args = msg.split(" ");
+            qDebug() << "[Server] Message from client: " << args.join(" ");
+            QString header = args[0];
+            args.remove(0);
+            processMesage(header, args, connection);
+        }
+
+    }
 
 }
 
@@ -32,8 +40,10 @@ void EventManager::processMesage(QString header, QVector<QString> params, QTcpSo
         sender->disconnectFromHost();
         sender = nullptr;
     } else if (header == "SIZE") {
+        // params[0]: size
         int size = params[0].toInt();
-        qDebug() << "A pálya mérete: " << size;
+        _controller->setSize(size);
+
     } else if (header == "ROBOT") {
         if (params.length() > 0 && params.length() % 3 == 0) {
             for (int i = 0; i < params.length(); i+=3) {

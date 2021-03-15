@@ -28,3 +28,7 @@ void Controller::addOrder(QString name) {
 void Controller::addShelf(int row, int col) {
     _shelves.append(new Shelf(row, col));
 }
+
+void Controller::setSize(int size) {
+    _size = size;
+}

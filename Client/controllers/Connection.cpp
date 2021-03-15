@@ -29,8 +29,10 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
 
 
     // Read size and write to server
-    int size = loadDoc["size"].toInt();
-    writeToServer("SIZE", QVector<QString>(QString::number(size)));
+    QVector<QString> sizeParams;
+    sizeParams.append(QString::number(loadDoc["size"].toInt()));
+    sizeParams.append("END");
+    writeToServer("SIZE", sizeParams);
 
 
     // Read robots and write to server
@@ -46,6 +48,8 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
             robotParams.append(QString::number(orientation));
     }
 
+    robotParams.append("END");
+
     writeToServer("ROBOT", robotParams);
 
 
@@ -60,6 +64,8 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
             dockerParams.append(QString::number(col));
     }
 
+    dockerParams.append("END");
+
     writeToServer("DOCKER", dockerParams);
 
     // Read shelves and write to server
@@ -73,6 +79,8 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
             shelfParams.append(QString::number(col));
     }
 
+    shelfParams.append("END");
+
     writeToServer("SHELF", shelfParams);
 
     // Read products and write to server
@@ -85,6 +93,8 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
             productParams.append(name);
             productParams.append(QString::number(shelf));
     }
+
+    productParams.append("END");
 
     writeToServer("PRODUCT", productParams);
 
@@ -101,6 +111,8 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
             dropOffParams.append(product);
     }
 
+    dropOffParams.append("END");
+
     writeToServer("DROPOFF", dropOffParams);
 
     // Read orders and write to server
@@ -110,6 +122,8 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
             QString order = orders[orderIndex].toString();
             orderParams.append(order);
     }
+
+    orderParams.append("END");
 
     writeToServer("ORDER", orderParams);
 }

@@ -24,6 +24,7 @@ public:
     void addShelf(int row, int col);
     void addProduct(QString name, int shelf);
     void addOrder(QString name);
+    void setSize(int size);
 
 private:
     QVector<Robot*> _robots;
@@ -32,6 +33,7 @@ private:
     QVector<Shelf*> _shelves;
     QVector<Product*> _products;
     QVector<QString> _orders;
+    int _size;
 
 
 signals:
