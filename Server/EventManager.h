@@ -24,7 +24,7 @@ signals:
 
 private:
     QVector<QTcpSocket*> _connections;
-    void processMesage(QString header, QVector<QString> params, QTcpSocket* connection);
+    void processMessage(QString header, QVector<QString> params, QTcpSocket* connection);
     void sendMessageToAll(QString header, QVector<QString> params);
 
     Controller* _controller;

@@ -17,7 +17,7 @@ void EventManager::ReadyRead(){
     QTcpSocket* connection = qobject_cast<QTcpSocket*>(senderObj);
     QString str = QString::fromUtf8(connection->readAll());
 
-    //qDebug() << "[Server] Message from client: " << str;
+    //sendMessageToAll("HELLO", QVector<QString>("Szia"));
 
     QVector<QString> allmsg = str.split("END");
 
@@ -28,13 +28,13 @@ void EventManager::ReadyRead(){
             qDebug() << "[Server] Message from client: " << args.join(" ");
             QString header = args[0];
             args.remove(0);
-            processMesage(header, args, connection);
+            processMessage(header, args, connection);
         }
 
     }
 }
 
-void EventManager::processMesage(QString header, QVector<QString> params, QTcpSocket* sender) {
+void EventManager::processMessage(QString header, QVector<QString> params, QTcpSocket* sender) {
     if (header == "CLOSE") {
         sender->disconnectFromHost();
         sender = nullptr;
@@ -108,7 +108,7 @@ void EventManager::processMesage(QString header, QVector<QString> params, QTcpSo
 void EventManager::sendMessageToAll(QString header, QVector<QString> params) {
     QString msg = header + " ";
     for (int i=0; i<params.length(); i++) {
-        msg += params[i];
+        msg += params[i] + " ";
 
     }
 

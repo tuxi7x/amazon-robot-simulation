@@ -31,7 +31,6 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
     // Read size and write to server
     QVector<QString> sizeParams;
     sizeParams.append(QString::number(loadDoc["size"].toInt()));
-    sizeParams.append("END");
     writeToServer("SIZE", sizeParams);
 
 
@@ -48,7 +47,6 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
             robotParams.append(QString::number(orientation));
     }
 
-    robotParams.append("END");
 
     writeToServer("ROBOT", robotParams);
 
@@ -64,7 +62,6 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
             dockerParams.append(QString::number(col));
     }
 
-    dockerParams.append("END");
 
     writeToServer("DOCKER", dockerParams);
 
@@ -79,7 +76,6 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
             shelfParams.append(QString::number(col));
     }
 
-    shelfParams.append("END");
 
     writeToServer("SHELF", shelfParams);
 
@@ -94,7 +90,6 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
             productParams.append(QString::number(shelf));
     }
 
-    productParams.append("END");
 
     writeToServer("PRODUCT", productParams);
 
@@ -111,7 +106,6 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
             dropOffParams.append(product);
     }
 
-    dropOffParams.append("END");
 
     writeToServer("DROPOFF", dropOffParams);
 
@@ -123,7 +117,6 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
             orderParams.append(order);
     }
 
-    orderParams.append("END");
 
     writeToServer("ORDER", orderParams);
 }
@@ -132,10 +125,21 @@ void Connection::readFromServer() {
 
     QString str = QString::fromUtf8(_socket->readAll());
 
-    QVector<QString> args = str.split(" ");
-    QString header = args[0];
-    args.remove(0);
-    processMessage(header, args);
+    qDebug() << str;
+
+    QVector<QString> allmsg = str.split("END");
+
+    foreach (QString msg, allmsg) {
+        if (msg != "") {
+            msg = msg.trimmed();
+            QVector<QString> args = msg.split(" ");
+            qDebug() << "[Server] Message from server: " << args.join(" ");
+            QString header = args[0];
+            args.remove(0);
+            processMessage(header, args);
+        }
+
+    }
 
 
 }
@@ -143,11 +147,11 @@ void Connection::readFromServer() {
 void Connection::writeToServer(QString header, QVector<QString> params) {
     QString msg = header + " ";
     for (int i=0; i<params.length(); i++) {
-        msg += params[i];
-        if (i != params.length() -1) {
-            msg += " ";
-        }
+        msg += params[i] + " ";
     }
+
+    msg += "END";
+
 
     _socket->write(msg.toUtf8());
 }
