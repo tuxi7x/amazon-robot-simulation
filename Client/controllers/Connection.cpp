@@ -166,5 +166,5 @@ void Connection::processMessage(QString header, QVector<QString> params) {
 }
 
 void Connection::onConnect() {
-    //writeToServer("HELLOALL", QVector<QString>("hello all!"));
+    writeToServer("HELLOALL", QVector<QString>("hello all!"));
 }

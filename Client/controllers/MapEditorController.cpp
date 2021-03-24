@@ -324,9 +324,8 @@ QString MapEditorController::validateBeforeSave()
         return "Legalább egy töltőállomást fel kell helyezni!";
     }else if(_dropOffPoints.isEmpty()) {
         return "Legalább egy célállomást fel kell helyezni!";
-    }else if (_products.length() != _dropOffPoints.length()){
-        int tmp = _products.length()-_dropOffPoints.length();
-    return "Még " + QString::number(tmp) + " célállomást fel kell helyezni!";
+    }else if (!getUnassignedProducts().isEmpty()){
+    return "Még " + QString::number(getUnassignedProducts().size()) + " célállomást fel kell helyezni!";
     }else return "OK";
 }
 
