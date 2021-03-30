@@ -204,6 +204,10 @@ void MapEditor::onFieldButtonPressed()
             ProductsOnShelfDialog posd (productsOnThisShelf);
             posd.exec();
         }
+    } else if (res.first == MapEditorController::Robot) {
+        RobotFieldModel* selectedRobot = qobject_cast<RobotFieldModel*> (res.second);
+        _controller->rotateRobot(selectedRobot);
+        _gridButtons[selectedRobot->getRow()][selectedRobot->getCol()]->setRobotOrientation(selectedRobot->getOrientation());
     }
 
 }
@@ -241,6 +245,7 @@ void MapEditor::onFieldChanged(int row, int col)
 
    if(val == MapEditorController::Robot) {
        _gridButtons[row][col]->setRobotButtonStyleSheet();
+       _gridButtons[row][col]->setCursor(QCursor(Qt::PointingHandCursor));
    } else if (val == MapEditorController::Shelf) {
         if(_controller->isASelectedShelf(row,col)) _gridButtons[row][col]->setSelectedShelfButtonStyleSheet();
         else _gridButtons[row][col]->setUnselectedShelfButtonStyleSheet();

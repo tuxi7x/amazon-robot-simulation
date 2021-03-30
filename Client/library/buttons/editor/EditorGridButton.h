@@ -23,6 +23,7 @@ public:
     void setUnselectedShelfButtonStyleSheet();
     void setSelectedShelfButtonStyleSheet();
     void setDropOffPointButtonStyleSheet(QString product);
+    void setRobotOrientation(int orientation);
 
     int getRow() const;
     int getCol() const;

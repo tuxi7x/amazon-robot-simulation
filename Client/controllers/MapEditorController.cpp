@@ -156,6 +156,11 @@ void MapEditorController::toggleShelfSelection(ShelfFieldModel *s)
     emit shelfSelectionChanged(s->getRow(),s->getCol(),pos == -1);
 }
 
+void MapEditorController::rotateRobot(RobotFieldModel *r)
+{
+    r->setOrientation((r->getOrientation()+1) % 4);
+}
+
 bool MapEditorController::moveSelectedShelves(int direction)
 {
     //This is not fully correct yet. If there are 2 selected shelves next to eachother and we
