@@ -28,6 +28,11 @@ MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
     _changeSizeLabel = new QLabel("Méret");
     _changeSizeLineEdit = new QLineEdit();
 
+    QRegularExpressionValidator* validator = new QRegularExpressionValidator;
+    QRegularExpression e ("([5-9])|(1[0-2])");
+    validator->setRegularExpression(e);
+    _changeSizeLineEdit->setValidator(validator);
+
     _gridContainer = new QVBoxLayout();
 
     _gridContainer->addLayout(_mapGrid);
@@ -199,6 +204,10 @@ void MapEditor::onFieldButtonPressed()
             ProductsOnShelfDialog posd (productsOnThisShelf);
             posd.exec();
         }
+    } else if (res.first == MapEditorController::Robot) {
+        RobotFieldModel* selectedRobot = qobject_cast<RobotFieldModel*> (res.second);
+        _controller->rotateRobot(selectedRobot);
+        _gridButtons[selectedRobot->getRow()][selectedRobot->getCol()]->setRobotOrientation(selectedRobot->getOrientation());
     }
 
 }
@@ -236,6 +245,7 @@ void MapEditor::onFieldChanged(int row, int col)
 
    if(val == MapEditorController::Robot) {
        _gridButtons[row][col]->setRobotButtonStyleSheet();
+       _gridButtons[row][col]->setCursor(QCursor(Qt::PointingHandCursor));
    } else if (val == MapEditorController::Shelf) {
         if(_controller->isASelectedShelf(row,col)) _gridButtons[row][col]->setSelectedShelfButtonStyleSheet();
         else _gridButtons[row][col]->setUnselectedShelfButtonStyleSheet();

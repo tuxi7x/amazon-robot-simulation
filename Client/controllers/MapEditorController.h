@@ -30,6 +30,7 @@ public:
     bool validateProductPlacement(int row, int col);
     bool fieldIsEmpty();
     void toggleShelfSelection (ShelfFieldModel* s);
+    void rotateRobot (RobotFieldModel* r);
     bool moveSelectedShelves (int direction);
     bool isASelectedShelf(int row, int col);
     QVector<QString> getProductsOnShelf(int row, int col);

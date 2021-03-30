@@ -2,5 +2,9 @@
     <qresource prefix="/Resources">
         <file>resources/logo.png</file>
         <file>resources/loadingbar.gif</file>
+        <file>resources/robot_down.png</file>
+        <file>resources/robot_left.png</file>
+        <file>resources/robot_right.png</file>
+        <file>resources/robot_up.png</file>
     </qresource>
 </RCC>
