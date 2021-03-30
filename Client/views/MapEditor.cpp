@@ -28,6 +28,11 @@ MapEditor::MapEditor(QWidget *parent) : QMainWindow(parent)
     _changeSizeLabel = new QLabel("Méret");
     _changeSizeLineEdit = new QLineEdit();
 
+    QRegularExpressionValidator* validator = new QRegularExpressionValidator;
+    QRegularExpression e ("([5-9])|(1[0-2])");
+    validator->setRegularExpression(e);
+    _changeSizeLineEdit->setValidator(validator);
+
     _gridContainer = new QVBoxLayout();
 
     _gridContainer->addLayout(_mapGrid);

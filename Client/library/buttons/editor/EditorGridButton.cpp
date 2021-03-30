@@ -29,13 +29,13 @@ void EditorGridButton::setDockerButtonStyleSheet()
 void EditorGridButton::setUnselectedShelfButtonStyleSheet()
 {
     setStyleSheet("background-color: #06d6a0; color:white; font-size: 30px; border: 1px solid black;");
-    setText("Polc");
+    setText("P");
 }
 
 void EditorGridButton::setSelectedShelfButtonStyleSheet()
 {
     setStyleSheet("background-color: #06d6a0; color:white; font-size: 30px; border: 5px solid black;");
-    setText("Polc");
+    setText("P");
 }
 
 void EditorGridButton::setDropOffPointButtonStyleSheet(QString product)
@@ -70,6 +70,7 @@ void EditorGridButton::dropEvent(QDropEvent *event)
     SideBarButton* droppedButton = qobject_cast<SideBarButton*>(event->mimeData()->parent());
     emit buttonDropped(_row,_col,droppedButton);
 }
+
 
 int EditorGridButton::getCol() const
 {

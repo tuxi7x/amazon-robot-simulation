@@ -10,6 +10,7 @@
 #include <QDropEvent>
 #include "library/buttons/editor/SideBarButton.h"
 #include <QMimeData>
+#include <QPaintEvent>
 
 class EditorGridButton : public QPushButton
 {
