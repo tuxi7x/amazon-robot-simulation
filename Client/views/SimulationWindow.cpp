@@ -24,11 +24,19 @@ SimulationWindow::SimulationWindow(Connection *connection, QWidget *parent) : QM
     _mainLayout->setSpacing(25);
     _sidePanel->setAlignment(Qt::AlignVCenter);
 
+    _speedLabel = new QLabel("Sebesség: 1");
+    _speedSlider = new QSlider(Qt::Horizontal);
     _newOrderButton = new QPushButton("Új rendelés");
     _pauseResumeButton = new QPushButton("Megállítás");
     _finishSimButton = new QPushButton ("Befejezés");
     _disconnectButton = new QPushButton("Lecsatlakozás");
 
+    _speedLabel->setStyleSheet("color:white; font-size:20px; text-align: center;");
+    _speedSlider->setFixedSize(140,40);
+    _speedSlider->setRange(1,3);
+    _speedSlider->setStyleSheet("QSlider::handle:horizontal { "
+                      "background-color:gray;"
+                      "} ");
     _newOrderButton->setFixedSize(140,40);
     _pauseResumeButton->setFixedSize(140,40);
     _finishSimButton->setFixedSize(140,40);
@@ -38,6 +46,9 @@ SimulationWindow::SimulationWindow(Connection *connection, QWidget *parent) : QM
     _finishSimButton->setStyleSheet("background-color: #34B1FF; color: white; border: none; font-size:21px;");
     _disconnectButton->setStyleSheet("background-color: #EF476F; color: white; border: none; font-size:21px;");
 
+    _sidePanel->addWidget(_speedLabel);
+    _sidePanel->setAlignment(_speedLabel,Qt::AlignHCenter);
+    _sidePanel->addWidget(_speedSlider);
     _sidePanel->addWidget(_newOrderButton);
     _sidePanel->addWidget(_pauseResumeButton);
     _sidePanel->addWidget(_finishSimButton);

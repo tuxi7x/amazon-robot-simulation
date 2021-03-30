@@ -7,6 +7,8 @@
 #include <QGridLayout>
 #include <QVBoxLayout>
 #include <QPushButton>
+#include <QSlider>
+#include <QLabel>
 
 class SimulationWindow : public QMainWindow
 {
@@ -25,6 +27,8 @@ private:
     QGridLayout* _mapGrid;
     QVBoxLayout* _sidePanel;
     QVBoxLayout* _gridContainer;
+    QLabel* _speedLabel;
+    QSlider* _speedSlider;
     QPushButton* _newOrderButton;
     QPushButton* _pauseResumeButton;
     QPushButton* _finishSimButton;
