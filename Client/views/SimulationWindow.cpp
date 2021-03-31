@@ -24,11 +24,19 @@ SimulationWindow::SimulationWindow(Connection *connection, QWidget *parent) : QM
     _mainLayout->setSpacing(25);
     _sidePanel->setAlignment(Qt::AlignVCenter);
 
+    _speedLabel = new QLabel("Sebesség: 1"); //Just for testing the UI
+    _speedSlider = new QSlider(Qt::Horizontal);
     _newOrderButton = new QPushButton("Új rendelés");
-    _pauseResumeButton = new QPushButton("Megállítás");
+    _pauseResumeButton = new QPushButton("Megállítás"); //Just for testing the UI
     _finishSimButton = new QPushButton ("Befejezés");
     _disconnectButton = new QPushButton("Lecsatlakozás");
 
+    _speedLabel->setStyleSheet("color:white; font-size:20px; text-align: center;");
+    _speedSlider->setFixedSize(140,40);
+    _speedSlider->setRange(1,3);
+    _speedSlider->setStyleSheet("QSlider::handle:horizontal { "
+                      "background-color:gray;"
+                      "} ");
     _newOrderButton->setFixedSize(140,40);
     _pauseResumeButton->setFixedSize(140,40);
     _finishSimButton->setFixedSize(140,40);
@@ -38,6 +46,9 @@ SimulationWindow::SimulationWindow(Connection *connection, QWidget *parent) : QM
     _finishSimButton->setStyleSheet("background-color: #34B1FF; color: white; border: none; font-size:21px;");
     _disconnectButton->setStyleSheet("background-color: #EF476F; color: white; border: none; font-size:21px;");
 
+    _sidePanel->addWidget(_speedLabel);
+    _sidePanel->setAlignment(_speedLabel,Qt::AlignHCenter);
+    _sidePanel->addWidget(_speedSlider);
     _sidePanel->addWidget(_newOrderButton);
     _sidePanel->addWidget(_pauseResumeButton);
     _sidePanel->addWidget(_finishSimButton);
@@ -46,7 +57,26 @@ SimulationWindow::SimulationWindow(Connection *connection, QWidget *parent) : QM
     connect(_disconnectButton,&QPushButton::clicked, this, [&](){emit simulationClosed(this->geometry());});
     connect(_finishSimButton, &QPushButton::clicked, this, [&](){emit simulationClosed(this->geometry());});
 
-    createMap();
+    connect(_connection,&Connection::createMap, this, &SimulationWindow::onCreateMapSignal);
+    connect(_connection,&Connection::fieldToRobot, this, &SimulationWindow::onFieldToRobotSignal);
+    connect(_connection,&Connection::fieldToEmpty, this, &SimulationWindow::onFieldToEmptySignal);
+    connect(_connection,&Connection::fieldToShelf, this,  &SimulationWindow::onFieldToShelfSignal);
+    connect(_connection,&Connection::fieldToDropOff, this,  &SimulationWindow::onFieldToDropOffSignal);
+    connect(_connection, &Connection::gameSpeedChanged, this, &SimulationWindow::onGameSpeedChangedSignal);
+    connect(_connection, &Connection::pauseStateChanged, this, &SimulationWindow::onPauseStateChangedSignal);
+
+
+    void createMap (int size);
+    //Orientations: 0 = up, 1 = right, 2 = down, 3 = left
+    void fieldToRobot (int row, int col, int orientation, int battery);
+    void fieldToEmpty (int row, int col);
+    void fieldToShelf (int row, int col);
+    void fieldToDropOffEvent (int row, int col);
+    void gameSpeedChanged (int newSpeed);
+    void pauseStateChanged (bool paused);
+
+
+    onCreateMapSignal(6); //Just for testing the UI
 
 }
 
@@ -73,15 +103,63 @@ SimulationWindow::~SimulationWindow()
     delete _centralWidget;
 }
 
-void SimulationWindow::createMap()
+
+void SimulationWindow::onCreateMapSignal(int size)
 {
-    for(int i=0; i<6;i++) {
-        for(int j=0;j<6;j++) {
+
+    for(int i=0; i<size;i++) {
+        QVector<QPushButton*> v;
+        for(int j=0;j<size;j++) {
             QPushButton* btn = new QPushButton();
             btn->setFixedSize(QSize(630/6,630/6));
             btn->setStyleSheet("background-color: white; color:white; font-size: 30px; border: 1px solid black;");
             btn->setText("");
             _mapGrid->addWidget(btn,i,j);
+            v.append(btn);
         }
+        _buttons.append(v);
     }
+}
+
+void SimulationWindow::onFieldToRobotSignal(int row, int col, int orientation, int battery)
+{
+    //TODO orientation
+    _buttons[row][col]->setStyleSheet("background-color: #ef476e; color:white; font-size: 30px; border: 1px solid black;");
+    _buttons[row][col]->setText("R");
+}
+
+void SimulationWindow::onFieldToEmptySignal(int row, int col)
+{
+    _buttons[row][col]->setStyleSheet("background-color: white; color:white; font-size: 30px; border: 1px solid black;");
+}
+
+void SimulationWindow::onFieldToShelfSignal(int row, int col)
+{
+    _buttons[row][col]->setStyleSheet("background-color: #06d6a0; color:white; font-size: 30px; border: 1px solid black;");
+    _buttons[row][col]->setText("P");
+}
+
+void SimulationWindow::onFieldToDropOffSignal(int row, int col)
+{
+    _buttons[row][col]->setStyleSheet("background-color: #907f9f; color:white; font-size: 30px; border: 1px solid black;");
+    _buttons[row][col]->setText("C");
+}
+
+void SimulationWindow::onFieldtoDockerSignal(int row, int col)
+{
+    _buttons[row][col]->setStyleSheet("background-color: #f26419; color:white; font-size: 30px; border: 1px solid black;");
+    _buttons[row][col]->setText("D");
+}
+
+
+
+void SimulationWindow::onGameSpeedChangedSignal(int newSpeed)
+{
+    _speedLabel->setText("Sebesség: " + QString::number(newSpeed));
+    _speedSlider->setValue(newSpeed);
+}
+
+void SimulationWindow::onPauseStateChangedSignal(bool paused)
+{
+    paused ? _pauseResumeButton->setText("Folytatás") : _pauseResumeButton->setText("Megállítás");
 }
