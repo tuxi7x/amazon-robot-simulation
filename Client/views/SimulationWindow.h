@@ -21,6 +21,7 @@ signals:
     void simulationClosed(QRect pos);
 
 private:
+    QVector<QVector<QPushButton*>> _buttons;
     Connection* _connection;
     QWidget* _centralWidget;
     QHBoxLayout* _mainLayout;
@@ -35,7 +36,16 @@ private:
     QPushButton* _disconnectButton;
     void createMap();
 
-
+private slots:
+    void onCreateMapSignal (int size);
+    //Orientations: 0 = up, 1 = right, 2 = down, 3 = left
+    void onFieldToRobotSignal (int row, int col, int orientation, int battery);
+    void onFieldToEmptySignal (int row, int col);
+    void onFieldToShelfSignal (int row, int col);
+    void onFieldToDropOffSignal (int row, int col);
+    void onFieldtoDockerSignal (int row, int col);
+    void onGameSpeedChangedSignal (int newSpeed);
+    void onPauseStateChangedSignal (bool paused);
 
 };
 

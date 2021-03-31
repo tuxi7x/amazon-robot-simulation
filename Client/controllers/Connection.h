@@ -40,7 +40,7 @@ signals:
     void fieldToRobot (int row, int col, int orientation, int battery);
     void fieldToEmpty (int row, int col);
     void fieldToShelf (int row, int col);
-    void fieldToDropOffEvent (int row, int col);
+    void fieldToDropOff (int row, int col);
     void gameSpeedChanged (int newSpeed);
     void pauseStateChanged (bool paused);
 };
