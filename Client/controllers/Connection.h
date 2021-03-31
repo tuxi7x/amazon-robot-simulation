@@ -34,10 +34,15 @@ private slots:
 
     void handleError();
 
-
-
 signals:
-
+    void createMap (int size);
+    //Orientations: 0 = up, 1 = right, 2 = down, 3 = left
+    void fieldToRobot (int row, int col, int orientation, int battery);
+    void fieldToEmpty (int row, int col);
+    void fieldToShelf (int row, int col);
+    void fieldToDropOffEvent (int row, int col);
+    void gameSpeedChanged (int newSpeed);
+    void pauseStateChanged (bool paused);
 };
 
 #endif // CONNECTION_H
