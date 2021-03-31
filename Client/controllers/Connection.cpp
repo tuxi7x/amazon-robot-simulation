@@ -125,7 +125,6 @@ void Connection::readFromServer() {
 
     QString str = QString::fromUtf8(_socket->readAll());
 
-    qDebug() << str;
 
     QVector<QString> allmsg = str.split("END");
 

@@ -9,6 +9,7 @@ void EventManager::addConnection(QTcpSocket *connection) {
     _connections.append(connection);
     connect(connection, &QAbstractSocket::disconnected, connection, &QObject::deleteLater);
     connect(connection, SIGNAL(readyRead()), this, SLOT(ReadyRead()));
+    sendMessageToAll("HELLO", QVector<QString>("Szia"));
 }
 
 void EventManager::ReadyRead(){
@@ -17,7 +18,7 @@ void EventManager::ReadyRead(){
     QTcpSocket* connection = qobject_cast<QTcpSocket*>(senderObj);
     QString str = QString::fromUtf8(connection->readAll());
 
-    //sendMessageToAll("HELLO", QVector<QString>("Szia"));
+
 
     QVector<QString> allmsg = str.split("END");
 
