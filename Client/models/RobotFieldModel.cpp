@@ -34,4 +34,9 @@ void RobotFieldModel::read(const QJsonObject &json) {
     _orientation = json["orientation"].toInt();
 }
 
+void RobotFieldModel::setOrientation(int orientation)
+{
+    _orientation = orientation;
+}
+
 

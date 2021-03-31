@@ -18,6 +18,8 @@ public:
     void write(QJsonObject &json);
     void read(const QJsonObject &json);
 
+    void setOrientation(int orientation);
+
 private:
     int _row;
     int _col;

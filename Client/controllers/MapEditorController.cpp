@@ -156,6 +156,11 @@ void MapEditorController::toggleShelfSelection(ShelfFieldModel *s)
     emit shelfSelectionChanged(s->getRow(),s->getCol(),pos == -1);
 }
 
+void MapEditorController::rotateRobot(RobotFieldModel *r)
+{
+    r->setOrientation((r->getOrientation()+1) % 4);
+}
+
 bool MapEditorController::moveSelectedShelves(int direction)
 {
     //This is not fully correct yet. If there are 2 selected shelves next to eachother and we
@@ -324,9 +329,8 @@ QString MapEditorController::validateBeforeSave()
         return "Legalább egy töltőállomást fel kell helyezni!";
     }else if(_dropOffPoints.isEmpty()) {
         return "Legalább egy célállomást fel kell helyezni!";
-    }else if (_products.length() != _dropOffPoints.length()){
-        int tmp = _products.length()-_dropOffPoints.length();
-    return "Még " + QString::number(tmp) + " célállomást fel kell helyezni!";
+    }else if (!getUnassignedProducts().isEmpty()){
+    return "Még " + QString::number(getUnassignedProducts().size()) + " célállomást fel kell helyezni!";
     }else return "OK";
 }
 

@@ -16,8 +16,8 @@ void EditorGridButton::setEmptyButtonStyleSheet()
 
 void EditorGridButton::setRobotButtonStyleSheet()
 {
-    setStyleSheet("background-color: #ef476e; color:white; font-size: 30px; border: 1px solid black;");
-    setText("R");
+    setStyleSheet("border-image:url(:/Resources/resources/robot_up.png); background-color: #ef476e; color:white; font-size: 30px; border: 1px solid black;");
+    //setText("R");
 }
 
 void EditorGridButton::setDockerButtonStyleSheet()
@@ -29,19 +29,31 @@ void EditorGridButton::setDockerButtonStyleSheet()
 void EditorGridButton::setUnselectedShelfButtonStyleSheet()
 {
     setStyleSheet("background-color: #06d6a0; color:white; font-size: 30px; border: 1px solid black;");
-    setText("Polc");
+    setText("P");
 }
 
 void EditorGridButton::setSelectedShelfButtonStyleSheet()
 {
     setStyleSheet("background-color: #06d6a0; color:white; font-size: 30px; border: 5px solid black;");
-    setText("Polc");
+    setText("P");
 }
 
 void EditorGridButton::setDropOffPointButtonStyleSheet(QString product)
 {
     setStyleSheet("background-color: #907f9f; color:white; font-size: 30px; border: 1px solid black;");
     setText("C\n(" + product + ")");
+}
+
+void EditorGridButton::setRobotOrientation(int orientation)
+{
+    if(orientation == 0) setRobotButtonStyleSheet();
+    else if(orientation == 1) {
+         setStyleSheet("border-image:url(:/Resources/resources/robot_right.png); background-color: #ef476e; color:white; font-size: 30px; border: 1px solid black;");
+    } else if(orientation == 2) {
+         setStyleSheet("border-image:url(:/Resources/resources/robot_down.png); background-color: #ef476e; color:white; font-size: 30px; border: 1px solid black;");
+    } else if (orientation == 3) {
+         setStyleSheet("border-image:url(:/Resources/resources/robot_left.png); background-color: #ef476e; color:white; font-size: 30px; border: 1px solid black;");
+    }
 }
 
 void EditorGridButton::dragEnterEvent(QDragEnterEvent *event)
@@ -70,6 +82,7 @@ void EditorGridButton::dropEvent(QDropEvent *event)
     SideBarButton* droppedButton = qobject_cast<SideBarButton*>(event->mimeData()->parent());
     emit buttonDropped(_row,_col,droppedButton);
 }
+
 
 int EditorGridButton::getCol() const
 {

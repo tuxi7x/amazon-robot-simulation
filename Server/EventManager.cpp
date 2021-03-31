@@ -18,7 +18,11 @@ void EventManager::ReadyRead(){
     QTcpSocket* connection = qobject_cast<QTcpSocket*>(senderObj);
     QString str = QString::fromUtf8(connection->readAll());
 
+<<<<<<< HEAD
 
+=======
+    sendMessageToAll("HELLO", QVector<QString>("Szia"));
+>>>>>>> 1e00e2325e27cb812a302319dac601a363483eb1
 
     QVector<QString> allmsg = str.split("END");
 

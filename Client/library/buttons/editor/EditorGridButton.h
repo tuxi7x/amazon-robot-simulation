@@ -10,6 +10,7 @@
 #include <QDropEvent>
 #include "library/buttons/editor/SideBarButton.h"
 #include <QMimeData>
+#include <QPaintEvent>
 
 class EditorGridButton : public QPushButton
 {
@@ -22,6 +23,7 @@ public:
     void setUnselectedShelfButtonStyleSheet();
     void setSelectedShelfButtonStyleSheet();
     void setDropOffPointButtonStyleSheet(QString product);
+    void setRobotOrientation(int orientation);
 
     int getRow() const;
     int getCol() const;
