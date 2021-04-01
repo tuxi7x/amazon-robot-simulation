@@ -50,11 +50,16 @@ private:
     QVector<Product*> _products;
     QVector<QString> _orders;
     int _size;
+    QTimer* _timer;
+    int _elapsedTime;
 
     int _speed;
 
+private slots:
+    void elapsedTime();
 
 signals:
+
 
 };
 

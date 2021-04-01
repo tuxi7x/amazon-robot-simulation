@@ -3,6 +3,10 @@
 Controller::Controller(QObject *parent) : QObject(parent)
 {
     _speed = 1;
+    _elapsedTime = 0;
+    _timer = new QTimer(this);
+    _timer->start(1000);
+    connect(_timer, SIGNAL(timeout()), this, SLOT(elapsedTime()));
 }
 
 void Controller::addRobot(int row, int col, int orientation) {
@@ -47,10 +51,18 @@ void Controller::stopSimulation() {
 
 void Controller::pauseSimulation() {
 
+    _timer->stop();
 }
 
 void Controller::resumeSimulation() {
 
+    _timer->start();
+}
+
+void Controller::elapsedTime()
+{
+    _elapsedTime++;
+    //qInfo() << _elapsedTime;
 }
 
 int Controller::getSize() {
