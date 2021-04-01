@@ -2,7 +2,7 @@
 
 Controller::Controller(QObject *parent) : QObject(parent)
 {
-
+    _speed = 1;
 }
 
 void Controller::addRobot(int row, int col, int orientation) {
@@ -31,4 +31,24 @@ void Controller::addShelf(int row, int col) {
 
 void Controller::setSize(int size) {
     _size = size;
+}
+
+void Controller::setSpeed(int speed) {
+    _speed = speed;
+}
+
+void Controller::startSimulation() {
+    qInfo() << "sim started";
+}
+
+void Controller::stopSimulation() {
+
+}
+
+void Controller::pauseSimulation() {
+
+}
+
+void Controller::resumeSimulation() {
+
 }

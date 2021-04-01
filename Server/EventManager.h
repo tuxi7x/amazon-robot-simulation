@@ -29,6 +29,7 @@ private:
 
     Controller* _controller;
 
+    bool _running;
 
 public slots:
     void ReadyRead();

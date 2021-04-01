@@ -36,9 +36,6 @@ Server::Server(QObject *parent) : QObject(parent)
 void Server::startConnection() {
 
     QTcpSocket* _connection = _tcpServer->nextPendingConnection();
-    QString msg = "CONNECT SUCCESS";
-    QByteArray qba = msg.toUtf8();
-    _connection->write(qba);
     _eventManager->addConnection(_connection);
 
 }

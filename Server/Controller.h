@@ -9,6 +9,7 @@
 #include "models/Product.h"
 #include "models/Shelf.h"
 #include <QTimer>
+#include <QDebug>
 
 
 
@@ -25,6 +26,12 @@ public:
     void addProduct(QString name, int shelf);
     void addOrder(QString name);
     void setSize(int size);
+    void setSpeed(int speed);
+
+    void startSimulation();
+    void stopSimulation();
+    void pauseSimulation();
+    void resumeSimulation();
 
 private:
     QVector<Robot*> _robots;
@@ -34,6 +41,8 @@ private:
     QVector<Product*> _products;
     QVector<QString> _orders;
     int _size;
+
+    int _speed;
 
 
 signals:
