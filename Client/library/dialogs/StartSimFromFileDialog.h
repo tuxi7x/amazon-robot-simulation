@@ -12,6 +12,8 @@
 #include <QHBoxLayout>
 #include <QFileDialog>
 #include <QFile>
+#include <QMovie>
+#include <QTimer>
 #include "controllers/Connection.h"
 
 class StartSimFromFileDialog : public DialogBase
@@ -25,6 +27,7 @@ private slots:
     void connectButtonPressed();
     void browseButtonPressed();
     void onConnected();
+    void connectionTimedOut();
 
 private:
     QLineEdit* _ipBox;
@@ -36,7 +39,10 @@ private:
     QPushButton* _browseFileButton;
     QLabel* _selectedFileLabel;
     QLabel* _browseFileLabel;
+    QLabel* _indicator;
+    QMovie* _progressGif;
     Connection* _connection;
+    QTimer* _timer;
 
     QFile* _file;
 

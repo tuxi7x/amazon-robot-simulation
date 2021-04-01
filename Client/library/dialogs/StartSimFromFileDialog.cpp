@@ -3,6 +3,9 @@
 StartSimFromFileDialog::StartSimFromFileDialog(Connection *connection)
 {
     _connection = connection;
+    _file = nullptr;
+    _timer = new QTimer;
+    _timer->setInterval(10000);
     setWindowTitle("Szimuláció indítása fájlból betöltve");
 
     _ipLabel = new QLabel("Szerver IP címe");
@@ -54,12 +57,20 @@ StartSimFromFileDialog::StartSimFromFileDialog(Connection *connection)
     _connectButton->setFixedHeight(45);
     _connectButton->setCursor(QCursor(Qt::PointingHandCursor));
 
+    _indicator = new QLabel();
+    _indicator->setFixedSize(70,70);
+    _mainLayout->addWidget(_indicator);
+    _mainLayout->setAlignment(_indicator,Qt::AlignHCenter);
+    _progressGif = new QMovie(":/Resources/resources/loadingbar.gif");
+    _progressGif->setScaledSize(QSize(70,70));
+
     setFixedSize(this->size());
     setLayout(_mainLayout);
 
     connect(_connectButton,SIGNAL(clicked()),this,SLOT(connectButtonPressed()));
     connect(_browseFileButton,SIGNAL(clicked()),this,SLOT(browseButtonPressed()));
     connect(_connection,SIGNAL(connected()), this, SLOT(onConnected()));
+    connect(_timer, SIGNAL(timeout()),this,SLOT(connectionTimedOut()));
 
 
 }
@@ -71,6 +82,7 @@ StartSimFromFileDialog::~StartSimFromFileDialog()
         delete child->widget();
         delete child;
     }
+    delete _file;
     delete _mainLayout;
 }
 
@@ -79,14 +91,31 @@ void StartSimFromFileDialog::connectButtonPressed()
     QString ip = _ipBox->text();
     int port = _portBox->text().toInt();
 
-    if (_file != nullptr) {
+    if (_file != nullptr && _ipBox->text() != "" && _portBox->text() != "" ) {
+        _indicator->setMovie(_progressGif);
+        _progressGif->start();
+        _timer->start();
         _connection->connectAndSend(ip,port,_file);
-
+    } else if (_file == nullptr) {
+        ErrorDialog e ("Először ki kell választani egy pályát!");
+        e.exec();
+    } else {
+        ErrorDialog e ("Először meg kell adni az ip címet és a portot!");
+        e.exec();
     }
 }
 
 void StartSimFromFileDialog::onConnected() {
     accept();
+}
+
+void StartSimFromFileDialog::connectionTimedOut()
+{
+    _progressGif->stop();
+    _indicator->setMovie(nullptr);
+    ErrorDialog* errorDialog = new ErrorDialog("<b>Hiba:</b><br>A csatlakozás sikertelen (Időtúllépés)!");
+    errorDialog->setModal(true);
+    errorDialog->exec();
 }
 
 void StartSimFromFileDialog::browseButtonPressed()

@@ -6,6 +6,8 @@
 ConnectDialog::ConnectDialog(Connection *connection) : DialogBase()
 {
     _connection = connection;
+    _timer = new QTimer;
+    _timer->setInterval(10000);
     setWindowTitle("Csatlakozás futó szimulációhoz");
     _ipLabel = new QLabel("Szerver IP címe");
     _ipBox = new QLineEdit();
@@ -56,6 +58,8 @@ ConnectDialog::ConnectDialog(Connection *connection) : DialogBase()
     setLayout(_mainLayout);
 
     connect(_connectButton,SIGNAL(clicked()),this,SLOT(connectButtonPressed()));
+    connect(_connection, SIGNAL(connected()),this,SLOT(onConnected()));
+    connect(_timer, SIGNAL(timeout()),this,SLOT(connectionTimedOut()));
 }
 
 ConnectDialog::~ConnectDialog()
@@ -66,20 +70,32 @@ ConnectDialog::~ConnectDialog()
         delete child;
     }
     delete _mainLayout;
+    delete _timer;
 }
 
 void ConnectDialog::connectButtonPressed()
 {
-    /*_indicator->setMovie(_progressGif);
-    _progressGif->start();
-    ErrorDialog* errorDialog = new ErrorDialog("<b>Hiba:</b><br>A csatlakozás sikertelen!");
+    if(_ipBox->text() != "" && _portBox->text() != "") {
+        _indicator->setMovie(_progressGif);
+        _progressGif->start();
+        _timer->start();
+        _connection->connect(_ipBox->text(), _portBox->text().toInt());
+    } else {
+        ErrorDialog e ("Először meg kell adni az ip címet és a portot!");
+        e.exec();
+    }
+}
+
+void ConnectDialog::onConnected()
+{
+    accept();
+}
+
+void ConnectDialog::connectionTimedOut()
+{
+    _progressGif->stop();
+    _indicator->setMovie(nullptr);
+    ErrorDialog* errorDialog = new ErrorDialog("<b>Hiba:</b><br>A csatlakozás sikertelen (Időtúllépés)!");
     errorDialog->setModal(true);
     errorDialog->exec();
-    _progressGif->stop();
-    _indicator->setMovie(nullptr);*/
-
-    _connection->connect(_ipBox->text(), _portBox->text().toInt());
-
-    //Need to implement connecting here. send accept if its succesful.
-    accept();
 }

@@ -8,6 +8,7 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
+#include <QTimer>
 #include "controllers/Connection.h"
 
 class ConnectDialog : public DialogBase
@@ -19,6 +20,8 @@ public:
 
 private slots:
     void connectButtonPressed();
+    void onConnected();
+    void connectionTimedOut();
 
 private:
     QLineEdit* _ipBox;
@@ -29,6 +32,7 @@ private:
     QLabel* _indicator;
     QMovie* _progressGif;
     Connection* _connection;
+    QTimer* _timer;
 
 };
 
