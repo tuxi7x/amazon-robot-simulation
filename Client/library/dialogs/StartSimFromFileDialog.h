@@ -24,6 +24,7 @@ public:
 private slots:
     void connectButtonPressed();
     void browseButtonPressed();
+    void onConnected();
 
 private:
     QLineEdit* _ipBox;

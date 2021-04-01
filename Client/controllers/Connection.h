@@ -12,6 +12,7 @@
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QDebug>
+#include <QAbstractSocket>
 
 class Connection : public QObject
 {
@@ -32,7 +33,7 @@ private slots:
     void readFromServer();
     void onConnect();
 
-    void handleError();
+    void handleError(QAbstractSocket::SocketError);
 
 signals:
     void createMap (int size);
@@ -44,6 +45,7 @@ signals:
     void fieldToDocker (int row, int col);
     void gameSpeedChanged (int newSpeed);
     void pauseStateChanged (bool paused);
+    void connected();
 };
 
 #endif // CONNECTION_H

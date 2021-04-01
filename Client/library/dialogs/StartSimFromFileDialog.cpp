@@ -59,6 +59,7 @@ StartSimFromFileDialog::StartSimFromFileDialog(Connection *connection)
 
     connect(_connectButton,SIGNAL(clicked()),this,SLOT(connectButtonPressed()));
     connect(_browseFileButton,SIGNAL(clicked()),this,SLOT(browseButtonPressed()));
+    connect(_connection,SIGNAL(connected()), this, SLOT(onConnected()));
 
 
 }
@@ -80,8 +81,12 @@ void StartSimFromFileDialog::connectButtonPressed()
 
     if (_file != nullptr) {
         _connection->connectAndSend(ip,port,_file);
-        emit accept();
+
     }
+}
+
+void StartSimFromFileDialog::onConnected() {
+    accept();
 }
 
 void StartSimFromFileDialog::browseButtonPressed()

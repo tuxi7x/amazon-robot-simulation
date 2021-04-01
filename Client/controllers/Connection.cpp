@@ -10,7 +10,7 @@ Connection::Connection(QObject *parent) : QObject(parent)
 void Connection::connect(QString host, int port) {
     _socket->connectToHost(host, port);
 
-    //QObject::connect(_socket, SIGNAL(errorOccurred()), this, SLOT(handleError()));
+    QObject::connect(_socket, SIGNAL(errorOccurred(QAbstractSocket::SocketError)), this, SLOT(handleError(QAbstractSocket::SocketError)));
     QObject::connect(_socket, SIGNAL(readyRead()), this, SLOT(readFromServer()));
     QObject::connect(_socket, SIGNAL(connected()), this, SLOT(onConnect()));
 }
@@ -120,6 +120,8 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
 
     writeToServer("ORDER", orderParams);
 
+
+    QObject::connect(_socket, SIGNAL(errorOccurred(QAbstractSocket::SocketError)), this, SLOT(handleError(QAbstractSocket::SocketError)));
     QObject::connect(_socket, SIGNAL(readyRead()), this, SLOT(readFromServer()));
     QObject::connect(_socket, SIGNAL(connected()), this, SLOT(onConnect()));
 }
@@ -161,8 +163,7 @@ void Connection::writeToServer(QString header, QVector<QString> params) {
 }
 
 
-void Connection::handleError() {
-
+void Connection::handleError(QAbstractSocket::SocketError) {
 }
 
 void Connection::processMessage(QString header, QVector<QString> params) {
@@ -173,7 +174,12 @@ void Connection::processMessage(QString header, QVector<QString> params) {
             emit createMap(size);
 
         }
-
+    } else if (header == "CONNECT") {
+        if (params.length() == 1) {
+            if (params[0] == "SUCCESS") {
+                emit connected();
+            }
+        }
     } else if (header == "ROBOT") {
         if (params.length() > 0 && params.length() % 4 == 0) {
             for (int i = 0; i < params.length(); i+=4) {
