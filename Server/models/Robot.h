@@ -12,6 +12,11 @@ public:
    explicit Robot(QObject *parent = nullptr);
    Robot(int row, int col, int direction);
 
+   int getRow();
+   int getCol();
+   int getDirection();
+   int getBattery();
+
 private:
     int _id;
     int _row;

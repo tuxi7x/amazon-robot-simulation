@@ -10,3 +10,15 @@ DropOffPoint::DropOffPoint(int row, int col, QString product) {
     _col = col;
     _product = product;
 }
+
+int DropOffPoint::getRow() {
+    return _row;
+}
+
+int DropOffPoint::getCol() {
+    return _col;
+}
+
+QString DropOffPoint::getProduct() {
+    return _product;
+}

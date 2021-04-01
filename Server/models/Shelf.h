@@ -12,6 +12,9 @@ public:
     explicit Shelf(QObject *parent = nullptr);
     Shelf(int row, int col);
 
+    int getRow();
+    int getCol();
+
 private:
     int _row;
     int _col;

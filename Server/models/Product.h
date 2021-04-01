@@ -10,6 +10,9 @@ public:
     explicit Product(QObject *parent = nullptr);
     Product(QString name, int shelf);
 
+    int getShelf();
+    QString getName();
+
 private:
     int _shelf;
     QString _name;

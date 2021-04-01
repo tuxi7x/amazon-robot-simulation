@@ -52,3 +52,37 @@ void Controller::pauseSimulation() {
 void Controller::resumeSimulation() {
 
 }
+
+int Controller::getSize() {
+    return _size;
+}
+
+int Controller::getSpeed() {
+    return _speed;
+}
+
+QVector<Robot*> Controller::getRobots() {
+    return _robots;
+}
+
+QVector<Docker*> Controller::getDockers() {
+    return _dockers;
+}
+
+QVector<DropOffPoint*> Controller::getDropOffPoints() {
+    return _dropOffPoints;
+}
+
+QVector<Shelf*> Controller::getShelves() {
+    return _shelves;
+}
+
+QVector<QString> Controller::getOrders() {
+    return _orders;
+}
+
+QVector<Product*> Controller::getProducts() {
+    return _products;
+}
+
+

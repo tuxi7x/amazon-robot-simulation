@@ -26,6 +26,10 @@ private:
     QVector<QTcpSocket*> _connections;
     void processMessage(QString header, QVector<QString> params, QTcpSocket* connection);
     void sendMessageToAll(QString header, QVector<QString> params);
+    void sendCurrentStateToAll();
+    void sendCurrentStateToOne(QTcpSocket* client);
+    void sendMessageToOne(QTcpSocket* client, QString header, QVector<QString> params);
+
 
     Controller* _controller;
 

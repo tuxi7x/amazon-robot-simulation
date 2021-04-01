@@ -119,11 +119,16 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
 
 
     writeToServer("ORDER", orderParams);
+
+    QObject::connect(_socket, SIGNAL(readyRead()), this, SLOT(readFromServer()));
+    QObject::connect(_socket, SIGNAL(connected()), this, SLOT(onConnect()));
 }
 
 void Connection::readFromServer() {
 
     QString str = QString::fromUtf8(_socket->readAll());
+
+    qInfo() << str;
 
 
     QVector<QString> allmsg = str.split("END");
@@ -161,9 +166,74 @@ void Connection::handleError() {
 }
 
 void Connection::processMessage(QString header, QVector<QString> params) {
-    qDebug() << header << params;
+    if (header == "SIZE") {
+        // params[0]: size
+        if (params.length() == 1) {
+            int size = params[0].toInt();
+            emit createMap(size);
+
+        }
+
+    } else if (header == "ROBOT") {
+        if (params.length() > 0 && params.length() % 4 == 0) {
+            for (int i = 0; i < params.length(); i+=4) {
+                /*
+                 * params[i]: row
+                 * params[i+1]: col
+                 * params[i+2]: orientation
+                 */
+                emit fieldToRobot(params[i].toInt(), params[i+1].toInt(), params[i+2].toInt(), params[i+3].toInt());
+            }
+
+        }
+    } else if (header == "DOCKER" ) {
+        if (params.length() > 0 && params.length() % 2 == 0) {
+            for (int i = 0; i < params.length(); i+= 2) {
+                /*
+                 * params[i]: row
+                 * params[i+1]: col
+                 */
+                emit fieldToDocker(params[i].toInt(), params[i+1].toInt());
+            }
+
+        }
+    } else if (header == "SHELF") {
+        if (params.length() > 0 && params.length() % 2 == 0) {
+            for (int i = 0; i < params.length(); i+=2) {
+                /*
+                 * params[i]: row
+                 * params[i+1]: col
+                 */
+                emit fieldToShelf(params[i].toInt(), params[i+1].toInt());
+            }
+
+        }
+    } else if (header == "PRODUCT") {
+        if (params.length() > 0 && params.length() % 2 == 0) {
+            for (int i = 0; i < params.length(); i+=2) {
+                /*
+                 * params[i]: name
+                 * params[i+1]: shelf
+                 */
+                //->addProduct(params[i], params[i].toInt());
+            }
+
+        }
+    } else if (header == "DROPOFF") {
+        if (params.length() > 0 && params.length() % 3 == 0) {
+            for (int i = 0; i < params.length(); i+=3) {
+                /*
+                 * params[i]: row
+                 * params[i+1]: col
+                 * params[i+2]: product
+                 */
+                emit fieldToDropOff(params[i].toInt(), params[i+1].toInt());
+            }
+
+        }
+    }
 }
 
 void Connection::onConnect() {
-    writeToServer("HELLOALL", QVector<QString>("hello all!"));
+
 }

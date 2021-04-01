@@ -62,6 +62,7 @@ SimulationWindow::SimulationWindow(Connection *connection, QWidget *parent) : QM
     connect(_connection,&Connection::fieldToEmpty, this, &SimulationWindow::onFieldToEmptySignal);
     connect(_connection,&Connection::fieldToShelf, this,  &SimulationWindow::onFieldToShelfSignal);
     connect(_connection,&Connection::fieldToDropOff, this,  &SimulationWindow::onFieldToDropOffSignal);
+    connect(_connection,&Connection::fieldToDocker, this, &SimulationWindow::onFieldtoDockerSignal);
     connect(_connection, &Connection::gameSpeedChanged, this, &SimulationWindow::onGameSpeedChangedSignal);
     connect(_connection, &Connection::pauseStateChanged, this, &SimulationWindow::onPauseStateChangedSignal);
 
@@ -76,7 +77,7 @@ SimulationWindow::SimulationWindow(Connection *connection, QWidget *parent) : QM
     void pauseStateChanged (bool paused);
 
 
-    onCreateMapSignal(6); //Just for testing the UI
+    //onCreateMapSignal(6); //Just for testing the UI
 
 }
 

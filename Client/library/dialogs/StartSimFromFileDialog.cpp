@@ -80,6 +80,7 @@ void StartSimFromFileDialog::connectButtonPressed()
 
     if (_file != nullptr) {
         _connection->connectAndSend(ip,port,_file);
+        emit accept();
     }
 }
 

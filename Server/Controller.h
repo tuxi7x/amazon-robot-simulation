@@ -28,6 +28,15 @@ public:
     void setSize(int size);
     void setSpeed(int speed);
 
+    QVector<Robot*> getRobots();
+    QVector<Docker*> getDockers();
+    QVector<DropOffPoint*> getDropOffPoints();
+    QVector<Shelf*> getShelves();
+    QVector<Product*> getProducts();
+    QVector<QString> getOrders();
+    int getSize();
+    int getSpeed();
+
     void startSimulation();
     void stopSimulation();
     void pauseSimulation();

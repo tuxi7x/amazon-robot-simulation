@@ -9,8 +9,8 @@ void EventManager::addConnection(QTcpSocket *connection) {
     _connections.append(connection);
     connect(connection, &QAbstractSocket::disconnected, connection, &QObject::deleteLater);
     connect(connection, SIGNAL(readyRead()), this, SLOT(ReadyRead()));
-    sendMessageToAll("CONNECT", QVector<QString>("SUCCESS"));
-    //sendCurrentState
+    sendMessageToOne(connection, "CONNECT", QVector<QString>("SUCCESS"));
+
 }
 
 void EventManager::ReadyRead(){
@@ -120,6 +120,11 @@ void EventManager::processMessage(QString header, QVector<QString> params, QTcpS
             }
         }
 
+        if (_controller->getRobots().size() > 0 && _controller->getDockers().size() > 0 && _controller->getDropOffPoints().size() > 0 && _controller->getProducts().size() > 0 && _controller->getShelves().size() > 0 && _controller->getSize() > -1) {
+            _running = true;
+            _controller->startSimulation();
+            sendCurrentStateToAll();
+        }
     } else {
         if (header == "STOP") {
             _controller->stopSimulation();
@@ -151,4 +156,140 @@ void EventManager::sendMessageToAll(QString header, QVector<QString> params) {
     foreach (QTcpSocket* connection, _connections) {
         connection->write(msg.toUtf8());
     }
+}
+
+void EventManager::sendMessageToOne(QTcpSocket* client, QString header, QVector<QString> params) {
+    QString msg = header + " ";
+    for (int i=0; i<params.length(); i++) {
+        msg += params[i] + " ";
+
+    }
+
+    msg += "END";
+
+    client->write(msg.toUtf8());
+}
+
+void EventManager::sendCurrentStateToOne(QTcpSocket* client) {
+    int size = _controller->getSize();
+    int speed = _controller->getSpeed();
+    QVector<Robot*> robots = _controller->getRobots();
+    QVector<Docker*> dockers = _controller->getDockers();
+    QVector<DropOffPoint*> dropoffs = _controller->getDropOffPoints();
+    QVector<Shelf*> shelves = _controller->getShelves();
+    QVector<QString> orders = _controller->getOrders();
+    QVector<Product*> products = _controller->getProducts();
+
+    // Send size
+    sendMessageToOne(client, "SIZE", QVector<QString>(QString::number(size)));
+    // Send speed
+    sendMessageToOne(client, "SPEED", QVector<QString>(QString::number(speed)));
+
+    // Send robots
+    QVector<QString> robotParams;
+    for (int i=0; i<robots.size(); i++) {
+        robotParams.append(QString::number(robots[i]->getRow()));
+        robotParams.append(QString::number(robots[i]->getCol()));
+        robotParams.append(QString::number(robots[i]->getDirection()));
+        robotParams.append(QString::number(robots[i]->getBattery()));
+    }
+    sendMessageToOne(client, "ROBOT", robotParams);
+
+    // Send dockers
+    QVector<QString> dockerParams;
+    for (int i=0; i<dockers.size(); i++) {
+        dockerParams.append(QString::number(dockers[i]->getRow()));
+        dockerParams.append(QString::number(dockers[i]->getCol()));
+    }
+    sendMessageToOne(client, "DOCKER", dockerParams);
+
+    // Send dropoffs
+    QVector<QString> dropoffParams;
+    for (int i=0; i<dropoffs.size(); i++) {
+        dropoffParams.append(QString::number(dropoffs[i]->getRow()));
+        dropoffParams.append(QString::number(dropoffs[i]->getCol()));
+        dropoffParams.append(dropoffs[i]->getProduct());
+    }
+    sendMessageToOne(client, "DROPOFF", dropoffParams);
+
+    // Send shelves
+    QVector<QString> shelfParams;
+    for (int i=0; i<shelves.size(); i++) {
+        shelfParams.append(QString::number(shelves[i]->getRow()));
+        shelfParams.append(QString::number(shelves[i]->getCol()));
+    }
+    sendMessageToOne(client, "SHELF", shelfParams);
+
+    // Send orders
+    sendMessageToOne(client, "ORDER", orders);
+
+    // Send products
+    QVector<QString> productParams;
+    for (int i=0; i<products.size(); i++) {
+        productParams.append(products[i]->getName());
+        productParams.append(QString::number(products[i]->getShelf()));
+    }
+    sendMessageToOne(client, "PRODUCTS", productParams);
+}
+
+void EventManager::sendCurrentStateToAll() {
+    int size = _controller->getSize();
+    int speed = _controller->getSpeed();
+    QVector<Robot*> robots = _controller->getRobots();
+    QVector<Docker*> dockers = _controller->getDockers();
+    QVector<DropOffPoint*> dropoffs = _controller->getDropOffPoints();
+    QVector<Shelf*> shelves = _controller->getShelves();
+    QVector<QString> orders = _controller->getOrders();
+    QVector<Product*> products = _controller->getProducts();
+
+    // Send size
+    sendMessageToAll("SIZE", QVector<QString>(QString::number(size)));
+    // Send speed
+    sendMessageToAll("SPEED", QVector<QString>(QString::number(speed)));
+
+    // Send robots
+    QVector<QString> robotParams;
+    for (int i=0; i<robots.size(); i++) {
+        robotParams.append(QString::number(robots[i]->getRow()));
+        robotParams.append(QString::number(robots[i]->getCol()));
+        robotParams.append(QString::number(robots[i]->getDirection()));
+        robotParams.append(QString::number(robots[i]->getBattery()));
+    }
+    sendMessageToAll("ROBOT", robotParams);
+
+    // Send dockers
+    QVector<QString> dockerParams;
+    for (int i=0; i<dockers.size(); i++) {
+        dockerParams.append(QString::number(dockers[i]->getRow()));
+        dockerParams.append(QString::number(dockers[i]->getCol()));
+    }
+    sendMessageToAll("DOCKER", dockerParams);
+
+    // Send dropoffs
+    QVector<QString> dropoffParams;
+    for (int i=0; i<dropoffs.size(); i++) {
+        dropoffParams.append(QString::number(dropoffs[i]->getRow()));
+        dropoffParams.append(QString::number(dropoffs[i]->getCol()));
+        dropoffParams.append(dropoffs[i]->getProduct());
+    }
+    sendMessageToAll("DROPOFF", dropoffParams);
+
+    // Send shelves
+    QVector<QString> shelfParams;
+    for (int i=0; i<shelves.size(); i++) {
+        shelfParams.append(QString::number(shelves[i]->getRow()));
+        shelfParams.append(QString::number(shelves[i]->getCol()));
+    }
+    sendMessageToAll("SHELF", shelfParams);
+
+    // Send orders
+    sendMessageToAll("ORDER", orders);
+
+    // Send products
+    QVector<QString> productParams;
+    for (int i=0; i<products.size(); i++) {
+        productParams.append(products[i]->getName());
+        productParams.append(QString::number(products[i]->getShelf()));
+    }
+    sendMessageToAll("PRODUCTS", productParams);
 }

@@ -10,6 +10,8 @@ class Docker : public QObject
 public:
     explicit Docker(QObject *parent = nullptr);
     Docker(int row, int col);
+    int getRow();
+    int getCol();
 private:
     int _row;
     int _col;

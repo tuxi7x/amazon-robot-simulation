@@ -11,3 +11,11 @@ Product::Product(QString name, int shelf)
     _shelf = shelf;
 }
 
+
+int Product::getShelf() {
+    return _shelf;
+}
+
+QString Product::getName() {
+    return _name;
+}

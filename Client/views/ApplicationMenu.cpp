@@ -76,7 +76,7 @@ void ApplicationMenu::openHelpDialog() {
 void ApplicationMenu::openConnectDialog() {
     _opacityEffect->setEnabled(true);
     if(_connectDialog->exec() == QDialog::Accepted) {
-        emit connectedToSimulation(this->geometry()); //Pass connection as a parameter when its implemented!
+        emit connectedToSimulation(this->geometry());
     }
     else _opacityEffect->setEnabled(false);
 }
@@ -85,7 +85,7 @@ void ApplicationMenu::openStartSimFromFileDialog()
 {
     _opacityEffect->setEnabled(true);
     if(_startSimFromFileDialog->exec() == QDialog::Accepted) {
-
+        emit connectedToSimulation(this->geometry());
     }
     else _opacityEffect->setEnabled(false);
 }
