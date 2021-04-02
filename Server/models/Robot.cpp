@@ -32,3 +32,25 @@ int Robot::getDirection() {
 int Robot::getBattery() {
     return _battery;
 }
+
+void Robot::pushToPath(PathNode *x)
+{
+    _robotPath.push(x);
+}
+
+bool Robot::pathIsEmpty()
+{
+    return _robotPath.isEmpty();
+}
+
+void Robot::stepOnPath()
+{
+    if(pathIsEmpty()) return;
+    PathNode* next = _robotPath.pop();
+    _row = next->getRow();
+    _col = next->getCol();
+    _direction = next->getOrientation();
+    //Maybe reduce battery here?
+}
+
+

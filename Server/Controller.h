@@ -10,6 +10,8 @@
 #include "models/Shelf.h"
 #include <QTimer>
 #include <QDebug>
+#include <QSet>
+#include <models/PathNode.h>
 
 
 
@@ -49,16 +51,26 @@ private:
     QVector<Shelf*> _shelves;
     QVector<Product*> _products;
     QVector<QString> _orders;
+    //The timetable is used by the pathfinding algorithm to determine whether a certain node is free at a given time
+    QSet<PathNode> _timeTable;
     int _size;
     QTimer* _timer;
     int _elapsedTime;
-
     int _speed;
 
+    //Tries to find a path with a robot to a certain destination. Adds the route to the route stack of the robot. Returns true if there was a path
+    bool planPathForRobot (Robot* r, int destinationRow, int destinationCol);
+    int calculateHeuristicValue(int startX, int startY, int goalX, int goalY);
+    int calculateGValue (int startX, int startY, int goalX, int goalY, int startTime, int goalTime);
+    bool fieldIsEmpty (int row, int col);
+    int nextOrientation (int orientation);
+    int prevOrientation (int orientation);
+
 private slots:
-    void elapsedTime();
+    void tickHandler();
 
 signals:
+    void updateState();
 
 
 };

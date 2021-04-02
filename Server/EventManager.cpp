@@ -3,6 +3,7 @@
 EventManager::EventManager(Controller* controller, QObject *parent) : QObject(parent), _controller(controller)
 {
     _running = false;
+    connect(_controller,&Controller::updateState, this, &EventManager::sendCurrentStateToAll);
 }
 
 void EventManager::addConnection(QTcpSocket *connection) {
