@@ -3,6 +3,7 @@
 Controller::Controller(QObject *parent) : QObject(parent)
 {
     _speed = 1;
+    _paused = false;
     _elapsedTime = 0;
     _timer = new QTimer(this);
     _timer->start(1000);
@@ -52,11 +53,17 @@ void Controller::stopSimulation() {
 void Controller::pauseSimulation() {
 
     _timer->stop();
+    _paused = true;
 }
 
 void Controller::resumeSimulation() {
-
     _timer->start();
+    _paused = false;
+}
+
+bool Controller::getPaused()
+{
+    return _paused;
 }
 
 void Controller::elapsedTime()

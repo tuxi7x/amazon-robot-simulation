@@ -36,6 +36,7 @@ public:
     QVector<QString> getOrders();
     int getSize();
     int getSpeed();
+    bool getPaused();
 
     void startSimulation();
     void stopSimulation();
@@ -52,7 +53,7 @@ private:
     int _size;
     QTimer* _timer;
     int _elapsedTime;
-
+    bool _paused;
     int _speed;
 
 private slots:

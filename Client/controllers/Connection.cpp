@@ -237,7 +237,25 @@ void Connection::processMessage(QString header, QVector<QString> params) {
             }
 
         }
+    } else if (header == "PAUSED") {
+        emit pauseStateChanged(params[0] == "1" ? true : false);
     }
+    else if (header == "RESUMED") {
+            emit pauseStateChanged(params[0] == "1" ? true : false);
+    }
+
+}
+
+void Connection::pauseState()
+{
+    QVector<QString> args;
+    writeToServer("PAUSE", args);
+}
+
+void Connection::resumeState()
+{
+    QVector<QString> args;
+    writeToServer("RESUME", args);
 }
 
 void Connection::onConnect() {

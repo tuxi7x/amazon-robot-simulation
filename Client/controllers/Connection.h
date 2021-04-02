@@ -26,6 +26,9 @@ public:
     void writeToServer(QString header, QVector<QString> params);
     void processMessage(QString header, QVector<QString> params);
 
+    void pauseState();
+    void resumeState();
+
 private:
     QTcpSocket* _socket;
 

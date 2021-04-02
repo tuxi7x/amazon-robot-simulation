@@ -37,7 +37,6 @@ void EventManager::ReadyRead(){
 void EventManager::processMessage(QString header, QVector<QString> params, QTcpSocket* sender) {
 
 
-
     if (header == "CLOSE") {
         sender->disconnectFromHost();
         sender = nullptr;
@@ -48,8 +47,14 @@ void EventManager::processMessage(QString header, QVector<QString> params, QTcpS
                _controller->addOrder(params[i]);
            }
         }
-    }
+    } else if (header == "PAUSE") {
+    _controller->pauseSimulation();
+    sendMessageToAll("PAUSED", QVector<QString>(QString::number(_controller->getPaused())));
+ } else if (header == "RESUME") {
+    _controller->resumeSimulation();
+    sendMessageToAll("RESUMED", QVector<QString>(QString::number(_controller->getPaused())));
 
+}
     if (!_running) {
 
         if (header == "SIZE") {
@@ -131,8 +136,10 @@ void EventManager::processMessage(QString header, QVector<QString> params, QTcpS
             _running = false;
         } else if (header == "PAUSE") {
             _controller->pauseSimulation();
-        } else if (header == "RESUME") {
+            sendMessageToAll("PAUSED", QVector<QString>(QString::number(_controller->getPaused())));
+         } else if (header == "RESUME") {
             _controller->resumeSimulation();
+            sendMessageToAll("RESUMED", QVector<QString>(QString::number(_controller->getPaused())));
         } else if (header == "SPEED") {
             if (params.length() == 1) {
                 int speed = params[0].toInt();

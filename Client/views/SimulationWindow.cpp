@@ -65,8 +65,9 @@ SimulationWindow::SimulationWindow(Connection *connection, QWidget *parent) : QM
     connect(_connection,&Connection::fieldToDocker, this, &SimulationWindow::onFieldtoDockerSignal);
     connect(_connection, &Connection::gameSpeedChanged, this, &SimulationWindow::onGameSpeedChangedSignal);
     connect(_connection, &Connection::pauseStateChanged, this, &SimulationWindow::onPauseStateChangedSignal);
+    connect(_pauseResumeButton, SIGNAL(clicked()), this, SLOT(onPauseResumeButtonClicked()));
 
-
+    _paused = false;
     void createMap (int size);
     //Orientations: 0 = up, 1 = right, 2 = down, 3 = left
     void fieldToRobot (int row, int col, int orientation, int battery);
@@ -75,6 +76,7 @@ SimulationWindow::SimulationWindow(Connection *connection, QWidget *parent) : QM
     void fieldToDropOffEvent (int row, int col);
     void gameSpeedChanged (int newSpeed);
     void pauseStateChanged (bool paused);
+
 
 
     //onCreateMapSignal(6); //Just for testing the UI
@@ -163,4 +165,14 @@ void SimulationWindow::onGameSpeedChangedSignal(int newSpeed)
 void SimulationWindow::onPauseStateChangedSignal(bool paused)
 {
     paused ? _pauseResumeButton->setText("Folytatás") : _pauseResumeButton->setText("Megállítás");
+}
+void SimulationWindow::onPauseResumeButtonClicked()
+{
+    if(_paused) {
+        _connection->resumeState();
+        _paused = false;
+    } else {
+        _connection->pauseState();
+        _paused = true;
+    }
 }

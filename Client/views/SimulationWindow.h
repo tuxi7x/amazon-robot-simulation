@@ -34,7 +34,10 @@ private:
     QPushButton* _pauseResumeButton;
     QPushButton* _finishSimButton;
     QPushButton* _disconnectButton;
+    bool _paused;
     void createMap();
+
+
 
 private slots:
     void onCreateMapSignal (int size);
@@ -46,6 +49,7 @@ private slots:
     void onFieldtoDockerSignal (int row, int col);
     void onGameSpeedChangedSignal (int newSpeed);
     void onPauseStateChangedSignal (bool paused);
+    void onPauseResumeButtonClicked();
 
 };
 
