@@ -3,12 +3,14 @@
 Connection::Connection(QObject *parent) : QObject(parent)
 {
     _socket = new QTcpSocket();
-
+    _error = false;
 }
 
 
 void Connection::connect(QString host, int port) {
     _socket->connectToHost(host, port);
+
+    writeToServer("MODE", QVector<QString>("RUNNING"));
 
     QObject::connect(_socket, SIGNAL(errorOccurred(QAbstractSocket::SocketError)), this, SLOT(handleError(QAbstractSocket::SocketError)));
     QObject::connect(_socket, SIGNAL(readyRead()), this, SLOT(readFromServer()));
@@ -17,6 +19,7 @@ void Connection::connect(QString host, int port) {
 
 void Connection::connectAndSend(QString host, int port, QFile* file) {
     _socket->connectToHost(host, port);
+    writeToServer("MODE", QVector<QString>("FROMFILE"));
 
     if (!file->open(QIODevice::ReadOnly)) {
             qWarning("Couldn't open save file.");
@@ -177,9 +180,12 @@ void Connection::processMessage(QString header, QVector<QString> params) {
     } else if (header == "CONNECT") {
         if (params.length() == 1) {
             if (params[0] == "SUCCESS") {
+                _error = false;
                 emit connected();
             }
         }
+    } else if (header == "FAIL") {
+        _error = true;
     } else if (header == "ROBOT") {
         if (params.length() > 0 && params.length() % 4 == 0) {
             for (int i = 0; i < params.length(); i+=4) {
@@ -260,4 +266,8 @@ void Connection::resumeState()
 
 void Connection::onConnect() {
 
+}
+
+bool Connection::isSuccessful() {
+    return !_error;
 }
