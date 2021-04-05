@@ -40,6 +40,15 @@ void EventManager::processMessage(QString header, QVector<QString> params, QTcpS
     if (header == "CLOSE") {
         sender->disconnectFromHost();
         sender = nullptr;
+    } else if (header == "MODE") {
+        QString param = params[0];
+        if (param == "RUNNING" && _running == false) {
+            sendMessageToOne(sender, "FAIL", QVector<QString>("NOT", "RUNNING"));
+            sender->disconnectFromHost();
+        } else if (param == "FROMFILE"&& _running == true) {
+            sendMessageToOne(sender, "FAIL", QVector<QString>("ALREADY", "RUNNING"));
+            sender->disconnectFromHost();
+        }
     } else if (header == "ORDER") {
         if (params.length() > 0) {
            for (int i=0; i<params.length(); i++) {
@@ -48,13 +57,13 @@ void EventManager::processMessage(QString header, QVector<QString> params, QTcpS
            }
         }
     } else if (header == "PAUSE") {
-    _controller->pauseSimulation();
-    sendMessageToAll("PAUSED", QVector<QString>(QString::number(_controller->getPaused())));
- } else if (header == "RESUME") {
-    _controller->resumeSimulation();
-    sendMessageToAll("RESUMED", QVector<QString>(QString::number(_controller->getPaused())));
+        _controller->pauseSimulation();
+        sendMessageToAll("PAUSED", QVector<QString>(QString::number(_controller->getPaused())));
+    } else if (header == "RESUME") {
+        _controller->resumeSimulation();
+        sendMessageToAll("RESUMED", QVector<QString>(QString::number(_controller->getPaused())));
 
-}
+    }
     if (!_running) {
 
         if (header == "SIZE") {
