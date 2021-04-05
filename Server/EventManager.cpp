@@ -7,7 +7,7 @@ EventManager::EventManager(Controller* controller, QObject *parent) : QObject(pa
 
 void EventManager::addConnection(QTcpSocket *connection) {
     _connections.append(connection);
-    connect(connection, &QAbstractSocket::disconnected, connection, &QObject::deleteLater);
+    connect(connection, &QAbstractSocket::disconnected, this, &EventManager::destroyDisconnectedConnection);
     connect(connection, SIGNAL(readyRead()), this, SLOT(ReadyRead()));
     sendMessageToOne(connection, "CONNECT", QVector<QString>("SUCCESS"));
 
@@ -308,4 +308,10 @@ void EventManager::sendCurrentStateToAll() {
         productParams.append(QString::number(products[i]->getShelf()));
     }
     sendMessageToAll("PRODUCTS", productParams);
+}
+
+void EventManager::destroyDisconnectedConnection() {
+    QAbstractSocket* conn = qobject_cast<QAbstractSocket*>(sender());
+
+    _connections.removeOne(conn);
 }
