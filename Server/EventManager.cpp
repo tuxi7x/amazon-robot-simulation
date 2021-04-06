@@ -103,7 +103,7 @@ void EventManager::processMessage(QString header, QVector<QString> params, QTcpS
                      * params[i]: name
                      * params[i+1]: shelf
                      */
-                    _controller->addProduct(params[i], params[i].toInt());
+                    _controller->addProduct(params[i], params[i+1].toInt());
                 }
 
             }

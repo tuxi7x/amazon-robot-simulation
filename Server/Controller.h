@@ -62,9 +62,15 @@ private:
     bool planPathForRobot (Robot* r, int destinationRow, int destinationCol);
     int calculateHeuristicValue(int startX, int startY, int goalX, int goalY);
     int calculateGValue (int startX, int startY, int goalX, int goalY, int startTime, int goalTime);
-    bool fieldIsEmpty (int row, int col);
+    bool fieldIsValid (int row, int col, Robot* r, int goalRow, int goalCol);
     int nextOrientation (int orientation);
     int prevOrientation (int orientation);
+    Shelf* getShelfWithPosition (int row, int col);
+    DropOffPoint* getDropOffPointForProduct (QString product);
+    Docker* getNearestDocker (Robot* r);
+    void removeProduct (Product* p);
+    Product* getProductWithName (QString product);
+    Robot* getRobotNearestToShelf (Shelf* s);
 
 private slots:
     void tickHandler();
