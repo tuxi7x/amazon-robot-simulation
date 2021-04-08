@@ -109,7 +109,12 @@ SimulationWindow::~SimulationWindow()
 
 void SimulationWindow::onCreateMapSignal(int size)
 {
-
+    while(!_mapGrid->isEmpty()) {
+        QLayoutItem* l = _mapGrid->takeAt(0);
+        delete l->widget();
+        delete l;
+    }
+    _buttons.clear();
     for(int i=0; i<size;i++) {
         QVector<QPushButton*> v;
         for(int j=0;j<size;j++) {
@@ -127,8 +132,16 @@ void SimulationWindow::onCreateMapSignal(int size)
 void SimulationWindow::onFieldToRobotSignal(int row, int col, int orientation, int battery)
 {
     //TODO orientation
-    _buttons[row][col]->setStyleSheet("background-color: #ef476e; color:white; font-size: 30px; border: 1px solid black;");
-    _buttons[row][col]->setText("R");
+    if(orientation == 0)  {
+        _buttons[row][col]->setStyleSheet("border-image:url(:/Resources/resources/robot_up.png); background-color: #ef476e; color:white; font-size: 30px; border: 1px solid black;");
+    } else if(orientation == 1) {
+         _buttons[row][col]->setStyleSheet("border-image:url(:/Resources/resources/robot_right.png); background-color: #ef476e; color:white; font-size: 30px; border: 1px solid black;");
+    } else if(orientation == 2) {
+         _buttons[row][col]->setStyleSheet("border-image:url(:/Resources/resources/robot_down.png); background-color: #ef476e; color:white; font-size: 30px; border: 1px solid black;");
+    } else if (orientation == 3) {
+         _buttons[row][col]->setStyleSheet("border-image:url(:/Resources/resources/robot_left.png); background-color: #ef476e; color:white; font-size: 30px; border: 1px solid black;");
+    }
+
 }
 
 void SimulationWindow::onFieldToEmptySignal(int row, int col)

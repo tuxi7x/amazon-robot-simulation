@@ -19,3 +19,4 @@ int Product::getShelf() {
 QString Product::getName() {
     return _name;
 }
+

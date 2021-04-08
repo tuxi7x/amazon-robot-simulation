@@ -37,6 +37,8 @@ set(PROJECT_SOURCES
     models/Docker.h
     models/Product.cpp
     models/Product.h
+    models/PathNode.cpp
+    models/PathNode.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

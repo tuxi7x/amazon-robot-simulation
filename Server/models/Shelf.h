@@ -14,12 +14,21 @@ public:
 
     int getRow();
     int getCol();
+    int getOriginalRow() const;
+    int getOriginalCol() const;
+    void setRow(int row);
+    void setCol(int col);
+
+    bool getIsAvaliable() const;
+    void setIsAvaliable(bool isAvaliable);
 
 private:
     int _row;
     int _col;
-    QVector<Product> _products;
-    bool _isMoving;
+    int _originalRow;
+    int _originalCol;
+    bool _isAvaliable;
+
 
 signals:
 
