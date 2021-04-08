@@ -44,10 +44,10 @@ void EventManager::processMessage(QString header, QVector<QString> params, QTcpS
     } else if (header == "MODE") {
         QString param = params[0];
         if (param == "RUNNING" && _running == false) {
-            sendMessageToOne(sender, "FAIL", QVector<QString>("NOT", "RUNNING"));
+            sendMessageToOne(sender, "FAIL", QVector<QString>{"NOT", "RUNNING"});
             sender->disconnectFromHost();
         } else if (param == "FROMFILE"&& _running == true) {
-            sendMessageToOne(sender, "FAIL", QVector<QString>("ALREADY", "RUNNING"));
+            sendMessageToOne(sender, "FAIL", QVector<QString>{"ALREADY", "RUNNING"});
             sender->disconnectFromHost();
         }
     } else if (header == "ORDER") {
