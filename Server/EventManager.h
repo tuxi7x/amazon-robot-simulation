@@ -37,6 +37,7 @@ private:
 
 public slots:
     void ReadyRead();
+    void destroyDisconnectedConnection();
 
 };
 

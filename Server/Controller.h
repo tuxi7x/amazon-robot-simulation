@@ -38,6 +38,7 @@ public:
     QVector<QString> getOrders();
     int getSize();
     int getSpeed();
+    bool getPaused();
 
     void startSimulation();
     void stopSimulation();
@@ -56,6 +57,7 @@ private:
     int _size;
     QTimer* _timer;
     int _elapsedTime;
+    bool _paused;
     int _speed;
 
     //Tries to find a path with a robot to a certain destination. Adds the route to the route stack of the robot. Returns true if there was a path

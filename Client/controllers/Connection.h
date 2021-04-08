@@ -25,9 +25,14 @@ public:
 
     void writeToServer(QString header, QVector<QString> params);
     void processMessage(QString header, QVector<QString> params);
+    bool isSuccessful();
+
+    void pauseState();
+    void resumeState();
 
 private:
     QTcpSocket* _socket;
+    bool _error;
 
 private slots:
     void readFromServer();
