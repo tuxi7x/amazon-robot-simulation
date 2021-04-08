@@ -19,15 +19,15 @@ public:
     void setRow(int row);
     void setCol(int col);
 
-    bool getIsAvaliable() const;
-    void setIsAvaliable(bool isAvaliable);
+    bool getIsAvailable() const;
+    void setIsAvailable(bool isAvailable);
 
 private:
     int _row;
     int _col;
     int _originalRow;
     int _originalCol;
-    bool _isAvaliable;
+    bool _isAvailable;
 
 
 signals:

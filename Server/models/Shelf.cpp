@@ -11,7 +11,7 @@ Shelf::Shelf(int row, int col) {
     _col = col;
     _originalRow = row;
     _originalCol = col;
-    _isAvaliable = true;
+    _isAvailable = true;
 }
 
 int Shelf::getRow() {
@@ -42,13 +42,13 @@ void Shelf::setCol(int col)
     _col = col;
 }
 
-bool Shelf::getIsAvaliable() const
+bool Shelf::getIsAvailable() const
 {
-    return _isAvaliable;
+    return _isAvailable;
 }
 
-void Shelf::setIsAvaliable(bool isAvaliable)
+void Shelf::setIsAvailable(bool isAvailable)
 {
-    _isAvaliable = isAvaliable;
+    _isAvailable = isAvailable;
 }
 

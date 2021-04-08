@@ -217,7 +217,7 @@ void Controller::removeProduct(Product *p)
 Product *Controller::getProductWithName(QString product)
 {
     for(Product* p : _products) {
-        if(p->getName() == product && _shelves[p->getShelf()]->getIsAvaliable()) return p;
+        if(p->getName() == product && _shelves[p->getShelf()]->getIsAvailable()) return p;
     }
     return nullptr;
 }
@@ -271,7 +271,7 @@ void Controller::tickHandler()
                     r->setState(TAKINGSHELFBACK);
                 }
             } else if (r->getState() == TAKINGSHELFBACK) {
-                r->getCurrentShelf()->setIsAvaliable(true);
+                r->getCurrentShelf()->setIsAvailable(true);
                 r->setCurrentShelf(nullptr);
                 if(r->getBattery() <= r->getMaxBattery()/2) {
                     Docker* d = getNearestDocker(r);
@@ -301,7 +301,7 @@ void Controller::tickHandler()
         Robot* r = getRobotNearestToShelf(s);
         if(r == nullptr) continue;
         if(planPathForRobot(r,s->getRow(),s->getCol())) {
-            s->setIsAvaliable(false);
+            s->setIsAvailable(false);
             r->setState(GOINGFORSHELF);
             r->setCurrentProduct(p);
             deletable.append(order);
