@@ -52,6 +52,18 @@ void Controller::startSimulation() {
 
 void Controller::stopSimulation() {
 
+    _speed = 1;
+    _paused = false;
+    _elapsedTime = 0;
+    _timer = new QTimer(this);
+    _timer->setInterval(1000);
+    _robots.clear();
+    _dockers.clear();
+    _dropOffPoints.clear();
+    _shelves.clear();
+    _products.clear();
+    _orders.clear();
+    _timeTable.clear();
 }
 
 void Controller::pauseSimulation() {

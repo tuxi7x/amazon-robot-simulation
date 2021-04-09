@@ -23,6 +23,7 @@ public:
 signals:
     void simulationClosed(QRect pos);
 
+
 private:
     QVector<QVector<SimulationButton*>> _buttons;
     Connection* _connection;
@@ -54,6 +55,8 @@ private slots:
     void onPauseStateChangedSignal (bool paused);
     void onPauseResumeButtonClicked();
     void onFieldButtonPressed();
+    void onFinishButtonClicked();
+    void onDisconnectButtonClicked();
 
 };
 

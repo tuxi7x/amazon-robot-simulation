@@ -33,7 +33,9 @@ public:
     bool isSuccessful();
 
     void pauseState();
-    void resumeState();
+    void resumeState();    
+    void finishSimulation();
+    void disconnectSimulation();
     QPair<FieldTypes, QObject*> getField (int row, int col);
     QVector<QString> getProductsOnShelf(int row, int col);
 

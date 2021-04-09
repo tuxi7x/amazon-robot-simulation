@@ -1,4 +1,5 @@
 #include "Connection.h"
+#include "views/SimulationWindow.h"
 
 Connection::Connection(QObject *parent) : QObject(parent)
 {
@@ -315,4 +316,16 @@ QVector<QString> Connection::getProductsOnShelf(int row, int col)
         }
     }
     return l;
+}
+
+void Connection::disconnectSimulation()
+{
+    QVector<QString> args;
+    writeToServer("CLOSE", args);
+}
+
+void Connection::finishSimulation()
+{
+    QVector<QString> args;
+    writeToServer("STOP", args);
 }

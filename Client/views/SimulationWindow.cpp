@@ -54,8 +54,8 @@ SimulationWindow::SimulationWindow(Connection *connection, QWidget *parent) : QM
     _sidePanel->addWidget(_finishSimButton);
     _sidePanel->addWidget(_disconnectButton);
 
-    connect(_disconnectButton,&QPushButton::clicked, this, [&](){emit simulationClosed(this->geometry());});
-    connect(_finishSimButton, &QPushButton::clicked, this, [&](){emit simulationClosed(this->geometry());});
+    connect(_disconnectButton,&QPushButton::clicked, this, &SimulationWindow::onDisconnectButtonClicked);
+    connect(_finishSimButton, &QPushButton::clicked, this, &SimulationWindow::onFinishButtonClicked);
 
     connect(_connection,&Connection::createMap, this, &SimulationWindow::onCreateMapSignal);
     connect(_connection,&Connection::fieldToRobot, this, &SimulationWindow::onFieldToRobotSignal);
@@ -206,5 +206,17 @@ void SimulationWindow::onFieldButtonPressed()
     RobotFieldModel* selectedRobot = qobject_cast<RobotFieldModel*> (res.second);
     RobotInfoDialog robotdialog (selectedRobot->getBattery());
     robotdialog.exec();
-     }
+    }
+}
+
+void SimulationWindow::onFinishButtonClicked()
+{
+    emit simulationClosed(this->geometry());
+    _connection->finishSimulation();
+}
+
+void SimulationWindow::onDisconnectButtonClicked()
+{
+    emit simulationClosed(this->geometry());
+    _connection->disconnectSimulation();
 }

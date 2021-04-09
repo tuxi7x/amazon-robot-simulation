@@ -145,6 +145,9 @@ void EventManager::processMessage(QString header, QVector<QString> params, QTcpS
         if (header == "STOP") {
             _controller->stopSimulation();
             _running = false;
+            sender->disconnectFromHost();
+            sender = nullptr;
+            _connections.clear();
         } else if (header == "PAUSE") {
             _controller->pauseSimulation();
             sendMessageToAll("PAUSED", QVector<QString>(QString::number(_controller->getPaused())));
