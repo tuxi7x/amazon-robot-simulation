@@ -5,6 +5,10 @@ RobotFieldModel::RobotFieldModel(int row, int col, int orientation, QObject* par
 
 }
 
+RobotFieldModel::RobotFieldModel(int row, int col, int orientation, int battery, QObject* parent): QObject(parent), _row(row), _col(col), _battery(battery), _orientation(orientation)
+{
+
+}
 
 
 int RobotFieldModel::getRow() const
@@ -37,6 +41,11 @@ void RobotFieldModel::read(const QJsonObject &json) {
 void RobotFieldModel::setOrientation(int orientation)
 {
     _orientation = orientation;
+}
+
+int RobotFieldModel::getBattery()
+{
+    return _battery;
 }
 
 

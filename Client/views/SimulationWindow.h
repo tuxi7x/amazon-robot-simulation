@@ -11,6 +11,7 @@
 #include <QSlider>
 #include <QLabel>
 #include "library/buttons/SimulationButton.h"
+#include "library/dialogs/RobotInfoDialog.h"
 
 class SimulationWindow : public QMainWindow
 {

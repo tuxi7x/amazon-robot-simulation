@@ -204,7 +204,7 @@ void SimulationWindow::onFieldButtonPressed()
             posd.exec();
     }else if (res.first == Connection::Robot) {
     RobotFieldModel* selectedRobot = qobject_cast<RobotFieldModel*> (res.second);
-    // _controller->rotateRobot(selectedRobot);
-    //_gridButtons[selectedRobot->getRow()][selectedRobot->getCol()]->setRobotOrientation(selectedRobot->getOrientation());
-    }
+    RobotInfoDialog robotdialog (selectedRobot->getBattery());
+    robotdialog.exec();
+     }
 }

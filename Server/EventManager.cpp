@@ -273,6 +273,7 @@ void EventManager::sendCurrentStateToAll() {
         robotParams.append(QString::number(robots[i]->getCol()));
         robotParams.append(QString::number(robots[i]->getDirection()));
         robotParams.append(QString::number(robots[i]->getBattery()));
+        //robotParams.append(QString::number(robots[i]->getState()));
     }
     sendMessageToAll("ROBOT", robotParams);
 

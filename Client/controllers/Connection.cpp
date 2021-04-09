@@ -51,7 +51,7 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
             robotParams.append(QString::number(row));
             robotParams.append(QString::number(col));
             robotParams.append(QString::number(orientation));
-            _robots.append(new RobotFieldModel(row,col,0));
+            //_robots.append(new RobotFieldModel(row,col,0));
     }
 
 
@@ -195,13 +195,16 @@ void Connection::processMessage(QString header, QVector<QString> params) {
         _error = true;
     } else if (header == "ROBOT") {
         if (params.length() > 0 && params.length() % 4 == 0) {
+            _robots.clear();
             for (int i = 0; i < params.length(); i+=4) {
                 /*
                  * params[i]: row
                  * params[i+1]: col
                  * params[i+2]: orientation
+                 * params[i+3]: battery
                  */
                 emit fieldToRobot(params[i].toInt(), params[i+1].toInt(), params[i+2].toInt(), params[i+3].toInt());
+                _robots.append(new RobotFieldModel(params[i].toInt(), params[i+1].toInt(), params[i+2].toInt(), params[i+3].toInt()));
             }
 
         }

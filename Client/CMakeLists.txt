@@ -74,6 +74,8 @@ set(PROJECT_SOURCES
         controllers/Connection.h
         library/buttons/SimulationButton.cpp
         library/buttons/SimulationButton.h
+        library/dialogs/RobotInfoDialog.cpp
+        library/dialogs/RobotInfoDialog.h
 
         resources.qrc
 )
