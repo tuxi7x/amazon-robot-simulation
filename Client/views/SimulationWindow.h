@@ -3,12 +3,14 @@
 
 #include <QMainWindow>
 #include "controllers/Connection.h"
+#include "library/dialogs/ProductsOnShelfDialog.h"
 #include <QHBoxLayout>
 #include <QGridLayout>
 #include <QVBoxLayout>
 #include <QPushButton>
 #include <QSlider>
 #include <QLabel>
+#include "library/buttons/SimulationButton.h"
 
 class SimulationWindow : public QMainWindow
 {
@@ -21,7 +23,7 @@ signals:
     void simulationClosed(QRect pos);
 
 private:
-    QVector<QVector<QPushButton*>> _buttons;
+    QVector<QVector<SimulationButton*>> _buttons;
     Connection* _connection;
     QWidget* _centralWidget;
     QHBoxLayout* _mainLayout;
@@ -50,6 +52,7 @@ private slots:
     void onGameSpeedChangedSignal (int newSpeed);
     void onPauseStateChangedSignal (bool paused);
     void onPauseResumeButtonClicked();
+    void onFieldButtonPressed();
 
 };
 

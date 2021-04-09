@@ -13,13 +13,18 @@
 #include <QJsonObject>
 #include <QDebug>
 #include <QAbstractSocket>
+#include "models/DockerFieldModel.h"
+#include "models/DropOffPointFieldModel.h"
+#include "models/ProductModel.h"
+#include "models/RobotFieldModel.h"
+#include "models/ShelfFieldModel.h"
 
 class Connection : public QObject
 {
     Q_OBJECT
 public:
     explicit Connection(QObject *parent = nullptr);
-
+    enum FieldTypes {Empty, Robot, Shelf, Docker, DropOffPoint};
     void connect(QString host, int port);
     void connectAndSend(QString host, int port, QFile* file);
 
@@ -29,16 +34,27 @@ public:
 
     void pauseState();
     void resumeState();
+    QPair<FieldTypes, QObject*> getField (int row, int col);
+    QVector<QString> getProductsOnShelf(int row, int col);
 
 private:
     QTcpSocket* _socket;
     bool _error;
+    int _size;
+    QVector<RobotFieldModel*> _robots;
+    QVector <ShelfFieldModel*> _shelves;
+    QVector <DockerFieldModel*> _dockers;
+    QVector <DropOffPointFieldModel*> _dropOffPoints;
+    QVector <ProductModel*> _products;
+    QVector <QString> _orders;
 
 private slots:
     void readFromServer();
     void onConnect();
 
     void handleError(QAbstractSocket::SocketError);
+
+
 
 signals:
     void createMap (int size);

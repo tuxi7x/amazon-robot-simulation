@@ -118,6 +118,7 @@ void EventManager::processMessage(QString header, QVector<QString> params, QTcpS
                      * params[i+1]: shelf
                      */
                     _controller->addProduct(params[i], params[i+1].toInt());
+
                 }
 
             }
@@ -245,6 +246,7 @@ void EventManager::sendCurrentStateToOne(QTcpSocket* client) {
     for (int i=0; i<products.size(); i++) {
         productParams.append(products[i]->getName());
         productParams.append(QString::number(products[i]->getShelf()));
+        qInfo() << "A termek: " << products[i]->getName();
     }
     sendMessageToOne(client, "PRODUCTS", productParams);
 }
@@ -307,6 +309,7 @@ void EventManager::sendCurrentStateToAll() {
     for (int i=0; i<products.size(); i++) {
         productParams.append(products[i]->getName());
         productParams.append(QString::number(products[i]->getShelf()));
+        qDebug() << "A termek: " << products[i]->getName();
     }
     sendMessageToAll("PRODUCTS", productParams);
 }

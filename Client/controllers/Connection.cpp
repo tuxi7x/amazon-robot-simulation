@@ -33,7 +33,10 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
 
     // Read size and write to server
     QVector<QString> sizeParams;
-    sizeParams.append(QString::number(loadDoc["size"].toInt()));
+    int size = loadDoc["size"].toInt();
+    sizeParams.append(QString::number(size));
+    _size = size;
+
     writeToServer("SIZE", sizeParams);
 
 
@@ -48,6 +51,7 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
             robotParams.append(QString::number(row));
             robotParams.append(QString::number(col));
             robotParams.append(QString::number(orientation));
+            _robots.append(new RobotFieldModel(row,col,0));
     }
 
 
@@ -77,6 +81,7 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
             int col = shelfObject["col"].toInt();
             shelfParams.append(QString::number(row));
             shelfParams.append(QString::number(col));
+            _shelves.append(new ShelfFieldModel(row,col));
     }
 
 
@@ -91,6 +96,7 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
             int shelf = productObject["shelf"].toInt();
             productParams.append(name);
             productParams.append(QString::number(shelf));
+            _products.append(new ProductModel(name, shelf));
     }
 
 
@@ -175,6 +181,7 @@ void Connection::processMessage(QString header, QVector<QString> params) {
         if (params.length() == 1) {
             int size = params[0].toInt();
             emit createMap(size);
+            _size = size;
 
         }
     } else if (header == "CONNECT") {
@@ -220,14 +227,16 @@ void Connection::processMessage(QString header, QVector<QString> params) {
             }
 
         }
-    } else if (header == "PRODUCT") {
+    } else if (header == "PRODUCTS") {
         if (params.length() > 0 && params.length() % 2 == 0) {
+            _products.clear();
             for (int i = 0; i < params.length(); i+=2) {
                 /*
                  * params[i]: name
                  * params[i+1]: shelf
                  */
                 //->addProduct(params[i], params[i].toInt());
+                _products.append(new ProductModel(params[i],params[i+1].toInt()));
             }
 
         }
@@ -270,4 +279,37 @@ void Connection::onConnect() {
 
 bool Connection::isSuccessful() {
     return !_error;
+}
+
+QPair<Connection::FieldTypes, QObject*> Connection::getField(int row, int col)
+{
+    for(int i=0; i<_robots.count();i++) {
+        if(_robots[i]->getRow() == row && _robots[i]->getCol() == col) {
+            return QPair<FieldTypes, QObject*>(Robot, _robots[i]);
+        }
+    }
+
+    for(int i=0; i<_shelves.count();i++) {
+        if(_shelves[i]->getRow() == row && _shelves[i]->getCol() == col) {
+            return QPair<FieldTypes, QObject*>(Shelf, _shelves[i]);
+        }
+    }
+
+    return QPair<FieldTypes,QObject*> (Empty,nullptr);
+}
+
+QVector<QString> Connection::getProductsOnShelf(int row, int col)
+{
+    int i = 0;
+    while (i < _shelves.size() && !(_shelves[i]->getRow() == row && _shelves[i]->getCol() == col)) {
+        i++;
+    }
+    QVector<QString> l;
+
+    for(int j=0; j<_products.size();j++) {
+        if(_products[j]->getShelf() == i) {
+            l.append(_products[j]->getName());
+        }
+    }
+    return l;
 }

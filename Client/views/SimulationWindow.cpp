@@ -116,12 +116,13 @@ void SimulationWindow::onCreateMapSignal(int size)
     }
     _buttons.clear();
     for(int i=0; i<size;i++) {
-        QVector<QPushButton*> v;
+        QVector<SimulationButton*> v;
         for(int j=0;j<size;j++) {
-            QPushButton* btn = new QPushButton();
+            SimulationButton* btn = new SimulationButton(i, j);
             btn->setFixedSize(QSize(630/6,630/6));
             btn->setStyleSheet("background-color: white; color:white; font-size: 30px; border: 1px solid black;");
             btn->setText("");
+            connect(btn, &SimulationButton::clicked, this, &SimulationWindow::onFieldButtonPressed);
             _mapGrid->addWidget(btn,i,j);
             v.append(btn);
         }
@@ -189,5 +190,21 @@ void SimulationWindow::onPauseResumeButtonClicked()
     } else {
         _connection->pauseState();
         _paused = true;
+    }
+}
+
+
+void SimulationWindow::onFieldButtonPressed()
+{
+    SimulationButton* s = qobject_cast<SimulationButton*> (sender());
+    QPair<Connection::FieldTypes, QObject*> res = _connection->getField(s->getRow(), s->getCol());
+    if(res.first == Connection::Shelf) {
+            QVector<QString> productsOnThisShelf = _connection->getProductsOnShelf(s->getRow(), s->getCol());
+            ProductsOnShelfDialog posd (productsOnThisShelf);
+            posd.exec();
+    }else if (res.first == Connection::Robot) {
+    RobotFieldModel* selectedRobot = qobject_cast<RobotFieldModel*> (res.second);
+    // _controller->rotateRobot(selectedRobot);
+    //_gridButtons[selectedRobot->getRow()][selectedRobot->getCol()]->setRobotOrientation(selectedRobot->getOrientation());
     }
 }

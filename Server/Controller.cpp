@@ -345,6 +345,7 @@ QVector<QString> Controller::getOrders() {
 
 QVector<Product*> Controller::getProducts() {
     return _products;
+    qInfo() << "termekek";
 }
 
 

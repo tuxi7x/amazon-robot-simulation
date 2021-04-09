@@ -72,6 +72,8 @@ set(PROJECT_SOURCES
         views/SimulationWindow.h
         controllers/Connection.cpp
         controllers/Connection.h
+        library/buttons/SimulationButton.cpp
+        library/buttons/SimulationButton.h
 
         resources.qrc
 )
