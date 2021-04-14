@@ -11,6 +11,7 @@
 #include <QTimer>
 #include <QDebug>
 #include <QSet>
+#include "QFile"
 #include <models/PathNode.h>
 
 
@@ -44,6 +45,7 @@ public:
     void stopSimulation();
     void pauseSimulation();
     void resumeSimulation();
+    int sumConsumedEnergy();
 
 private:
     QVector<Robot*> _robots;
@@ -59,6 +61,8 @@ private:
     int _elapsedTime;
     bool _paused;
     int _speed;
+    int _steps;
+    bool saveGame();
 
     //Tries to find a path with a robot to a certain destination. Adds the route to the route stack of the robot. Returns true if there was a path
     bool planPathForRobot (Robot* r, int destinationRow, int destinationCol);

@@ -7,6 +7,7 @@ Controller::Controller(QObject *parent) : QObject(parent)
     _speed = 1;
     _paused = false;
     _elapsedTime = 0;
+    _steps = 0;
     _timer = new QTimer(this);
     _timer->setInterval(1000);
     connect(_timer, SIGNAL(timeout()), this, SLOT(tickHandler()));
@@ -52,9 +53,11 @@ void Controller::startSimulation() {
 
 void Controller::stopSimulation() {
 
+    saveGame();
     _speed = 1;
     _paused = false;
     _elapsedTime = 0;
+    _steps = 0;
     _timer = new QTimer(this);
     _timer->setInterval(1000);
     _robots.clear();
@@ -75,6 +78,15 @@ void Controller::pauseSimulation() {
 void Controller::resumeSimulation() {
     _timer->start();
     _paused = false;
+}
+
+int Controller::sumConsumedEnergy()
+{
+    int sum=0;
+    for(Robot* r : _robots) {
+        sum += r->getConsumedEnergy();
+    }
+    return sum;
 }
 
 bool Controller::getPaused()
@@ -265,6 +277,7 @@ void Controller::tickHandler()
         PathNode *n = r->stepOnPath();
         if(n!= nullptr ) {
             _timeTable.remove(PathNode(n->getRow(),n->getCol(),n->getOrientation(),n->getTime()));
+            _steps++;
         } else {
             if(r->getState() == FREE) continue;
             else if (r->getState() == GOINGFORSHELF) {
@@ -357,7 +370,21 @@ QVector<QString> Controller::getOrders() {
 
 QVector<Product*> Controller::getProducts() {
     return _products;
-    qInfo() << "termekek";
 }
 
+bool Controller::saveGame()
+{
+    QFile file("Naplofajl.txt");
+    if (!file.open(QFile::WriteOnly))
+        return false;
+
+    QTextStream stream(&file);
+    stream << _steps << '\n';
+    for (int i = 0; i < _robots.length(); i++)
+        stream << _robots[i]->getConsumedEnergy() << '\n';
+    stream << sumConsumedEnergy() << '\n';
+    file.close();
+
+    return true;
+}
 
