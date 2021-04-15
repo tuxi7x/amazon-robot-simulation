@@ -40,6 +40,7 @@ public:
     Shelf *getCurrentShelf() const;
 
     void setBattery(int battery);
+    int getConsumedEnergy();
 
 private:
     int _id;
@@ -47,14 +48,15 @@ private:
     int _originalRow;
     int _col;
     int _originalCol;
-   int _direction;
-   int _battery;
-   int _maxBattery;
-   Shelf* _currentShelf;
-   Product* _currentProduct;
-   QStack<PathNode*> _robotPath;
-   RobotStates _state;
-   static int _idCounter;
+    int _direction;
+    int _battery;
+    int _maxBattery;
+    int _consumedEnergy;
+    Shelf* _currentShelf;
+    Product* _currentProduct;
+    QStack<PathNode*> _robotPath;
+    RobotStates _state;
+    static int _idCounter;
 
 
 signals:
