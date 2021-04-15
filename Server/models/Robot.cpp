@@ -19,6 +19,7 @@ Robot::Robot(int row, int col, int direction)
     _direction = direction;
     _battery = 100;
     _maxBattery = 100;
+    _consumedEnergy = 0;
     _state = FREE;
     _currentShelf = nullptr;
     _currentProduct = nullptr;
@@ -58,6 +59,7 @@ PathNode* Robot::stepOnPath()
     _col = next->getCol();
     _direction = next->getOrientation();
     _battery--;
+    _consumedEnergy++;
     if(_currentShelf != nullptr) {
      _currentShelf->setRow(next->getRow());
      _currentShelf->setCol(next->getCol());
@@ -118,6 +120,11 @@ Shelf *Robot::getCurrentShelf() const
 void Robot::setBattery(int battery)
 {
     _battery = battery;
+}
+
+int Robot::getConsumedEnergy()
+{
+    return _consumedEnergy;
 }
 
 

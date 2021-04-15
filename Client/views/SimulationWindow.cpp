@@ -68,18 +68,7 @@ SimulationWindow::SimulationWindow(Connection *connection, QWidget *parent) : QM
     connect(_pauseResumeButton, SIGNAL(clicked()), this, SLOT(onPauseResumeButtonClicked()));
 
     _paused = false;
-    void createMap (int size);
-    //Orientations: 0 = up, 1 = right, 2 = down, 3 = left
-    void fieldToRobot (int row, int col, int orientation, int battery);
-    void fieldToEmpty (int row, int col);
-    void fieldToShelf (int row, int col);
-    void fieldToDropOffEvent (int row, int col);
-    void gameSpeedChanged (int newSpeed);
-    void pauseStateChanged (bool paused);
-
-
-
-    //onCreateMapSignal(6); //Just for testing the UI
+    onCreateMapSignal(6); //An initial map to when still loading
 
 }
 
@@ -122,6 +111,7 @@ void SimulationWindow::onCreateMapSignal(int size)
             btn->setFixedSize(QSize(630/6,630/6));
             btn->setStyleSheet("background-color: white; color:white; font-size: 30px; border: 1px solid black;");
             btn->setText("");
+            btn->setFixedSize(QSize(630/size,630/size));
             connect(btn, &SimulationButton::clicked, this, &SimulationWindow::onFieldButtonPressed);
             _mapGrid->addWidget(btn,i,j);
             v.append(btn);

@@ -221,12 +221,14 @@ void Connection::processMessage(QString header, QVector<QString> params) {
 
         }
     } else if (header == "SHELF") {
+        _shelves.clear();
         if (params.length() > 0 && params.length() % 2 == 0) {
             for (int i = 0; i < params.length(); i+=2) {
                 /*
                  * params[i]: row
                  * params[i+1]: col
                  */
+                _shelves.append(new ShelfFieldModel(params[i].toInt(),params[i+1].toInt()));
                 emit fieldToShelf(params[i].toInt(), params[i+1].toInt());
             }
 
@@ -287,15 +289,15 @@ bool Connection::isSuccessful() {
 
 QPair<Connection::FieldTypes, QObject*> Connection::getField(int row, int col)
 {
-    for(int i=0; i<_robots.count();i++) {
-        if(_robots[i]->getRow() == row && _robots[i]->getCol() == col) {
-            return QPair<FieldTypes, QObject*>(Robot, _robots[i]);
-        }
-    }
-
     for(int i=0; i<_shelves.count();i++) {
         if(_shelves[i]->getRow() == row && _shelves[i]->getCol() == col) {
             return QPair<FieldTypes, QObject*>(Shelf, _shelves[i]);
+        }
+    }
+
+    for(int i=0; i<_robots.count();i++) {
+        if(_robots[i]->getRow() == row && _robots[i]->getCol() == col) {
+            return QPair<FieldTypes, QObject*>(Robot, _robots[i]);
         }
     }
 
