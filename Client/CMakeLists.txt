@@ -24,7 +24,7 @@ set(PROJECT_SOURCES
         main.cpp
         views/ApplicationMenu.cpp
         views/ApplicationMenu.h
-	library/buttons/MainMenuButton.cpp
+	    library/buttons/MainMenuButton.cpp
         library/buttons/MainMenuButton.h
         library/dialogs/DialogBase.cpp
         library/dialogs/DialogBase.h
