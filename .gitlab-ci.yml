@@ -4,7 +4,7 @@ before_script:
  - apt-get install --yes cmake
  - apt-get install --yes qtbase5-dev qtdeclarative5-dev
 
-build_tests:
+build_and_test_server:
   script:
     - cmake ./Client/
     - ./tests/TestClient
