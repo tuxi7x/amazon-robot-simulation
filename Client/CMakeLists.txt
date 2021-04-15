@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.13)
 
 project(Client LANGUAGES CXX)
 
@@ -79,6 +79,9 @@ set(PROJECT_SOURCES
 
         resources.qrc
 )
+
+enable_testing()
+add_subdirectory(tests/)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Client

@@ -9,3 +9,5 @@ build_tests:
     - cmake ./Server/
     - make ServerTest
     - ./tests/ServerTest
+    - cmake ./Client/
+    - ./tests/TestClient

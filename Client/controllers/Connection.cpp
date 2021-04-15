@@ -1,5 +1,4 @@
 #include "Connection.h"
-#include "views/SimulationWindow.h"
 
 Connection::Connection(QObject *parent) : QObject(parent)
 {
