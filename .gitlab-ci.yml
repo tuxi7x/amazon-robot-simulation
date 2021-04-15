@@ -9,5 +9,6 @@ build_tests:
     - cmake ./Server/
     - make ServerTest
     - ./tests/ServerTest
+    - rm CMakeCache.txt
     - cmake ./Client/
     - ./tests/TestClient
