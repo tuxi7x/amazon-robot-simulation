@@ -1,4 +1,5 @@
 #include <QtTest>
+#include "Controller.h"
 
 // add necessary includes here
 
@@ -29,6 +30,9 @@ void ServerTest::test_case1()
 {
     QVERIFY(1 != 2);
     QVERIFY(true);
+    Controller c;
+    c.setSize(10);
+    QVERIFY(c.getSize() == 10);
 }
 
 QTEST_APPLESS_MAIN(ServerTest)

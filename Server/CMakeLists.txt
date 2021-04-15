@@ -13,7 +13,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Network Core REQUIRED)
-
+enable_testing()
+add_subdirectory(tests)
 
 include_directories(${Qt6Core_INCLUDE_DIRS})
 

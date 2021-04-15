@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 
 project(ServerTest LANGUAGES CXX)
+include_directories(../)
 
 find_package(QT NAMES Qt5 Qt6 COMPONENTS Test REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Test REQUIRED)
@@ -18,10 +19,6 @@ enable_testing()
 add_executable(ServerTest tst_servertest.cpp)
 
 
-set(PROJECT_SOURCES
-    ../Controller.h
-    ../Controller.cpp
-)
 
 add_test(NAME ServerTest COMMAND ServerTest)
 
