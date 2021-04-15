@@ -7,7 +7,4 @@ before_script:
 build_tests:
   script:
     - cmake ./Server/tests/
-
-run_tests:
-  script:
     - ./Server/tests/ServerTest
