@@ -20,7 +20,6 @@ add_executable(ServerTest tst_servertest.cpp)
 set(PROJECT_SOURCES
     ../Controller.h
     ../Controller.cpp
-    ../models/shelf.h
 )
 
 add_test(NAME ServerTest COMMAND ServerTest)

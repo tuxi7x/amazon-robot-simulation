@@ -1,5 +1,4 @@
 #include <QtTest>
-#include "../Controller.h"
 
 // add necessary includes here
 
