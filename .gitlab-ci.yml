@@ -8,4 +8,4 @@ build_tests:
   script:
     - cmake ./Server/
     - make ServerTest
-    - ./tests
+    - ls ./tests
