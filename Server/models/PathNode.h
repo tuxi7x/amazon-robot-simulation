@@ -1,6 +1,13 @@
 #ifndef PATHNODE_H
 #define PATHNODE_H
 #include <qhashfunctions.h>
+#include <QtGlobal>
+
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+using qhash_result_t = uint;
+#else
+using qhash_result_t = size_t;
+#endif
 
 
 class PathNode
@@ -40,9 +47,9 @@ inline bool operator== (const PathNode& a, const PathNode& b)
 }
 
 
-inline size_t qHash (const PathNode& a, const size_t& seed)
+inline qhash_result_t qHash (const PathNode& a, const qhash_result_t& seed)
 {
-    size_t newSeed = seed;
+    qhash_result_t newSeed = seed;
     QtPrivate::QHashCombine hash;
     newSeed = hash(newSeed,a.getCol());
     newSeed = hash(newSeed,a.getRow());
