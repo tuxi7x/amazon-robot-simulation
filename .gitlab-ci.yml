@@ -7,4 +7,6 @@ before_script:
 build_tests:
   script:
     - cmake ./Server/tests/
-    - ls ./Server/ -al
+    - make
+    - ls -al
+    - ls ./Server -al
