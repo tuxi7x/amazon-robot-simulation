@@ -12,6 +12,7 @@
 #include <QDebug>
 #include <QSet>
 #include "QFile"
+#include "QDate"
 #include <models/PathNode.h>
 
 

@@ -375,14 +375,19 @@ QVector<Product*> Controller::getProducts() {
 bool Controller::saveGame()
 {
     QFile file("Naplofajl.txt");
-    if (!file.open(QFile::WriteOnly))
+    if (!file.open(QFile::WriteOnly | QIODevice::Append))
         return false;
 
     QTextStream stream(&file);
-    stream << _steps << '\n';
+    QString s = QDate::currentDate().toString(Qt::ISODate);
+    stream << "Szimuláció - " << s << "\n";
+    stream << "A feladat végrehajtásához szükséges lépések:\n" << _steps << '\n';
+    stream << "Energiafogyasztás robotonként:\n";
     for (int i = 0; i < _robots.length(); i++)
-        stream << _robots[i]->getConsumedEnergy() << '\n';
+        stream << i+1 <<". robot: " <<  _robots[i]->getConsumedEnergy() << '\n';
+    stream << "Összes elfogyasztott energia:\n";
     stream << sumConsumedEnergy() << '\n';
+    stream << "*** **** ***\n";
     file.close();
 
     return true;
