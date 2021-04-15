@@ -6,9 +6,9 @@ before_script:
 
 build_tests:
   script:
+    - cmake ./Client/
+    - ./tests/TestClient
+    - rm CMakeCache.txt
     - cmake ./Server/
     - make ServerTest
     - ./tests/ServerTest
-    - rm CMakeCache.txt
-    - cmake ./Client/
-    - ./tests/TestClient

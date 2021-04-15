@@ -27,6 +27,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Network Core REQUIRED)
+enable_testing()
+add_subdirectory(tests/)
 
 set(PROJECT_SOURCES
         main.cpp
@@ -76,12 +78,10 @@ set(PROJECT_SOURCES
         library/buttons/SimulationButton.h
         library/dialogs/RobotInfoDialog.cpp
         library/dialogs/RobotInfoDialog.h
-
         resources.qrc
 )
 
-enable_testing()
-add_subdirectory(tests/)
+
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Client
