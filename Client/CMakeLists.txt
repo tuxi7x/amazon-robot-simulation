@@ -20,7 +20,7 @@ add_subdirectory(tests/)
 
 include_directories(${Qt6Core_INCLUDE_DIRS})
 
-set(PROJECT_SOURCES
+set(PS
     ${CMAKE_PROJECT_DIR}/main.cpp
     ${CMAKE_PROJECT_DIR}/views/ApplicationMenu.cpp
     ${CMAKE_PROJECT_DIR}/views/ApplicationMenu.h
@@ -74,16 +74,16 @@ set(PROJECT_SOURCES
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Client
-        ${PROJECT_SOURCES}
+        ${PS}
     )
 else()
     if(ANDROID)
         add_library(Client SHARED
-            ${PROJECT_SOURCES}
+            ${PS}
         )
     else()
         add_executable(Client
-            ${PROJECT_SOURCES}
+            ${PS}
         )
     endif()
 endif()
