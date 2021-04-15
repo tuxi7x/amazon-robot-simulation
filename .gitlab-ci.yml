@@ -4,6 +4,10 @@ before_script:
  - apt-get install --yes cmake
  - apt-get install --yes build-essential libgl1-mesa-dev qtbase5-dev qtdeclarative5-dev
 
-build:
+build_tests:
   script:
     - cmake ./Server/tests/
+
+run_tests:
+  script:
+    - ./Server/tests/ServerTest
