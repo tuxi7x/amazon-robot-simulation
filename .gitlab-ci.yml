@@ -6,6 +6,6 @@ before_script:
 
 build_tests:
   script:
-    - cmake ./Server/ test
-    - make
+    - cmake ./Server/
+    - make ServerTest
     - ./ServerTest
