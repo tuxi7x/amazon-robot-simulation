@@ -2,7 +2,7 @@ image: gcc
 before_script:
  - apt-get update --yes
  - apt-get install --yes cmake
- - apt-get install build-essential libgl1-mesa-dev
+ - apt-get install --yes build-essential libgl1-mesa-dev
 
 build:
   script:
