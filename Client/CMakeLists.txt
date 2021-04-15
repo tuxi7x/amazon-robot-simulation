@@ -92,32 +92,8 @@ else()
             ${PROJECT_SOURCES}
         )
     else()
-        #For the CI to make properly with QT5
         add_executable(Client
-            main.cpp
-            views/ApplicationMenu.cpp
-            library/buttons/MainMenuButton.cpp
-            library/dialogs/DialogBase.cpp
-            library/dialogs/HelpDialog.cpp
-            library/dialogs/ConnectDialog.cpp
-            library/dialogs/ErrorDialog.cpp
-            library/dialogs/StartSimFromFileDialog.cpp
-            views/MapEditor.cpp
-            controllers/MapEditorController.cpp
-            library/buttons/editor/EditorGridButton.cpp
-            library/buttons/editor/SideBarButton.cpp
-            models/RobotFieldModel.cpp
-            models/DockerFieldModel.cpp
-            models/ShelfFieldModel.cpp
-            models/DropOffPointFieldModel.cpp
-            models/ProductModel.cpp
-            library/dialogs/ProductsOnShelfDialog.cpp
-            ViewWrapper.cpp
-            library/dialogs/OrderDialog.cpp
-            views/SimulationWindow.cpp
-            controllers/Connection.cpp
-            library/buttons/SimulationButton.cpp
-            library/dialogs/RobotInfoDialog.cpp
+            ${PROJECT_SOURCES}
         )
     endif()
 endif()
