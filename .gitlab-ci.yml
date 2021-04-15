@@ -7,4 +7,3 @@ before_script:
 build_tests:
   script:
     - cmake ./Server/tests/
-    - ./Server/build-tests-Desktop_Qt_6_0_1_MinGW_64_bit-Debug/ServerTest.exe
