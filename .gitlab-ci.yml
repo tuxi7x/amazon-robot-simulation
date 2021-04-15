@@ -2,7 +2,7 @@ image: gcc
 before_script:
  - apt-get update --yes
  - apt-get install --yes cmake
- - apt-get install --yes build-essential libgl1-mesa-dev qtbas65-dev qtdeclarative6-dev
+ - apt-get install --yes build-essential libgl1-mesa-dev qtbase5-dev qtdeclarative5-dev
 
 build:
   script:
