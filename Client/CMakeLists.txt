@@ -68,7 +68,7 @@ set(PS
     library/buttons/SimulationButton.h
     library/dialogs/RobotInfoDialog.cpp
     library/dialogs/RobotInfoDialog.h
-
+    resources.qrc
 )
 
 
