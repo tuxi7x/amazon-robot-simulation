@@ -29,6 +29,7 @@ public:
     void addShelf(int row, int col);
     void addProduct(QString name, int shelf);
     void addOrder(QString name);
+    void alreadyOrdered(QString name);
     void setSize(int size);
     void setSpeed(int speed);
 
@@ -38,6 +39,7 @@ public:
     QVector<Shelf*> getShelves();
     QVector<Product*> getProducts();
     QVector<QString> getOrders();
+    QVector<QString> getAlreadyOrdered();
     int getSize();
     int getSpeed();
     bool getPaused();
@@ -55,6 +57,7 @@ private:
     QVector<Shelf*> _shelves;
     QVector<Product*> _products;
     QVector<QString> _orders;
+    QVector<QString> _alreadyOrdered;
     //The timetable is used by the pathfinding algorithm to determine whether a certain node is free at a given time
     QSet<PathNode> _timeTable;
     int _size;

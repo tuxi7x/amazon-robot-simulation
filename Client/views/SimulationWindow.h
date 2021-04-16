@@ -12,6 +12,7 @@
 #include <QLabel>
 #include "library/buttons/SimulationButton.h"
 #include "library/dialogs/RobotInfoDialog.h"
+#include "library/dialogs/NewOrderDialog.h"
 
 class SimulationWindow : public QMainWindow
 {
@@ -57,6 +58,7 @@ private slots:
     void onFieldButtonPressed();
     void onFinishButtonClicked();
     void onDisconnectButtonClicked();
+    void onNewOrderButtonClicked();
 
 };
 

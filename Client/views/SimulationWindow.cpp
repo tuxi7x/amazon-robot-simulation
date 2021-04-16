@@ -66,6 +66,7 @@ SimulationWindow::SimulationWindow(Connection *connection, QWidget *parent) : QM
     connect(_connection, &Connection::gameSpeedChanged, this, &SimulationWindow::onGameSpeedChangedSignal);
     connect(_connection, &Connection::pauseStateChanged, this, &SimulationWindow::onPauseStateChangedSignal);
     connect(_pauseResumeButton, SIGNAL(clicked()), this, SLOT(onPauseResumeButtonClicked()));
+    connect(_newOrderButton, SIGNAL(clicked()), this, SLOT(onNewOrderButtonClicked()));
 
     _paused = false;
     onCreateMapSignal(6); //An initial map to when still loading
@@ -209,4 +210,20 @@ void SimulationWindow::onDisconnectButtonClicked()
 {
     emit simulationClosed(this->geometry());
     _connection->disconnectSimulation();
+}
+
+void SimulationWindow::onNewOrderButtonClicked()
+{
+    QVector<ProductModel*> products = _connection->getOriginalProducts();
+    QVector<QString> orders = _connection->getOrders();
+    QVector<QString> newOrders;
+
+    NewOrderDialog nod(products, orders);
+    if(nod.exec()) {
+        qDebug() <<"ide mar nem jon";
+        newOrders = nod.getOrders();
+        _connection->addNewOrders(newOrders);
+    }
+    _connection->newOrder();
+
 }

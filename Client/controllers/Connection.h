@@ -36,8 +36,15 @@ public:
     void resumeState();    
     void finishSimulation();
     void disconnectSimulation();
+    void newOrder();
     QPair<FieldTypes, QObject*> getField (int row, int col);
     QVector<QString> getProductsOnShelf(int row, int col);
+    QVector<QString> getNewOrders();
+    QVector<QString> getOrders();
+    void addNewOrders(QVector<QString> newOrders);
+    QVector<ProductModel *> getProducts();
+    QVector<ProductModel *> getOriginalProducts();
+
 
 private:
     QTcpSocket* _socket;
@@ -49,6 +56,8 @@ private:
     QVector <DropOffPointFieldModel*> _dropOffPoints;
     QVector <ProductModel*> _products;
     QVector <QString> _orders;
+    QVector <QString> _newOrders;
+    QVector <ProductModel*> _originalProducts;
 
 private slots:
     void readFromServer();

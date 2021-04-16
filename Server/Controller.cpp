@@ -33,6 +33,11 @@ void Controller::addOrder(QString name) {
     _orders.append(name);
 }
 
+void Controller::alreadyOrdered(QString name)
+{
+     _alreadyOrdered.append(name);
+}
+
 void Controller::addShelf(int row, int col) {
     _shelves.append(new Shelf(row, col));
 }
@@ -366,6 +371,11 @@ QVector<Shelf*> Controller::getShelves() {
 
 QVector<QString> Controller::getOrders() {
     return _orders;
+}
+
+QVector<QString> Controller::getAlreadyOrdered()
+{
+    return _alreadyOrdered;
 }
 
 QVector<Product*> Controller::getProducts() {
