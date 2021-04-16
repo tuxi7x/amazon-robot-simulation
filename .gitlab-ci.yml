@@ -11,6 +11,7 @@ before_script:
  - aqt install 6.0.1 linux desktop
  - export QT_DIR=./6.0.1/gcc_64/lib/cmake/
  - export Qt6_DIR=./6.0.1/gcc_64/lib/cmake/
+ - export Qt6CoreTools_DIR=./6.0.1/gcc_64/lib/cmake/Qt6CoreTools
 
 
 test_server:
