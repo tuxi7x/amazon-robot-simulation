@@ -5,8 +5,8 @@ stages:
   - test
 
 before_script:
- - apt-get update --yes
- - apt-get install --yes build-essential cmake python3.8
+ - apt-get update --yqq
+ - apt-get install --yqq build-essential cmake python3.8
  - pip install aqtinstall
 
 test_server:
