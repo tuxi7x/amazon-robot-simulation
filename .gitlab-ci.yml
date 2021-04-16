@@ -10,6 +10,7 @@ before_script:
  - pip3 install aqtinstall
  - aqt install 6.0.1 linux desktop
  - export QT_DIR=./6.0.1/gcc_64/lib/cmake/
+ - export Qt6_DIR=./6.0.1/gcc_64/lib/cmake/
 
 
 test_server:
