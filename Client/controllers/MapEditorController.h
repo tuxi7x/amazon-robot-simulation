@@ -10,6 +10,7 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QFile>
+#include <QVector>
 
 class MapEditorController : public QObject
 {

@@ -19,7 +19,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 enable_testing()
 
 add_executable(TestClient tst_testclient.cpp
-    ../controllers/Connection.cpp
     ../controllers/MapEditorController.cpp
     ../models/DockerFieldModel.cpp
     ../models/DropOffPointFieldModel.cpp
