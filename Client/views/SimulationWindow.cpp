@@ -17,12 +17,14 @@ SimulationWindow::SimulationWindow(Connection *connection, QWidget *parent) : QM
     _gridContainer = new QVBoxLayout;
     _gridContainer->addLayout(_mapGrid);
 
+    _mainLayout->addSpacerItem(new QSpacerItem(90,728));
     _mainLayout->addLayout(_gridContainer);
     _mainLayout->addLayout(_sidePanel);
-    _mainLayout->setAlignment(_gridContainer,Qt::AlignCenter);
+    _mainLayout->setAlignment(_gridContainer,Qt::AlignLeft);
+    _mainLayout->setAlignment(_gridContainer,Qt::AlignVCenter);
     _sidePanel->setSpacing(35);
     _mainLayout->setSpacing(25);
-    _sidePanel->setAlignment(Qt::AlignVCenter);
+    _mainLayout->setAlignment(_sidePanel,Qt::AlignCenter);
 
     _speedLabel = new QLabel("Sebesség: 1"); //Just for testing the UI
     _speedSlider = new QSlider(Qt::Horizontal);
