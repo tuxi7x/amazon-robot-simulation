@@ -41,7 +41,8 @@ void EditorGridButton::setSelectedShelfButtonStyleSheet()
 void EditorGridButton::setDropOffPointButtonStyleSheet(QString product)
 {
     setStyleSheet("background-color: #907f9f; color:white; font-size: 30px; border: 1px solid black;");
-    setText("C\n(" + product + ")");
+    setText("C");
+    setToolTip(product + " célállomása.");
 }
 
 void EditorGridButton::setRobotOrientation(int orientation)

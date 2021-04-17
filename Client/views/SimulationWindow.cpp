@@ -143,21 +143,31 @@ void SimulationWindow::onFieldToEmptySignal(int row, int col)
 
 void SimulationWindow::onFieldToShelfSignal(int row, int col)
 {
-    bool l = _buttons[row][col]->styleSheet().contains("#ef476e;");
+    bool robotOnIt = _connection->robotOnField(row,col);
+    bool atDropOff = _connection->dropOffInPosition(row,col);
     _buttons[row][col]->setStyleSheet("background-color: #06d6a0; color:white; font-size: 30px; border: 1px solid black;");
-    if(l) _buttons[row][col]->setStyleSheet(_buttons[row][col]->styleSheet() + "border-image:url(:/Resources/resources/robotpolc.png);");
+    if(robotOnIt && atDropOff) _buttons[row][col]->setStyleSheet(_buttons[row][col]->styleSheet() + "border-image:url(:/Resources/resources/robotpolccelallomas.png);");
+    else if(robotOnIt) _buttons[row][col]->setStyleSheet(_buttons[row][col]->styleSheet() + "border-image:url(:/Resources/resources/robotpolc.png);");
     _buttons[row][col]->setText("P");
 }
 
-void SimulationWindow::onFieldToDropOffSignal(int row, int col)
+void SimulationWindow::onFieldToDropOffSignal(int row, int col, QString product)
 {
-    _buttons[row][col]->setStyleSheet("background-color: #907f9f; color:white; font-size: 30px; border: 1px solid black;");
-    _buttons[row][col]->setText("C");
+    int fontSize = 30;
+    if(product.length() > 5 || _connection->getSize() > 7) fontSize-= 10;
+    if(_connection->getSize()>9) fontSize-=5;
+    QString font = QString::number(fontSize);
+
+
+    _buttons[row][col]->setStyleSheet(QString("background-color: #907f9f; color:white; font-size: %1px; border: 1px solid black;").arg(font));
+    _buttons[row][col]->setText(QString("C\n(%1)").arg(product));
 }
 
 void SimulationWindow::onFieldtoDockerSignal(int row, int col)
 {
+    bool robotOnIt = _connection->robotOnField(row,col);
     _buttons[row][col]->setStyleSheet("background-color: #f26419; color:white; font-size: 30px; border: 1px solid black;");
+    if(robotOnIt) _buttons[row][col]->setStyleSheet(_buttons[row][col]->styleSheet() + "border-image:url(:/Resources/resources/robotpolc.png);");
     _buttons[row][col]->setText("D");
 }
 
