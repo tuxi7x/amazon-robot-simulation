@@ -88,6 +88,8 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
     writeToServer("SHELF", shelfParams);
 
     // Read products and write to server
+    _products.clear();
+    _originalProducts.clear();
     QVector<QString> productParams;
     QJsonArray products = loadDoc["products"].toArray();
     for (int productIndex = 0; productIndex < products.size(); ++productIndex) {
@@ -338,7 +340,6 @@ void Connection::disconnectSimulation()
 void Connection::newOrder()
 {
     QVector<QString> args;
-    QVector<QString> productParams;
 
     for(int i = 0; i< _newOrders.length(); i++) {
         args.append(_newOrders[i]);
@@ -358,6 +359,7 @@ void Connection::addNewOrders(QVector<QString> newOrders)
     _newOrders.clear();
     for(int i = 0; i< newOrders.length(); i++){
         _newOrders.append(newOrders[i]);
+       // _orders.append(newOrders[i]);
     }
 }
 

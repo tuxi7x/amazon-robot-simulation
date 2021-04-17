@@ -10,6 +10,7 @@
 #include "models/ProductModel.h"
 
 
+
 class NewOrderDialog : public DialogBase
 {
     Q_OBJECT
@@ -25,6 +26,7 @@ public:
     QGridLayout* _layout;
     QFormLayout* _flayout;
     QVector<ProductModel*> _products;
+    QVector<QString> _pr;
     QVector<QString> _newOrders;
     QLabel* _productLabel;
     QLabel* _orderLabel;
@@ -33,7 +35,6 @@ public:
 private slots:
     void okButtonPressed();
     void productDoubleClicked();
-    void orderDoubleClicked();
 };
 
 #endif // NEWORDERDIALOG_H

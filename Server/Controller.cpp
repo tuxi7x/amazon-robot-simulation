@@ -72,6 +72,7 @@ void Controller::stopSimulation() {
     _products.clear();
     _orders.clear();
     _timeTable.clear();
+    _alreadyOrdered.clear();
 }
 
 void Controller::pauseSimulation() {

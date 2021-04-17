@@ -220,8 +220,9 @@ void SimulationWindow::onNewOrderButtonClicked()
 
     NewOrderDialog nod(products, orders);
     if(nod.exec()) {
-        qDebug() <<"ide mar nem jon";
-        newOrders = nod.getOrders();
+        for(int i = 0; i<nod.getOrders().length(); i++) {
+            newOrders.append(nod.getOrders()[i]);
+        }
         _connection->addNewOrders(newOrders);
     }
     _connection->newOrder();

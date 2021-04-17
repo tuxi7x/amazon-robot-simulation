@@ -27,37 +27,23 @@ NewOrderDialog::NewOrderDialog(QVector<ProductModel*> products, QVector<QString>
     _productLabel->setStyleSheet("font-weight: bold;");
     _orderLabel->setStyleSheet("font-weight: bold;");
     setModal(true);
+    QVector<QString> pr;
 
-    QVector<QString> alreadyOrdered;
-    for(int i = 0; i<orders.length(); i++){
-        alreadyOrdered.append(orders[i]);
+    for(int i = 0; i< products.length(); i++)
+        {
+        pr.append(products[i]->getName());
+    }
+    for(int i=0; i<orders.length();i++) {
+            int k = pr.indexOf(orders[i]);
+            if (k != -1)
+                pr.remove(k);
     }
 
-    QVector<ProductModel*> productsToList;
-    for(int i = 0; i<products.length(); i++){
-        productsToList.append(products[i]);
+    for(int i=0; i<pr.length();i++) {
+        _productList->addItem(pr[i]);
+        _pr.append(pr[i]);
     }
-    qDebug() << "for elott";
-    for(int i = 0; i<productsToList.length(); i++){
-        int j = 0;
-        while(j < alreadyOrdered.length()  && !productsToList.isEmpty() && !alreadyOrdered.isEmpty()) {
-            qDebug() << "while belul";
-            if(productsToList[i]->getName() == alreadyOrdered[j]){
-                qDebug() << "if belul";
-                productsToList.erase(std::find(productsToList.begin(),productsToList.end(),productsToList[i]));
-                qDebug() << "torles kozott belul";
-                alreadyOrdered.erase(std::find(alreadyOrdered.begin(),alreadyOrdered.end(),alreadyOrdered[j]));
-                continue;
-            }else j++;
-        }
-    }
-    for(int i=0; i<productsToList.length();i++) {
-        _productList->addItem(productsToList[i]->getName());
-        _products.append(productsToList[i]);
-        }
-
-
-    if(_productList->count() == 0 && _orderList->count() == 0) _productList->addItem("Jelenleg nincs rendelhető termék készleten.");
+    if(_productList->count() == 0 ) _productList->addItem("Jelenleg nincs rendelhető termék készleten.");
 
     connect(_ok, &QPushButton::clicked, this, &NewOrderDialog::okButtonPressed);
     connect(_productList, &QListWidget::itemDoubleClicked, this, &NewOrderDialog::productDoubleClicked);
@@ -75,7 +61,12 @@ NewOrderDialog::~NewOrderDialog()
 
 QVector<QString> NewOrderDialog::getOrders()
 {
-    return _newOrders;
+    QVector<QString> l;
+
+    for(int j=0; j<_newOrders.size();j++) {
+            l.append(_newOrders[j]);
+    }
+    return l;
 }
 
 
@@ -93,18 +84,10 @@ void NewOrderDialog::okButtonPressed()
 
 void NewOrderDialog::productDoubleClicked()
 {
-    if(_products.length() != 0){
+    if(_pr.length() != 0){
     QListWidgetItem* selected = _productList->takeItem(_productList->currentRow());
     _orderList->addItem(selected);
     update();
     }
 }
 
-void NewOrderDialog::orderDoubleClicked()
-{
-    if(_newOrders.length() != 0){
-    QListWidgetItem* selected = _orderList->takeItem(_orderList->currentRow());
-    _productList->addItem(selected);
-    update();
-    }
-}
