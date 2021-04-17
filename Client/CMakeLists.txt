@@ -70,6 +70,7 @@ set(PROJECT_SOURCES
     library/dialogs/RobotInfoDialog.h
     library/dialogs/NewOrderDialog.cpp
     library/dialogs/NewOrderDialog.h
+    resources.qrc
 
 )
 
