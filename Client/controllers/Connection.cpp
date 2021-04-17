@@ -237,8 +237,8 @@ void Connection::processMessage(QString header, QVector<QString> params) {
 
         }
     } else if (header == "PRODUCTS") {
+        _products.clear();
         if (params.length() > 0 && params.length() % 2 == 0) {
-            _products.clear();
             for (int i = 0; i < params.length(); i+=2) {
                 /*
                  * params[i]: name
