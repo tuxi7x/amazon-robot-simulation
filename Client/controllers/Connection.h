@@ -44,7 +44,11 @@ public:
     void addNewOrders(QVector<QString> newOrders);
     QVector<ProductModel *> getProducts();
     QVector<ProductModel *> getOriginalProducts();
+    bool robotOnField(int row, int col);
+    bool dropOffInPosition (int row, int col);
 
+
+    int getSize() const;
 
 private:
     QTcpSocket* _socket;
@@ -73,7 +77,7 @@ signals:
     void fieldToRobot (int row, int col, int orientation, int battery);
     void fieldToEmpty (int row, int col);
     void fieldToShelf (int row, int col);
-    void fieldToDropOff (int row, int col);
+    void fieldToDropOff (int row, int col, QString product);
     void fieldToDocker (int row, int col);
     void gameSpeedChanged (int newSpeed);
     void pauseStateChanged (bool paused);

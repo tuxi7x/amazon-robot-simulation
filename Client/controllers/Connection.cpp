@@ -258,14 +258,16 @@ void Connection::processMessage(QString header, QVector<QString> params) {
 
         }
     } else if (header == "DROPOFF") {
+        _dropOffPoints.clear();
         if (params.length() > 0 && params.length() % 3 == 0) {
             for (int i = 0; i < params.length(); i+=3) {
+                _dropOffPoints.append(new DropOffPointFieldModel(params[i].toInt(),params[i+1].toInt(),params[i+2]));
                 /*
                  * params[i]: row
                  * params[i+1]: col
                  * params[i+2]: product
                  */
-                emit fieldToDropOff(params[i].toInt(), params[i+1].toInt());
+                emit fieldToDropOff(params[i].toInt(), params[i+1].toInt(),params[i+2]);
             }
 
         }
@@ -381,6 +383,28 @@ QVector<ProductModel *> Connection::getOriginalProducts()
             l.append(new ProductModel(_originalProducts[j]->getName(), _originalProducts[j]->getShelf()));
     }
     return l;
+}
+
+bool Connection::robotOnField(int row, int col)
+{
+    for(RobotFieldModel* r : _robots) {
+        if(r->getRow() == row && r->getCol() == col) return true;
+    }
+    return false;
+}
+
+bool Connection::dropOffInPosition(int row, int col)
+{
+    for(DropOffPointFieldModel* d : _dropOffPoints)
+    {
+        if(d->getRow() == row && d->getCol() == col) return true;
+    }
+    return false;
+}
+
+int Connection::getSize() const
+{
+    return _size;
 }
 
 QVector<QString> Connection::getNewOrders()

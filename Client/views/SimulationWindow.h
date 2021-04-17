@@ -50,7 +50,7 @@ private slots:
     void onFieldToRobotSignal (int row, int col, int orientation, int battery);
     void onFieldToEmptySignal (int row, int col);
     void onFieldToShelfSignal (int row, int col);
-    void onFieldToDropOffSignal (int row, int col);
+    void onFieldToDropOffSignal (int row, int col, QString product);
     void onFieldtoDockerSignal (int row, int col);
     void onGameSpeedChangedSignal (int newSpeed);
     void onPauseStateChangedSignal (bool paused);
