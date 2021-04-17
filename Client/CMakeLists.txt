@@ -20,7 +20,7 @@ add_subdirectory(tests/)
 
 include_directories(${Qt6Core_INCLUDE_DIRS})
 
-set(PS
+set(PROJECT_SOURCES
     main.cpp
     views/ApplicationMenu.cpp
     views/ApplicationMenu.h
@@ -77,16 +77,16 @@ set(PS
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Client
-        ${PS}
+        ${PROJECT_SOURCES}
     )
 else()
     if(ANDROID)
         add_library(Client SHARED
-            ${PS}
+            ${PROJECT_SOURCES}
         )
     else()
         add_executable(Client
-            ${PS}
+            ${PROJECT_SOURCES}
         )
     endif()
 endif()

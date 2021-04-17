@@ -1,17 +1,24 @@
-image: gcc
-before_script:
- - apt-get update --yes
- - apt-get install --yes cmake
- - apt-get install --yes qtbase5-dev qtdeclarative5-dev
+image: ubuntu:20.04
 
-build_and_test_server:
+stages:
+  - build
+  - test
+
+before_script:
+ - DEBIAN_FRONTEND=noninteractive apt-get update
+ - DEBIAN_FRONTEND=noninteractive apt-get install --yes build-essential cmake qtbase5-dev qtdeclarative5-dev
+
+
+test_server:
+  stage: test
   script:
     - cmake ./Server/
     - make ServerTest
     - ./tests/ServerTest
 
 
-build_and_test_client:
+test_client:
+  stage: test
   script:
     - cmake ./Client/
     - make TestClient
