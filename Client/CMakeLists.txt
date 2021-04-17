@@ -68,6 +68,9 @@ set(PROJECT_SOURCES
     library/buttons/SimulationButton.h
     library/dialogs/RobotInfoDialog.cpp
     library/dialogs/RobotInfoDialog.h
+    library/dialogs/NewOrderDialog.cpp
+    library/dialogs/NewOrderDialog.h
+
 )
 
 

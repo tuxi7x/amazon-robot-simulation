@@ -55,6 +55,15 @@ void EventManager::processMessage(QString header, QVector<QString> params, QTcpS
            for (int i=0; i<params.length(); i++) {
                // params[i]: order
                _controller->addOrder(params[i]);
+               _controller->alreadyOrdered(params[i]);
+           }
+        }
+    } else if (header == "NEWORDER") {
+        if (params.length() > 0) {
+           for (int i=0; i<params.length(); i++) {
+               // params[i]: order
+               _controller->addOrder(params[i]);
+               _controller->alreadyOrdered(params[i]);
            }
         }
     } else if (header == "PAUSE") {
@@ -118,7 +127,6 @@ void EventManager::processMessage(QString header, QVector<QString> params, QTcpS
                      * params[i+1]: shelf
                      */
                     _controller->addProduct(params[i], params[i+1].toInt());
-
                 }
 
             }
@@ -198,7 +206,7 @@ void EventManager::sendCurrentStateToOne(QTcpSocket* client) {
     QVector<Docker*> dockers = _controller->getDockers();
     QVector<DropOffPoint*> dropoffs = _controller->getDropOffPoints();
     QVector<Shelf*> shelves = _controller->getShelves();
-    QVector<QString> orders = _controller->getOrders();
+    QVector<QString> orders = _controller->getAlreadyOrdered();
     QVector<Product*> products = _controller->getProducts();
 
     // Send size
@@ -242,7 +250,7 @@ void EventManager::sendCurrentStateToOne(QTcpSocket* client) {
     sendMessageToOne(client, "SHELF", shelfParams);
 
     // Send orders
-    sendMessageToOne(client, "ORDER", orders);
+    sendMessageToOne(client, "ORDERED", orders);
 
     // Send products
     QVector<QString> productParams;
@@ -261,7 +269,7 @@ void EventManager::sendCurrentStateToAll() {
     QVector<Docker*> dockers = _controller->getDockers();
     QVector<DropOffPoint*> dropoffs = _controller->getDropOffPoints();
     QVector<Shelf*> shelves = _controller->getShelves();
-    QVector<QString> orders = _controller->getOrders();
+    QVector<QString> orders = _controller->getAlreadyOrdered();
     QVector<Product*> products = _controller->getProducts();
 
     // Send size
@@ -306,14 +314,13 @@ void EventManager::sendCurrentStateToAll() {
     sendMessageToAll("SHELF", shelfParams);
 
     // Send orders
-    sendMessageToAll("ORDER", orders);
+    sendMessageToAll("ORDERED", orders);
 
     // Send products
     QVector<QString> productParams;
     for (int i=0; i<products.size(); i++) {
         productParams.append(products[i]->getName());
         productParams.append(QString::number(products[i]->getShelf()));
-        qDebug() << "A termek: " << products[i]->getName();
     }
     sendMessageToAll("PRODUCTS", productParams);
 }

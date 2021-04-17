@@ -88,6 +88,8 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
     writeToServer("SHELF", shelfParams);
 
     // Read products and write to server
+    _products.clear();
+    _originalProducts.clear();
     QVector<QString> productParams;
     QJsonArray products = loadDoc["products"].toArray();
     for (int productIndex = 0; productIndex < products.size(); ++productIndex) {
@@ -97,6 +99,7 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
             productParams.append(name);
             productParams.append(QString::number(shelf));
             _products.append(new ProductModel(name, shelf));
+            _originalProducts.append(new ProductModel(name, shelf));
     }
 
 
@@ -124,6 +127,7 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
     for (int orderIndex = 0; orderIndex < orders.size(); ++orderIndex) {
             QString order = orders[orderIndex].toString();
             orderParams.append(order);
+            _orders.append(order);
     }
 
 
@@ -233,8 +237,8 @@ void Connection::processMessage(QString header, QVector<QString> params) {
 
         }
     } else if (header == "PRODUCTS") {
+        _products.clear();
         if (params.length() > 0 && params.length() % 2 == 0) {
-            _products.clear();
             for (int i = 0; i < params.length(); i+=2) {
                 /*
                  * params[i]: name
@@ -242,6 +246,14 @@ void Connection::processMessage(QString header, QVector<QString> params) {
                  */
                 //->addProduct(params[i], params[i].toInt());
                 _products.append(new ProductModel(params[i],params[i+1].toInt()));
+            }
+
+        }
+    } else if (header == "ORDERED") {
+        if (params.length() > 0) {
+            _orders.clear();
+            for (int i = 0; i < params.length(); i++) {
+                _orders.append(params[i]);
             }
 
         }
@@ -325,8 +337,63 @@ void Connection::disconnectSimulation()
     writeToServer("CLOSE", args);
 }
 
+void Connection::newOrder()
+{
+    QVector<QString> args;
+
+    for(int i = 0; i< _newOrders.length(); i++) {
+        args.append(_newOrders[i]);
+    }
+    writeToServer("NEWORDER", args);
+
+}
+
 void Connection::finishSimulation()
 {
     QVector<QString> args;
     writeToServer("STOP", args);
+}
+
+void Connection::addNewOrders(QVector<QString> newOrders)
+{
+    _newOrders.clear();
+    for(int i = 0; i< newOrders.length(); i++){
+        _newOrders.append(newOrders[i]);
+       // _orders.append(newOrders[i]);
+    }
+}
+
+QVector<ProductModel *> Connection::getProducts()
+{
+    QVector<ProductModel*> l;
+
+    for(int j=0; j<_products.size();j++) {
+            l.append(new ProductModel(_products[j]->getName(), _products[j]->getShelf()));
+    }
+    return l;
+}
+
+QVector<ProductModel *> Connection::getOriginalProducts()
+{
+    QVector<ProductModel*> l;
+
+    for(int j=0; j<_originalProducts.size();j++) {
+            l.append(new ProductModel(_originalProducts[j]->getName(), _originalProducts[j]->getShelf()));
+    }
+    return l;
+}
+
+QVector<QString> Connection::getNewOrders()
+{
+    return _newOrders;
+}
+
+QVector<QString> Connection::getOrders()
+{
+    QVector<QString> l;
+
+    for(int j=0; j<_orders.size();j++) {
+            l.append(_orders[j]);
+    }
+    return l;
 }
