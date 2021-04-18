@@ -9,7 +9,7 @@ Controller::Controller(QObject *parent) : QObject(parent)
     _elapsedTime = 0;
     _steps = 0;
     _timer = new QTimer(this);
-    _timer->setInterval(1000);
+    _timer->setInterval(1500);
     connect(_timer, SIGNAL(timeout()), this, SLOT(tickHandler()));
 }
 
@@ -48,6 +48,18 @@ void Controller::setSize(int size) {
 
 void Controller::setSpeed(int speed) {
     _speed = speed;
+    setSimSpeed();
+}
+
+void Controller::setSimSpeed()
+{
+    if(_speed==1){
+        _timer->setInterval(1500);
+    }else if(_speed == 2){
+        _timer->setInterval(1000);
+    }else if(_speed == 3){
+        _timer->setInterval(500);
+    }
 }
 
 void Controller::startSimulation() {
@@ -64,7 +76,7 @@ void Controller::stopSimulation() {
     _elapsedTime = 0;
     _steps = 0;
     _timer = new QTimer(this);
-    _timer->setInterval(1000);
+    _timer->setInterval(1500);
     _robots.clear();
     _dockers.clear();
     _dropOffPoints.clear();

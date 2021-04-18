@@ -69,6 +69,7 @@ SimulationWindow::SimulationWindow(Connection *connection, QWidget *parent) : QM
     connect(_connection, &Connection::pauseStateChanged, this, &SimulationWindow::onPauseStateChangedSignal);
     connect(_pauseResumeButton, SIGNAL(clicked()), this, SLOT(onPauseResumeButtonClicked()));
     connect(_newOrderButton, SIGNAL(clicked()), this, SLOT(onNewOrderButtonClicked()));
+    connect(_speedSlider, &QSlider::actionTriggered, this, &SimulationWindow::onSpeedSliderValueChanged);
 
     _paused = false;
     onCreateMapSignal(6); //An initial map to when still loading
@@ -240,3 +241,12 @@ void SimulationWindow::onNewOrderButtonClicked()
     _connection->newOrder();
 
 }
+
+void SimulationWindow::onSpeedSliderValueChanged()
+{
+    qDebug() << "kivaltodik";
+    _connection->speedChanged(_speedSlider->sliderPosition());
+    qDebug() << _speedSlider->sliderPosition();
+}
+
+

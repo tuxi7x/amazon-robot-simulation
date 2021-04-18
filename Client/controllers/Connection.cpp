@@ -277,6 +277,9 @@ void Connection::processMessage(QString header, QVector<QString> params) {
     else if (header == "RESUMED") {
             emit pauseStateChanged(params[0] == "1" ? true : false);
     }
+    else if (header == "SPEEDCHANGED") {
+            emit gameSpeedChanged(params[0].toInt());
+    }
 
 }
 
@@ -298,6 +301,13 @@ void Connection::onConnect() {
 
 bool Connection::isSuccessful() {
     return !_error;
+}
+
+void Connection::speedChanged(int newSpeed)
+{
+    QVector<QString> args;
+    args.append(QString::number(newSpeed));
+    writeToServer("SPEED", args);
 }
 
 QPair<Connection::FieldTypes, QObject*> Connection::getField(int row, int col)

@@ -59,6 +59,7 @@ private slots:
     void onFinishButtonClicked();
     void onDisconnectButtonClicked();
     void onNewOrderButtonClicked();
+    void onSpeedSliderValueChanged();
 
 };
 

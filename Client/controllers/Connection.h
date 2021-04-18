@@ -32,6 +32,7 @@ public:
     void processMessage(QString header, QVector<QString> params);
     bool isSuccessful();
 
+    void speedChanged(int newspeed);
     void pauseState();
     void resumeState();    
     void finishSimulation();
@@ -82,6 +83,7 @@ signals:
     void gameSpeedChanged (int newSpeed);
     void pauseStateChanged (bool paused);
     void connected();
+    void speedChanged();
 };
 
 #endif // CONNECTION_H
