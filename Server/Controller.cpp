@@ -318,6 +318,8 @@ void Controller::tickHandler()
                 DropOffPoint* d = getDropOffPointForProduct(r->getCurrentProduct()->getName());
                 if(planPathForRobot(r,d->getRow(),d->getCol())) {
                     r->setState(TAKINGSHELF);
+                    r->incrementConsumedEnergy();
+                    _steps++;
                 }
             } else if (r->getState() == TAKINGSHELF) {
                 removeProduct(r->getCurrentProduct());
@@ -325,6 +327,7 @@ void Controller::tickHandler()
                 r->setCurrentProduct(nullptr);
                 if(planPathForRobot(r,r->getCurrentShelf()->getOriginalRow(),r->getCurrentShelf()->getOriginalCol())) {
                     r->setState(TAKINGSHELFBACK);
+                    _steps++;
                 }
             } else if (r->getState() == TAKINGSHELFBACK) {
                 if(r->getCurrentShelf()!= nullptr) r->getCurrentShelf()->setIsAvailable(true);
@@ -334,10 +337,15 @@ void Controller::tickHandler()
                     if(d != nullptr && planPathForRobot(r,d->getRow(),d->getCol())) {
                         r->setState(GOINGTOCHARGER);
                         d->setIsOccupied(true);
+                        r->incrementConsumedEnergy();
+                        _steps++;
                     }
                 } else {
                     r->setState(FREE);
-                    planPathForRobot(r,r->getOriginalRow(),r->getOriginalCol());
+                    if(planPathForRobot(r,r->getOriginalRow(),r->getOriginalCol())) {
+                        r->incrementConsumedEnergy();
+                        _steps++;
+                    }
                 }
             } else if (r->getState() == GOINGTOCHARGER) {
                 r->setState(CHARGING);

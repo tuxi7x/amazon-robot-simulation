@@ -41,6 +41,7 @@ public:
 
     void setBattery(int battery);
     int getConsumedEnergy();
+    void incrementConsumedEnergy();
 
 private:
     int _id;
