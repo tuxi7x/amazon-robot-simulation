@@ -43,7 +43,6 @@ public:
     QVector<QString> getOrders();
     void addNewOrders(QVector<QString> newOrders);
     QVector<ProductModel *> getProducts();
-    QVector<ProductModel *> getOriginalProducts();
     bool robotOnField(int row, int col);
     bool dropOffInPosition (int row, int col);
 
@@ -61,7 +60,6 @@ private:
     QVector <ProductModel*> _products;
     QVector <QString> _orders;
     QVector <QString> _newOrders;
-    QVector <ProductModel*> _originalProducts;
 
 private slots:
     void readFromServer();

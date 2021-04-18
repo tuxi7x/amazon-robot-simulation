@@ -214,19 +214,19 @@ void SimulationWindow::onFieldButtonPressed()
 
 void SimulationWindow::onFinishButtonClicked()
 {
-    emit simulationClosed(this->geometry());
     _connection->finishSimulation();
+    emit simulationClosed(this->geometry());
 }
 
 void SimulationWindow::onDisconnectButtonClicked()
 {
-    emit simulationClosed(this->geometry());
     _connection->disconnectSimulation();
+    emit simulationClosed(this->geometry());
 }
 
 void SimulationWindow::onNewOrderButtonClicked()
 {
-    QVector<ProductModel*> products = _connection->getOriginalProducts();
+    QVector<ProductModel*> products = _connection->getProducts();
     QVector<QString> orders = _connection->getOrders();
     QVector<QString> newOrders;
 
