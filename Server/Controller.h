@@ -81,6 +81,8 @@ private:
     void removeProduct (Product* p);
     Product* getProductWithName (QString product);
     Robot* getRobotNearestToShelf (Shelf* s);
+    Docker* getDockerWithPosition (int row, int col);
+    bool freeInTable(PathNode p, Robot* r);
 
 private slots:
     void tickHandler();

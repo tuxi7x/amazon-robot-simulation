@@ -12,11 +12,15 @@ public:
     Docker(int row, int col);
     int getRow();
     int getCol();
+    bool getIsOccupied() const;
+    void setIsOccupied(bool value);
+
 private:
     int _row;
     int _col;
     Robot _robot;
     int _timer;
+    bool isOccupied;
 
 signals:
 
