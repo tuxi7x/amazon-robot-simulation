@@ -127,4 +127,9 @@ int Robot::getConsumedEnergy()
     return _consumedEnergy;
 }
 
+void Robot::incrementConsumedEnergy()
+{
+    ++_consumedEnergy;
+}
+
 

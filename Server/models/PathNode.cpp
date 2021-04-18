@@ -5,7 +5,7 @@ PathNode::PathNode()
 
 }
 
-PathNode::PathNode(int row, int col, int orientation, int time, PathNode *parent): _row(row), _col(col), _orientation(orientation), _time(time), _parent(parent)
+PathNode::PathNode(int row, int col, int orientation, int time, PathNode *parent, Robot *reserver): _row(row), _col(col), _orientation(orientation), _time(time), _parent(parent), _reserver(reserver)
 {
 
 }
@@ -49,6 +49,11 @@ void PathNode::setHValue(int hValue)
 int PathNode::getGValue() const
 {
     return _gValue;
+}
+
+Robot *PathNode::getReserver() const
+{
+    return _reserver;
 }
 
 int PathNode::getTime() const

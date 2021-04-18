@@ -17,3 +17,13 @@ int Docker::getRow() {
 int Docker::getCol() {
     return _col;
 }
+
+bool Docker::getIsOccupied() const
+{
+    return isOccupied;
+}
+
+void Docker::setIsOccupied(bool value)
+{
+    isOccupied = value;
+}

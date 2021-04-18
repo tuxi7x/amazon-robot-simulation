@@ -89,7 +89,6 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
 
     // Read products and write to server
     _products.clear();
-    _originalProducts.clear();
     QVector<QString> productParams;
     QJsonArray products = loadDoc["products"].toArray();
     for (int productIndex = 0; productIndex < products.size(); ++productIndex) {
@@ -99,7 +98,6 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
             productParams.append(name);
             productParams.append(QString::number(shelf));
             _products.append(new ProductModel(name, shelf));
-            _originalProducts.append(new ProductModel(name, shelf));
     }
 
 
@@ -346,6 +344,11 @@ QVector<QString> Connection::getProductsOnShelf(int row, int col)
 void Connection::disconnectSimulation()
 {
     QVector<QString> args;
+    _products.clear();
+    _robots.clear();
+    _shelves.clear();
+    _dropOffPoints.clear();
+    _orders.clear();
     writeToServer("CLOSE", args);
 }
 
@@ -363,6 +366,11 @@ void Connection::newOrder()
 void Connection::finishSimulation()
 {
     QVector<QString> args;
+    _products.clear();
+    _robots.clear();
+    _shelves.clear();
+    _dropOffPoints.clear();
+    _orders.clear();
     writeToServer("STOP", args);
 }
 
@@ -377,23 +385,10 @@ void Connection::addNewOrders(QVector<QString> newOrders)
 
 QVector<ProductModel *> Connection::getProducts()
 {
-    QVector<ProductModel*> l;
-
-    for(int j=0; j<_products.size();j++) {
-            l.append(new ProductModel(_products[j]->getName(), _products[j]->getShelf()));
-    }
-    return l;
+    return _products;
 }
 
-QVector<ProductModel *> Connection::getOriginalProducts()
-{
-    QVector<ProductModel*> l;
 
-    for(int j=0; j<_originalProducts.size();j++) {
-            l.append(new ProductModel(_originalProducts[j]->getName(), _originalProducts[j]->getShelf()));
-    }
-    return l;
-}
 
 bool Connection::robotOnField(int row, int col)
 {
