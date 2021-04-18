@@ -166,6 +166,7 @@ void EventManager::processMessage(QString header, QVector<QString> params, QTcpS
             if (params.length() == 1) {
                 int speed = params[0].toInt();
                 _controller->setSpeed(speed);
+                sendMessageToAll("SPEEDCHANGED", QVector<QString>(QString::number(_controller->getSpeed())));
             }
         }
     }

@@ -32,6 +32,7 @@ public:
     void alreadyOrdered(QString name);
     void setSize(int size);
     void setSpeed(int speed);
+    void setSimSpeed();
 
     QVector<Robot*> getRobots();
     QVector<Docker*> getDockers();
