@@ -2,6 +2,7 @@
 
 SimulationWindow::SimulationWindow(Connection *connection, QWidget *parent) : QMainWindow(parent)
 {
+    statusBar()->showMessage("");
     _connection = connection;
     setFixedSize(1024,728);
     setWindowTitle("Szimuláció");
@@ -70,6 +71,7 @@ SimulationWindow::SimulationWindow(Connection *connection, QWidget *parent) : QM
     connect(_pauseResumeButton, SIGNAL(clicked()), this, SLOT(onPauseResumeButtonClicked()));
     connect(_newOrderButton, SIGNAL(clicked()), this, SLOT(onNewOrderButtonClicked()));
     connect(_speedSlider, &QSlider::actionTriggered, this, &SimulationWindow::onSpeedSliderValueChanged);
+    connect(_connection, &Connection::productDelivered, this, [&](QString product){this->statusBar()->showMessage(QString("%1 kiszállítva").arg(product));});
 
     _paused = false;
     onCreateMapSignal(6); //An initial map to when still loading
@@ -237,16 +239,14 @@ void SimulationWindow::onNewOrderButtonClicked()
             newOrders.append(nod.getOrders()[i]);
         }
         _connection->addNewOrders(newOrders);
+        _connection->newOrder();
     }
-    _connection->newOrder();
 
 }
 
 void SimulationWindow::onSpeedSliderValueChanged()
 {
-    qDebug() << "kivaltodik";
     _connection->speedChanged(_speedSlider->sliderPosition());
-    qDebug() << _speedSlider->sliderPosition();
 }
 
 

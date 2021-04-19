@@ -4,6 +4,7 @@ EventManager::EventManager(Controller* controller, QObject *parent) : QObject(pa
 {
     _running = false;
     connect(_controller,&Controller::updateState, this, &EventManager::sendCurrentStateToAll);
+    connect(_controller,&Controller::productDelivered,this,&EventManager::onProductDelivered);
 }
 
 void EventManager::addConnection(QTcpSocket *connection) {
@@ -331,3 +332,11 @@ void EventManager::destroyDisconnectedConnection() {
 
     _connections.removeOne(conn);
 }
+
+void EventManager::onProductDelivered(QString prodName)
+{
+    QVector<QString> params = {prodName};
+    sendMessageToAll("DELIVERED",params);
+}
+
+

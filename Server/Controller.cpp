@@ -75,7 +75,7 @@ void Controller::stopSimulation() {
     _paused = false;
     _elapsedTime = 0;
     _steps = 0;
-    _timer = new QTimer(this);
+    _timer->stop();
     _timer->setInterval(1500);
     _robots.clear();
     _dockers.clear();
@@ -335,6 +335,7 @@ void Controller::tickHandler()
                 }
             } else if (r->getState() == TAKINGSHELF) {
                 removeProduct(r->getCurrentProduct());
+                productDelivered(r->getCurrentProduct()->getName());
                 delete r->getCurrentProduct();
                 r->setCurrentProduct(nullptr);
                 if(planPathForRobot(r,r->getCurrentShelf()->getOriginalRow(),r->getCurrentShelf()->getOriginalCol())) {

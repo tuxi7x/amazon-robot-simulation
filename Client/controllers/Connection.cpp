@@ -277,6 +277,8 @@ void Connection::processMessage(QString header, QVector<QString> params) {
     }
     else if (header == "SPEEDCHANGED") {
             emit gameSpeedChanged(params[0].toInt());
+    } else if (header == "DELIVERED") {
+        emit productDelivered(params[0]);
     }
 
 }
@@ -371,6 +373,7 @@ void Connection::finishSimulation()
     _shelves.clear();
     _dropOffPoints.clear();
     _orders.clear();
+    _newOrders.clear();
     writeToServer("STOP", args);
 }
 

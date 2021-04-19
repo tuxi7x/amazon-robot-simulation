@@ -82,6 +82,7 @@ signals:
     void pauseStateChanged (bool paused);
     void connected();
     void speedChanged();
+    void productDelivered (QString prodName);
 };
 
 #endif // CONNECTION_H

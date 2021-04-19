@@ -13,6 +13,7 @@
 #include "library/buttons/SimulationButton.h"
 #include "library/dialogs/RobotInfoDialog.h"
 #include "library/dialogs/NewOrderDialog.h"
+#include <QStatusBar>
 
 class SimulationWindow : public QMainWindow
 {

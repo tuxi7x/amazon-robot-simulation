@@ -90,6 +90,7 @@ private slots:
 
 signals:
     void updateState();
+    void productDelivered (QString prodName);
 
 
 };
