@@ -1,0 +1,183 @@
+\hypertarget{class_shelf}{}\doxysection{Shelf Class Reference}
+\label{class_shelf}\index{Shelf@{Shelf}}
+
+
+Model class containing information about a shelf.  
+
+
+
+
+{\ttfamily \#include $<$Shelf.\+h$>$}
+
+Inheritance diagram for Shelf\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_shelf}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_shelf_ada685a10c27e90dc777beff9ab2b9298}\label{class_shelf_ada685a10c27e90dc777beff9ab2b9298}} 
+{\bfseries Shelf} (QObject $\ast$parent=nullptr)
+\item 
+\mbox{\hyperlink{class_shelf_a7a2928b818baa9921d684030c341d5da}{Shelf}} (int row, int col)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_shelf}{Shelf}} Constructor for \mbox{\hyperlink{class_shelf}{Shelf}} class. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_shelf_a35e1831edb134ff694b54345aeb14770}{get\+Row}} ()
+\begin{DoxyCompactList}\small\item\em get\+Row Getter for the current row of the shelf \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_shelf_a6189cbd0259e5bf6a817ca31ca493337}{get\+Col}} ()
+\begin{DoxyCompactList}\small\item\em get\+Col Getter for the current column of the shelf \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_shelf_a4c9fc73454a54e9f0875e18c90885e2e}{get\+Original\+Row}} () const
+\begin{DoxyCompactList}\small\item\em get\+Original\+Row Getter for the original row of the shelf (useful when it is being moved) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_shelf_aac606f133bccbbd686cd3389cd03bcdd}{get\+Original\+Col}} () const
+\begin{DoxyCompactList}\small\item\em get\+Original\+Col Getter for the original column of the shelf (useful when it is being moved) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_shelf_a1704875209f3a263a504ea3fabaeecf5}{set\+Row}} (int row)
+\begin{DoxyCompactList}\small\item\em set\+Row Setter for the current row of the shelf \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_shelf_ab65fa6fff0eded4e071662bfa1af0029}{set\+Col}} (int col)
+\begin{DoxyCompactList}\small\item\em set\+Col Setter for the current column of the shelf \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_shelf_a99744b60f734acf07452b397de5c8e60}{get\+Is\+Available}} () const
+\begin{DoxyCompactList}\small\item\em get\+Is\+Available Checks if the shelf is available \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_shelf_a74b76537f4ce472ae56474b99a3a6585}{set\+Is\+Available}} (bool is\+Available)
+\begin{DoxyCompactList}\small\item\em set\+Is\+Available Sets the availability of the shelf \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Model class containing information about a shelf. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_shelf_a7a2928b818baa9921d684030c341d5da}\label{class_shelf_a7a2928b818baa9921d684030c341d5da}} 
+\index{Shelf@{Shelf}!Shelf@{Shelf}}
+\index{Shelf@{Shelf}!Shelf@{Shelf}}
+\doxysubsubsection{\texorpdfstring{Shelf()}{Shelf()}}
+{\footnotesize\ttfamily Shelf\+::\+Shelf (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_shelf}{Shelf}} Constructor for \mbox{\hyperlink{class_shelf}{Shelf}} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & The shelf\textquotesingle{}s row in a nxn grid \\
+\hline
+{\em col} & The docker\textquotesingle{}s column in a nxn grid \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_shelf_a6189cbd0259e5bf6a817ca31ca493337}\label{class_shelf_a6189cbd0259e5bf6a817ca31ca493337}} 
+\index{Shelf@{Shelf}!getCol@{getCol}}
+\index{getCol@{getCol}!Shelf@{Shelf}}
+\doxysubsubsection{\texorpdfstring{getCol()}{getCol()}}
+{\footnotesize\ttfamily int Shelf\+::get\+Col (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Col Getter for the current column of the shelf 
+
+\begin{DoxyReturn}{Returns}
+The current column of the shelf 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_shelf_a99744b60f734acf07452b397de5c8e60}\label{class_shelf_a99744b60f734acf07452b397de5c8e60}} 
+\index{Shelf@{Shelf}!getIsAvailable@{getIsAvailable}}
+\index{getIsAvailable@{getIsAvailable}!Shelf@{Shelf}}
+\doxysubsubsection{\texorpdfstring{getIsAvailable()}{getIsAvailable()}}
+{\footnotesize\ttfamily bool Shelf\+::get\+Is\+Available (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Is\+Available Checks if the shelf is available 
+
+\begin{DoxyReturn}{Returns}
+Returns true if the shelf can be moved 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_shelf_aac606f133bccbbd686cd3389cd03bcdd}\label{class_shelf_aac606f133bccbbd686cd3389cd03bcdd}} 
+\index{Shelf@{Shelf}!getOriginalCol@{getOriginalCol}}
+\index{getOriginalCol@{getOriginalCol}!Shelf@{Shelf}}
+\doxysubsubsection{\texorpdfstring{getOriginalCol()}{getOriginalCol()}}
+{\footnotesize\ttfamily int Shelf\+::get\+Original\+Col (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Original\+Col Getter for the original column of the shelf (useful when it is being moved) 
+
+\begin{DoxyReturn}{Returns}
+The original column of the shelf 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_shelf_a4c9fc73454a54e9f0875e18c90885e2e}\label{class_shelf_a4c9fc73454a54e9f0875e18c90885e2e}} 
+\index{Shelf@{Shelf}!getOriginalRow@{getOriginalRow}}
+\index{getOriginalRow@{getOriginalRow}!Shelf@{Shelf}}
+\doxysubsubsection{\texorpdfstring{getOriginalRow()}{getOriginalRow()}}
+{\footnotesize\ttfamily int Shelf\+::get\+Original\+Row (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Original\+Row Getter for the original row of the shelf (useful when it is being moved) 
+
+\begin{DoxyReturn}{Returns}
+The original row of the shelf 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_shelf_a35e1831edb134ff694b54345aeb14770}\label{class_shelf_a35e1831edb134ff694b54345aeb14770}} 
+\index{Shelf@{Shelf}!getRow@{getRow}}
+\index{getRow@{getRow}!Shelf@{Shelf}}
+\doxysubsubsection{\texorpdfstring{getRow()}{getRow()}}
+{\footnotesize\ttfamily int Shelf\+::get\+Row (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Row Getter for the current row of the shelf 
+
+\begin{DoxyReturn}{Returns}
+The current row of the shelf 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_shelf_ab65fa6fff0eded4e071662bfa1af0029}\label{class_shelf_ab65fa6fff0eded4e071662bfa1af0029}} 
+\index{Shelf@{Shelf}!setCol@{setCol}}
+\index{setCol@{setCol}!Shelf@{Shelf}}
+\doxysubsubsection{\texorpdfstring{setCol()}{setCol()}}
+{\footnotesize\ttfamily void Shelf\+::set\+Col (\begin{DoxyParamCaption}\item[{int}]{col }\end{DoxyParamCaption})}
+
+
+
+set\+Col Setter for the current column of the shelf 
+
+
+\begin{DoxyParams}{Parameters}
+{\em col} & The new column for the shelf \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_shelf_a74b76537f4ce472ae56474b99a3a6585}\label{class_shelf_a74b76537f4ce472ae56474b99a3a6585}} 
+\index{Shelf@{Shelf}!setIsAvailable@{setIsAvailable}}
+\index{setIsAvailable@{setIsAvailable}!Shelf@{Shelf}}
+\doxysubsubsection{\texorpdfstring{setIsAvailable()}{setIsAvailable()}}
+{\footnotesize\ttfamily void Shelf\+::set\+Is\+Available (\begin{DoxyParamCaption}\item[{bool}]{is\+Available }\end{DoxyParamCaption})}
+
+
+
+set\+Is\+Available Sets the availability of the shelf 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is\+Available} & The new availability of the shelf \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_shelf_a1704875209f3a263a504ea3fabaeecf5}\label{class_shelf_a1704875209f3a263a504ea3fabaeecf5}} 
+\index{Shelf@{Shelf}!setRow@{setRow}}
+\index{setRow@{setRow}!Shelf@{Shelf}}
+\doxysubsubsection{\texorpdfstring{setRow()}{setRow()}}
+{\footnotesize\ttfamily void Shelf\+::set\+Row (\begin{DoxyParamCaption}\item[{int}]{row }\end{DoxyParamCaption})}
+
+
+
+set\+Row Setter for the current row of the shelf 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & The new row for the shelf \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Server/models/Shelf.\+h\item 
+Server/models/Shelf.\+cpp\end{DoxyCompactItemize}
