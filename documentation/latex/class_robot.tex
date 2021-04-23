@@ -1,0 +1,94 @@
+\hypertarget{class_robot}{}\doxysection{Robot Class Reference}
+\label{class_robot}\index{Robot@{Robot}}
+
+
+Model class containing information about a robot.  
+
+
+
+
+{\ttfamily \#include $<$Robot.\+h$>$}
+
+Inheritance diagram for Robot\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_robot}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_robot_ad68a647a016a8b8daaad2bdf060e0235}\label{class_robot_ad68a647a016a8b8daaad2bdf060e0235}} 
+{\bfseries Robot} (QObject $\ast$parent=nullptr)
+\item 
+\mbox{\Hypertarget{class_robot_ad1c682d9d34744c35bbc906ade9f2c2f}\label{class_robot_ad1c682d9d34744c35bbc906ade9f2c2f}} 
+{\bfseries Robot} (int row, int col, int direction)
+\item 
+\mbox{\Hypertarget{class_robot_a6ae097b389376fef01fda3251f99412e}\label{class_robot_a6ae097b389376fef01fda3251f99412e}} 
+int {\bfseries get\+Row} ()
+\item 
+\mbox{\Hypertarget{class_robot_ad651686c3cbcc29b946b483cdcbcc28c}\label{class_robot_ad651686c3cbcc29b946b483cdcbcc28c}} 
+int {\bfseries get\+Col} ()
+\item 
+\mbox{\Hypertarget{class_robot_a2d75a06d329340f8bc153e8e299221c1}\label{class_robot_a2d75a06d329340f8bc153e8e299221c1}} 
+int {\bfseries get\+Direction} ()
+\item 
+\mbox{\Hypertarget{class_robot_a05176f8885eab473bc5ab9f7b2cff877}\label{class_robot_a05176f8885eab473bc5ab9f7b2cff877}} 
+int {\bfseries get\+Battery} ()
+\item 
+\mbox{\Hypertarget{class_robot_ab52af71fa96f94015d65a8405a4903f8}\label{class_robot_ab52af71fa96f94015d65a8405a4903f8}} 
+void {\bfseries push\+To\+Path} (\mbox{\hyperlink{class_path_node}{Path\+Node}} $\ast$x)
+\item 
+\mbox{\Hypertarget{class_robot_a49cfd6de89e48fefa03a34422f566652}\label{class_robot_a49cfd6de89e48fefa03a34422f566652}} 
+bool {\bfseries path\+Is\+Empty} ()
+\item 
+\mbox{\Hypertarget{class_robot_acb2d8d53ff841f037a872b5c8fcc9c0d}\label{class_robot_acb2d8d53ff841f037a872b5c8fcc9c0d}} 
+\mbox{\hyperlink{class_path_node}{Path\+Node}} $\ast$ {\bfseries step\+On\+Path} ()
+\item 
+\mbox{\Hypertarget{class_robot_a5d32840d81fcecc2fcecef40fc8ba10f}\label{class_robot_a5d32840d81fcecc2fcecef40fc8ba10f}} 
+int {\bfseries get\+Original\+Row} () const
+\item 
+\mbox{\Hypertarget{class_robot_a6ae01f1a16f99a922aeb584db905b732}\label{class_robot_a6ae01f1a16f99a922aeb584db905b732}} 
+int {\bfseries get\+Original\+Col} () const
+\item 
+\mbox{\Hypertarget{class_robot_a0354ec3ab75f3c271feee079827c871e}\label{class_robot_a0354ec3ab75f3c271feee079827c871e}} 
+Robot\+States {\bfseries get\+State} () const
+\item 
+\mbox{\Hypertarget{class_robot_ad7560dc04afcaf2c8a6e675b09ca7ba3}\label{class_robot_ad7560dc04afcaf2c8a6e675b09ca7ba3}} 
+void {\bfseries set\+State} (const Robot\+States \&state)
+\item 
+\mbox{\Hypertarget{class_robot_a29443dfbd4dbc3096a95488a3656f1ee}\label{class_robot_a29443dfbd4dbc3096a95488a3656f1ee}} 
+void {\bfseries set\+Current\+Shelf} (\mbox{\hyperlink{class_shelf}{Shelf}} $\ast$current\+Shelf)
+\item 
+\mbox{\Hypertarget{class_robot_a0a02ce7d1cfac5af22cb6ef8f8d8a98e}\label{class_robot_a0a02ce7d1cfac5af22cb6ef8f8d8a98e}} 
+int {\bfseries get\+Max\+Battery} () const
+\item 
+\mbox{\Hypertarget{class_robot_a45d75bbf2408879b9c5061a28974f333}\label{class_robot_a45d75bbf2408879b9c5061a28974f333}} 
+\mbox{\hyperlink{class_product}{Product}} $\ast$ {\bfseries get\+Current\+Product} () const
+\item 
+\mbox{\Hypertarget{class_robot_a6981fd1ed903f1c3b8a6bae5c0e910f8}\label{class_robot_a6981fd1ed903f1c3b8a6bae5c0e910f8}} 
+void {\bfseries set\+Current\+Product} (\mbox{\hyperlink{class_product}{Product}} $\ast$current\+Product)
+\item 
+\mbox{\Hypertarget{class_robot_a55002f0deb1e171d80bc34133e17b727}\label{class_robot_a55002f0deb1e171d80bc34133e17b727}} 
+void {\bfseries clear\+Path} ()
+\item 
+\mbox{\Hypertarget{class_robot_a51ef0c236f07bb1b35fc33507ea427ff}\label{class_robot_a51ef0c236f07bb1b35fc33507ea427ff}} 
+\mbox{\hyperlink{class_shelf}{Shelf}} $\ast$ {\bfseries get\+Current\+Shelf} () const
+\item 
+\mbox{\Hypertarget{class_robot_a752e6e702c194915eb8729dd0de9f60e}\label{class_robot_a752e6e702c194915eb8729dd0de9f60e}} 
+void {\bfseries set\+Battery} (int battery)
+\item 
+\mbox{\Hypertarget{class_robot_a29943649e1e6e37cb57beb37141337a2}\label{class_robot_a29943649e1e6e37cb57beb37141337a2}} 
+int {\bfseries get\+Consumed\+Energy} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Model class containing information about a robot. 
+
+\mbox{\hyperlink{class_robot}{Robot}} Model class which ships with methods used for moving the robot 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Server/models/Robot.\+h\item 
+Server/models/Robot.\+cpp\end{DoxyCompactItemize}

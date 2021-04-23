@@ -1,0 +1,404 @@
+\hypertarget{class_controller}{}\doxysection{Controller Class Reference}
+\label{class_controller}\index{Controller@{Controller}}
+
+
+\mbox{\hyperlink{class_controller}{Controller}} class responsible for controlling the simmulation.  
+
+
+
+
+{\ttfamily \#include $<$Controller.\+h$>$}
+
+Inheritance diagram for Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_controller}
+\end{center}
+\end{figure}
+\doxysubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_controller_a0228845cbab719ddedcd31943ab46e55}\label{class_controller_a0228845cbab719ddedcd31943ab46e55}} 
+void {\bfseries update\+State} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_controller_af888a35f7a377692726d81332edf08ab}{Controller}} (QObject $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_controller}{Controller}} Default constructor for \mbox{\hyperlink{class_controller}{Controller}} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_controller_a0abb4c6912b5061427f1d41ef0f6d498}{add\+Robot}} (int row, int col, int orientation)
+\begin{DoxyCompactList}\small\item\em add\+Robot Adds a new robot to the simulation (uses the \mbox{\hyperlink{class_robot}{Robot}} model) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_controller_acb24aea492906f3c81663f856e6235cf}{add\+Docker}} (int row, int col)
+\begin{DoxyCompactList}\small\item\em add\+Docker Adds a new docker to the simulation (uses the \mbox{\hyperlink{class_docker}{Docker}} model) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_controller_ab5b57a0f9031178bd02e2d511c6ce6cf}{add\+Drop\+Off\+Point}} (int row, int col, QString product)
+\begin{DoxyCompactList}\small\item\em add\+Drop\+Off\+Point Adds a new dropoff point to the simulation (uses the \mbox{\hyperlink{class_drop_off_point}{Drop\+Off\+Point}} model) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_controller_acea25f885e6e2139ea86c128731ebe81}{add\+Shelf}} (int row, int col)
+\begin{DoxyCompactList}\small\item\em add\+Shelf Adds a new shelf to the simulation (uses the \mbox{\hyperlink{class_shelf}{Shelf}} model) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_controller_ac30ba667950b6bb0faa3909ce0730a06}{add\+Product}} (QString name, int shelf)
+\begin{DoxyCompactList}\small\item\em add\+Product Adds a new product to the simulation (uses the \mbox{\hyperlink{class_product}{Product}} model) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_controller_a23b308dc9783406b02d2e61e42df17c9}{add\+Order}} (QString name)
+\begin{DoxyCompactList}\small\item\em add\+Order Adds a new order to the simulation \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_controller_a13849d63ff0dc27f7c58de63376fbe99}{already\+Ordered}} (QString name)
+\begin{DoxyCompactList}\small\item\em already\+Ordered Takes note that the product is already ordered \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_controller_a7867c6bcc573172f89d486d562f7b54d}{set\+Size}} (int size)
+\begin{DoxyCompactList}\small\item\em set\+Size Sets the size of the simulation grid \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_controller_a22c29b94b632958dc69cb766ed4b9c47}{set\+Speed}} (int speed)
+\begin{DoxyCompactList}\small\item\em set\+Speed Sets the speed of the simulation \end{DoxyCompactList}\item 
+QVector$<$ \mbox{\hyperlink{class_robot}{Robot}} $\ast$ $>$ \mbox{\hyperlink{class_controller_aaae7886356365b64762e11793235ca15}{get\+Robots}} ()
+\begin{DoxyCompactList}\small\item\em get\+Robots Getter for robots \end{DoxyCompactList}\item 
+QVector$<$ \mbox{\hyperlink{class_docker}{Docker}} $\ast$ $>$ \mbox{\hyperlink{class_controller_afda21e60e333b0fea8662f6bab5f62e9}{get\+Dockers}} ()
+\begin{DoxyCompactList}\small\item\em get\+Dockers Getter for dockers \end{DoxyCompactList}\item 
+QVector$<$ \mbox{\hyperlink{class_drop_off_point}{Drop\+Off\+Point}} $\ast$ $>$ \mbox{\hyperlink{class_controller_aa500f91067e13d08b1cb298c5ea9bfda}{get\+Drop\+Off\+Points}} ()
+\begin{DoxyCompactList}\small\item\em get\+Drop\+Off\+Points Getter for dropoff points \end{DoxyCompactList}\item 
+QVector$<$ \mbox{\hyperlink{class_shelf}{Shelf}} $\ast$ $>$ \mbox{\hyperlink{class_controller_ada01bb33d0e6d1b7f763ddb45636aa0a}{get\+Shelves}} ()
+\begin{DoxyCompactList}\small\item\em get\+Shelves Getter for shelves \end{DoxyCompactList}\item 
+QVector$<$ \mbox{\hyperlink{class_product}{Product}} $\ast$ $>$ \mbox{\hyperlink{class_controller_a191f9b8c07269c4dece0f1afaa93830e}{get\+Products}} ()
+\begin{DoxyCompactList}\small\item\em get\+Products Getter for products \end{DoxyCompactList}\item 
+QVector$<$ QString $>$ \mbox{\hyperlink{class_controller_a31c0a9db06b2fd59f3252cf7328693fe}{get\+Orders}} ()
+\begin{DoxyCompactList}\small\item\em get\+Orders Getter for orders \end{DoxyCompactList}\item 
+QVector$<$ QString $>$ \mbox{\hyperlink{class_controller_ac5c6ab7746f9a9ae9d288c42e35d7890}{get\+Already\+Ordered}} ()
+\begin{DoxyCompactList}\small\item\em get\+Already\+Ordered Getter for already ordered products \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_controller_ad9a5bff30fdfbb6948452c351bd70a12}{get\+Size}} ()
+\begin{DoxyCompactList}\small\item\em get\+Size Getter for size \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_controller_a28c27e51a843634a1e1d538f4dbf787e}{get\+Speed}} ()
+\begin{DoxyCompactList}\small\item\em get\+Speed Getter for speed \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_controller_a23335ef642c7a04c64466022217537d9}{get\+Paused}} ()
+\begin{DoxyCompactList}\small\item\em get\+Paused Checks whether the simulation is paused or not \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_controller_a86d17771acbaa4b04d56cc07e20b8430}\label{class_controller_a86d17771acbaa4b04d56cc07e20b8430}} 
+void \mbox{\hyperlink{class_controller_a86d17771acbaa4b04d56cc07e20b8430}{start\+Simulation}} ()
+\begin{DoxyCompactList}\small\item\em start\+Simulation Starts the simulation \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_controller_a92d1f1318e64c103a16771ddec4a8528}\label{class_controller_a92d1f1318e64c103a16771ddec4a8528}} 
+void \mbox{\hyperlink{class_controller_a92d1f1318e64c103a16771ddec4a8528}{stop\+Simulation}} ()
+\begin{DoxyCompactList}\small\item\em stop\+Simulation Stops the simulation \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_controller_a185e3fc3b7aa5d623a9b5e89698151d1}\label{class_controller_a185e3fc3b7aa5d623a9b5e89698151d1}} 
+void \mbox{\hyperlink{class_controller_a185e3fc3b7aa5d623a9b5e89698151d1}{pause\+Simulation}} ()
+\begin{DoxyCompactList}\small\item\em pause\+Simulation Pauses the simulation \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_controller_a2757d9481a35783337396cd29ef94bfa}\label{class_controller_a2757d9481a35783337396cd29ef94bfa}} 
+void \mbox{\hyperlink{class_controller_a2757d9481a35783337396cd29ef94bfa}{resume\+Simulation}} ()
+\begin{DoxyCompactList}\small\item\em resume\+Simulation Resumes the paused simulation \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_controller_a27f037017946b22c95eadbbe9463efb8}{sum\+Consumed\+Energy}} ()
+\begin{DoxyCompactList}\small\item\em sum\+Consumed\+Energy Counts the amount of energy used \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_controller}{Controller}} class responsible for controlling the simmulation. 
+
+This class is responsible for the simulation. It holds every information needed using the Model objects, and a pathfinding algorithm is implemented in this class used for finding the most optimal path for the robots used in the simulation. Also uses a signal which is connected to a handler in the \mbox{\hyperlink{class_event_manager}{Event\+Manager}} class, which sends the updated state to the clients every tick. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_controller_af888a35f7a377692726d81332edf08ab}\label{class_controller_af888a35f7a377692726d81332edf08ab}} 
+\index{Controller@{Controller}!Controller@{Controller}}
+\index{Controller@{Controller}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{Controller()}{Controller()}}
+{\footnotesize\ttfamily Controller\+::\+Controller (\begin{DoxyParamCaption}\item[{QObject $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\mbox{\hyperlink{class_controller}{Controller}} Default constructor for \mbox{\hyperlink{class_controller}{Controller}} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & Optional parent parameter \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_controller_acb24aea492906f3c81663f856e6235cf}\label{class_controller_acb24aea492906f3c81663f856e6235cf}} 
+\index{Controller@{Controller}!addDocker@{addDocker}}
+\index{addDocker@{addDocker}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{addDocker()}{addDocker()}}
+{\footnotesize\ttfamily void Controller\+::add\+Docker (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col }\end{DoxyParamCaption})}
+
+
+
+add\+Docker Adds a new docker to the simulation (uses the \mbox{\hyperlink{class_docker}{Docker}} model) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & The docker\textquotesingle{}s row in a nxn grid \\
+\hline
+{\em col} & The docker\textquotesingle{}s column in an nxn grid \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_controller_ab5b57a0f9031178bd02e2d511c6ce6cf}\label{class_controller_ab5b57a0f9031178bd02e2d511c6ce6cf}} 
+\index{Controller@{Controller}!addDropOffPoint@{addDropOffPoint}}
+\index{addDropOffPoint@{addDropOffPoint}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{addDropOffPoint()}{addDropOffPoint()}}
+{\footnotesize\ttfamily void Controller\+::add\+Drop\+Off\+Point (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col,  }\item[{QString}]{product }\end{DoxyParamCaption})}
+
+
+
+add\+Drop\+Off\+Point Adds a new dropoff point to the simulation (uses the \mbox{\hyperlink{class_drop_off_point}{Drop\+Off\+Point}} model) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & The dropoff point\textquotesingle{}s row in a nxn grid \\
+\hline
+{\em col} & The dropoff point\textquotesingle{}s column in an nxn grid \\
+\hline
+{\em product} & The name of the product for the dropoff point \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_controller_a23b308dc9783406b02d2e61e42df17c9}\label{class_controller_a23b308dc9783406b02d2e61e42df17c9}} 
+\index{Controller@{Controller}!addOrder@{addOrder}}
+\index{addOrder@{addOrder}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{addOrder()}{addOrder()}}
+{\footnotesize\ttfamily void Controller\+::add\+Order (\begin{DoxyParamCaption}\item[{QString}]{name }\end{DoxyParamCaption})}
+
+
+
+add\+Order Adds a new order to the simulation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the product to be ordered \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_controller_ac30ba667950b6bb0faa3909ce0730a06}\label{class_controller_ac30ba667950b6bb0faa3909ce0730a06}} 
+\index{Controller@{Controller}!addProduct@{addProduct}}
+\index{addProduct@{addProduct}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{addProduct()}{addProduct()}}
+{\footnotesize\ttfamily void Controller\+::add\+Product (\begin{DoxyParamCaption}\item[{QString}]{name,  }\item[{int}]{shelf }\end{DoxyParamCaption})}
+
+
+
+add\+Product Adds a new product to the simulation (uses the \mbox{\hyperlink{class_product}{Product}} model) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the product to be added \\
+\hline
+{\em shelf} & The id of the shelf, which holds the product \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_controller_a0abb4c6912b5061427f1d41ef0f6d498}\label{class_controller_a0abb4c6912b5061427f1d41ef0f6d498}} 
+\index{Controller@{Controller}!addRobot@{addRobot}}
+\index{addRobot@{addRobot}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{addRobot()}{addRobot()}}
+{\footnotesize\ttfamily void Controller\+::add\+Robot (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col,  }\item[{int}]{orientation }\end{DoxyParamCaption})}
+
+
+
+add\+Robot Adds a new robot to the simulation (uses the \mbox{\hyperlink{class_robot}{Robot}} model) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & The robot\textquotesingle{}s row in a nxn grid \\
+\hline
+{\em col} & The robot\textquotesingle{}s column in an nxn grid \\
+\hline
+{\em orientation} & The direction where the robot is looking (0 -\/ north, 1 -\/ east, 2 -\/ south, 3 -\/ west) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_controller_acea25f885e6e2139ea86c128731ebe81}\label{class_controller_acea25f885e6e2139ea86c128731ebe81}} 
+\index{Controller@{Controller}!addShelf@{addShelf}}
+\index{addShelf@{addShelf}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{addShelf()}{addShelf()}}
+{\footnotesize\ttfamily void Controller\+::add\+Shelf (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col }\end{DoxyParamCaption})}
+
+
+
+add\+Shelf Adds a new shelf to the simulation (uses the \mbox{\hyperlink{class_shelf}{Shelf}} model) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & The shelf\textquotesingle{}s row in a nxn grid \\
+\hline
+{\em col} & The shelf\textquotesingle{}s column in a nxn grid \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_controller_a13849d63ff0dc27f7c58de63376fbe99}\label{class_controller_a13849d63ff0dc27f7c58de63376fbe99}} 
+\index{Controller@{Controller}!alreadyOrdered@{alreadyOrdered}}
+\index{alreadyOrdered@{alreadyOrdered}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{alreadyOrdered()}{alreadyOrdered()}}
+{\footnotesize\ttfamily void Controller\+::already\+Ordered (\begin{DoxyParamCaption}\item[{QString}]{name }\end{DoxyParamCaption})}
+
+
+
+already\+Ordered Takes note that the product is already ordered 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The product already ordered \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_controller_ac5c6ab7746f9a9ae9d288c42e35d7890}\label{class_controller_ac5c6ab7746f9a9ae9d288c42e35d7890}} 
+\index{Controller@{Controller}!getAlreadyOrdered@{getAlreadyOrdered}}
+\index{getAlreadyOrdered@{getAlreadyOrdered}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{getAlreadyOrdered()}{getAlreadyOrdered()}}
+{\footnotesize\ttfamily QVector$<$ QString $>$ Controller\+::get\+Already\+Ordered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Already\+Ordered Getter for already ordered products 
+
+\begin{DoxyReturn}{Returns}
+A QVector containing the name of the products already ordered as QString objects 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_controller_afda21e60e333b0fea8662f6bab5f62e9}\label{class_controller_afda21e60e333b0fea8662f6bab5f62e9}} 
+\index{Controller@{Controller}!getDockers@{getDockers}}
+\index{getDockers@{getDockers}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{getDockers()}{getDockers()}}
+{\footnotesize\ttfamily QVector$<$ \mbox{\hyperlink{class_docker}{Docker}} $\ast$ $>$ Controller\+::get\+Dockers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Dockers Getter for dockers 
+
+\begin{DoxyReturn}{Returns}
+A QVector containing Docker$\ast$ objects 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_controller_aa500f91067e13d08b1cb298c5ea9bfda}\label{class_controller_aa500f91067e13d08b1cb298c5ea9bfda}} 
+\index{Controller@{Controller}!getDropOffPoints@{getDropOffPoints}}
+\index{getDropOffPoints@{getDropOffPoints}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{getDropOffPoints()}{getDropOffPoints()}}
+{\footnotesize\ttfamily QVector$<$ \mbox{\hyperlink{class_drop_off_point}{Drop\+Off\+Point}} $\ast$ $>$ Controller\+::get\+Drop\+Off\+Points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Drop\+Off\+Points Getter for dropoff points 
+
+\begin{DoxyReturn}{Returns}
+A QVector containing Drop\+Off\+Point$\ast$ objects 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_controller_a31c0a9db06b2fd59f3252cf7328693fe}\label{class_controller_a31c0a9db06b2fd59f3252cf7328693fe}} 
+\index{Controller@{Controller}!getOrders@{getOrders}}
+\index{getOrders@{getOrders}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{getOrders()}{getOrders()}}
+{\footnotesize\ttfamily QVector$<$ QString $>$ Controller\+::get\+Orders (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Orders Getter for orders 
+
+\begin{DoxyReturn}{Returns}
+A QVector containing the name of the ordered products as QString objects 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_controller_a23335ef642c7a04c64466022217537d9}\label{class_controller_a23335ef642c7a04c64466022217537d9}} 
+\index{Controller@{Controller}!getPaused@{getPaused}}
+\index{getPaused@{getPaused}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{getPaused()}{getPaused()}}
+{\footnotesize\ttfamily bool Controller\+::get\+Paused (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Paused Checks whether the simulation is paused or not 
+
+\begin{DoxyReturn}{Returns}
+Returns true if the simulation is paused 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_controller_a191f9b8c07269c4dece0f1afaa93830e}\label{class_controller_a191f9b8c07269c4dece0f1afaa93830e}} 
+\index{Controller@{Controller}!getProducts@{getProducts}}
+\index{getProducts@{getProducts}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{getProducts()}{getProducts()}}
+{\footnotesize\ttfamily QVector$<$ \mbox{\hyperlink{class_product}{Product}} $\ast$ $>$ Controller\+::get\+Products (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Products Getter for products 
+
+\begin{DoxyReturn}{Returns}
+A QVector containing Product$\ast$ objects 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_controller_aaae7886356365b64762e11793235ca15}\label{class_controller_aaae7886356365b64762e11793235ca15}} 
+\index{Controller@{Controller}!getRobots@{getRobots}}
+\index{getRobots@{getRobots}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{getRobots()}{getRobots()}}
+{\footnotesize\ttfamily QVector$<$ \mbox{\hyperlink{class_robot}{Robot}} $\ast$ $>$ Controller\+::get\+Robots (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Robots Getter for robots 
+
+\begin{DoxyReturn}{Returns}
+A QVector containing Robot$\ast$ objects 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_controller_ada01bb33d0e6d1b7f763ddb45636aa0a}\label{class_controller_ada01bb33d0e6d1b7f763ddb45636aa0a}} 
+\index{Controller@{Controller}!getShelves@{getShelves}}
+\index{getShelves@{getShelves}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{getShelves()}{getShelves()}}
+{\footnotesize\ttfamily QVector$<$ \mbox{\hyperlink{class_shelf}{Shelf}} $\ast$ $>$ Controller\+::get\+Shelves (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Shelves Getter for shelves 
+
+\begin{DoxyReturn}{Returns}
+A QVector containing Shelf$\ast$ objects 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_controller_ad9a5bff30fdfbb6948452c351bd70a12}\label{class_controller_ad9a5bff30fdfbb6948452c351bd70a12}} 
+\index{Controller@{Controller}!getSize@{getSize}}
+\index{getSize@{getSize}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily int Controller\+::get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Size Getter for size 
+
+\begin{DoxyReturn}{Returns}
+The current size of the simulation grid 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_controller_a28c27e51a843634a1e1d538f4dbf787e}\label{class_controller_a28c27e51a843634a1e1d538f4dbf787e}} 
+\index{Controller@{Controller}!getSpeed@{getSpeed}}
+\index{getSpeed@{getSpeed}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{getSpeed()}{getSpeed()}}
+{\footnotesize\ttfamily int Controller\+::get\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Speed Getter for speed 
+
+\begin{DoxyReturn}{Returns}
+The current speed of the simulation 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_controller_a7867c6bcc573172f89d486d562f7b54d}\label{class_controller_a7867c6bcc573172f89d486d562f7b54d}} 
+\index{Controller@{Controller}!setSize@{setSize}}
+\index{setSize@{setSize}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{setSize()}{setSize()}}
+{\footnotesize\ttfamily void Controller\+::set\+Size (\begin{DoxyParamCaption}\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+set\+Size Sets the size of the simulation grid 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & The new size of the simulation grid \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_controller_a22c29b94b632958dc69cb766ed4b9c47}\label{class_controller_a22c29b94b632958dc69cb766ed4b9c47}} 
+\index{Controller@{Controller}!setSpeed@{setSpeed}}
+\index{setSpeed@{setSpeed}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{setSpeed()}{setSpeed()}}
+{\footnotesize\ttfamily void Controller\+::set\+Speed (\begin{DoxyParamCaption}\item[{int}]{speed }\end{DoxyParamCaption})}
+
+
+
+set\+Speed Sets the speed of the simulation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em speed} & The new speed of the simulation \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_controller_a27f037017946b22c95eadbbe9463efb8}\label{class_controller_a27f037017946b22c95eadbbe9463efb8}} 
+\index{Controller@{Controller}!sumConsumedEnergy@{sumConsumedEnergy}}
+\index{sumConsumedEnergy@{sumConsumedEnergy}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{sumConsumedEnergy()}{sumConsumedEnergy()}}
+{\footnotesize\ttfamily int Controller\+::sum\+Consumed\+Energy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+sum\+Consumed\+Energy Counts the amount of energy used 
+
+\begin{DoxyReturn}{Returns}
+The amount of energy used by the robots during the simulation 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Server/Controller.\+h\item 
+Server/Controller.\+cpp\end{DoxyCompactItemize}

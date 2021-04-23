@@ -11,10 +11,23 @@
 #include "EventManager.h"
 #include "Controller.h"
 
+
+/**
+ * This is the class which is instantiated by the entry point of the
+ * program (the main class)
+ * This class implements a TCP server, and holds the EventManager and Controller objects
+ * On creation, the class starts to listen on the default public IP address and on port 1432.
+ * @brief Server class implementing a TCP server
+ *
+ */
 class Server : public QObject
 {
     Q_OBJECT
 public:
+    /**
+     * @brief Server constructor
+     * @param parent Optional parent object
+     */
     explicit Server(QObject *parent = nullptr);
 
 private:

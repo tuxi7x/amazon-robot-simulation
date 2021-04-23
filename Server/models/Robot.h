@@ -7,14 +7,20 @@
 #include "models/Product.h"
 #include "PathNode.h"
 
+/**
+ * @brief Enum for storing the current state of a robot
+ */
 enum RobotStates {FREE, GOINGFORSHELF, TAKINGSHELF, TAKINGSHELFBACK, GOINGTOCHARGER, CHARGING};
 
-
+/**
+ * Robot Model class which ships with methods used for moving the robot
+ * @brief Model class containing information about a robot
+ */
 class Robot : public QObject
 {
     Q_OBJECT
 public:
-   explicit Robot(QObject *parent = nullptr);
+   explicit Robot(QObject* parent = nullptr);
    Robot(int row, int col, int direction);
 
    int getRow();

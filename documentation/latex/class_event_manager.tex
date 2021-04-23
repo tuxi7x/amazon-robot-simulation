@@ -1,0 +1,82 @@
+\hypertarget{class_event_manager}{}\doxysection{Event\+Manager Class Reference}
+\label{class_event_manager}\index{EventManager@{EventManager}}
+
+
+\mbox{\hyperlink{class_event_manager}{Event\+Manager}} Class for managing event-\/based communication with the clients.  
+
+
+
+
+{\ttfamily \#include $<$Event\+Manager.\+h$>$}
+
+Inheritance diagram for Event\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_event_manager}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_event_manager_ab346e7525eb6793c22186a345d11c778}\label{class_event_manager_ab346e7525eb6793c22186a345d11c778}} 
+void {\bfseries Ready\+Read} ()
+\item 
+\mbox{\Hypertarget{class_event_manager_a1ccbbaed5ec07c7198276604cccf2999}\label{class_event_manager_a1ccbbaed5ec07c7198276604cccf2999}} 
+void {\bfseries destroy\+Disconnected\+Connection} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_event_manager_a341378053bd917be368b00141c41f802}{Event\+Manager}} (\mbox{\hyperlink{class_controller}{Controller}} $\ast$controller, QObject $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_event_manager}{Event\+Manager}} Constructor for \mbox{\hyperlink{class_event_manager}{Event\+Manager}} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_event_manager_a9abceb12952af059c39a9717a0d462d3}{add\+Connection}} (QTcp\+Socket $\ast$connection)
+\begin{DoxyCompactList}\small\item\em add\+Connection Adds the given object to the connections, and begins to listen to incoming messages, and send outgoing messages \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_event_manager}{Event\+Manager}} Class for managing event-\/based communication with the clients. 
+
+This class holds all the connected clients and listens for incoming messages, and when processesed, it interacts with the \mbox{\hyperlink{class_controller}{Controller}} object. Also this class is responsible for sending the messages to every client. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_event_manager_a341378053bd917be368b00141c41f802}\label{class_event_manager_a341378053bd917be368b00141c41f802}} 
+\index{EventManager@{EventManager}!EventManager@{EventManager}}
+\index{EventManager@{EventManager}!EventManager@{EventManager}}
+\doxysubsubsection{\texorpdfstring{EventManager()}{EventManager()}}
+{\footnotesize\ttfamily Event\+Manager\+::\+Event\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_controller}{Controller}} $\ast$}]{controller,  }\item[{QObject $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\mbox{\hyperlink{class_event_manager}{Event\+Manager}} Constructor for \mbox{\hyperlink{class_event_manager}{Event\+Manager}} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em controller} & \mbox{\hyperlink{class_controller}{Controller}} object supplied by the \mbox{\hyperlink{class_server}{Server}} class (Dependency Injection Pattern) \\
+\hline
+{\em parent} & Optional parent parameter \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_event_manager_a9abceb12952af059c39a9717a0d462d3}\label{class_event_manager_a9abceb12952af059c39a9717a0d462d3}} 
+\index{EventManager@{EventManager}!addConnection@{addConnection}}
+\index{addConnection@{addConnection}!EventManager@{EventManager}}
+\doxysubsubsection{\texorpdfstring{addConnection()}{addConnection()}}
+{\footnotesize\ttfamily void Event\+Manager\+::add\+Connection (\begin{DoxyParamCaption}\item[{QTcp\+Socket $\ast$}]{connection }\end{DoxyParamCaption})}
+
+
+
+add\+Connection Adds the given object to the connections, and begins to listen to incoming messages, and send outgoing messages 
+
+The \mbox{\hyperlink{class_server}{Server}} class adds connected clients to the simulation using this method. 
+\begin{DoxyParams}{Parameters}
+{\em connection} & QTCPSocket pointer object containing information about the client \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Server/Event\+Manager.\+h\item 
+Server/Event\+Manager.\+cpp\end{DoxyCompactItemize}
