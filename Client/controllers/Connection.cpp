@@ -383,11 +383,6 @@ QVector<ProductModel *> Connection::getOriginalProducts()
     return l;
 }
 
-QVector<QString> Connection::getNewOrders()
-{
-    return _newOrders;
-}
-
 QVector<QString> Connection::getOrders()
 {
     QVector<QString> l;
