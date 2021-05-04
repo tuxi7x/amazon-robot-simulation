@@ -32,8 +32,9 @@ public:
      * @param orientation The direction in which the robot will be facing when stepping on this node.
      * @param time The time elapsed since the start of the simulation when the robot will step on this node.
      * @param parent Optional parameter, it is used to access the node before this one in the robot's path. The default value is NULL.
+     * @param reserver Optional parameter: we can give the robot that reserved this node in the TimeTable
      */
-    PathNode(int row, int col, int orientation, int time, PathNode* parent = nullptr);
+    PathNode(int row, int col, int orientation, int time, PathNode *parent = nullptr, Robot *reserver = nullptr);
     /**
      * @brief getter for the f value of this node. The f value is used by A* algorithm to rank nodes.
      * @return the f value of this node.

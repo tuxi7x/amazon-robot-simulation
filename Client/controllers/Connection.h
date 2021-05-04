@@ -121,6 +121,30 @@ public:
      * @return the name of the products.
      */
     QVector<ProductModel *> getOriginalProducts();
+    /**
+     * @brief getSize returns the size of simulation
+     * @return the size of the warehouse as an int.
+     */
+    int getSize() const;
+    /**
+     * @brief dropOffInPosition Checks whether there is a drop off point in the given poistion.
+     * @param row the row we want to check
+     * @param col the column we want to check.
+     * @return whether there is a dropoff in the given position
+     */
+    bool dropOffInPosition(int row, int col);
+    /**
+     * @brief robotOnField Checks whether there is a Robot in the given poistion.
+     * @param row the row we want to check
+     * @param col the column we want to check.
+     * @return whether there is a Robot in the given position
+     */
+    bool robotOnField(int row, int col);
+    /**
+     * @brief speedChanged A function called by the simulation window when the simulation speedd was changed and we need to send it to the server.
+     * @param newSpeed The new speed (value from 1 to 3)
+     */
+    void speedChanged(int newSpeed);
 
 private:
     QTcpSocket* _socket;
@@ -152,7 +176,6 @@ signals:
     void gameSpeedChanged (int newSpeed);
     void pauseStateChanged (bool paused);
     void connected();
-    void speedChanged();
     void productDelivered (QString prodName);
 };
 

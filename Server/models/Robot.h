@@ -120,6 +120,7 @@ public:
     * @return The sum of the consumed energy as an integer.
     */
    int getConsumedEnergy();
+   void incrementConsumedEnergy();
 
 private:
     int _id;
