@@ -6,7 +6,7 @@ stages:
 
 before_script:
  - DEBIAN_FRONTEND=noninteractive apt-get update
- - DEBIAN_FRONTEND=noninteractive sudo apt-get install curl
+ - DEBIAN_FRONTEND=noninteractive apt-get install curl
  - DEBIAN_FRONTEND=noninteractive curl -sL https://firebase.tools | bash
  - DEBIAN_FRONTEND=noninteractive sudo apt-get install doxygen
  - DEBIAN_FRONTEND=noninteractive apt-get install --yes build-essential cmake qtbase5-dev qtdeclarative5-dev
