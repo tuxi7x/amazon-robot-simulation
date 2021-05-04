@@ -30,7 +30,7 @@ deploy_documentation:
 
 test_server:
   stage: test
-  <<: &test_template
+  <<: *test_template
   script:
     - cmake ./Server/
     - make ServerTest
@@ -39,7 +39,7 @@ test_server:
 
 test_client:
   stage: test
-  <<: &test_template
+  <<: *test_template
   script:
     - cmake ./Client/
     - make TestClient
