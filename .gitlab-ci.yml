@@ -16,7 +16,7 @@ deploy_documentation:
   stage: build
   script:
     - doxygen .doxygen
-    - cp -a /documentation/html/. /documentation/FireBaseSite/
+    - cp -a documentation/html/. documentation/FireBaseSite/public
     - cd documentation/FireBaseSite
     - firebase deploy --token 1//09XmiFXI-ZVXMCgYIARAAGAkSNwF-L9Ir20kqHYtfKHus4-O4HSKaJ95OqO7Gj8eTKD6P8TEq_PYKY-hcRTiQmAk3Kp06gCZk-iE
     - cd /
