@@ -1,0 +1,70 @@
+\hypertarget{class_order_dialog}{}\doxysection{Order\+Dialog Class Reference}
+\label{class_order_dialog}\index{OrderDialog@{OrderDialog}}
+
+
+The \mbox{\hyperlink{class_order_dialog}{Order\+Dialog}} class A special dialog class used by the editor to allow setting the orders that are already made at the start of the simulation.  
+
+
+
+
+{\ttfamily \#include $<$Order\+Dialog.\+h$>$}
+
+Inheritance diagram for Order\+Dialog\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_order_dialog}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_order_dialog_a5af53bbc5c881bb9f7c4533f819aa95b}{Order\+Dialog}} (QVector$<$ QString $>$ products, QVector$<$ QString $>$ orders)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_order_dialog}{Order\+Dialog}} The constructor for this class. \end{DoxyCompactList}\item 
+QVector$<$ QString $>$ \mbox{\hyperlink{class_order_dialog_a880e2155b8b2750bbd547173f42cdb67}{get\+Orders}} ()
+\begin{DoxyCompactList}\small\item\em get\+Orders A getter for the new orders selected in this dialog. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{class_order_dialog}{Order\+Dialog}} class A special dialog class used by the editor to allow setting the orders that are already made at the start of the simulation. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_order_dialog_a5af53bbc5c881bb9f7c4533f819aa95b}\label{class_order_dialog_a5af53bbc5c881bb9f7c4533f819aa95b}} 
+\index{OrderDialog@{OrderDialog}!OrderDialog@{OrderDialog}}
+\index{OrderDialog@{OrderDialog}!OrderDialog@{OrderDialog}}
+\doxysubsubsection{\texorpdfstring{OrderDialog()}{OrderDialog()}}
+{\footnotesize\ttfamily Order\+Dialog\+::\+Order\+Dialog (\begin{DoxyParamCaption}\item[{QVector$<$ QString $>$}]{products,  }\item[{QVector$<$ QString $>$}]{orders }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\mbox{\hyperlink{class_order_dialog}{Order\+Dialog}} The constructor for this class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em products} & The products on the shelves. \\
+\hline
+{\em orders} & The products that are not available because they are already ordered. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_order_dialog_a880e2155b8b2750bbd547173f42cdb67}\label{class_order_dialog_a880e2155b8b2750bbd547173f42cdb67}} 
+\index{OrderDialog@{OrderDialog}!getOrders@{getOrders}}
+\index{getOrders@{getOrders}!OrderDialog@{OrderDialog}}
+\doxysubsubsection{\texorpdfstring{getOrders()}{getOrders()}}
+{\footnotesize\ttfamily QVector$<$ QString $>$ Order\+Dialog\+::get\+Orders (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Orders A getter for the new orders selected in this dialog. 
+
+\begin{DoxyReturn}{Returns}
+The list of the orders as a QVector containing QString. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Client/library/dialogs/Order\+Dialog.\+h\item 
+Client/library/dialogs/Order\+Dialog.\+cpp\end{DoxyCompactItemize}

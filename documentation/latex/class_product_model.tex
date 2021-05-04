@@ -1,0 +1,120 @@
+\hypertarget{class_product_model}{}\doxysection{Product\+Model Class Reference}
+\label{class_product_model}\index{ProductModel@{ProductModel}}
+
+
+The \mbox{\hyperlink{class_product_model}{Product\+Model}} class contains the neccesary information about a product for the editor and for the simulation.  
+
+
+
+
+{\ttfamily \#include $<$Product\+Model.\+h$>$}
+
+Inheritance diagram for Product\+Model\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_product_model}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_product_model_a187213e3a276a96601e16eb0781df0e0}{Product\+Model}} (QString name, int shelf, QObject $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_product_model}{Product\+Model}} The constructor for this class. \end{DoxyCompactList}\item 
+QString \mbox{\hyperlink{class_product_model_ac442a296ef82b0f32c6cb6b62f6ce6f0}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em get\+Name A getter for the name of this product. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_product_model_ac9d127c6256d0fff3e75c919bff2f58c}{get\+Shelf}} () const
+\begin{DoxyCompactList}\small\item\em get\+Shelf A getter for the id of the shelf on which this product is on. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_product_model_aa089032d36237270dcc61846406ca361}{write}} (QJson\+Object \&json)
+\begin{DoxyCompactList}\small\item\em write Writes the information about this product to the QJson\+Object given as a parameter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_product_model_a0b96e0457f09d5f18e3134ac178b8fe3}{read}} (const QJson\+Object \&json)
+\begin{DoxyCompactList}\small\item\em read Reads the information about this product from the QJson\+Object given as a parameter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{class_product_model}{Product\+Model}} class contains the neccesary information about a product for the editor and for the simulation. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_product_model_a187213e3a276a96601e16eb0781df0e0}\label{class_product_model_a187213e3a276a96601e16eb0781df0e0}} 
+\index{ProductModel@{ProductModel}!ProductModel@{ProductModel}}
+\index{ProductModel@{ProductModel}!ProductModel@{ProductModel}}
+\doxysubsubsection{\texorpdfstring{ProductModel()}{ProductModel()}}
+{\footnotesize\ttfamily Product\+Model\+::\+Product\+Model (\begin{DoxyParamCaption}\item[{QString}]{name,  }\item[{int}]{shelf,  }\item[{QObject $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_product_model}{Product\+Model}} The constructor for this class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of this product. \\
+\hline
+{\em shelf} & The id of the shelf on which this product is on. \\
+\hline
+{\em parent} & The parent of this product. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_product_model_ac442a296ef82b0f32c6cb6b62f6ce6f0}\label{class_product_model_ac442a296ef82b0f32c6cb6b62f6ce6f0}} 
+\index{ProductModel@{ProductModel}!getName@{getName}}
+\index{getName@{getName}!ProductModel@{ProductModel}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily QString Product\+Model\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Name A getter for the name of this product. 
+
+\begin{DoxyReturn}{Returns}
+The name as a QString 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_product_model_ac9d127c6256d0fff3e75c919bff2f58c}\label{class_product_model_ac9d127c6256d0fff3e75c919bff2f58c}} 
+\index{ProductModel@{ProductModel}!getShelf@{getShelf}}
+\index{getShelf@{getShelf}!ProductModel@{ProductModel}}
+\doxysubsubsection{\texorpdfstring{getShelf()}{getShelf()}}
+{\footnotesize\ttfamily int Product\+Model\+::get\+Shelf (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Shelf A getter for the id of the shelf on which this product is on. 
+
+\begin{DoxyReturn}{Returns}
+The id of the shelf. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_product_model_a0b96e0457f09d5f18e3134ac178b8fe3}\label{class_product_model_a0b96e0457f09d5f18e3134ac178b8fe3}} 
+\index{ProductModel@{ProductModel}!read@{read}}
+\index{read@{read}!ProductModel@{ProductModel}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily void Product\+Model\+::read (\begin{DoxyParamCaption}\item[{const QJson\+Object \&}]{json }\end{DoxyParamCaption})}
+
+
+
+read Reads the information about this product from the QJson\+Object given as a parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em json} & The QJson\+Object read from. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_product_model_aa089032d36237270dcc61846406ca361}\label{class_product_model_aa089032d36237270dcc61846406ca361}} 
+\index{ProductModel@{ProductModel}!write@{write}}
+\index{write@{write}!ProductModel@{ProductModel}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily void Product\+Model\+::write (\begin{DoxyParamCaption}\item[{QJson\+Object \&}]{json }\end{DoxyParamCaption})}
+
+
+
+write Writes the information about this product to the QJson\+Object given as a parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em json} & The QJson\+Object written into. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Client/models/Product\+Model.\+h\item 
+Client/models/Product\+Model.\+cpp\end{DoxyCompactItemize}

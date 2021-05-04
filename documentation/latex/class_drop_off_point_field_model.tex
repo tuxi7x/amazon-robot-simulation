@@ -1,0 +1,137 @@
+\hypertarget{class_drop_off_point_field_model}{}\doxysection{Drop\+Off\+Point\+Field\+Model Class Reference}
+\label{class_drop_off_point_field_model}\index{DropOffPointFieldModel@{DropOffPointFieldModel}}
+
+
+The \mbox{\hyperlink{class_drop_off_point_field_model}{Drop\+Off\+Point\+Field\+Model}} class contains the neccesary information about a Drop off point for the editor and for the simulation.  
+
+
+
+
+{\ttfamily \#include $<$Drop\+Off\+Point\+Field\+Model.\+h$>$}
+
+Inheritance diagram for Drop\+Off\+Point\+Field\+Model\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_drop_off_point_field_model}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_drop_off_point_field_model_a3c4ecd64e420adbbb45e390ca2196f2d}{Drop\+Off\+Point\+Field\+Model}} (int row, int col, QString product, QObject $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_drop_off_point_field_model}{Drop\+Off\+Point\+Field\+Model}} The constructor for this Class. \end{DoxyCompactList}\item 
+QString \mbox{\hyperlink{class_drop_off_point_field_model_a08169c07acd2c8212580d768cb564a02}{get\+Product}} () const
+\begin{DoxyCompactList}\small\item\em get\+Product point Gets the name of the \mbox{\hyperlink{class_product}{Product}} delivered to this drop off point \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_drop_off_point_field_model_ad2c8a5fbbd0e700b71b09747ef1f5d6b}{get\+Row}} () const
+\begin{DoxyCompactList}\small\item\em get\+Row A getter for the row of this Drop off point on the grid. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_drop_off_point_field_model_a26ade40802854f0ef181880016810340}{get\+Col}} () const
+\begin{DoxyCompactList}\small\item\em get\+Col A getter for the column of this Drop off point on the grid. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drop_off_point_field_model_ab0c77ebef384e741379ab4ab85b04777}{write}} (QJson\+Object \&json)
+\begin{DoxyCompactList}\small\item\em write Writes the information about this Drop off point to the QJson\+Object given as a parameter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drop_off_point_field_model_a205beb04e4770a18081bac7f768a50ab}{read}} (const QJson\+Object \&json)
+\begin{DoxyCompactList}\small\item\em read Reads the information about this Drop off point from the QJson\+Object given as a parameter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{class_drop_off_point_field_model}{Drop\+Off\+Point\+Field\+Model}} class contains the neccesary information about a Drop off point for the editor and for the simulation. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_drop_off_point_field_model_a3c4ecd64e420adbbb45e390ca2196f2d}\label{class_drop_off_point_field_model_a3c4ecd64e420adbbb45e390ca2196f2d}} 
+\index{DropOffPointFieldModel@{DropOffPointFieldModel}!DropOffPointFieldModel@{DropOffPointFieldModel}}
+\index{DropOffPointFieldModel@{DropOffPointFieldModel}!DropOffPointFieldModel@{DropOffPointFieldModel}}
+\doxysubsubsection{\texorpdfstring{DropOffPointFieldModel()}{DropOffPointFieldModel()}}
+{\footnotesize\ttfamily Drop\+Off\+Point\+Field\+Model\+::\+Drop\+Off\+Point\+Field\+Model (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col,  }\item[{QString}]{product,  }\item[{QObject $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_drop_off_point_field_model}{Drop\+Off\+Point\+Field\+Model}} The constructor for this Class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & The row of the \mbox{\hyperlink{class_docker}{Docker}} \\
+\hline
+{\em col} & The column of the \mbox{\hyperlink{class_docker}{Docker}} \\
+\hline
+{\em product} & The name of the product delivered to this drop off point. \\
+\hline
+{\em parent} & The parent of this drop off point. as an optional parameter. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_drop_off_point_field_model_a26ade40802854f0ef181880016810340}\label{class_drop_off_point_field_model_a26ade40802854f0ef181880016810340}} 
+\index{DropOffPointFieldModel@{DropOffPointFieldModel}!getCol@{getCol}}
+\index{getCol@{getCol}!DropOffPointFieldModel@{DropOffPointFieldModel}}
+\doxysubsubsection{\texorpdfstring{getCol()}{getCol()}}
+{\footnotesize\ttfamily int Drop\+Off\+Point\+Field\+Model\+::get\+Col (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Col A getter for the column of this Drop off point on the grid. 
+
+\begin{DoxyReturn}{Returns}
+The column of the Drop off point. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_drop_off_point_field_model_a08169c07acd2c8212580d768cb564a02}\label{class_drop_off_point_field_model_a08169c07acd2c8212580d768cb564a02}} 
+\index{DropOffPointFieldModel@{DropOffPointFieldModel}!getProduct@{getProduct}}
+\index{getProduct@{getProduct}!DropOffPointFieldModel@{DropOffPointFieldModel}}
+\doxysubsubsection{\texorpdfstring{getProduct()}{getProduct()}}
+{\footnotesize\ttfamily QString Drop\+Off\+Point\+Field\+Model\+::get\+Product (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Product point Gets the name of the \mbox{\hyperlink{class_product}{Product}} delivered to this drop off point 
+
+\begin{DoxyReturn}{Returns}
+The name of the \mbox{\hyperlink{class_product}{Product}} as a QString 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_drop_off_point_field_model_ad2c8a5fbbd0e700b71b09747ef1f5d6b}\label{class_drop_off_point_field_model_ad2c8a5fbbd0e700b71b09747ef1f5d6b}} 
+\index{DropOffPointFieldModel@{DropOffPointFieldModel}!getRow@{getRow}}
+\index{getRow@{getRow}!DropOffPointFieldModel@{DropOffPointFieldModel}}
+\doxysubsubsection{\texorpdfstring{getRow()}{getRow()}}
+{\footnotesize\ttfamily int Drop\+Off\+Point\+Field\+Model\+::get\+Row (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Row A getter for the row of this Drop off point on the grid. 
+
+\begin{DoxyReturn}{Returns}
+The row of the Drop off point 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_drop_off_point_field_model_a205beb04e4770a18081bac7f768a50ab}\label{class_drop_off_point_field_model_a205beb04e4770a18081bac7f768a50ab}} 
+\index{DropOffPointFieldModel@{DropOffPointFieldModel}!read@{read}}
+\index{read@{read}!DropOffPointFieldModel@{DropOffPointFieldModel}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily void Drop\+Off\+Point\+Field\+Model\+::read (\begin{DoxyParamCaption}\item[{const QJson\+Object \&}]{json }\end{DoxyParamCaption})}
+
+
+
+read Reads the information about this Drop off point from the QJson\+Object given as a parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em json} & The QJson\+Object read from. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_drop_off_point_field_model_ab0c77ebef384e741379ab4ab85b04777}\label{class_drop_off_point_field_model_ab0c77ebef384e741379ab4ab85b04777}} 
+\index{DropOffPointFieldModel@{DropOffPointFieldModel}!write@{write}}
+\index{write@{write}!DropOffPointFieldModel@{DropOffPointFieldModel}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily void Drop\+Off\+Point\+Field\+Model\+::write (\begin{DoxyParamCaption}\item[{QJson\+Object \&}]{json }\end{DoxyParamCaption})}
+
+
+
+write Writes the information about this Drop off point to the QJson\+Object given as a parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em json} & The QJson\+Object written into. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Client/models/Drop\+Off\+Point\+Field\+Model.\+h\item 
+Client/models/Drop\+Off\+Point\+Field\+Model.\+cpp\end{DoxyCompactItemize}

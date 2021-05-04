@@ -1,21 +1,6 @@
 var searchData=
 [
-  ['getalreadyordered_66',['getAlreadyOrdered',['../class_controller.html#ac5c6ab7746f9a9ae9d288c42e35d7890',1,'Controller']]],
-  ['getcol_67',['getCol',['../class_docker.html#a6ea6b0d218653ead42fe9dc22e071077',1,'Docker::getCol()'],['../class_drop_off_point.html#a5e37e9d692daca0d8c6131c8508747e4',1,'DropOffPoint::getCol()'],['../class_shelf.html#a6189cbd0259e5bf6a817ca31ca493337',1,'Shelf::getCol()']]],
-  ['getdockers_68',['getDockers',['../class_controller.html#afda21e60e333b0fea8662f6bab5f62e9',1,'Controller']]],
-  ['getdropoffpoints_69',['getDropOffPoints',['../class_controller.html#aa500f91067e13d08b1cb298c5ea9bfda',1,'Controller']]],
-  ['getisavailable_70',['getIsAvailable',['../class_shelf.html#a99744b60f734acf07452b397de5c8e60',1,'Shelf']]],
-  ['getname_71',['getName',['../class_product.html#a1b246edde54b5bf86582dc36e734f6e1',1,'Product']]],
-  ['getorders_72',['getOrders',['../class_controller.html#a31c0a9db06b2fd59f3252cf7328693fe',1,'Controller']]],
-  ['getoriginalcol_73',['getOriginalCol',['../class_shelf.html#aac606f133bccbbd686cd3389cd03bcdd',1,'Shelf']]],
-  ['getoriginalrow_74',['getOriginalRow',['../class_shelf.html#a4c9fc73454a54e9f0875e18c90885e2e',1,'Shelf']]],
-  ['getpaused_75',['getPaused',['../class_controller.html#a23335ef642c7a04c64466022217537d9',1,'Controller']]],
-  ['getproduct_76',['getProduct',['../class_drop_off_point.html#aef322750f96bab9a2ae5a0c6e50628fc',1,'DropOffPoint']]],
-  ['getproducts_77',['getProducts',['../class_controller.html#a191f9b8c07269c4dece0f1afaa93830e',1,'Controller']]],
-  ['getrobots_78',['getRobots',['../class_controller.html#aaae7886356365b64762e11793235ca15',1,'Controller']]],
-  ['getrow_79',['getRow',['../class_docker.html#ae9dea76edec552cc2d0094bd3f6aa2c9',1,'Docker::getRow()'],['../class_drop_off_point.html#a8167769c067d32fa1404a1832566b823',1,'DropOffPoint::getRow()'],['../class_shelf.html#a35e1831edb134ff694b54345aeb14770',1,'Shelf::getRow()']]],
-  ['getshelf_80',['getShelf',['../class_product.html#abe73cc8e3189f6dc0a33fd5693b59306',1,'Product']]],
-  ['getshelves_81',['getShelves',['../class_controller.html#ada01bb33d0e6d1b7f763ddb45636aa0a',1,'Controller']]],
-  ['getsize_82',['getSize',['../class_controller.html#ad9a5bff30fdfbb6948452c351bd70a12',1,'Controller']]],
-  ['getspeed_83',['getSpeed',['../class_controller.html#a28c27e51a843634a1e1d538f4dbf787e',1,'Controller']]]
+  ['editorgridbutton_197',['EditorGridButton',['../class_editor_grid_button.html#a40a7253d6a34617229adeac4046fe962',1,'EditorGridButton']]],
+  ['errordialog_198',['ErrorDialog',['../class_error_dialog.html#a17cb36c132de4bd75baa7a67cbb17ce5',1,'ErrorDialog']]],
+  ['eventmanager_199',['EventManager',['../class_event_manager.html#a341378053bd917be368b00141c41f802',1,'EventManager']]]
 ];

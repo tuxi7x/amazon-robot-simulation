@@ -1,0 +1,154 @@
+\hypertarget{class_shelf_field_model}{}\doxysection{Shelf\+Field\+Model Class Reference}
+\label{class_shelf_field_model}\index{ShelfFieldModel@{ShelfFieldModel}}
+
+
+The \mbox{\hyperlink{class_shelf_field_model}{Shelf\+Field\+Model}} class contains the neccesary information about a shelf for the editor and for the simulation.  
+
+
+
+
+{\ttfamily \#include $<$Shelf\+Field\+Model.\+h$>$}
+
+Inheritance diagram for Shelf\+Field\+Model\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_shelf_field_model}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_shelf_field_model_a09a4f7f5a794e37244bb505c4c38c07d}{Shelf\+Field\+Model}} (int row, int col, QObject $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_shelf_field_model}{Shelf\+Field\+Model}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_shelf_field_model_a66caf008a8c03386a937562da746cbb3}{get\+Row}} () const
+\begin{DoxyCompactList}\small\item\em get\+Row A getter for the row of this \mbox{\hyperlink{class_docker}{Docker}} on the grid. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_shelf_field_model_aa1bc522367c0e09d088a190bb8678252}{get\+Col}} () const
+\begin{DoxyCompactList}\small\item\em get\+Col A getter for the column of this \mbox{\hyperlink{class_shelf}{Shelf}} on the grid. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_shelf_field_model_aeea62a92648e1cff53ed2e0bddbc5978}{write}} (QJson\+Object \&json)
+\begin{DoxyCompactList}\small\item\em write Writes the information about this \mbox{\hyperlink{class_shelf}{Shelf}} to the QJson\+Object given as a parameter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_shelf_field_model_afccf90ed0d97dd60941e4e074a92cebf}{read}} (const QJson\+Object \&json)
+\begin{DoxyCompactList}\small\item\em read Reads the information about this \mbox{\hyperlink{class_shelf}{Shelf}} from the QJson\+Object given as a parameter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_shelf_field_model_a98c5b580113165dea6cef3a039314246}{set\+Row}} (int row)
+\begin{DoxyCompactList}\small\item\em set\+Row A setter for the current row of this shelf. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_shelf_field_model_ad5fdf2c49e06c2e838a5acf34a01aab7}{set\+Col}} (int col)
+\begin{DoxyCompactList}\small\item\em set\+Col A setter for the current column of this shelf. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{class_shelf_field_model}{Shelf\+Field\+Model}} class contains the neccesary information about a shelf for the editor and for the simulation. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_shelf_field_model_a09a4f7f5a794e37244bb505c4c38c07d}\label{class_shelf_field_model_a09a4f7f5a794e37244bb505c4c38c07d}} 
+\index{ShelfFieldModel@{ShelfFieldModel}!ShelfFieldModel@{ShelfFieldModel}}
+\index{ShelfFieldModel@{ShelfFieldModel}!ShelfFieldModel@{ShelfFieldModel}}
+\doxysubsubsection{\texorpdfstring{ShelfFieldModel()}{ShelfFieldModel()}}
+{\footnotesize\ttfamily Shelf\+Field\+Model\+::\+Shelf\+Field\+Model (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col,  }\item[{QObject $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_shelf_field_model}{Shelf\+Field\+Model}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & The row of the \mbox{\hyperlink{class_docker}{Docker}} \\
+\hline
+{\em col} & The column of the \mbox{\hyperlink{class_docker}{Docker}} \\
+\hline
+{\em parent} & The parent of this \mbox{\hyperlink{class_docker}{Docker}} as an optional parameter. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_shelf_field_model_aa1bc522367c0e09d088a190bb8678252}\label{class_shelf_field_model_aa1bc522367c0e09d088a190bb8678252}} 
+\index{ShelfFieldModel@{ShelfFieldModel}!getCol@{getCol}}
+\index{getCol@{getCol}!ShelfFieldModel@{ShelfFieldModel}}
+\doxysubsubsection{\texorpdfstring{getCol()}{getCol()}}
+{\footnotesize\ttfamily int Shelf\+Field\+Model\+::get\+Col (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Col A getter for the column of this \mbox{\hyperlink{class_shelf}{Shelf}} on the grid. 
+
+\begin{DoxyReturn}{Returns}
+The column of the \mbox{\hyperlink{class_shelf}{Shelf}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_shelf_field_model_a66caf008a8c03386a937562da746cbb3}\label{class_shelf_field_model_a66caf008a8c03386a937562da746cbb3}} 
+\index{ShelfFieldModel@{ShelfFieldModel}!getRow@{getRow}}
+\index{getRow@{getRow}!ShelfFieldModel@{ShelfFieldModel}}
+\doxysubsubsection{\texorpdfstring{getRow()}{getRow()}}
+{\footnotesize\ttfamily int Shelf\+Field\+Model\+::get\+Row (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Row A getter for the row of this \mbox{\hyperlink{class_docker}{Docker}} on the grid. 
+
+\begin{DoxyReturn}{Returns}
+The row of the \mbox{\hyperlink{class_docker}{Docker}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_shelf_field_model_afccf90ed0d97dd60941e4e074a92cebf}\label{class_shelf_field_model_afccf90ed0d97dd60941e4e074a92cebf}} 
+\index{ShelfFieldModel@{ShelfFieldModel}!read@{read}}
+\index{read@{read}!ShelfFieldModel@{ShelfFieldModel}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily void Shelf\+Field\+Model\+::read (\begin{DoxyParamCaption}\item[{const QJson\+Object \&}]{json }\end{DoxyParamCaption})}
+
+
+
+read Reads the information about this \mbox{\hyperlink{class_shelf}{Shelf}} from the QJson\+Object given as a parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em json} & The QJson\+Object read from. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_shelf_field_model_ad5fdf2c49e06c2e838a5acf34a01aab7}\label{class_shelf_field_model_ad5fdf2c49e06c2e838a5acf34a01aab7}} 
+\index{ShelfFieldModel@{ShelfFieldModel}!setCol@{setCol}}
+\index{setCol@{setCol}!ShelfFieldModel@{ShelfFieldModel}}
+\doxysubsubsection{\texorpdfstring{setCol()}{setCol()}}
+{\footnotesize\ttfamily void Shelf\+Field\+Model\+::set\+Col (\begin{DoxyParamCaption}\item[{int}]{col }\end{DoxyParamCaption})}
+
+
+
+set\+Col A setter for the current column of this shelf. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em col} & The new column of this shelf. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_shelf_field_model_a98c5b580113165dea6cef3a039314246}\label{class_shelf_field_model_a98c5b580113165dea6cef3a039314246}} 
+\index{ShelfFieldModel@{ShelfFieldModel}!setRow@{setRow}}
+\index{setRow@{setRow}!ShelfFieldModel@{ShelfFieldModel}}
+\doxysubsubsection{\texorpdfstring{setRow()}{setRow()}}
+{\footnotesize\ttfamily void Shelf\+Field\+Model\+::set\+Row (\begin{DoxyParamCaption}\item[{int}]{row }\end{DoxyParamCaption})}
+
+
+
+set\+Row A setter for the current row of this shelf. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & The new row of this shelf. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_shelf_field_model_aeea62a92648e1cff53ed2e0bddbc5978}\label{class_shelf_field_model_aeea62a92648e1cff53ed2e0bddbc5978}} 
+\index{ShelfFieldModel@{ShelfFieldModel}!write@{write}}
+\index{write@{write}!ShelfFieldModel@{ShelfFieldModel}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily void Shelf\+Field\+Model\+::write (\begin{DoxyParamCaption}\item[{QJson\+Object \&}]{json }\end{DoxyParamCaption})}
+
+
+
+write Writes the information about this \mbox{\hyperlink{class_shelf}{Shelf}} to the QJson\+Object given as a parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em json} & The QJson\+Object written into. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Client/models/Shelf\+Field\+Model.\+h\item 
+Client/models/Shelf\+Field\+Model.\+cpp\end{DoxyCompactItemize}

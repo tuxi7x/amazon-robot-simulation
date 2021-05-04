@@ -1,0 +1,309 @@
+\hypertarget{class_connection}{}\doxysection{Connection Class Reference}
+\label{class_connection}\index{Connection@{Connection}}
+
+
+The \mbox{\hyperlink{class_connection}{Connection}} class handles the connection to the server side application. It sends all the necesary information when the user wants to start a new simulation. It handles the information sent by the server about this simulation.  
+
+
+
+
+{\ttfamily \#include $<$Connection.\+h$>$}
+
+Inheritance diagram for Connection\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_connection}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_connection_ac7b0335f046d00fd59082b56b4a479ac}\label{class_connection_ac7b0335f046d00fd59082b56b4a479ac}} 
+enum \mbox{\hyperlink{class_connection_ac7b0335f046d00fd59082b56b4a479ac}{Field\+Types}} \{ \newline
+{\bfseries Empty}
+, {\bfseries Robot}
+, {\bfseries Shelf}
+, {\bfseries Docker}
+, \newline
+{\bfseries Drop\+Off\+Point}
+ \}
+\begin{DoxyCompactList}\small\item\em The Field\+Types enum represents the type of fields that are used during the simulation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_connection_ade58fb156030741ae50c09bc9860a09f}\label{class_connection_ade58fb156030741ae50c09bc9860a09f}} 
+void {\bfseries create\+Map} (int size)
+\item 
+\mbox{\Hypertarget{class_connection_a73f7fdfe61ce3d389a71cb3138b3cabf}\label{class_connection_a73f7fdfe61ce3d389a71cb3138b3cabf}} 
+void {\bfseries field\+To\+Robot} (int row, int col, int orientation, int battery)
+\item 
+\mbox{\Hypertarget{class_connection_a77433a0337c9d9f5a93ab2a97908e1d6}\label{class_connection_a77433a0337c9d9f5a93ab2a97908e1d6}} 
+void {\bfseries field\+To\+Empty} (int row, int col)
+\item 
+\mbox{\Hypertarget{class_connection_a20bba8501bb0e77f5f451721d3157812}\label{class_connection_a20bba8501bb0e77f5f451721d3157812}} 
+void {\bfseries field\+To\+Shelf} (int row, int col)
+\item 
+\mbox{\Hypertarget{class_connection_a2c9ed3c43fa248809bd5f56212f4b8af}\label{class_connection_a2c9ed3c43fa248809bd5f56212f4b8af}} 
+void {\bfseries field\+To\+Drop\+Off} (int row, int col)
+\item 
+\mbox{\Hypertarget{class_connection_a1b092834cabe5028bdedd05a70267f30}\label{class_connection_a1b092834cabe5028bdedd05a70267f30}} 
+void {\bfseries field\+To\+Docker} (int row, int col)
+\item 
+\mbox{\Hypertarget{class_connection_a3a7dbedca407ff3d0235bca649100707}\label{class_connection_a3a7dbedca407ff3d0235bca649100707}} 
+void {\bfseries game\+Speed\+Changed} (int new\+Speed)
+\item 
+\mbox{\Hypertarget{class_connection_ad3589e9184ff9735b6acec83ea35691e}\label{class_connection_ad3589e9184ff9735b6acec83ea35691e}} 
+void {\bfseries pause\+State\+Changed} (bool paused)
+\item 
+\mbox{\Hypertarget{class_connection_a415fb29d65e2883c4655d5bc41afeca8}\label{class_connection_a415fb29d65e2883c4655d5bc41afeca8}} 
+void {\bfseries connected} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_connection_a8afe63c8ac9873d6e01e2ca19218344e}{Connection}} (QObject $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_connection}{Connection}} Default constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_connection_af0d9c8222978c453c856c4686d15d94b}{connect}} (QString host, int port)
+\begin{DoxyCompactList}\small\item\em connect tries to connect to a simulation server with the given ip address and port. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_connection_a9f5ed3c2f7f3a0ea45dbac89dae9b94c}{connect\+And\+Send}} (QString host, int port, QFile $\ast$file)
+\begin{DoxyCompactList}\small\item\em connect\+And\+Send tries to connect to a simulation server with the given ip address and port but also sends the information about this simulation to the server. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_connection_a6bc12f99fe4a8802c15e5e123285b753}{write\+To\+Server}} (QString header, QVector$<$ QString $>$ params)
+\begin{DoxyCompactList}\small\item\em write\+To\+Server with this method it is possible to write different information to the server application. You can send a header and arguments of that header. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_connection_a22322862166d0117da68d2bd05d10f3c}{process\+Message}} (QString header, QVector$<$ QString $>$ params)
+\begin{DoxyCompactList}\small\item\em process\+Message processes a message sent by the server. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_connection_a6df8c5b43bc862cb3bfecd52030e2a75}{is\+Successful}} ()
+\begin{DoxyCompactList}\small\item\em is\+Successful Used to check whether the sonnecting was successful \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_connection_af8d7e82eb2487a77cfa9ddb91b4f0fb9}\label{class_connection_af8d7e82eb2487a77cfa9ddb91b4f0fb9}} 
+void \mbox{\hyperlink{class_connection_af8d7e82eb2487a77cfa9ddb91b4f0fb9}{pause\+State}} ()
+\begin{DoxyCompactList}\small\item\em pause\+State sends a message to the server to pause the simulation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_connection_a1e8cff907f914e1c5823a13fb8f50123}\label{class_connection_a1e8cff907f914e1c5823a13fb8f50123}} 
+void \mbox{\hyperlink{class_connection_a1e8cff907f914e1c5823a13fb8f50123}{resume\+State}} ()
+\begin{DoxyCompactList}\small\item\em resume\+State sends a message to the server to resume the simulation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_connection_ae78e2ca19c94dddbf75ef22a6ea66956}\label{class_connection_ae78e2ca19c94dddbf75ef22a6ea66956}} 
+void \mbox{\hyperlink{class_connection_ae78e2ca19c94dddbf75ef22a6ea66956}{finish\+Simulation}} ()
+\begin{DoxyCompactList}\small\item\em finish\+Simulation sends a message to the server to finish the simulation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_connection_ab6f3f57951e794d419477b5ad13415cb}\label{class_connection_ab6f3f57951e794d419477b5ad13415cb}} 
+void \mbox{\hyperlink{class_connection_ab6f3f57951e794d419477b5ad13415cb}{disconnect\+Simulation}} ()
+\begin{DoxyCompactList}\small\item\em disconnect\+Simulation sends a message to the server that the client wants to disconnect from the simulation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_connection_a7d752e331f7a8a86f886f197afadc060}\label{class_connection_a7d752e331f7a8a86f886f197afadc060}} 
+void \mbox{\hyperlink{class_connection_a7d752e331f7a8a86f886f197afadc060}{new\+Order}} ()
+\begin{DoxyCompactList}\small\item\em new\+Order sends a new order to the simulation. \end{DoxyCompactList}\item 
+QPair$<$ \mbox{\hyperlink{class_connection_ac7b0335f046d00fd59082b56b4a479ac}{Field\+Types}}, QObject $\ast$ $>$ \mbox{\hyperlink{class_connection_a892cab060d63cbe7ee1158c3e1c9dd31}{get\+Field}} (int row, int col)
+\begin{DoxyCompactList}\small\item\em get\+Field Check the type of the field in a given position. \end{DoxyCompactList}\item 
+QVector$<$ QString $>$ \mbox{\hyperlink{class_connection_a97cf7528ce35241081ae2c074f0e025c}{get\+Products\+On\+Shelf}} (int row, int col)
+\begin{DoxyCompactList}\small\item\em get\+Products\+On\+Shelf gets the name of the products on a shelf with a given position \end{DoxyCompactList}\item 
+QVector$<$ QString $>$ \mbox{\hyperlink{class_connection_a1b75667db4db570785a4727c52a94d1b}{get\+Orders}} ()
+\begin{DoxyCompactList}\small\item\em get\+Orders Gets the orders that were placed during the simulation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_connection_abee26638374fe9a22344ca0a889a9734}{add\+New\+Orders}} (QVector$<$ QString $>$ new\+Orders)
+\begin{DoxyCompactList}\small\item\em add\+New\+Orders Adds the new orders (?) \end{DoxyCompactList}\item 
+QVector$<$ \mbox{\hyperlink{class_product_model}{Product\+Model}} $\ast$ $>$ \mbox{\hyperlink{class_connection_ae158bb107eafc0b241bcb437cc7cf675}{get\+Products}} ()
+\begin{DoxyCompactList}\small\item\em get\+Products returns the name of all of the products in the warehouse. \end{DoxyCompactList}\item 
+QVector$<$ \mbox{\hyperlink{class_product_model}{Product\+Model}} $\ast$ $>$ \mbox{\hyperlink{class_connection_a7d8d1380c7d3958815e5607501c5808d}{get\+Original\+Products}} ()
+\begin{DoxyCompactList}\small\item\em get\+Original\+Products Gets the products that were originally in the warehouse at the start of the simulation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{class_connection}{Connection}} class handles the connection to the server side application. It sends all the necesary information when the user wants to start a new simulation. It handles the information sent by the server about this simulation. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_connection_a8afe63c8ac9873d6e01e2ca19218344e}\label{class_connection_a8afe63c8ac9873d6e01e2ca19218344e}} 
+\index{Connection@{Connection}!Connection@{Connection}}
+\index{Connection@{Connection}!Connection@{Connection}}
+\doxysubsubsection{\texorpdfstring{Connection()}{Connection()}}
+{\footnotesize\ttfamily Connection\+::\+Connection (\begin{DoxyParamCaption}\item[{QObject $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\mbox{\hyperlink{class_connection}{Connection}} Default constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & parent of this QObject \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_connection_abee26638374fe9a22344ca0a889a9734}\label{class_connection_abee26638374fe9a22344ca0a889a9734}} 
+\index{Connection@{Connection}!addNewOrders@{addNewOrders}}
+\index{addNewOrders@{addNewOrders}!Connection@{Connection}}
+\doxysubsubsection{\texorpdfstring{addNewOrders()}{addNewOrders()}}
+{\footnotesize\ttfamily void Connection\+::add\+New\+Orders (\begin{DoxyParamCaption}\item[{QVector$<$ QString $>$}]{new\+Orders }\end{DoxyParamCaption})}
+
+
+
+add\+New\+Orders Adds the new orders (?) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Orders} & The new orders. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_connection_af0d9c8222978c453c856c4686d15d94b}\label{class_connection_af0d9c8222978c453c856c4686d15d94b}} 
+\index{Connection@{Connection}!connect@{connect}}
+\index{connect@{connect}!Connection@{Connection}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily void Connection\+::connect (\begin{DoxyParamCaption}\item[{QString}]{host,  }\item[{int}]{port }\end{DoxyParamCaption})}
+
+
+
+connect tries to connect to a simulation server with the given ip address and port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em host} & The ip of the server. \\
+\hline
+{\em port} & The port of the server. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_connection_a9f5ed3c2f7f3a0ea45dbac89dae9b94c}\label{class_connection_a9f5ed3c2f7f3a0ea45dbac89dae9b94c}} 
+\index{Connection@{Connection}!connectAndSend@{connectAndSend}}
+\index{connectAndSend@{connectAndSend}!Connection@{Connection}}
+\doxysubsubsection{\texorpdfstring{connectAndSend()}{connectAndSend()}}
+{\footnotesize\ttfamily void Connection\+::connect\+And\+Send (\begin{DoxyParamCaption}\item[{QString}]{host,  }\item[{int}]{port,  }\item[{QFile $\ast$}]{file }\end{DoxyParamCaption})}
+
+
+
+connect\+And\+Send tries to connect to a simulation server with the given ip address and port but also sends the information about this simulation to the server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em host} & The ip of the server. \\
+\hline
+{\em port} & The port of the server. \\
+\hline
+{\em file} & The file containg the information about the simulation. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_connection_a892cab060d63cbe7ee1158c3e1c9dd31}\label{class_connection_a892cab060d63cbe7ee1158c3e1c9dd31}} 
+\index{Connection@{Connection}!getField@{getField}}
+\index{getField@{getField}!Connection@{Connection}}
+\doxysubsubsection{\texorpdfstring{getField()}{getField()}}
+{\footnotesize\ttfamily QPair$<$ \mbox{\hyperlink{class_connection_ac7b0335f046d00fd59082b56b4a479ac}{Connection\+::\+Field\+Types}}, QObject $\ast$ $>$ Connection\+::get\+Field (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col }\end{DoxyParamCaption})}
+
+
+
+get\+Field Check the type of the field in a given position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & the row of the field. \\
+\hline
+{\em col} & the column of the field. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_connection_a1b75667db4db570785a4727c52a94d1b}\label{class_connection_a1b75667db4db570785a4727c52a94d1b}} 
+\index{Connection@{Connection}!getOrders@{getOrders}}
+\index{getOrders@{getOrders}!Connection@{Connection}}
+\doxysubsubsection{\texorpdfstring{getOrders()}{getOrders()}}
+{\footnotesize\ttfamily QVector$<$ QString $>$ Connection\+::get\+Orders (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Orders Gets the orders that were placed during the simulation. 
+
+\begin{DoxyReturn}{Returns}
+The orders as QStrings 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_connection_a7d8d1380c7d3958815e5607501c5808d}\label{class_connection_a7d8d1380c7d3958815e5607501c5808d}} 
+\index{Connection@{Connection}!getOriginalProducts@{getOriginalProducts}}
+\index{getOriginalProducts@{getOriginalProducts}!Connection@{Connection}}
+\doxysubsubsection{\texorpdfstring{getOriginalProducts()}{getOriginalProducts()}}
+{\footnotesize\ttfamily QVector$<$ \mbox{\hyperlink{class_product_model}{Product\+Model}} $\ast$ $>$ Connection\+::get\+Original\+Products (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Original\+Products Gets the products that were originally in the warehouse at the start of the simulation. 
+
+\begin{DoxyReturn}{Returns}
+the name of the products. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_connection_ae158bb107eafc0b241bcb437cc7cf675}\label{class_connection_ae158bb107eafc0b241bcb437cc7cf675}} 
+\index{Connection@{Connection}!getProducts@{getProducts}}
+\index{getProducts@{getProducts}!Connection@{Connection}}
+\doxysubsubsection{\texorpdfstring{getProducts()}{getProducts()}}
+{\footnotesize\ttfamily QVector$<$ \mbox{\hyperlink{class_product_model}{Product\+Model}} $\ast$ $>$ Connection\+::get\+Products (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Products returns the name of all of the products in the warehouse. 
+
+\begin{DoxyReturn}{Returns}
+the name of the products in a vector as QStrings 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_connection_a97cf7528ce35241081ae2c074f0e025c}\label{class_connection_a97cf7528ce35241081ae2c074f0e025c}} 
+\index{Connection@{Connection}!getProductsOnShelf@{getProductsOnShelf}}
+\index{getProductsOnShelf@{getProductsOnShelf}!Connection@{Connection}}
+\doxysubsubsection{\texorpdfstring{getProductsOnShelf()}{getProductsOnShelf()}}
+{\footnotesize\ttfamily QVector$<$ QString $>$ Connection\+::get\+Products\+On\+Shelf (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col }\end{DoxyParamCaption})}
+
+
+
+get\+Products\+On\+Shelf gets the name of the products on a shelf with a given position 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & the row of the shelf. \\
+\hline
+{\em col} & the column of the shelf \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the products in a vector as QString 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_connection_a6df8c5b43bc862cb3bfecd52030e2a75}\label{class_connection_a6df8c5b43bc862cb3bfecd52030e2a75}} 
+\index{Connection@{Connection}!isSuccessful@{isSuccessful}}
+\index{isSuccessful@{isSuccessful}!Connection@{Connection}}
+\doxysubsubsection{\texorpdfstring{isSuccessful()}{isSuccessful()}}
+{\footnotesize\ttfamily bool Connection\+::is\+Successful (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+is\+Successful Used to check whether the sonnecting was successful 
+
+\begin{DoxyReturn}{Returns}
+a bool containg the information whether connectiong was successful. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_connection_a22322862166d0117da68d2bd05d10f3c}\label{class_connection_a22322862166d0117da68d2bd05d10f3c}} 
+\index{Connection@{Connection}!processMessage@{processMessage}}
+\index{processMessage@{processMessage}!Connection@{Connection}}
+\doxysubsubsection{\texorpdfstring{processMessage()}{processMessage()}}
+{\footnotesize\ttfamily void Connection\+::process\+Message (\begin{DoxyParamCaption}\item[{QString}]{header,  }\item[{QVector$<$ QString $>$}]{params }\end{DoxyParamCaption})}
+
+
+
+process\+Message processes a message sent by the server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & the header of the message processed. \\
+\hline
+{\em params} & the parameters of the message processed. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_connection_a6bc12f99fe4a8802c15e5e123285b753}\label{class_connection_a6bc12f99fe4a8802c15e5e123285b753}} 
+\index{Connection@{Connection}!writeToServer@{writeToServer}}
+\index{writeToServer@{writeToServer}!Connection@{Connection}}
+\doxysubsubsection{\texorpdfstring{writeToServer()}{writeToServer()}}
+{\footnotesize\ttfamily void Connection\+::write\+To\+Server (\begin{DoxyParamCaption}\item[{QString}]{header,  }\item[{QVector$<$ QString $>$}]{params }\end{DoxyParamCaption})}
+
+
+
+write\+To\+Server with this method it is possible to write different information to the server application. You can send a header and arguments of that header. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & The header of the message. \\
+\hline
+{\em params} & The parameters of the message. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Client/controllers/Connection.\+h\item 
+Client/controllers/Connection.\+cpp\end{DoxyCompactItemize}

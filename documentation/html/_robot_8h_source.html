@@ -84,59 +84,71 @@ $(function() {
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    Q_OBJECT</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;   <span class="keyword">explicit</span> <a class="code" href="class_robot.html">Robot</a>(QObject* parent = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;   <a class="code" href="class_robot.html">Robot</a>(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col, <span class="keywordtype">int</span> direction);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;   <span class="keywordtype">int</span> getRow();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;   <span class="keywordtype">int</span> getCol();</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;   <span class="keywordtype">int</span> getDirection();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;   <span class="keywordtype">int</span> getBattery();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;   <span class="keywordtype">void</span> pushToPath(<a class="code" href="class_path_node.html">PathNode</a>* x);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;   <span class="keywordtype">bool</span> pathIsEmpty();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;   <a class="code" href="class_path_node.html">PathNode</a>* stepOnPath();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;   <span class="keywordtype">int</span> getOriginalRow() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;   <span class="keywordtype">int</span> getOriginalCol() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    RobotStates getState() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> setState(<span class="keyword">const</span> RobotStates &amp;state);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> setCurrentShelf(<a class="code" href="class_shelf.html">Shelf</a> *currentShelf);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">int</span> getMaxBattery() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="class_product.html">Product</a> *getCurrentProduct() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> setCurrentProduct(<a class="code" href="class_product.html">Product</a> *currentProduct);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> clearPath();</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="class_shelf.html">Shelf</a> *getCurrentShelf() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> setBattery(<span class="keywordtype">int</span> battery);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">int</span> getConsumedEnergy();</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">int</span> _id;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">int</span> _row;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">int</span> _originalRow;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">int</span> _col;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">int</span> _originalCol;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">int</span> _direction;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">int</span> _battery;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">int</span> _maxBattery;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">int</span> _consumedEnergy;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="class_shelf.html">Shelf</a>* _currentShelf;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="class_product.html">Product</a>* _currentProduct;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    QStack&lt;PathNode*&gt; _robotPath;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    RobotStates _state;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> _idCounter;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;signals:</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;};</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// ROBOT_H</span></div>
-<div class="ttc" id="aclass_path_node_html"><div class="ttname"><a href="class_path_node.html">PathNode</a></div><div class="ttdef"><b>Definition:</b> PathNode.h:14</div></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;   <span class="keyword">explicit</span> <a class="code" href="class_robot.html">Robot</a>(QObject* parent = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;   <a class="code" href="class_robot.html">Robot</a>(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col, <span class="keywordtype">int</span> direction);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;   <span class="keywordtype">int</span> <a class="code" href="class_robot.html#a6ae097b389376fef01fda3251f99412e">getRow</a>();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;   <span class="keywordtype">int</span> <a class="code" href="class_robot.html#ad651686c3cbcc29b946b483cdcbcc28c">getCol</a>();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;   <span class="keywordtype">int</span> <a class="code" href="class_robot.html#a2d75a06d329340f8bc153e8e299221c1">getDirection</a>();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;   <span class="keywordtype">int</span> <a class="code" href="class_robot.html#a05176f8885eab473bc5ab9f7b2cff877">getBattery</a>();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="class_robot.html#ab52af71fa96f94015d65a8405a4903f8">pushToPath</a>(<a class="code" href="class_path_node.html">PathNode</a>* x);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;   <span class="keywordtype">bool</span> <a class="code" href="class_robot.html#a49cfd6de89e48fefa03a34422f566652">pathIsEmpty</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;   <a class="code" href="class_path_node.html">PathNode</a>* <a class="code" href="class_robot.html#acb2d8d53ff841f037a872b5c8fcc9c0d">stepOnPath</a>();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;   <span class="keywordtype">int</span> <a class="code" href="class_robot.html#a5d32840d81fcecc2fcecef40fc8ba10f">getOriginalRow</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;   <span class="keywordtype">int</span> <a class="code" href="class_robot.html#a6ae01f1a16f99a922aeb584db905b732">getOriginalCol</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;   RobotStates <a class="code" href="class_robot.html#a0354ec3ab75f3c271feee079827c871e">getState</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="class_robot.html#ad7560dc04afcaf2c8a6e675b09ca7ba3">setState</a>(<span class="keyword">const</span> RobotStates &amp;state);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="class_robot.html#a29443dfbd4dbc3096a95488a3656f1ee">setCurrentShelf</a>(<a class="code" href="class_shelf.html">Shelf</a> *currentShelf);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;   <span class="keywordtype">int</span> <a class="code" href="class_robot.html#a0a02ce7d1cfac5af22cb6ef8f8d8a98e">getMaxBattery</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;   <a class="code" href="class_product.html">Product</a> *<a class="code" href="class_robot.html#a45d75bbf2408879b9c5061a28974f333">getCurrentProduct</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="class_robot.html#a6981fd1ed903f1c3b8a6bae5c0e910f8">setCurrentProduct</a>(<a class="code" href="class_product.html">Product</a> *currentProduct);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="class_robot.html#a55002f0deb1e171d80bc34133e17b727">clearPath</a>();</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;   <a class="code" href="class_shelf.html">Shelf</a> *<a class="code" href="class_robot.html#a51ef0c236f07bb1b35fc33507ea427ff">getCurrentShelf</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="class_robot.html#a752e6e702c194915eb8729dd0de9f60e">setBattery</a>(<span class="keywordtype">int</span> battery);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;   <span class="keywordtype">int</span> <a class="code" href="class_robot.html#a29943649e1e6e37cb57beb37141337a2">getConsumedEnergy</a>();</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordtype">int</span> _id;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordtype">int</span> _row;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordtype">int</span> _originalRow;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordtype">int</span> _col;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordtype">int</span> _originalCol;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordtype">int</span> _direction;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordtype">int</span> _battery;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordtype">int</span> _maxBattery;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordtype">int</span> _consumedEnergy;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <a class="code" href="class_shelf.html">Shelf</a>* _currentShelf;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <a class="code" href="class_product.html">Product</a>* _currentProduct;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    QStack&lt;PathNode*&gt; _robotPath;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    RobotStates _state;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> _idCounter;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;};</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// ROBOT_H</span></div>
+<div class="ttc" id="aclass_path_node_html"><div class="ttname"><a href="class_path_node.html">PathNode</a></div><div class="ttdoc">The PathNode class is used by the multi agent pathfinding algorithm. It contains all the necessary in...</div><div class="ttdef"><b>Definition:</b> PathNode.h:19</div></div>
 <div class="ttc" id="aclass_product_html"><div class="ttname"><a href="class_product.html">Product</a></div><div class="ttdoc">Model class containing information about a product.</div><div class="ttdef"><b>Definition:</b> Product.h:10</div></div>
 <div class="ttc" id="aclass_robot_html"><div class="ttname"><a href="class_robot.html">Robot</a></div><div class="ttdoc">Model class containing information about a robot.</div><div class="ttdef"><b>Definition:</b> Robot.h:20</div></div>
+<div class="ttc" id="aclass_robot_html_a0354ec3ab75f3c271feee079827c871e"><div class="ttname"><a href="class_robot.html#a0354ec3ab75f3c271feee079827c871e">Robot::getState</a></div><div class="ttdeci">RobotStates getState() const</div><div class="ttdoc">getState A getter for the current state of the Robot. For the possible states see the RobotStates enu...</div><div class="ttdef"><b>Definition:</b> Robot.cpp:80</div></div>
+<div class="ttc" id="aclass_robot_html_a05176f8885eab473bc5ab9f7b2cff877"><div class="ttname"><a href="class_robot.html#a05176f8885eab473bc5ab9f7b2cff877">Robot::getBattery</a></div><div class="ttdeci">int getBattery()</div><div class="ttdoc">getBattery A getter for the current battery of the Robot.</div><div class="ttdef"><b>Definition:</b> Robot.cpp:40</div></div>
+<div class="ttc" id="aclass_robot_html_a0a02ce7d1cfac5af22cb6ef8f8d8a98e"><div class="ttname"><a href="class_robot.html#a0a02ce7d1cfac5af22cb6ef8f8d8a98e">Robot::getMaxBattery</a></div><div class="ttdeci">int getMaxBattery() const</div><div class="ttdoc">getMaxBattery Return the maximum battery possible for this Robot.</div><div class="ttdef"><b>Definition:</b> Robot.cpp:95</div></div>
+<div class="ttc" id="aclass_robot_html_a29443dfbd4dbc3096a95488a3656f1ee"><div class="ttname"><a href="class_robot.html#a29443dfbd4dbc3096a95488a3656f1ee">Robot::setCurrentShelf</a></div><div class="ttdeci">void setCurrentShelf(Shelf *currentShelf)</div><div class="ttdoc">setCurrentShelf Sets the current shelf carried by this Robot.</div><div class="ttdef"><b>Definition:</b> Robot.cpp:90</div></div>
+<div class="ttc" id="aclass_robot_html_a29943649e1e6e37cb57beb37141337a2"><div class="ttname"><a href="class_robot.html#a29943649e1e6e37cb57beb37141337a2">Robot::getConsumedEnergy</a></div><div class="ttdeci">int getConsumedEnergy()</div><div class="ttdoc">getConsumedEnergy A getter for the sum of the total consumed energy by this robot during the Simulati...</div><div class="ttdef"><b>Definition:</b> Robot.cpp:125</div></div>
+<div class="ttc" id="aclass_robot_html_a2d75a06d329340f8bc153e8e299221c1"><div class="ttname"><a href="class_robot.html#a2d75a06d329340f8bc153e8e299221c1">Robot::getDirection</a></div><div class="ttdeci">int getDirection()</div><div class="ttdoc">getDirection A getter for the direction of the Robot. 0 = north, 1 = east, 2 = south,...</div><div class="ttdef"><b>Definition:</b> Robot.cpp:36</div></div>
+<div class="ttc" id="aclass_robot_html_a45d75bbf2408879b9c5061a28974f333"><div class="ttname"><a href="class_robot.html#a45d75bbf2408879b9c5061a28974f333">Robot::getCurrentProduct</a></div><div class="ttdeci">Product * getCurrentProduct() const</div><div class="ttdoc">getCurrentProduct A getter for the product that the Robot wants to deliver right now.</div><div class="ttdef"><b>Definition:</b> Robot.cpp:100</div></div>
+<div class="ttc" id="aclass_robot_html_a49cfd6de89e48fefa03a34422f566652"><div class="ttname"><a href="class_robot.html#a49cfd6de89e48fefa03a34422f566652">Robot::pathIsEmpty</a></div><div class="ttdeci">bool pathIsEmpty()</div><div class="ttdoc">pathIsEmpty This function is used to check whether the Robot's path is empty or not.</div><div class="ttdef"><b>Definition:</b> Robot.cpp:49</div></div>
+<div class="ttc" id="aclass_robot_html_a51ef0c236f07bb1b35fc33507ea427ff"><div class="ttname"><a href="class_robot.html#a51ef0c236f07bb1b35fc33507ea427ff">Robot::getCurrentShelf</a></div><div class="ttdeci">Shelf * getCurrentShelf() const</div><div class="ttdoc">getCurrentShelf A getter for the current Shelf carried by the robot.</div><div class="ttdef"><b>Definition:</b> Robot.cpp:115</div></div>
+<div class="ttc" id="aclass_robot_html_a55002f0deb1e171d80bc34133e17b727"><div class="ttname"><a href="class_robot.html#a55002f0deb1e171d80bc34133e17b727">Robot::clearPath</a></div><div class="ttdeci">void clearPath()</div><div class="ttdoc">clearPath Clears the path of the robot. (Sets its Stack to empty)</div><div class="ttdef"><b>Definition:</b> Robot.cpp:110</div></div>
+<div class="ttc" id="aclass_robot_html_a5d32840d81fcecc2fcecef40fc8ba10f"><div class="ttname"><a href="class_robot.html#a5d32840d81fcecc2fcecef40fc8ba10f">Robot::getOriginalRow</a></div><div class="ttdeci">int getOriginalRow() const</div><div class="ttdoc">getOriginalRow A getter for the original row of the Robot in the warehouse.</div><div class="ttdef"><b>Definition:</b> Robot.cpp:70</div></div>
+<div class="ttc" id="aclass_robot_html_a6981fd1ed903f1c3b8a6bae5c0e910f8"><div class="ttname"><a href="class_robot.html#a6981fd1ed903f1c3b8a6bae5c0e910f8">Robot::setCurrentProduct</a></div><div class="ttdeci">void setCurrentProduct(Product *currentProduct)</div><div class="ttdoc">setCurrentProduct Sets the product that the Robot wants to deliver right now.</div><div class="ttdef"><b>Definition:</b> Robot.cpp:105</div></div>
+<div class="ttc" id="aclass_robot_html_a6ae01f1a16f99a922aeb584db905b732"><div class="ttname"><a href="class_robot.html#a6ae01f1a16f99a922aeb584db905b732">Robot::getOriginalCol</a></div><div class="ttdeci">int getOriginalCol() const</div><div class="ttdoc">getOriginalCol A getter for the original column of the Robot in the warehouse.</div><div class="ttdef"><b>Definition:</b> Robot.cpp:75</div></div>
+<div class="ttc" id="aclass_robot_html_a6ae097b389376fef01fda3251f99412e"><div class="ttname"><a href="class_robot.html#a6ae097b389376fef01fda3251f99412e">Robot::getRow</a></div><div class="ttdeci">int getRow()</div><div class="ttdoc">getRow A getter for the row of the Robot in the warehouse.</div><div class="ttdef"><b>Definition:</b> Robot.cpp:28</div></div>
+<div class="ttc" id="aclass_robot_html_a752e6e702c194915eb8729dd0de9f60e"><div class="ttname"><a href="class_robot.html#a752e6e702c194915eb8729dd0de9f60e">Robot::setBattery</a></div><div class="ttdeci">void setBattery(int battery)</div><div class="ttdoc">setBattery Sets the current battery of the Robot.</div><div class="ttdef"><b>Definition:</b> Robot.cpp:120</div></div>
+<div class="ttc" id="aclass_robot_html_ab52af71fa96f94015d65a8405a4903f8"><div class="ttname"><a href="class_robot.html#ab52af71fa96f94015d65a8405a4903f8">Robot::pushToPath</a></div><div class="ttdeci">void pushToPath(PathNode *x)</div><div class="ttdoc">pushToPath Adds a node to the path stack of the robot. The Robot pop off a PathNode from its Stack in...</div><div class="ttdef"><b>Definition:</b> Robot.cpp:44</div></div>
+<div class="ttc" id="aclass_robot_html_acb2d8d53ff841f037a872b5c8fcc9c0d"><div class="ttname"><a href="class_robot.html#acb2d8d53ff841f037a872b5c8fcc9c0d">Robot::stepOnPath</a></div><div class="ttdeci">PathNode * stepOnPath()</div><div class="ttdoc">stepOnPath pops off a PathNode from the Robot's stack and steps according to that Node....</div><div class="ttdef"><b>Definition:</b> Robot.cpp:54</div></div>
+<div class="ttc" id="aclass_robot_html_ad651686c3cbcc29b946b483cdcbcc28c"><div class="ttname"><a href="class_robot.html#ad651686c3cbcc29b946b483cdcbcc28c">Robot::getCol</a></div><div class="ttdeci">int getCol()</div><div class="ttdoc">getCol A getter for the column of the Robot in the warehouse.</div><div class="ttdef"><b>Definition:</b> Robot.cpp:32</div></div>
+<div class="ttc" id="aclass_robot_html_ad7560dc04afcaf2c8a6e675b09ca7ba3"><div class="ttname"><a href="class_robot.html#ad7560dc04afcaf2c8a6e675b09ca7ba3">Robot::setState</a></div><div class="ttdeci">void setState(const RobotStates &amp;state)</div><div class="ttdoc">setState Sets the current state of the robot. For possible states see the RobotStates enum type.</div><div class="ttdef"><b>Definition:</b> Robot.cpp:85</div></div>
 <div class="ttc" id="aclass_shelf_html"><div class="ttname"><a href="class_shelf.html">Shelf</a></div><div class="ttdoc">Model class containing information about a shelf.</div><div class="ttdef"><b>Definition:</b> Shelf.h:12</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
