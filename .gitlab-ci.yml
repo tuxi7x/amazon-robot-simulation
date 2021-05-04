@@ -4,13 +4,33 @@ stages:
   - build
   - test
 
-before_script:
- - DEBIAN_FRONTEND=noninteractive apt-get update
- - DEBIAN_FRONTEND=noninteractive apt-get install --yes build-essential cmake qtbase5-dev qtdeclarative5-dev
+.before_build_template: &build_template
+ before_script:
+  - DEBIAN_FRONTEND=noninteractive apt-get update
+  - DEBIAN_FRONTEND=noninteractive apt-get install --yes doxygen
+  - DEBIAN_FRONTEND=noninteractive apt-get install --yes curl
+  - DEBIAN_FRONTEND=noninteractive apt-get install --yes npm
+  - DEBIAN_FRONTEND=noninteractive npm install -g firebase-tools
 
+.before_test_template: &test_template
+ before_script:
+  - DEBIAN_FRONTEND=noninteractive apt-get update
+  - DEBIAN_FRONTEND=noninteractive apt-get install --yes build-essential cmake qtbase5-dev qtdeclarative5-dev
+
+deploy_documentation:
+  stage: build
+  <<: *build_template
+  script:
+    - doxygen .doxygen
+    - cp -a documentation/html/. documentation/FireBaseSite/public
+    - cd documentation/FireBaseSite
+    - firebase deploy --token 1//09XmiFXI-ZVXMCgYIARAAGAkSNwF-L9Ir20kqHYtfKHus4-O4HSKaJ95OqO7Gj8eTKD6P8TEq_PYKY-hcRTiQmAk3Kp06gCZk-iE
+    - cd /
+   
 
 test_server:
   stage: test
+  <<: *test_template
   script:
     - cmake ./Server/
     - make ServerTest
@@ -19,6 +39,7 @@ test_server:
 
 test_client:
   stage: test
+  <<: *test_template
   script:
     - cmake ./Client/
     - make TestClient
