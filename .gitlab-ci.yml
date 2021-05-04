@@ -6,8 +6,19 @@ stages:
 
 before_script:
  - DEBIAN_FRONTEND=noninteractive apt-get update
+ - DEBIAN_FRONTEND=noninteractive curl -sL https://firebase.tools | bash
+ - DEBIAN_FRONTEND=noninteractive sudo apt-get install doxygen
  - DEBIAN_FRONTEND=noninteractive apt-get install --yes build-essential cmake qtbase5-dev qtdeclarative5-dev
 
+deploy_documentation:
+  stage: build
+  script:
+    - doxygen .doxygen
+    - cp -a /documentation/html/. /documentation/FireBaseSite/
+    - cd documentation/FireBaseSite
+    - firebase deploy --token 1//09XmiFXI-ZVXMCgYIARAAGAkSNwF-L9Ir20kqHYtfKHus4-O4HSKaJ95OqO7Gj8eTKD6P8TEq_PYKY-hcRTiQmAk3Kp06gCZk-iE
+    - cd /
+   
 
 test_server:
   stage: test
