@@ -18,7 +18,11 @@ public:
      * @param parent The parent of this Docker as an optional parameter.
      */
     ShelfFieldModel(int row, int col, QObject* parent = nullptr);
-
+    /**
+     * @brief getRow A getter for the row of this Docker on the grid.
+     * @return The row of the Docker
+     */
+    int getRow() const;
     /**
      * @brief getCol A getter for the column of this Shelf on the grid.
      * @return The column of the Shelf.

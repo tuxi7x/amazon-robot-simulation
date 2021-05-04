@@ -14,16 +14,23 @@
 #include "library/dialogs/RobotInfoDialog.h"
 #include "library/dialogs/NewOrderDialog.h"
 
+/**
+ * @brief The SimulationWindow class One of the main views of the application. Displays the simulation itself, with the grid and some side buttons.
+ */
 class SimulationWindow : public QMainWindow
 {
     Q_OBJECT
 public:
+    /**
+     * @brief SimulationWindow Constructor for this class.
+     * @param connection The connection of the application as dependency injection.
+     * @param parent parent of this QWidget.
+     */
     explicit SimulationWindow(Connection* connection, QWidget *parent = nullptr);
     ~SimulationWindow();
 
 signals:
     void simulationClosed(QRect pos);
-
 
 private:
     QVector<QVector<SimulationButton*>> _buttons;
@@ -41,8 +48,6 @@ private:
     QPushButton* _disconnectButton;
     bool _paused;
     void createMap();
-
-
 
 private slots:
     void onCreateMapSignal (int size);

@@ -51,7 +51,6 @@ private:
     QMovie* _progressGif;
     Connection* _connection;
     QTimer* _timer;
-
     QFile* _file;
 
 };

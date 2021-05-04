@@ -31,6 +31,11 @@ public:
      */
     RobotFieldModel(int row, int col, int orientation, int battery, QObject* parent = nullptr);
     /**
+     * @brief getRow A getter for the row of this Docker on the grid.
+     * @return The row of the Docker
+     */
+    int getRow() const;
+    /**
      * @brief getCol A getter for the column of this Robot on the grid.
      * @return The column of the Robot.
      */

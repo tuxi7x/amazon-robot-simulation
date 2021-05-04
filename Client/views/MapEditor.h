@@ -22,13 +22,38 @@
 #include <QEvent>
 #include <QWidget>
 
+/**
+ * @brief The MapEditor class is one of the main views of this application. It is responsible
+ */
 class MapEditor : public QMainWindow
 {
     Q_OBJECT
 public:
+    /**
+     * @brief MapEditor Constructor for this class.
+     * @param parent The parent of this view.
+     */
     explicit MapEditor(QWidget *parent = nullptr);
     ~MapEditor();
 
+public slots:
+    void openMapEditor(QRect windowPosition);
+
+private slots:
+    void onButtonDroppedToMap (int row, int col, SideBarButton* droppedButton);
+    void onFieldButtonPressed();
+    void onMapCreated();
+    void onFieldChanged(int row, int col);
+    void onChangeSizeButtonPressed();
+    void backButtonPressed();
+    void saveButtonPressed();
+    void settingOrdersButtonPressed();
+    void onShelfSelectionChanged (int row, int col, bool selection);
+signals:
+    void editorClosed(QRect windowPosition);
+
+protected:
+    void keyPressEvent(QKeyEvent*) override;
 
 private:
     QWidget* _centralWidget;
@@ -54,25 +79,6 @@ private:
     QVector<QVector<EditorGridButton*>> _gridButtons;
 
 
-public slots:
-    void openMapEditor(QRect windowPosition);
-
-
-private slots:
-    void onButtonDroppedToMap (int row, int col, SideBarButton* droppedButton);
-    void onFieldButtonPressed();
-    void onMapCreated();
-    void onFieldChanged(int row, int col);
-    void onChangeSizeButtonPressed();
-    void backButtonPressed();
-    void saveButtonPressed();
-    void settingOrdersButtonPressed();
-    void onShelfSelectionChanged (int row, int col, bool selection);
-signals:
-    void editorClosed(QRect windowPosition);
-
-protected:
-    void keyPressEvent(QKeyEvent*) override;
 
 
 };
