@@ -13,6 +13,7 @@
 #include "library/buttons/SimulationButton.h"
 #include "library/dialogs/RobotInfoDialog.h"
 #include "library/dialogs/NewOrderDialog.h"
+#include <QStatusBar>
 
 /**
  * @brief The SimulationWindow class One of the main views of the application. Displays the simulation itself, with the grid and some side buttons.
@@ -55,7 +56,7 @@ private slots:
     void onFieldToRobotSignal (int row, int col, int orientation, int battery);
     void onFieldToEmptySignal (int row, int col);
     void onFieldToShelfSignal (int row, int col);
-    void onFieldToDropOffSignal (int row, int col);
+    void onFieldToDropOffSignal (int row, int col, QString product);
     void onFieldtoDockerSignal (int row, int col);
     void onGameSpeedChangedSignal (int newSpeed);
     void onPauseStateChangedSignal (bool paused);
@@ -64,6 +65,7 @@ private slots:
     void onFinishButtonClicked();
     void onDisconnectButtonClicked();
     void onNewOrderButtonClicked();
+    void onSpeedSliderValueChanged();
 
 };
 

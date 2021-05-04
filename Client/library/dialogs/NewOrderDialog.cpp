@@ -29,8 +29,11 @@ NewOrderDialog::NewOrderDialog(QVector<ProductModel*> products, QVector<QString>
     setModal(true);
     QVector<QString> pr;
 
+
+
     for(int i = 0; i< products.length(); i++)
         {
+        qInfo() << products[i]->getName() << " ";
         pr.append(products[i]->getName());
     }
     for(int i=0; i<orders.length();i++) {

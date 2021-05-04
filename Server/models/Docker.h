@@ -32,11 +32,15 @@ public:
      * @return The column of the Docker
      */
     int getCol();
+    bool getIsOccupied() const;
+    void setIsOccupied(bool value);
+
 private:
     int _row;
     int _col;
     Robot _robot;
     int _timer;
+    bool isOccupied;
 
 signals:
 

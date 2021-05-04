@@ -9,7 +9,7 @@ Controller::Controller(QObject *parent) : QObject(parent)
     _elapsedTime = 0;
     _steps = 0;
     _timer = new QTimer(this);
-    _timer->setInterval(1000);
+    _timer->setInterval(1500);
     connect(_timer, SIGNAL(timeout()), this, SLOT(tickHandler()));
 }
 
@@ -48,6 +48,18 @@ void Controller::setSize(int size) {
 
 void Controller::setSpeed(int speed) {
     _speed = speed;
+    setSimSpeed();
+}
+
+void Controller::setSimSpeed()
+{
+    if(_speed==1){
+        _timer->setInterval(1500);
+    }else if(_speed == 2){
+        _timer->setInterval(1000);
+    }else if(_speed == 3){
+        _timer->setInterval(500);
+    }
 }
 
 void Controller::startSimulation() {
@@ -63,8 +75,8 @@ void Controller::stopSimulation() {
     _paused = false;
     _elapsedTime = 0;
     _steps = 0;
-    _timer = new QTimer(this);
-    _timer->setInterval(1000);
+    _timer->stop();
+    _timer->setInterval(1500);
     _robots.clear();
     _dockers.clear();
     _dropOffPoints.clear();
@@ -126,19 +138,19 @@ bool Controller::planPathForRobot(Robot *r, int destinationRow, int destinationC
         int col = currentNode->getCol();
         int time = currentNode->getTime();
         int orientation = currentNode->getOrientation();
-        if(orientation == 0 && row > 0 && fieldIsValid(row-1,col,r,destinationRow,destinationCol) && !_timeTable.contains(PathNode(row-1,col,orientation,time+1)) && !_timeTable.contains(PathNode(row-1,col,orientation,time+2))) {
+        if(orientation == 0 && row > 0 && fieldIsValid(row-1,col,r,destinationRow,destinationCol) && freeInTable(PathNode(row-1,col,orientation,time+1),r) && freeInTable(PathNode(row-1,col,orientation,time+2),r)) {
             neighbours.push_back(new PathNode(row-1,col,orientation,time+1,currentNode));
-        } else if(orientation == 1 && col < _size-1 && fieldIsValid(row,col+1,r,destinationRow,destinationCol) && !_timeTable.contains(PathNode(row,col+1,orientation,time+1)) && !_timeTable.contains(PathNode(row,col+1,orientation,time+2))) {
+        } else if(orientation == 1 && col < _size-1 && fieldIsValid(row,col+1,r,destinationRow,destinationCol) && freeInTable(PathNode(row,col+1,orientation,time+1),r) && freeInTable(PathNode(row,col+1,orientation,time+2),r)) {
             neighbours.push_back(new PathNode(row,col+1,orientation,time+1,currentNode));
-        } else if(orientation == 2 && row < _size-1 && fieldIsValid(row+1,col,r,destinationRow,destinationCol) && !_timeTable.contains(PathNode(row+1,col,orientation,time+1)) && !_timeTable.contains(PathNode(row+1,col,orientation,time+2))) {
+        } else if(orientation == 2 && row < _size-1 && fieldIsValid(row+1,col,r,destinationRow,destinationCol) && freeInTable(PathNode(row+1,col,orientation,time+1),r) && freeInTable(PathNode(row+1,col,orientation,time+2),r)) {
             neighbours.push_back(new PathNode(row+1,col,orientation,time+1,currentNode));
-        } else if(orientation == 3 && col > 0 && fieldIsValid(row,col-1,r,destinationRow,destinationCol) && !_timeTable.contains(PathNode(row,col-1,orientation,time+1)) && !_timeTable.contains(PathNode(row,col-1,orientation,time+2))) {
+        } else if(orientation == 3 && col > 0 && fieldIsValid(row,col-1,r,destinationRow,destinationCol) && freeInTable(PathNode(row,col-1,orientation,time+1),r) && freeInTable(PathNode(row,col-1,orientation,time+2),r)) {
             neighbours.push_back(new PathNode(row,col-1,orientation,time+1,currentNode));
         }
-        if(!_timeTable.contains(PathNode(row,col,nextOrientation(orientation),time+1)) && !_timeTable.contains(PathNode(row,col,nextOrientation(orientation),time+2))) {
+        if(freeInTable(PathNode(row,col,nextOrientation(orientation),time+1),r) && freeInTable(PathNode(row,col,nextOrientation(orientation),time+2),r)) {
             neighbours.push_back(new PathNode(row,col,nextOrientation(orientation),time+1,currentNode));
         }
-        if(!_timeTable.contains(PathNode(row,col,prevOrientation(orientation),time+1)) && !_timeTable.contains(PathNode(row,col,prevOrientation(orientation),time+2))) {
+        if(freeInTable(PathNode(row,col,prevOrientation(orientation),time+1),r) && freeInTable(PathNode(row,col,prevOrientation(orientation),time+2),r)) {
             neighbours.push_back(new PathNode(row,col,prevOrientation(orientation),time+1,currentNode));
         }
         if(_timeTable.contains(PathNode(row,col,orientation,time+1)) && _timeTable.contains(PathNode(row,col,orientation,time+2))) {
@@ -148,6 +160,11 @@ bool Controller::planPathForRobot(Robot *r, int destinationRow, int destinationC
         for(PathNode* neighbour : neighbours) {
             if(neighbour->getRow() == destinationRow && neighbour->getCol() == destinationCol) {
                 r->clearPath();
+                _timeTable.insert(PathNode(neighbour->getRow(),neighbour->getCol(),neighbour->getOrientation(),neighbour->getTime()+1,nullptr,r));
+                _timeTable.insert(PathNode(neighbour->getRow(),neighbour->getCol(),neighbour->getOrientation(),neighbour->getTime()+2,nullptr,r));
+                _timeTable.insert(PathNode(neighbour->getRow(),neighbour->getCol(),neighbour->getOrientation(),neighbour->getTime()+3,nullptr,r));
+                _timeTable.insert(PathNode(neighbour->getRow(),neighbour->getCol(),neighbour->getOrientation(),neighbour->getTime()+4,nullptr,r));
+                _timeTable.insert(PathNode(neighbour->getRow(),neighbour->getCol(),neighbour->getOrientation(),neighbour->getTime()+5,nullptr,r));
                 while(neighbour != nullptr) {
                     r->pushToPath(neighbour);
                     _timeTable.insert(PathNode(neighbour->getRow(),neighbour->getCol(),neighbour->getOrientation(),neighbour->getTime()));
@@ -195,6 +212,8 @@ bool Controller::fieldIsValid(int row, int col, Robot *r, int goalRow, int goalC
         if(d->getCol() == col && d->getRow() == row) return false;
     } for(Shelf* s : _shelves) {
         if(s->getCol() == col && s->getRow() == row && r->getCurrentShelf() != nullptr) return false;
+    } for(Robot* r : _robots) {
+        if(r->getRow() == row && r->getCol() == col && r->getState() == FREE && r->pathIsEmpty()) return false;
     }
     return true;
 }
@@ -227,13 +246,18 @@ DropOffPoint *Controller::getDropOffPointForProduct(QString product)
 
 Docker *Controller::getNearestDocker(Robot *r)
 {
-    Docker* item = _dockers[0];
-    int min = calculateHeuristicValue(r->getRow(),r->getCol(),item->getRow(),item->getCol());
+    Docker* item = nullptr;
+    int min;
+    bool l = false;
+
     for(Docker* d : _dockers) {
         int val = calculateHeuristicValue(r->getRow(),r->getCol(),d->getRow(),d->getCol());
-        if(val < min) {
-            item = d;
+        if(!l && !d->getIsOccupied()) {
             min = val;
+            item = d;
+        } else if(l && !d->getIsOccupied() && min > val) {
+            min = val;
+            item = d;
         }
     }
     return item;
@@ -241,7 +265,8 @@ Docker *Controller::getNearestDocker(Robot *r)
 
 void Controller::removeProduct(Product *p)
 {
-    _products.erase(std::find(_products.begin(),_products.end(),p));
+    auto val = std::find(_products.begin(),_products.end(),p);
+    if(val != _products.end()) _products.erase(val);
 }
 
 Product *Controller::getProductWithName(QString product)
@@ -273,13 +298,26 @@ Robot *Controller::getRobotNearestToShelf(Shelf *s)
     return l ? item : nullptr;
 }
 
+Docker *Controller::getDockerWithPosition(int row, int col)
+{
+    for(Docker* d : _dockers) {
+        if(d->getRow() == row && d->getCol() == col) return d;
+    }
+    return nullptr;
+}
+
+bool Controller::freeInTable(PathNode p, Robot *r)
+{
+    bool occupied = _timeTable.contains(p) && _timeTable.find(p)->getReserver() != r;
+    return !occupied;
+}
+
 void Controller::tickHandler()
 {
 
     _elapsedTime++;
     //Step with robots using their Route stack
     for(Robot* r : _robots) {
-        qInfo() << r->getState();
         PathNode *n = r->stepOnPath();
         if(n!= nullptr ) {
             _timeTable.remove(PathNode(n->getRow(),n->getCol(),n->getOrientation(),n->getTime()));
@@ -290,35 +328,50 @@ void Controller::tickHandler()
                 Shelf* s = getShelfWithPosition(r->getRow(),r->getCol());
                 r->setCurrentShelf(s);
                 DropOffPoint* d = getDropOffPointForProduct(r->getCurrentProduct()->getName());
-                qInfo() << d->getRow() << " " <<  d->getCol();
                 if(planPathForRobot(r,d->getRow(),d->getCol())) {
                     r->setState(TAKINGSHELF);
+                    r->incrementConsumedEnergy();
+                    _steps++;
                 }
             } else if (r->getState() == TAKINGSHELF) {
                 removeProduct(r->getCurrentProduct());
+                productDelivered(r->getCurrentProduct()->getName());
                 delete r->getCurrentProduct();
                 r->setCurrentProduct(nullptr);
                 if(planPathForRobot(r,r->getCurrentShelf()->getOriginalRow(),r->getCurrentShelf()->getOriginalCol())) {
                     r->setState(TAKINGSHELFBACK);
+                    _steps++;
                 }
             } else if (r->getState() == TAKINGSHELFBACK) {
-                r->getCurrentShelf()->setIsAvailable(true);
+                if(r->getCurrentShelf()!= nullptr) r->getCurrentShelf()->setIsAvailable(true);
                 r->setCurrentShelf(nullptr);
                 if(r->getBattery() <= r->getMaxBattery()/2) {
                     Docker* d = getNearestDocker(r);
-                    if(planPathForRobot(r,d->getRow(),d->getCol())) {
+                    if(d != nullptr && planPathForRobot(r,d->getRow(),d->getCol())) {
                         r->setState(GOINGTOCHARGER);
+                        d->setIsOccupied(true);
+                        r->incrementConsumedEnergy();
+                        _steps++;
                     }
                 } else {
                     r->setState(FREE);
-                    planPathForRobot(r,r->getOriginalRow(),r->getOriginalCol());
+                    if(planPathForRobot(r,r->getOriginalRow(),r->getOriginalCol())) {
+                        r->incrementConsumedEnergy();
+                        _steps++;
+                    }
                 }
             } else if (r->getState() == GOINGTOCHARGER) {
                 r->setState(CHARGING);
+                for(int i=0; i<4;i++) {
+                    r->pushToPath(new PathNode(r->getRow(),r->getCol(),r->getDirection(),_elapsedTime+i));
+                }
             } else if (r->getState() == CHARGING) {
-                r->setState(FREE);
                 r->setBattery(r->getMaxBattery());
-                planPathForRobot(r,r->getOriginalRow(),r->getOriginalCol());
+                if(planPathForRobot(r,r->getOriginalRow(),r->getOriginalCol())) {
+                    r->setState(FREE);
+                    Docker* d = getDockerWithPosition(r->getRow(),r->getCol());
+                    if(d!= nullptr) d->setIsOccupied(false);
+                }
             }
         }
     }

@@ -54,6 +54,7 @@ private:
 public slots:
     void ReadyRead();
     void destroyDisconnectedConnection();
+    void onProductDelivered(QString prodName);
 
 };
 

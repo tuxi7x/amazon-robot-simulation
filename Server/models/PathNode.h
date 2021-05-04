@@ -1,5 +1,6 @@
 #ifndef PATHNODE_H
 #define PATHNODE_H
+
 #include <qhashfunctions.h>
 #include <QtGlobal>
 
@@ -8,6 +9,8 @@ using qhash_result_t = uint;
 #else
 using qhash_result_t = size_t;
 #endif
+
+class Robot;
 
 
 /**
@@ -79,6 +82,8 @@ public:
      */
     int getGValue() const;
 
+    Robot *getReserver() const;
+
 private:
     int _row;
     int _col;
@@ -89,6 +94,7 @@ private:
     //the h value represents an estimate of the distance between the starting point and this node.
     int _hValue;
     PathNode* _parent;
+    Robot* _reserver;
 };
 
 

@@ -133,7 +133,6 @@ private:
     QVector <ProductModel*> _products;
     QVector <QString> _orders;
     QVector <QString> _newOrders;
-    QVector <ProductModel*> _originalProducts;
 
 private slots:
     void readFromServer();
@@ -148,11 +147,13 @@ signals:
     void fieldToRobot (int row, int col, int orientation, int battery);
     void fieldToEmpty (int row, int col);
     void fieldToShelf (int row, int col);
-    void fieldToDropOff (int row, int col);
+    void fieldToDropOff (int row, int col, QString product);
     void fieldToDocker (int row, int col);
     void gameSpeedChanged (int newSpeed);
     void pauseStateChanged (bool paused);
     void connected();
+    void speedChanged();
+    void productDelivered (QString prodName);
 };
 
 #endif // CONNECTION_H
