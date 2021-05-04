@@ -415,11 +415,6 @@ int Connection::getSize() const
     return _size;
 }
 
-QVector<QString> Connection::getNewOrders()
-{
-    return _newOrders;
-}
-
 QVector<QString> Connection::getOrders()
 {
     QVector<QString> l;

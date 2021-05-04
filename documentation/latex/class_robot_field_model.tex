@@ -1,0 +1,194 @@
+\hypertarget{class_robot_field_model}{}\doxysection{Robot\+Field\+Model Class Reference}
+\label{class_robot_field_model}\index{RobotFieldModel@{RobotFieldModel}}
+
+
+The \mbox{\hyperlink{class_robot_field_model}{Robot\+Field\+Model}} class contains the neccesary information about a \mbox{\hyperlink{class_robot}{Robot}} for the editor and for the simulation.  
+
+
+
+
+{\ttfamily \#include $<$Robot\+Field\+Model.\+h$>$}
+
+Inheritance diagram for Robot\+Field\+Model\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_robot_field_model}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_robot_field_model_a3240b2b55b6b99ad734b89c59202762d}{Robot\+Field\+Model}} (int row, int col, int orientation, QObject $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_robot_field_model}{Robot\+Field\+Model}} A constructor for this class where battery isnt neccesary. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_robot_field_model_a64ba5dac536aba5610740f5063eb0c15}{Robot\+Field\+Model}} (int row, int col, int orientation, int battery, QObject $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_robot_field_model}{Robot\+Field\+Model}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_robot_field_model_a2ccb46e5d3d02e76d735305d5cb0d45d}{get\+Row}} () const
+\begin{DoxyCompactList}\small\item\em get\+Row A getter for the row of this \mbox{\hyperlink{class_docker}{Docker}} on the grid. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_robot_field_model_a1cc589e809ad02bf6a2b9f9ffc9e81ed}{get\+Col}} () const
+\begin{DoxyCompactList}\small\item\em get\+Col A getter for the column of this \mbox{\hyperlink{class_robot}{Robot}} on the grid. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_robot_field_model_a8f145c096d1e8d7efb4e3d67a424ebcd}{write}} (QJson\+Object \&json)
+\begin{DoxyCompactList}\small\item\em write Writes the information about this \mbox{\hyperlink{class_robot}{Robot}} to the QJson\+Object given as a parameter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_robot_field_model_afcafff2cfdbd1efa5fdfb94ea558d7b4}{read}} (const QJson\+Object \&json)
+\begin{DoxyCompactList}\small\item\em read Reads the information about this \mbox{\hyperlink{class_robot}{Robot}} from the QJson\+Object given as a parameter. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_robot_field_model_aa144cd219cef69f86bc3c793134b5a49}{get\+Orientation}} () const
+\begin{DoxyCompactList}\small\item\em get\+Orientation A getter for the orientation of this \mbox{\hyperlink{class_robot}{Robot}}\+: 0 = north, 1 = east, 2 = south, 3 = west. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_robot_field_model_a13770670649e18b2a20f36350d10ce96}{set\+Orientation}} (int orientation)
+\begin{DoxyCompactList}\small\item\em set\+Orientation A setter for the orientation of this \mbox{\hyperlink{class_robot}{Robot}}\+: 0 = north, 1 = east, 2 = south, 3 = west. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_robot_field_model_ac05afb21f6bcbb9b77c94fbb2b1f8213}{get\+Battery}} ()
+\begin{DoxyCompactList}\small\item\em get\+Battery A getter for the current battery level of the \mbox{\hyperlink{class_robot}{Robot}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{class_robot_field_model}{Robot\+Field\+Model}} class contains the neccesary information about a \mbox{\hyperlink{class_robot}{Robot}} for the editor and for the simulation. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_robot_field_model_a3240b2b55b6b99ad734b89c59202762d}\label{class_robot_field_model_a3240b2b55b6b99ad734b89c59202762d}} 
+\index{RobotFieldModel@{RobotFieldModel}!RobotFieldModel@{RobotFieldModel}}
+\index{RobotFieldModel@{RobotFieldModel}!RobotFieldModel@{RobotFieldModel}}
+\doxysubsubsection{\texorpdfstring{RobotFieldModel()}{RobotFieldModel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Robot\+Field\+Model\+::\+Robot\+Field\+Model (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col,  }\item[{int}]{orientation,  }\item[{QObject $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_robot_field_model}{Robot\+Field\+Model}} A constructor for this class where battery isnt neccesary. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & The row of this \mbox{\hyperlink{class_robot}{Robot}} \\
+\hline
+{\em col} & The column of this robot. \\
+\hline
+{\em orientation} & The orientation of this robot\+: 0 = north, 1 = east, 2 = south, 3 = west. \\
+\hline
+{\em parent} & The parent of this robot as an optional parameter. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_robot_field_model_a64ba5dac536aba5610740f5063eb0c15}\label{class_robot_field_model_a64ba5dac536aba5610740f5063eb0c15}} 
+\index{RobotFieldModel@{RobotFieldModel}!RobotFieldModel@{RobotFieldModel}}
+\index{RobotFieldModel@{RobotFieldModel}!RobotFieldModel@{RobotFieldModel}}
+\doxysubsubsection{\texorpdfstring{RobotFieldModel()}{RobotFieldModel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Robot\+Field\+Model\+::\+Robot\+Field\+Model (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col,  }\item[{int}]{orientation,  }\item[{int}]{battery,  }\item[{QObject $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_robot_field_model}{Robot\+Field\+Model}}. 
+
+\mbox{\hyperlink{class_robot_field_model}{Robot\+Field\+Model}} A constructor for this class where battery isnt neccesary. 
+\begin{DoxyParams}{Parameters}
+{\em row} & The row of this \mbox{\hyperlink{class_robot}{Robot}} \\
+\hline
+{\em col} & The column of this robot. \\
+\hline
+{\em orientation} & The orientation of this robot\+: 0 = north, 1 = east, 2 = south, 3 = west. \\
+\hline
+{\em battery} & The current battery level of this robot. \\
+\hline
+{\em parent} & The parent of this robot. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_robot_field_model_ac05afb21f6bcbb9b77c94fbb2b1f8213}\label{class_robot_field_model_ac05afb21f6bcbb9b77c94fbb2b1f8213}} 
+\index{RobotFieldModel@{RobotFieldModel}!getBattery@{getBattery}}
+\index{getBattery@{getBattery}!RobotFieldModel@{RobotFieldModel}}
+\doxysubsubsection{\texorpdfstring{getBattery()}{getBattery()}}
+{\footnotesize\ttfamily int Robot\+Field\+Model\+::get\+Battery (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Battery A getter for the current battery level of the \mbox{\hyperlink{class_robot}{Robot}}. 
+
+\begin{DoxyReturn}{Returns}
+The battery level as an int. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_field_model_a1cc589e809ad02bf6a2b9f9ffc9e81ed}\label{class_robot_field_model_a1cc589e809ad02bf6a2b9f9ffc9e81ed}} 
+\index{RobotFieldModel@{RobotFieldModel}!getCol@{getCol}}
+\index{getCol@{getCol}!RobotFieldModel@{RobotFieldModel}}
+\doxysubsubsection{\texorpdfstring{getCol()}{getCol()}}
+{\footnotesize\ttfamily int Robot\+Field\+Model\+::get\+Col (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Col A getter for the column of this \mbox{\hyperlink{class_robot}{Robot}} on the grid. 
+
+\begin{DoxyReturn}{Returns}
+The column of the \mbox{\hyperlink{class_robot}{Robot}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_field_model_aa144cd219cef69f86bc3c793134b5a49}\label{class_robot_field_model_aa144cd219cef69f86bc3c793134b5a49}} 
+\index{RobotFieldModel@{RobotFieldModel}!getOrientation@{getOrientation}}
+\index{getOrientation@{getOrientation}!RobotFieldModel@{RobotFieldModel}}
+\doxysubsubsection{\texorpdfstring{getOrientation()}{getOrientation()}}
+{\footnotesize\ttfamily int Robot\+Field\+Model\+::get\+Orientation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Orientation A getter for the orientation of this \mbox{\hyperlink{class_robot}{Robot}}\+: 0 = north, 1 = east, 2 = south, 3 = west. 
+
+\begin{DoxyReturn}{Returns}
+The orientation as an int. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_field_model_a2ccb46e5d3d02e76d735305d5cb0d45d}\label{class_robot_field_model_a2ccb46e5d3d02e76d735305d5cb0d45d}} 
+\index{RobotFieldModel@{RobotFieldModel}!getRow@{getRow}}
+\index{getRow@{getRow}!RobotFieldModel@{RobotFieldModel}}
+\doxysubsubsection{\texorpdfstring{getRow()}{getRow()}}
+{\footnotesize\ttfamily int Robot\+Field\+Model\+::get\+Row (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Row A getter for the row of this \mbox{\hyperlink{class_docker}{Docker}} on the grid. 
+
+\begin{DoxyReturn}{Returns}
+The row of the \mbox{\hyperlink{class_docker}{Docker}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_field_model_afcafff2cfdbd1efa5fdfb94ea558d7b4}\label{class_robot_field_model_afcafff2cfdbd1efa5fdfb94ea558d7b4}} 
+\index{RobotFieldModel@{RobotFieldModel}!read@{read}}
+\index{read@{read}!RobotFieldModel@{RobotFieldModel}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily void Robot\+Field\+Model\+::read (\begin{DoxyParamCaption}\item[{const QJson\+Object \&}]{json }\end{DoxyParamCaption})}
+
+
+
+read Reads the information about this \mbox{\hyperlink{class_robot}{Robot}} from the QJson\+Object given as a parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em json} & The QJson\+Object read from. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_robot_field_model_a13770670649e18b2a20f36350d10ce96}\label{class_robot_field_model_a13770670649e18b2a20f36350d10ce96}} 
+\index{RobotFieldModel@{RobotFieldModel}!setOrientation@{setOrientation}}
+\index{setOrientation@{setOrientation}!RobotFieldModel@{RobotFieldModel}}
+\doxysubsubsection{\texorpdfstring{setOrientation()}{setOrientation()}}
+{\footnotesize\ttfamily void Robot\+Field\+Model\+::set\+Orientation (\begin{DoxyParamCaption}\item[{int}]{orientation }\end{DoxyParamCaption})}
+
+
+
+set\+Orientation A setter for the orientation of this \mbox{\hyperlink{class_robot}{Robot}}\+: 0 = north, 1 = east, 2 = south, 3 = west. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em orientation} & The new orientation as an int. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_robot_field_model_a8f145c096d1e8d7efb4e3d67a424ebcd}\label{class_robot_field_model_a8f145c096d1e8d7efb4e3d67a424ebcd}} 
+\index{RobotFieldModel@{RobotFieldModel}!write@{write}}
+\index{write@{write}!RobotFieldModel@{RobotFieldModel}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily void Robot\+Field\+Model\+::write (\begin{DoxyParamCaption}\item[{QJson\+Object \&}]{json }\end{DoxyParamCaption})}
+
+
+
+write Writes the information about this \mbox{\hyperlink{class_robot}{Robot}} to the QJson\+Object given as a parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em json} & The QJson\+Object written into. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Client/models/Robot\+Field\+Model.\+h\item 
+Client/models/Robot\+Field\+Model.\+cpp\end{DoxyCompactItemize}

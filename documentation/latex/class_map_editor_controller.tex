@@ -1,0 +1,516 @@
+\hypertarget{class_map_editor_controller}{}\doxysection{Map\+Editor\+Controller Class Reference}
+\label{class_map_editor_controller}\index{MapEditorController@{MapEditorController}}
+
+
+The \mbox{\hyperlink{class_map_editor_controller}{Map\+Editor\+Controller}} class implements the business logic behind the map editor in this Application.  
+
+
+
+
+{\ttfamily \#include $<$Map\+Editor\+Controller.\+h$>$}
+
+Inheritance diagram for Map\+Editor\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_map_editor_controller}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_map_editor_controller_a84fbc242566b592fe2fb7a7394450ffb}\label{class_map_editor_controller_a84fbc242566b592fe2fb7a7394450ffb}} 
+enum \mbox{\hyperlink{class_map_editor_controller_a84fbc242566b592fe2fb7a7394450ffb}{Field\+Types}} \{ \newline
+{\bfseries Empty}
+, {\bfseries Robot}
+, {\bfseries Shelf}
+, {\bfseries Docker}
+, \newline
+{\bfseries Drop\+Off\+Point}
+ \}
+\begin{DoxyCompactList}\small\item\em The Field\+Types enum represents the type of fields that are possible in the editor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_map_editor_controller_a683020a6a55cf678997d6fa56f4c3322}\label{class_map_editor_controller_a683020a6a55cf678997d6fa56f4c3322}} 
+void \mbox{\hyperlink{class_map_editor_controller_a683020a6a55cf678997d6fa56f4c3322}{map\+Created}} ()
+\begin{DoxyCompactList}\small\item\em map\+Created is a signal emitted by the \mbox{\hyperlink{class_map_editor_controller}{Map\+Editor\+Controller}} when there was a new map created. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_editor_controller_a19b7d4465a9e53e9f82a7ac56aedad0e}{field\+Changed}} (int row, int col)
+\begin{DoxyCompactList}\small\item\em field\+Changed is a signal emitted by the \mbox{\hyperlink{class_map_editor_controller}{Map\+Editor\+Controller}} when a specific field changed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_editor_controller_aa724d2ac8513f27b63dcac104a17599a}{shelf\+Selection\+Changed}} (int row, int col, bool selected)
+\begin{DoxyCompactList}\small\item\em shelf\+Selection\+Changed is a signal emitted by the \mbox{\hyperlink{class_map_editor_controller}{Map\+Editor\+Controller}} when the selected state of a shelf was changed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_map_editor_controller_a2bde12fb220ed5b7064bd70201c767ee}{Map\+Editor\+Controller}} (QObject $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_map_editor_controller}{Map\+Editor\+Controller}} is the default constructor for this class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_editor_controller_a1f5e98172af0d44a162419e47823169b}{create\+New\+Map}} (int size)
+\begin{DoxyCompactList}\small\item\em create\+New\+Map creates a new map in the editor, after this function the user can start editing the map. \end{DoxyCompactList}\item 
+QPair$<$ \mbox{\hyperlink{class_map_editor_controller_a84fbc242566b592fe2fb7a7394450ffb}{Field\+Types}}, QObject $\ast$ $>$ \mbox{\hyperlink{class_map_editor_controller_a824a124cf6a81c02b1b4ba799dcfc891}{get\+Field}} (int row, int col)
+\begin{DoxyCompactList}\small\item\em get\+Field A getter for a field in a specific position of the map. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_map_editor_controller_aa3e323432d5a071130de28459caabe80}{get\+Size}} ()
+\begin{DoxyCompactList}\small\item\em get\+Size A getter for the width and row of the map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_editor_controller_a387710711155aec68ec7cdba1588048e}{add\+Robot}} (int row, int col)
+\begin{DoxyCompactList}\small\item\em add\+Robot It is possible to add a new robot with this method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_editor_controller_ae7422220b1eac99f0a16bc5849a7abff}{add\+Shelf}} (int row, int col)
+\begin{DoxyCompactList}\small\item\em add\+Shelf It is possible to add a new shelf with this method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_editor_controller_a6576f9bfdc49e495bf7ba8084ebdc36f}{add\+Docker}} (int row, int col)
+\begin{DoxyCompactList}\small\item\em add\+Docker It is possible to add a new docker with this method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_editor_controller_a398e1e67c461a8b7f9a5a71b680fa613}{add\+Drop\+Off\+Point}} (int row, int col, QString product)
+\begin{DoxyCompactList}\small\item\em add\+Drop\+Off\+Point It is possible to add a new docker with this method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_map_editor_controller_a6c132989d5e5c344cd35a4858e7572b5}{add\+Product}} (int row, int col, QString product\+Name)
+\begin{DoxyCompactList}\small\item\em add\+Product It is possible to add a new product to a shelf with this method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_map_editor_controller_a30e0d44c195f475f3f1d6d23f6ec1462}{validate\+Product\+Placement}} (int row, int col)
+\begin{DoxyCompactList}\small\item\em validate\+Product\+Placement validates the placement of a product in a specific position. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_map_editor_controller_a42b17f48ef23a4d9e5c05e96b3baf8b5}{field\+Is\+Empty}} ()
+\begin{DoxyCompactList}\small\item\em field\+Is\+Empty method checks if the map is empty. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_editor_controller_a24537c161f3c9df09d8ed0fe062c202c}{toggle\+Shelf\+Selection}} (\mbox{\hyperlink{class_shelf_field_model}{Shelf\+Field\+Model}} $\ast$s)
+\begin{DoxyCompactList}\small\item\em toggle\+Shelf\+Selection toggles the selected state of the shelf given as a parameter. If it was selected before then it won\textquotesingle{}t be selected now. and the other way around. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_editor_controller_add1724169b497b5e9f181401882bff6b}{rotate\+Robot}} (\mbox{\hyperlink{class_robot_field_model}{Robot\+Field\+Model}} $\ast$r)
+\begin{DoxyCompactList}\small\item\em rotate\+Robot Rotates the \mbox{\hyperlink{class_robot}{Robot}} given as a parameter with 90 degrees to the right. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_map_editor_controller_a8d3153280bfa997b84bc82ea8ef18440}{move\+Selected\+Shelves}} (int direction)
+\begin{DoxyCompactList}\small\item\em move\+Selected\+Shelves moves all selected shelves 1 in the given direction if all selected shelves can move. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_map_editor_controller_afb340ccf6aee5fd7e0cb89a0fe592214}{is\+ASelected\+Shelf}} (int row, int col)
+\begin{DoxyCompactList}\small\item\em is\+ASelected\+Shelf checks whether there is a selected shelf in the given position. \end{DoxyCompactList}\item 
+QVector$<$ QString $>$ \mbox{\hyperlink{class_map_editor_controller_afffaa51b043f77c2b512654cca74ae83}{get\+Products\+On\+Shelf}} (int row, int col)
+\begin{DoxyCompactList}\small\item\em get\+Products\+On\+Shelf gets the name of all products on a shelf with the given position. \end{DoxyCompactList}\item 
+QVector$<$ QString $>$ \mbox{\hyperlink{class_map_editor_controller_a8c52c89f831663a57002e70834c07b0d}{get\+Unassigned\+Products}} ()
+\begin{DoxyCompactList}\small\item\em get\+Unassigned\+Products gets the name of the products that currently don\textquotesingle{}t have a drop off points assigned to them. \end{DoxyCompactList}\item 
+QVector$<$ QString $>$ \mbox{\hyperlink{class_map_editor_controller_a97900e608e2e306db57babaa56927ec4}{get\+Products}} ()
+\begin{DoxyCompactList}\small\item\em get\+Products gets the name of all the products on the map. \end{DoxyCompactList}\item 
+QString \mbox{\hyperlink{class_map_editor_controller_aac83f4ba87b63eaaddced85b24d56e8c}{validate\+Before\+Save}} ()
+\begin{DoxyCompactList}\small\item\em validate\+Before\+Save checks whether it is possible to save the map in the current state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_editor_controller_adc53c1e5e0c00edf15fc47210252c673}{set\+Orders}} (QVector$<$ QString $>$ orders)
+\begin{DoxyCompactList}\small\item\em set\+Orders A setter for the \+\_\+orders member which contains all the products which will be already ordered at the start of the simulation. \end{DoxyCompactList}\item 
+QVector$<$ QString $>$ \mbox{\hyperlink{class_map_editor_controller_a21ad4bb8a51bb81f7602f429532ae3f6}{get\+Orders}} () const
+\begin{DoxyCompactList}\small\item\em get\+Orders A getter for the \+\_\+orders member which contains all the products which will be already ordered at the start of the simulation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_editor_controller_a32e6e0fd063aa794a4ee5f57078241f9}{write\+To\+JSON}} (QJson\+Object \&json)
+\begin{DoxyCompactList}\small\item\em write\+To\+JSON writes the current state of the map to the given QJson\+Object \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_map_editor_controller_a49fb76fa0110e9d74f8e762e9367ce11}{save\+To\+JSON}} (QFile $\ast$file)
+\begin{DoxyCompactList}\small\item\em save\+To\+JSON saves the current satate of the map to an actual file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{class_map_editor_controller}{Map\+Editor\+Controller}} class implements the business logic behind the map editor in this Application. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_map_editor_controller_a2bde12fb220ed5b7064bd70201c767ee}\label{class_map_editor_controller_a2bde12fb220ed5b7064bd70201c767ee}} 
+\index{MapEditorController@{MapEditorController}!MapEditorController@{MapEditorController}}
+\index{MapEditorController@{MapEditorController}!MapEditorController@{MapEditorController}}
+\doxysubsubsection{\texorpdfstring{MapEditorController()}{MapEditorController()}}
+{\footnotesize\ttfamily Map\+Editor\+Controller\+::\+Map\+Editor\+Controller (\begin{DoxyParamCaption}\item[{QObject $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\mbox{\hyperlink{class_map_editor_controller}{Map\+Editor\+Controller}} is the default constructor for this class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & is the parent of this class. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_map_editor_controller_a6576f9bfdc49e495bf7ba8084ebdc36f}\label{class_map_editor_controller_a6576f9bfdc49e495bf7ba8084ebdc36f}} 
+\index{MapEditorController@{MapEditorController}!addDocker@{addDocker}}
+\index{addDocker@{addDocker}!MapEditorController@{MapEditorController}}
+\doxysubsubsection{\texorpdfstring{addDocker()}{addDocker()}}
+{\footnotesize\ttfamily void Map\+Editor\+Controller\+::add\+Docker (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col }\end{DoxyParamCaption})}
+
+
+
+add\+Docker It is possible to add a new docker with this method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & The row of the new docker. \\
+\hline
+{\em col} & The column of the new docker. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_map_editor_controller_a398e1e67c461a8b7f9a5a71b680fa613}\label{class_map_editor_controller_a398e1e67c461a8b7f9a5a71b680fa613}} 
+\index{MapEditorController@{MapEditorController}!addDropOffPoint@{addDropOffPoint}}
+\index{addDropOffPoint@{addDropOffPoint}!MapEditorController@{MapEditorController}}
+\doxysubsubsection{\texorpdfstring{addDropOffPoint()}{addDropOffPoint()}}
+{\footnotesize\ttfamily void Map\+Editor\+Controller\+::add\+Drop\+Off\+Point (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col,  }\item[{QString}]{product }\end{DoxyParamCaption})}
+
+
+
+add\+Drop\+Off\+Point It is possible to add a new docker with this method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & The row of the new docker. \\
+\hline
+{\em col} & The column of the new docker. \\
+\hline
+{\em product} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_map_editor_controller_a6c132989d5e5c344cd35a4858e7572b5}\label{class_map_editor_controller_a6c132989d5e5c344cd35a4858e7572b5}} 
+\index{MapEditorController@{MapEditorController}!addProduct@{addProduct}}
+\index{addProduct@{addProduct}!MapEditorController@{MapEditorController}}
+\doxysubsubsection{\texorpdfstring{addProduct()}{addProduct()}}
+{\footnotesize\ttfamily bool Map\+Editor\+Controller\+::add\+Product (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col,  }\item[{QString}]{product\+Name }\end{DoxyParamCaption})}
+
+
+
+add\+Product It is possible to add a new product to a shelf with this method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & the row of the shelf on which we want to add the new product. \\
+\hline
+{\em col} & the column of the shelf on which we want to add the new product. \\
+\hline
+{\em product\+Name} & the name of the new product. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+if the new product was succesfully added to the shelf in the given row and col. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_editor_controller_a387710711155aec68ec7cdba1588048e}\label{class_map_editor_controller_a387710711155aec68ec7cdba1588048e}} 
+\index{MapEditorController@{MapEditorController}!addRobot@{addRobot}}
+\index{addRobot@{addRobot}!MapEditorController@{MapEditorController}}
+\doxysubsubsection{\texorpdfstring{addRobot()}{addRobot()}}
+{\footnotesize\ttfamily void Map\+Editor\+Controller\+::add\+Robot (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col }\end{DoxyParamCaption})}
+
+
+
+add\+Robot It is possible to add a new robot with this method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & The row of the new robot. \\
+\hline
+{\em col} & The column of the new robot. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_map_editor_controller_ae7422220b1eac99f0a16bc5849a7abff}\label{class_map_editor_controller_ae7422220b1eac99f0a16bc5849a7abff}} 
+\index{MapEditorController@{MapEditorController}!addShelf@{addShelf}}
+\index{addShelf@{addShelf}!MapEditorController@{MapEditorController}}
+\doxysubsubsection{\texorpdfstring{addShelf()}{addShelf()}}
+{\footnotesize\ttfamily void Map\+Editor\+Controller\+::add\+Shelf (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col }\end{DoxyParamCaption})}
+
+
+
+add\+Shelf It is possible to add a new shelf with this method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & The row of the new shelf. \\
+\hline
+{\em col} & The column of the new shelf. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_map_editor_controller_a1f5e98172af0d44a162419e47823169b}\label{class_map_editor_controller_a1f5e98172af0d44a162419e47823169b}} 
+\index{MapEditorController@{MapEditorController}!createNewMap@{createNewMap}}
+\index{createNewMap@{createNewMap}!MapEditorController@{MapEditorController}}
+\doxysubsubsection{\texorpdfstring{createNewMap()}{createNewMap()}}
+{\footnotesize\ttfamily void Map\+Editor\+Controller\+::create\+New\+Map (\begin{DoxyParamCaption}\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+create\+New\+Map creates a new map in the editor, after this function the user can start editing the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & the width and height of the map. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_map_editor_controller_a19b7d4465a9e53e9f82a7ac56aedad0e}\label{class_map_editor_controller_a19b7d4465a9e53e9f82a7ac56aedad0e}} 
+\index{MapEditorController@{MapEditorController}!fieldChanged@{fieldChanged}}
+\index{fieldChanged@{fieldChanged}!MapEditorController@{MapEditorController}}
+\doxysubsubsection{\texorpdfstring{fieldChanged}{fieldChanged}}
+{\footnotesize\ttfamily void Map\+Editor\+Controller\+::field\+Changed (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+field\+Changed is a signal emitted by the \mbox{\hyperlink{class_map_editor_controller}{Map\+Editor\+Controller}} when a specific field changed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & the row of the field. \\
+\hline
+{\em col} & the column of the field. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_map_editor_controller_a42b17f48ef23a4d9e5c05e96b3baf8b5}\label{class_map_editor_controller_a42b17f48ef23a4d9e5c05e96b3baf8b5}} 
+\index{MapEditorController@{MapEditorController}!fieldIsEmpty@{fieldIsEmpty}}
+\index{fieldIsEmpty@{fieldIsEmpty}!MapEditorController@{MapEditorController}}
+\doxysubsubsection{\texorpdfstring{fieldIsEmpty()}{fieldIsEmpty()}}
+{\footnotesize\ttfamily bool Map\+Editor\+Controller\+::field\+Is\+Empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+field\+Is\+Empty method checks if the map is empty. 
+
+\begin{DoxyReturn}{Returns}
+true if the map is empty, and false if it is not empty. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_editor_controller_a824a124cf6a81c02b1b4ba799dcfc891}\label{class_map_editor_controller_a824a124cf6a81c02b1b4ba799dcfc891}} 
+\index{MapEditorController@{MapEditorController}!getField@{getField}}
+\index{getField@{getField}!MapEditorController@{MapEditorController}}
+\doxysubsubsection{\texorpdfstring{getField()}{getField()}}
+{\footnotesize\ttfamily QPair$<$ \mbox{\hyperlink{class_map_editor_controller_a84fbc242566b592fe2fb7a7394450ffb}{Map\+Editor\+Controller\+::\+Field\+Types}}, QObject $\ast$ $>$ Map\+Editor\+Controller\+::get\+Field (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col }\end{DoxyParamCaption})}
+
+
+
+get\+Field A getter for a field in a specific position of the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & the row of the field \\
+\hline
+{\em col} & the column of the field \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a pair, the first element of the pair is of type Field\+Types and it tells us what kind of field this is. the second element of the pair is the actual model of that particular field. The second element is null if the field is empty. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_editor_controller_a21ad4bb8a51bb81f7602f429532ae3f6}\label{class_map_editor_controller_a21ad4bb8a51bb81f7602f429532ae3f6}} 
+\index{MapEditorController@{MapEditorController}!getOrders@{getOrders}}
+\index{getOrders@{getOrders}!MapEditorController@{MapEditorController}}
+\doxysubsubsection{\texorpdfstring{getOrders()}{getOrders()}}
+{\footnotesize\ttfamily QVector$<$ QString $>$ Map\+Editor\+Controller\+::get\+Orders (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Orders A getter for the \+\_\+orders member which contains all the products which will be already ordered at the start of the simulation. 
+
+\begin{DoxyReturn}{Returns}
+the \+\_\+orders member. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_editor_controller_a97900e608e2e306db57babaa56927ec4}\label{class_map_editor_controller_a97900e608e2e306db57babaa56927ec4}} 
+\index{MapEditorController@{MapEditorController}!getProducts@{getProducts}}
+\index{getProducts@{getProducts}!MapEditorController@{MapEditorController}}
+\doxysubsubsection{\texorpdfstring{getProducts()}{getProducts()}}
+{\footnotesize\ttfamily QVector$<$ QString $>$ Map\+Editor\+Controller\+::get\+Products (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Products gets the name of all the products on the map. 
+
+\begin{DoxyReturn}{Returns}
+the list of the products in a QVector as QStrings 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_editor_controller_afffaa51b043f77c2b512654cca74ae83}\label{class_map_editor_controller_afffaa51b043f77c2b512654cca74ae83}} 
+\index{MapEditorController@{MapEditorController}!getProductsOnShelf@{getProductsOnShelf}}
+\index{getProductsOnShelf@{getProductsOnShelf}!MapEditorController@{MapEditorController}}
+\doxysubsubsection{\texorpdfstring{getProductsOnShelf()}{getProductsOnShelf()}}
+{\footnotesize\ttfamily QVector$<$ QString $>$ Map\+Editor\+Controller\+::get\+Products\+On\+Shelf (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col }\end{DoxyParamCaption})}
+
+
+
+get\+Products\+On\+Shelf gets the name of all products on a shelf with the given position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & the row of the shelf. \\
+\hline
+{\em col} & the column of the shelf \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the name of the products on the shelf in a vector as QString 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_editor_controller_aa3e323432d5a071130de28459caabe80}\label{class_map_editor_controller_aa3e323432d5a071130de28459caabe80}} 
+\index{MapEditorController@{MapEditorController}!getSize@{getSize}}
+\index{getSize@{getSize}!MapEditorController@{MapEditorController}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily int Map\+Editor\+Controller\+::get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Size A getter for the width and row of the map. 
+
+\begin{DoxyReturn}{Returns}
+the size of the map as an int. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_editor_controller_a8c52c89f831663a57002e70834c07b0d}\label{class_map_editor_controller_a8c52c89f831663a57002e70834c07b0d}} 
+\index{MapEditorController@{MapEditorController}!getUnassignedProducts@{getUnassignedProducts}}
+\index{getUnassignedProducts@{getUnassignedProducts}!MapEditorController@{MapEditorController}}
+\doxysubsubsection{\texorpdfstring{getUnassignedProducts()}{getUnassignedProducts()}}
+{\footnotesize\ttfamily QVector$<$ QString $>$ Map\+Editor\+Controller\+::get\+Unassigned\+Products (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Unassigned\+Products gets the name of the products that currently don\textquotesingle{}t have a drop off points assigned to them. 
+
+\begin{DoxyReturn}{Returns}
+the name of the products in a QVector as QString 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_editor_controller_afb340ccf6aee5fd7e0cb89a0fe592214}\label{class_map_editor_controller_afb340ccf6aee5fd7e0cb89a0fe592214}} 
+\index{MapEditorController@{MapEditorController}!isASelectedShelf@{isASelectedShelf}}
+\index{isASelectedShelf@{isASelectedShelf}!MapEditorController@{MapEditorController}}
+\doxysubsubsection{\texorpdfstring{isASelectedShelf()}{isASelectedShelf()}}
+{\footnotesize\ttfamily bool Map\+Editor\+Controller\+::is\+ASelected\+Shelf (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col }\end{DoxyParamCaption})}
+
+
+
+is\+ASelected\+Shelf checks whether there is a selected shelf in the given position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & the row of the shelf. \\
+\hline
+{\em col} & the column of the shelf. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if there is a shelf in the given position and it is selected, otherwise returns false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_editor_controller_a8d3153280bfa997b84bc82ea8ef18440}\label{class_map_editor_controller_a8d3153280bfa997b84bc82ea8ef18440}} 
+\index{MapEditorController@{MapEditorController}!moveSelectedShelves@{moveSelectedShelves}}
+\index{moveSelectedShelves@{moveSelectedShelves}!MapEditorController@{MapEditorController}}
+\doxysubsubsection{\texorpdfstring{moveSelectedShelves()}{moveSelectedShelves()}}
+{\footnotesize\ttfamily bool Map\+Editor\+Controller\+::move\+Selected\+Shelves (\begin{DoxyParamCaption}\item[{int}]{direction }\end{DoxyParamCaption})}
+
+
+
+move\+Selected\+Shelves moves all selected shelves 1 in the given direction if all selected shelves can move. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & the direction in which we want to move the selected shelves. 0 = north, 1 = east, 2 = south, 3 = west. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether the move was succesful 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_editor_controller_add1724169b497b5e9f181401882bff6b}\label{class_map_editor_controller_add1724169b497b5e9f181401882bff6b}} 
+\index{MapEditorController@{MapEditorController}!rotateRobot@{rotateRobot}}
+\index{rotateRobot@{rotateRobot}!MapEditorController@{MapEditorController}}
+\doxysubsubsection{\texorpdfstring{rotateRobot()}{rotateRobot()}}
+{\footnotesize\ttfamily void Map\+Editor\+Controller\+::rotate\+Robot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_robot_field_model}{Robot\+Field\+Model}} $\ast$}]{r }\end{DoxyParamCaption})}
+
+
+
+rotate\+Robot Rotates the \mbox{\hyperlink{class_robot}{Robot}} given as a parameter with 90 degrees to the right. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_map_editor_controller_a49fb76fa0110e9d74f8e762e9367ce11}\label{class_map_editor_controller_a49fb76fa0110e9d74f8e762e9367ce11}} 
+\index{MapEditorController@{MapEditorController}!saveToJSON@{saveToJSON}}
+\index{saveToJSON@{saveToJSON}!MapEditorController@{MapEditorController}}
+\doxysubsubsection{\texorpdfstring{saveToJSON()}{saveToJSON()}}
+{\footnotesize\ttfamily bool Map\+Editor\+Controller\+::save\+To\+JSON (\begin{DoxyParamCaption}\item[{QFile $\ast$}]{file }\end{DoxyParamCaption})}
+
+
+
+save\+To\+JSON saves the current satate of the map to an actual file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & the file we want to save to. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the saving was succesful and false if it wasn\textquotesingle{}t succesful. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_editor_controller_adc53c1e5e0c00edf15fc47210252c673}\label{class_map_editor_controller_adc53c1e5e0c00edf15fc47210252c673}} 
+\index{MapEditorController@{MapEditorController}!setOrders@{setOrders}}
+\index{setOrders@{setOrders}!MapEditorController@{MapEditorController}}
+\doxysubsubsection{\texorpdfstring{setOrders()}{setOrders()}}
+{\footnotesize\ttfamily void Map\+Editor\+Controller\+::set\+Orders (\begin{DoxyParamCaption}\item[{QVector$<$ QString $>$}]{orders }\end{DoxyParamCaption})}
+
+
+
+set\+Orders A setter for the \+\_\+orders member which contains all the products which will be already ordered at the start of the simulation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em orders} & the new value of the orders member. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_map_editor_controller_aa724d2ac8513f27b63dcac104a17599a}\label{class_map_editor_controller_aa724d2ac8513f27b63dcac104a17599a}} 
+\index{MapEditorController@{MapEditorController}!shelfSelectionChanged@{shelfSelectionChanged}}
+\index{shelfSelectionChanged@{shelfSelectionChanged}!MapEditorController@{MapEditorController}}
+\doxysubsubsection{\texorpdfstring{shelfSelectionChanged}{shelfSelectionChanged}}
+{\footnotesize\ttfamily void Map\+Editor\+Controller\+::shelf\+Selection\+Changed (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col,  }\item[{bool}]{selected }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+shelf\+Selection\+Changed is a signal emitted by the \mbox{\hyperlink{class_map_editor_controller}{Map\+Editor\+Controller}} when the selected state of a shelf was changed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & the row of the shelf. \\
+\hline
+{\em col} & the column of the shelf. \\
+\hline
+{\em selected} & the selection value of the shelf. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_map_editor_controller_a24537c161f3c9df09d8ed0fe062c202c}\label{class_map_editor_controller_a24537c161f3c9df09d8ed0fe062c202c}} 
+\index{MapEditorController@{MapEditorController}!toggleShelfSelection@{toggleShelfSelection}}
+\index{toggleShelfSelection@{toggleShelfSelection}!MapEditorController@{MapEditorController}}
+\doxysubsubsection{\texorpdfstring{toggleShelfSelection()}{toggleShelfSelection()}}
+{\footnotesize\ttfamily void Map\+Editor\+Controller\+::toggle\+Shelf\+Selection (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_shelf_field_model}{Shelf\+Field\+Model}} $\ast$}]{s }\end{DoxyParamCaption})}
+
+
+
+toggle\+Shelf\+Selection toggles the selected state of the shelf given as a parameter. If it was selected before then it won\textquotesingle{}t be selected now. and the other way around. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & the shelf we want to toggle. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_map_editor_controller_aac83f4ba87b63eaaddced85b24d56e8c}\label{class_map_editor_controller_aac83f4ba87b63eaaddced85b24d56e8c}} 
+\index{MapEditorController@{MapEditorController}!validateBeforeSave@{validateBeforeSave}}
+\index{validateBeforeSave@{validateBeforeSave}!MapEditorController@{MapEditorController}}
+\doxysubsubsection{\texorpdfstring{validateBeforeSave()}{validateBeforeSave()}}
+{\footnotesize\ttfamily QString Map\+Editor\+Controller\+::validate\+Before\+Save (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+validate\+Before\+Save checks whether it is possible to save the map in the current state. 
+
+\begin{DoxyReturn}{Returns}
+true if it is pobbile and false if it is not possible. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_editor_controller_a30e0d44c195f475f3f1d6d23f6ec1462}\label{class_map_editor_controller_a30e0d44c195f475f3f1d6d23f6ec1462}} 
+\index{MapEditorController@{MapEditorController}!validateProductPlacement@{validateProductPlacement}}
+\index{validateProductPlacement@{validateProductPlacement}!MapEditorController@{MapEditorController}}
+\doxysubsubsection{\texorpdfstring{validateProductPlacement()}{validateProductPlacement()}}
+{\footnotesize\ttfamily bool Map\+Editor\+Controller\+::validate\+Product\+Placement (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col }\end{DoxyParamCaption})}
+
+
+
+validate\+Product\+Placement validates the placement of a product in a specific position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & the row of the product. \\
+\hline
+{\em col} & the column of the product. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if there is a shelf in the given position and false if there is already a product in the given position. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_editor_controller_a32e6e0fd063aa794a4ee5f57078241f9}\label{class_map_editor_controller_a32e6e0fd063aa794a4ee5f57078241f9}} 
+\index{MapEditorController@{MapEditorController}!writeToJSON@{writeToJSON}}
+\index{writeToJSON@{writeToJSON}!MapEditorController@{MapEditorController}}
+\doxysubsubsection{\texorpdfstring{writeToJSON()}{writeToJSON()}}
+{\footnotesize\ttfamily void Map\+Editor\+Controller\+::write\+To\+JSON (\begin{DoxyParamCaption}\item[{QJson\+Object \&}]{json }\end{DoxyParamCaption})}
+
+
+
+write\+To\+JSON writes the current state of the map to the given QJson\+Object 
+
+
+\begin{DoxyParams}{Parameters}
+{\em json} & The QJson\+Object in which we want to write to. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Client/controllers/Map\+Editor\+Controller.\+h\item 
+Client/controllers/Map\+Editor\+Controller.\+cpp\end{DoxyCompactItemize}

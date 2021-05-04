@@ -1,0 +1,323 @@
+\hypertarget{class_robot}{}\doxysection{Robot Class Reference}
+\label{class_robot}\index{Robot@{Robot}}
+
+
+Model class containing information about a robot.  
+
+
+
+
+{\ttfamily \#include $<$Robot.\+h$>$}
+
+Inheritance diagram for Robot\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_robot}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_robot_ad68a647a016a8b8daaad2bdf060e0235}\label{class_robot_ad68a647a016a8b8daaad2bdf060e0235}} 
+{\bfseries Robot} (QObject $\ast$parent=nullptr)
+\item 
+\mbox{\Hypertarget{class_robot_ad1c682d9d34744c35bbc906ade9f2c2f}\label{class_robot_ad1c682d9d34744c35bbc906ade9f2c2f}} 
+{\bfseries Robot} (int row, int col, int direction)
+\item 
+int \mbox{\hyperlink{class_robot_a6ae097b389376fef01fda3251f99412e}{get\+Row}} ()
+\begin{DoxyCompactList}\small\item\em get\+Row A getter for the row of the \mbox{\hyperlink{class_robot}{Robot}} in the warehouse. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_robot_ad651686c3cbcc29b946b483cdcbcc28c}{get\+Col}} ()
+\begin{DoxyCompactList}\small\item\em get\+Col A getter for the column of the \mbox{\hyperlink{class_robot}{Robot}} in the warehouse. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_robot_a2d75a06d329340f8bc153e8e299221c1}{get\+Direction}} ()
+\begin{DoxyCompactList}\small\item\em get\+Direction A getter for the direction of the \mbox{\hyperlink{class_robot}{Robot}}. 0 = north, 1 = east, 2 = south, 3 = west. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_robot_a05176f8885eab473bc5ab9f7b2cff877}{get\+Battery}} ()
+\begin{DoxyCompactList}\small\item\em get\+Battery A getter for the current battery of the \mbox{\hyperlink{class_robot}{Robot}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_robot_ab52af71fa96f94015d65a8405a4903f8}{push\+To\+Path}} (\mbox{\hyperlink{class_path_node}{Path\+Node}} $\ast$x)
+\begin{DoxyCompactList}\small\item\em push\+To\+Path Adds a node to the path stack of the robot. The \mbox{\hyperlink{class_robot}{Robot}} pop off a \mbox{\hyperlink{class_path_node}{Path\+Node}} from its Stack in every tick of the Simulation and steps according to that Node. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_robot_a49cfd6de89e48fefa03a34422f566652}{path\+Is\+Empty}} ()
+\begin{DoxyCompactList}\small\item\em path\+Is\+Empty This function is used to check whether the \mbox{\hyperlink{class_robot}{Robot}}\textquotesingle{}s path is empty or not. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_path_node}{Path\+Node}} $\ast$ \mbox{\hyperlink{class_robot_acb2d8d53ff841f037a872b5c8fcc9c0d}{step\+On\+Path}} ()
+\begin{DoxyCompactList}\small\item\em step\+On\+Path pops off a \mbox{\hyperlink{class_path_node}{Path\+Node}} from the \mbox{\hyperlink{class_robot}{Robot}}\textquotesingle{}s stack and steps according to that Node. it also decreases the battery of the \mbox{\hyperlink{class_robot}{Robot}} by one. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_robot_a5d32840d81fcecc2fcecef40fc8ba10f}{get\+Original\+Row}} () const
+\begin{DoxyCompactList}\small\item\em get\+Original\+Row A getter for the original row of the \mbox{\hyperlink{class_robot}{Robot}} in the warehouse. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_robot_a6ae01f1a16f99a922aeb584db905b732}{get\+Original\+Col}} () const
+\begin{DoxyCompactList}\small\item\em get\+Original\+Col A getter for the original column of the \mbox{\hyperlink{class_robot}{Robot}} in the warehouse. \end{DoxyCompactList}\item 
+Robot\+States \mbox{\hyperlink{class_robot_a0354ec3ab75f3c271feee079827c871e}{get\+State}} () const
+\begin{DoxyCompactList}\small\item\em get\+State A getter for the current state of the \mbox{\hyperlink{class_robot}{Robot}}. For the possible states see the Robot\+States enum type. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_robot_ad7560dc04afcaf2c8a6e675b09ca7ba3}{set\+State}} (const Robot\+States \&state)
+\begin{DoxyCompactList}\small\item\em set\+State Sets the current state of the robot. For possible states see the Robot\+States enum type. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_robot_a29443dfbd4dbc3096a95488a3656f1ee}{set\+Current\+Shelf}} (\mbox{\hyperlink{class_shelf}{Shelf}} $\ast$current\+Shelf)
+\begin{DoxyCompactList}\small\item\em set\+Current\+Shelf Sets the current shelf carried by this \mbox{\hyperlink{class_robot}{Robot}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_robot_a0a02ce7d1cfac5af22cb6ef8f8d8a98e}{get\+Max\+Battery}} () const
+\begin{DoxyCompactList}\small\item\em get\+Max\+Battery Return the maximum battery possible for this \mbox{\hyperlink{class_robot}{Robot}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_product}{Product}} $\ast$ \mbox{\hyperlink{class_robot_a45d75bbf2408879b9c5061a28974f333}{get\+Current\+Product}} () const
+\begin{DoxyCompactList}\small\item\em get\+Current\+Product A getter for the product that the \mbox{\hyperlink{class_robot}{Robot}} wants to deliver right now. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_robot_a6981fd1ed903f1c3b8a6bae5c0e910f8}{set\+Current\+Product}} (\mbox{\hyperlink{class_product}{Product}} $\ast$current\+Product)
+\begin{DoxyCompactList}\small\item\em set\+Current\+Product Sets the product that the \mbox{\hyperlink{class_robot}{Robot}} wants to deliver right now. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_robot_a55002f0deb1e171d80bc34133e17b727}\label{class_robot_a55002f0deb1e171d80bc34133e17b727}} 
+void \mbox{\hyperlink{class_robot_a55002f0deb1e171d80bc34133e17b727}{clear\+Path}} ()
+\begin{DoxyCompactList}\small\item\em clear\+Path Clears the path of the robot. (Sets its Stack to empty) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_shelf}{Shelf}} $\ast$ \mbox{\hyperlink{class_robot_a51ef0c236f07bb1b35fc33507ea427ff}{get\+Current\+Shelf}} () const
+\begin{DoxyCompactList}\small\item\em get\+Current\+Shelf A getter for the current \mbox{\hyperlink{class_shelf}{Shelf}} carried by the robot. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_robot_a752e6e702c194915eb8729dd0de9f60e}{set\+Battery}} (int battery)
+\begin{DoxyCompactList}\small\item\em set\+Battery Sets the current battery of the \mbox{\hyperlink{class_robot}{Robot}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_robot_a29943649e1e6e37cb57beb37141337a2}{get\+Consumed\+Energy}} ()
+\begin{DoxyCompactList}\small\item\em get\+Consumed\+Energy A getter for the sum of the total consumed energy by this robot during the Simulation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Model class containing information about a robot. 
+
+\mbox{\hyperlink{class_robot}{Robot}} Model class which ships with methods used for moving the robot 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_robot_a05176f8885eab473bc5ab9f7b2cff877}\label{class_robot_a05176f8885eab473bc5ab9f7b2cff877}} 
+\index{Robot@{Robot}!getBattery@{getBattery}}
+\index{getBattery@{getBattery}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{getBattery()}{getBattery()}}
+{\footnotesize\ttfamily int Robot\+::get\+Battery (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Battery A getter for the current battery of the \mbox{\hyperlink{class_robot}{Robot}}. 
+
+\begin{DoxyReturn}{Returns}
+The current battery as an integer. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_ad651686c3cbcc29b946b483cdcbcc28c}\label{class_robot_ad651686c3cbcc29b946b483cdcbcc28c}} 
+\index{Robot@{Robot}!getCol@{getCol}}
+\index{getCol@{getCol}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{getCol()}{getCol()}}
+{\footnotesize\ttfamily int Robot\+::get\+Col (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Col A getter for the column of the \mbox{\hyperlink{class_robot}{Robot}} in the warehouse. 
+
+\begin{DoxyReturn}{Returns}
+The column of the \mbox{\hyperlink{class_robot}{Robot}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_a29943649e1e6e37cb57beb37141337a2}\label{class_robot_a29943649e1e6e37cb57beb37141337a2}} 
+\index{Robot@{Robot}!getConsumedEnergy@{getConsumedEnergy}}
+\index{getConsumedEnergy@{getConsumedEnergy}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{getConsumedEnergy()}{getConsumedEnergy()}}
+{\footnotesize\ttfamily int Robot\+::get\+Consumed\+Energy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Consumed\+Energy A getter for the sum of the total consumed energy by this robot during the Simulation. 
+
+\begin{DoxyReturn}{Returns}
+The sum of the consumed energy as an integer. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_a45d75bbf2408879b9c5061a28974f333}\label{class_robot_a45d75bbf2408879b9c5061a28974f333}} 
+\index{Robot@{Robot}!getCurrentProduct@{getCurrentProduct}}
+\index{getCurrentProduct@{getCurrentProduct}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{getCurrentProduct()}{getCurrentProduct()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_product}{Product}} $\ast$ Robot\+::get\+Current\+Product (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Current\+Product A getter for the product that the \mbox{\hyperlink{class_robot}{Robot}} wants to deliver right now. 
+
+\begin{DoxyReturn}{Returns}
+The product that the \mbox{\hyperlink{class_robot}{Robot}} wants to deliver now, or NULL if the \mbox{\hyperlink{class_robot}{Robot}} isn\textquotesingle{}t delivering. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_a51ef0c236f07bb1b35fc33507ea427ff}\label{class_robot_a51ef0c236f07bb1b35fc33507ea427ff}} 
+\index{Robot@{Robot}!getCurrentShelf@{getCurrentShelf}}
+\index{getCurrentShelf@{getCurrentShelf}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{getCurrentShelf()}{getCurrentShelf()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_shelf}{Shelf}} $\ast$ Robot\+::get\+Current\+Shelf (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Current\+Shelf A getter for the current \mbox{\hyperlink{class_shelf}{Shelf}} carried by the robot. 
+
+\begin{DoxyReturn}{Returns}
+The current \mbox{\hyperlink{class_shelf}{Shelf}} carried or NULL if it isn\textquotesingle{}t carrying a \mbox{\hyperlink{class_shelf}{Shelf}} right now. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_a2d75a06d329340f8bc153e8e299221c1}\label{class_robot_a2d75a06d329340f8bc153e8e299221c1}} 
+\index{Robot@{Robot}!getDirection@{getDirection}}
+\index{getDirection@{getDirection}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{getDirection()}{getDirection()}}
+{\footnotesize\ttfamily int Robot\+::get\+Direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Direction A getter for the direction of the \mbox{\hyperlink{class_robot}{Robot}}. 0 = north, 1 = east, 2 = south, 3 = west. 
+
+\begin{DoxyReturn}{Returns}
+The direction of the \mbox{\hyperlink{class_robot}{Robot}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_a0a02ce7d1cfac5af22cb6ef8f8d8a98e}\label{class_robot_a0a02ce7d1cfac5af22cb6ef8f8d8a98e}} 
+\index{Robot@{Robot}!getMaxBattery@{getMaxBattery}}
+\index{getMaxBattery@{getMaxBattery}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{getMaxBattery()}{getMaxBattery()}}
+{\footnotesize\ttfamily int Robot\+::get\+Max\+Battery (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Max\+Battery Return the maximum battery possible for this \mbox{\hyperlink{class_robot}{Robot}}. 
+
+\begin{DoxyReturn}{Returns}
+The value of the maximum battery. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_a6ae01f1a16f99a922aeb584db905b732}\label{class_robot_a6ae01f1a16f99a922aeb584db905b732}} 
+\index{Robot@{Robot}!getOriginalCol@{getOriginalCol}}
+\index{getOriginalCol@{getOriginalCol}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{getOriginalCol()}{getOriginalCol()}}
+{\footnotesize\ttfamily int Robot\+::get\+Original\+Col (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Original\+Col A getter for the original column of the \mbox{\hyperlink{class_robot}{Robot}} in the warehouse. 
+
+\begin{DoxyReturn}{Returns}
+The original column of the \mbox{\hyperlink{class_robot}{Robot}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_a5d32840d81fcecc2fcecef40fc8ba10f}\label{class_robot_a5d32840d81fcecc2fcecef40fc8ba10f}} 
+\index{Robot@{Robot}!getOriginalRow@{getOriginalRow}}
+\index{getOriginalRow@{getOriginalRow}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{getOriginalRow()}{getOriginalRow()}}
+{\footnotesize\ttfamily int Robot\+::get\+Original\+Row (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Original\+Row A getter for the original row of the \mbox{\hyperlink{class_robot}{Robot}} in the warehouse. 
+
+\begin{DoxyReturn}{Returns}
+The original row of the \mbox{\hyperlink{class_robot}{Robot}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_a6ae097b389376fef01fda3251f99412e}\label{class_robot_a6ae097b389376fef01fda3251f99412e}} 
+\index{Robot@{Robot}!getRow@{getRow}}
+\index{getRow@{getRow}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{getRow()}{getRow()}}
+{\footnotesize\ttfamily int Robot\+::get\+Row (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get\+Row A getter for the row of the \mbox{\hyperlink{class_robot}{Robot}} in the warehouse. 
+
+\begin{DoxyReturn}{Returns}
+The row of the \mbox{\hyperlink{class_robot}{Robot}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_a0354ec3ab75f3c271feee079827c871e}\label{class_robot_a0354ec3ab75f3c271feee079827c871e}} 
+\index{Robot@{Robot}!getState@{getState}}
+\index{getState@{getState}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{getState()}{getState()}}
+{\footnotesize\ttfamily Robot\+States Robot\+::get\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+State A getter for the current state of the \mbox{\hyperlink{class_robot}{Robot}}. For the possible states see the Robot\+States enum type. 
+
+\begin{DoxyReturn}{Returns}
+A Robot\+States enum type. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_a49cfd6de89e48fefa03a34422f566652}\label{class_robot_a49cfd6de89e48fefa03a34422f566652}} 
+\index{Robot@{Robot}!pathIsEmpty@{pathIsEmpty}}
+\index{pathIsEmpty@{pathIsEmpty}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{pathIsEmpty()}{pathIsEmpty()}}
+{\footnotesize\ttfamily bool Robot\+::path\+Is\+Empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+path\+Is\+Empty This function is used to check whether the \mbox{\hyperlink{class_robot}{Robot}}\textquotesingle{}s path is empty or not. 
+
+\begin{DoxyReturn}{Returns}
+true if the path is empty and false is it is not empty. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_robot_ab52af71fa96f94015d65a8405a4903f8}\label{class_robot_ab52af71fa96f94015d65a8405a4903f8}} 
+\index{Robot@{Robot}!pushToPath@{pushToPath}}
+\index{pushToPath@{pushToPath}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{pushToPath()}{pushToPath()}}
+{\footnotesize\ttfamily void Robot\+::push\+To\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_path_node}{Path\+Node}} $\ast$}]{x }\end{DoxyParamCaption})}
+
+
+
+push\+To\+Path Adds a node to the path stack of the robot. The \mbox{\hyperlink{class_robot}{Robot}} pop off a \mbox{\hyperlink{class_path_node}{Path\+Node}} from its Stack in every tick of the Simulation and steps according to that Node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & THe \mbox{\hyperlink{class_path_node}{Path\+Node}} needed to be added to the Stack. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_robot_a752e6e702c194915eb8729dd0de9f60e}\label{class_robot_a752e6e702c194915eb8729dd0de9f60e}} 
+\index{Robot@{Robot}!setBattery@{setBattery}}
+\index{setBattery@{setBattery}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{setBattery()}{setBattery()}}
+{\footnotesize\ttfamily void Robot\+::set\+Battery (\begin{DoxyParamCaption}\item[{int}]{battery }\end{DoxyParamCaption})}
+
+
+
+set\+Battery Sets the current battery of the \mbox{\hyperlink{class_robot}{Robot}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em battery} & The new battery value of the \mbox{\hyperlink{class_robot}{Robot}}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_robot_a6981fd1ed903f1c3b8a6bae5c0e910f8}\label{class_robot_a6981fd1ed903f1c3b8a6bae5c0e910f8}} 
+\index{Robot@{Robot}!setCurrentProduct@{setCurrentProduct}}
+\index{setCurrentProduct@{setCurrentProduct}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{setCurrentProduct()}{setCurrentProduct()}}
+{\footnotesize\ttfamily void Robot\+::set\+Current\+Product (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_product}{Product}} $\ast$}]{current\+Product }\end{DoxyParamCaption})}
+
+
+
+set\+Current\+Product Sets the product that the \mbox{\hyperlink{class_robot}{Robot}} wants to deliver right now. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+Product} & The new \mbox{\hyperlink{class_product}{Product}} that the \mbox{\hyperlink{class_robot}{Robot}} has to deliver. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_robot_a29443dfbd4dbc3096a95488a3656f1ee}\label{class_robot_a29443dfbd4dbc3096a95488a3656f1ee}} 
+\index{Robot@{Robot}!setCurrentShelf@{setCurrentShelf}}
+\index{setCurrentShelf@{setCurrentShelf}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{setCurrentShelf()}{setCurrentShelf()}}
+{\footnotesize\ttfamily void Robot\+::set\+Current\+Shelf (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_shelf}{Shelf}} $\ast$}]{current\+Shelf }\end{DoxyParamCaption})}
+
+
+
+set\+Current\+Shelf Sets the current shelf carried by this \mbox{\hyperlink{class_robot}{Robot}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+Shelf} & The shelf that the robot is holding right now. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_robot_ad7560dc04afcaf2c8a6e675b09ca7ba3}\label{class_robot_ad7560dc04afcaf2c8a6e675b09ca7ba3}} 
+\index{Robot@{Robot}!setState@{setState}}
+\index{setState@{setState}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{setState()}{setState()}}
+{\footnotesize\ttfamily void Robot\+::set\+State (\begin{DoxyParamCaption}\item[{const Robot\+States \&}]{state }\end{DoxyParamCaption})}
+
+
+
+set\+State Sets the current state of the robot. For possible states see the Robot\+States enum type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The new state of the \mbox{\hyperlink{class_robot}{Robot}}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_robot_acb2d8d53ff841f037a872b5c8fcc9c0d}\label{class_robot_acb2d8d53ff841f037a872b5c8fcc9c0d}} 
+\index{Robot@{Robot}!stepOnPath@{stepOnPath}}
+\index{stepOnPath@{stepOnPath}!Robot@{Robot}}
+\doxysubsubsection{\texorpdfstring{stepOnPath()}{stepOnPath()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_path_node}{Path\+Node}} $\ast$ Robot\+::step\+On\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+step\+On\+Path pops off a \mbox{\hyperlink{class_path_node}{Path\+Node}} from the \mbox{\hyperlink{class_robot}{Robot}}\textquotesingle{}s stack and steps according to that Node. it also decreases the battery of the \mbox{\hyperlink{class_robot}{Robot}} by one. 
+
+\begin{DoxyReturn}{Returns}
+true if the step was successful and false if it wasn\textquotesingle{}t. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Server/models/Robot.\+h\item 
+Server/models/Robot.\+cpp\end{DoxyCompactItemize}

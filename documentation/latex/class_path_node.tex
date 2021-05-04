@@ -1,0 +1,196 @@
+\hypertarget{class_path_node}{}\doxysection{Path\+Node Class Reference}
+\label{class_path_node}\index{PathNode@{PathNode}}
+
+
+The \mbox{\hyperlink{class_path_node}{Path\+Node}} class is used by the multi agent pathfinding algorithm. It contains all the necessary information about the steps that the robot has to take. It is also used by the timetable in the controller, to determine whether a node is free at a given time.  
+
+
+
+
+{\ttfamily \#include $<$Path\+Node.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_path_node_a8407a02423706e133bfea2b4c872289a}\label{class_path_node_a8407a02423706e133bfea2b4c872289a}} 
+\mbox{\hyperlink{class_path_node_a8407a02423706e133bfea2b4c872289a}{Path\+Node}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_path_node}{Path\+Node}} Default constructor for the \mbox{\hyperlink{class_path_node}{Path\+Node}} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_path_node_afe82490aba227dfd69e41348d01244d1}{Path\+Node}} (int row, int col, int orientation, int time, \mbox{\hyperlink{class_path_node}{Path\+Node}} $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_path_node}{Path\+Node}} A constructor for Pathnode which takes all the necessary information about a node as parameter. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_path_node_aa1875fea1903995c9cbada8685c3a459}{f\+Value}} ()
+\begin{DoxyCompactList}\small\item\em getter for the f value of this node. The f value is used by A$\ast$ algorithm to rank nodes. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_path_node_aed427da884c88c5c1c66a41e9ef2d243}{get\+Row}} () const
+\begin{DoxyCompactList}\small\item\em get\+Row getter for the y position of this node in the warehouse. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_path_node_a4e38ed90e058f60c84b645b49098684b}{get\+Col}} () const
+\begin{DoxyCompactList}\small\item\em get\+Row getter for the x position of this node in the warehouse. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_path_node_affddb06ff9247245d95eb069b6d0cc9b}{get\+Orientation}} () const
+\begin{DoxyCompactList}\small\item\em get\+Orientation returns the direction in which the robot will be facing when stepping on this node. 0 = north, 1 = east, 2 = south, 3 = west. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_path_node_a47ad76cca287cf8df9ec520f6ac8a0c2}{get\+Time}} () const
+\begin{DoxyCompactList}\small\item\em get\+Time return the time elapsed since the start of the simulation when the robot will be stepping on this node. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_path_node}{Path\+Node}} $\ast$ \mbox{\hyperlink{class_path_node_a1c9ef6768f40128978a367ec2e4c5fc3}{get\+Parent}} () const
+\begin{DoxyCompactList}\small\item\em get\+Parent A getter for the parent of this node. The parent of this node is the node before this one in the robot\textquotesingle{}s path. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_path_node_a1873cd0aaab9e9d74e6df951d1d2d951}{set\+GValue}} (int g\+Value)
+\begin{DoxyCompactList}\small\item\em A setter for the G value of this node, used by the A$\ast$ algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_path_node_a5978c41239d27485533ae9932099cd68}{set\+HValue}} (int h\+Value)
+\begin{DoxyCompactList}\small\item\em A setter for the H value of this node, used by the A$\ast$ algorithm. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_path_node_ae4b02dd60db98bbfdb31c2987d73b4ff}{get\+GValue}} () const
+\begin{DoxyCompactList}\small\item\em A getter for the G value of this node, used by the A$\ast$ algorithm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{class_path_node}{Path\+Node}} class is used by the multi agent pathfinding algorithm. It contains all the necessary information about the steps that the robot has to take. It is also used by the timetable in the controller, to determine whether a node is free at a given time. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_path_node_afe82490aba227dfd69e41348d01244d1}\label{class_path_node_afe82490aba227dfd69e41348d01244d1}} 
+\index{PathNode@{PathNode}!PathNode@{PathNode}}
+\index{PathNode@{PathNode}!PathNode@{PathNode}}
+\doxysubsubsection{\texorpdfstring{PathNode()}{PathNode()}}
+{\footnotesize\ttfamily Path\+Node\+::\+Path\+Node (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col,  }\item[{int}]{orientation,  }\item[{int}]{time,  }\item[{\mbox{\hyperlink{class_path_node}{Path\+Node}} $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_path_node}{Path\+Node}} A constructor for Pathnode which takes all the necessary information about a node as parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & The y coordinate of the node in the warehouse. \\
+\hline
+{\em col} & The x coordinate of the node in the warehouse \\
+\hline
+{\em orientation} & The direction in which the robot will be facing when stepping on this node. \\
+\hline
+{\em time} & The time elapsed since the start of the simulation when the robot will step on this node. \\
+\hline
+{\em parent} & Optional parameter, it is used to access the node before this one in the robot\textquotesingle{}s path. The default value is NULL. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_path_node_aa1875fea1903995c9cbada8685c3a459}\label{class_path_node_aa1875fea1903995c9cbada8685c3a459}} 
+\index{PathNode@{PathNode}!fValue@{fValue}}
+\index{fValue@{fValue}!PathNode@{PathNode}}
+\doxysubsubsection{\texorpdfstring{fValue()}{fValue()}}
+{\footnotesize\ttfamily int Path\+Node\+::f\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for the f value of this node. The f value is used by A$\ast$ algorithm to rank nodes. 
+
+\begin{DoxyReturn}{Returns}
+the f value of this node. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_path_node_a4e38ed90e058f60c84b645b49098684b}\label{class_path_node_a4e38ed90e058f60c84b645b49098684b}} 
+\index{PathNode@{PathNode}!getCol@{getCol}}
+\index{getCol@{getCol}!PathNode@{PathNode}}
+\doxysubsubsection{\texorpdfstring{getCol()}{getCol()}}
+{\footnotesize\ttfamily int Path\+Node\+::get\+Col (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Row getter for the x position of this node in the warehouse. 
+
+\begin{DoxyReturn}{Returns}
+the x position as an integer. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_path_node_ae4b02dd60db98bbfdb31c2987d73b4ff}\label{class_path_node_ae4b02dd60db98bbfdb31c2987d73b4ff}} 
+\index{PathNode@{PathNode}!getGValue@{getGValue}}
+\index{getGValue@{getGValue}!PathNode@{PathNode}}
+\doxysubsubsection{\texorpdfstring{getGValue()}{getGValue()}}
+{\footnotesize\ttfamily int Path\+Node\+::get\+GValue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A getter for the G value of this node, used by the A$\ast$ algorithm. 
+
+\begin{DoxyReturn}{Returns}
+The H value of this node as an integer. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_path_node_affddb06ff9247245d95eb069b6d0cc9b}\label{class_path_node_affddb06ff9247245d95eb069b6d0cc9b}} 
+\index{PathNode@{PathNode}!getOrientation@{getOrientation}}
+\index{getOrientation@{getOrientation}!PathNode@{PathNode}}
+\doxysubsubsection{\texorpdfstring{getOrientation()}{getOrientation()}}
+{\footnotesize\ttfamily int Path\+Node\+::get\+Orientation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Orientation returns the direction in which the robot will be facing when stepping on this node. 0 = north, 1 = east, 2 = south, 3 = west. 
+
+\begin{DoxyReturn}{Returns}
+The orientation as an integer between 1 and 3. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_path_node_a1c9ef6768f40128978a367ec2e4c5fc3}\label{class_path_node_a1c9ef6768f40128978a367ec2e4c5fc3}} 
+\index{PathNode@{PathNode}!getParent@{getParent}}
+\index{getParent@{getParent}!PathNode@{PathNode}}
+\doxysubsubsection{\texorpdfstring{getParent()}{getParent()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_path_node}{Path\+Node}} $\ast$ Path\+Node\+::get\+Parent (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Parent A getter for the parent of this node. The parent of this node is the node before this one in the robot\textquotesingle{}s path. 
+
+\begin{DoxyReturn}{Returns}
+Returns a \mbox{\hyperlink{class_path_node}{Path\+Node}} pointer that refers to the parent of this node. It can return null if this node has no parent. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_path_node_aed427da884c88c5c1c66a41e9ef2d243}\label{class_path_node_aed427da884c88c5c1c66a41e9ef2d243}} 
+\index{PathNode@{PathNode}!getRow@{getRow}}
+\index{getRow@{getRow}!PathNode@{PathNode}}
+\doxysubsubsection{\texorpdfstring{getRow()}{getRow()}}
+{\footnotesize\ttfamily int Path\+Node\+::get\+Row (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Row getter for the y position of this node in the warehouse. 
+
+\begin{DoxyReturn}{Returns}
+the y position as an integer. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_path_node_a47ad76cca287cf8df9ec520f6ac8a0c2}\label{class_path_node_a47ad76cca287cf8df9ec520f6ac8a0c2}} 
+\index{PathNode@{PathNode}!getTime@{getTime}}
+\index{getTime@{getTime}!PathNode@{PathNode}}
+\doxysubsubsection{\texorpdfstring{getTime()}{getTime()}}
+{\footnotesize\ttfamily int Path\+Node\+::get\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Time return the time elapsed since the start of the simulation when the robot will be stepping on this node. 
+
+\begin{DoxyReturn}{Returns}
+the time elapsed as an integer. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_path_node_a1873cd0aaab9e9d74e6df951d1d2d951}\label{class_path_node_a1873cd0aaab9e9d74e6df951d1d2d951}} 
+\index{PathNode@{PathNode}!setGValue@{setGValue}}
+\index{setGValue@{setGValue}!PathNode@{PathNode}}
+\doxysubsubsection{\texorpdfstring{setGValue()}{setGValue()}}
+{\footnotesize\ttfamily void Path\+Node\+::set\+GValue (\begin{DoxyParamCaption}\item[{int}]{g\+Value }\end{DoxyParamCaption})}
+
+
+
+A setter for the G value of this node, used by the A$\ast$ algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g\+Value} & the new G value. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_path_node_a5978c41239d27485533ae9932099cd68}\label{class_path_node_a5978c41239d27485533ae9932099cd68}} 
+\index{PathNode@{PathNode}!setHValue@{setHValue}}
+\index{setHValue@{setHValue}!PathNode@{PathNode}}
+\doxysubsubsection{\texorpdfstring{setHValue()}{setHValue()}}
+{\footnotesize\ttfamily void Path\+Node\+::set\+HValue (\begin{DoxyParamCaption}\item[{int}]{h\+Value }\end{DoxyParamCaption})}
+
+
+
+A setter for the H value of this node, used by the A$\ast$ algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em h\+Value} & the new H value \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Server/models/Path\+Node.\+h\item 
+Server/models/Path\+Node.\+cpp\end{DoxyCompactItemize}

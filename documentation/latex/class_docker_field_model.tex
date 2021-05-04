@@ -1,0 +1,120 @@
+\hypertarget{class_docker_field_model}{}\doxysection{Docker\+Field\+Model Class Reference}
+\label{class_docker_field_model}\index{DockerFieldModel@{DockerFieldModel}}
+
+
+The \mbox{\hyperlink{class_docker_field_model}{Docker\+Field\+Model}} class Contains the neccesary information about a \mbox{\hyperlink{class_docker}{Docker}} for the editor and for the simulation.  
+
+
+
+
+{\ttfamily \#include $<$Docker\+Field\+Model.\+h$>$}
+
+Inheritance diagram for Docker\+Field\+Model\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_docker_field_model}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_docker_field_model_abfab23fe3d76e92f76b61a0fa4477c36}{Docker\+Field\+Model}} (int row, int col, QObject $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_docker_field_model}{Docker\+Field\+Model}} The constructor for this Class. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_docker_field_model_aa150142cfa032d092923fe8629c6284c}{get\+Row}} () const
+\begin{DoxyCompactList}\small\item\em get\+Row A getter for the row of this \mbox{\hyperlink{class_docker}{Docker}} on the grid. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_docker_field_model_a8fb368b2fd04c7db43a52c6369e0e4d8}{get\+Col}} () const
+\begin{DoxyCompactList}\small\item\em get\+Col A getter for the column of this \mbox{\hyperlink{class_docker}{Docker}} on the grid. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_docker_field_model_a50562b4efa4d0e951ce8aedbc7043e40}{write}} (QJson\+Object \&json)
+\begin{DoxyCompactList}\small\item\em write Writes the information about this \mbox{\hyperlink{class_docker}{Docker}} to the QJson\+Object given as a parameter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_docker_field_model_a1eda7bf9e63c2489e864a51474be8a43}{read}} (const QJson\+Object \&json)
+\begin{DoxyCompactList}\small\item\em read Reads the information about this \mbox{\hyperlink{class_docker}{Docker}} from the QJson\+Object given as a parameter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{class_docker_field_model}{Docker\+Field\+Model}} class Contains the neccesary information about a \mbox{\hyperlink{class_docker}{Docker}} for the editor and for the simulation. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_docker_field_model_abfab23fe3d76e92f76b61a0fa4477c36}\label{class_docker_field_model_abfab23fe3d76e92f76b61a0fa4477c36}} 
+\index{DockerFieldModel@{DockerFieldModel}!DockerFieldModel@{DockerFieldModel}}
+\index{DockerFieldModel@{DockerFieldModel}!DockerFieldModel@{DockerFieldModel}}
+\doxysubsubsection{\texorpdfstring{DockerFieldModel()}{DockerFieldModel()}}
+{\footnotesize\ttfamily Docker\+Field\+Model\+::\+Docker\+Field\+Model (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col,  }\item[{QObject $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_docker_field_model}{Docker\+Field\+Model}} The constructor for this Class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & The row of the \mbox{\hyperlink{class_docker}{Docker}} \\
+\hline
+{\em col} & The column of the \mbox{\hyperlink{class_docker}{Docker}} \\
+\hline
+{\em parent} & The parent of this \mbox{\hyperlink{class_docker}{Docker}} as an optional parameter. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_docker_field_model_a8fb368b2fd04c7db43a52c6369e0e4d8}\label{class_docker_field_model_a8fb368b2fd04c7db43a52c6369e0e4d8}} 
+\index{DockerFieldModel@{DockerFieldModel}!getCol@{getCol}}
+\index{getCol@{getCol}!DockerFieldModel@{DockerFieldModel}}
+\doxysubsubsection{\texorpdfstring{getCol()}{getCol()}}
+{\footnotesize\ttfamily int Docker\+Field\+Model\+::get\+Col (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Col A getter for the column of this \mbox{\hyperlink{class_docker}{Docker}} on the grid. 
+
+\begin{DoxyReturn}{Returns}
+The column of the \mbox{\hyperlink{class_docker}{Docker}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_docker_field_model_aa150142cfa032d092923fe8629c6284c}\label{class_docker_field_model_aa150142cfa032d092923fe8629c6284c}} 
+\index{DockerFieldModel@{DockerFieldModel}!getRow@{getRow}}
+\index{getRow@{getRow}!DockerFieldModel@{DockerFieldModel}}
+\doxysubsubsection{\texorpdfstring{getRow()}{getRow()}}
+{\footnotesize\ttfamily int Docker\+Field\+Model\+::get\+Row (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Row A getter for the row of this \mbox{\hyperlink{class_docker}{Docker}} on the grid. 
+
+\begin{DoxyReturn}{Returns}
+The row of the \mbox{\hyperlink{class_docker}{Docker}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_docker_field_model_a1eda7bf9e63c2489e864a51474be8a43}\label{class_docker_field_model_a1eda7bf9e63c2489e864a51474be8a43}} 
+\index{DockerFieldModel@{DockerFieldModel}!read@{read}}
+\index{read@{read}!DockerFieldModel@{DockerFieldModel}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily void Docker\+Field\+Model\+::read (\begin{DoxyParamCaption}\item[{const QJson\+Object \&}]{json }\end{DoxyParamCaption})}
+
+
+
+read Reads the information about this \mbox{\hyperlink{class_docker}{Docker}} from the QJson\+Object given as a parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em json} & The QJson\+Object read from. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_docker_field_model_a50562b4efa4d0e951ce8aedbc7043e40}\label{class_docker_field_model_a50562b4efa4d0e951ce8aedbc7043e40}} 
+\index{DockerFieldModel@{DockerFieldModel}!write@{write}}
+\index{write@{write}!DockerFieldModel@{DockerFieldModel}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily void Docker\+Field\+Model\+::write (\begin{DoxyParamCaption}\item[{QJson\+Object \&}]{json }\end{DoxyParamCaption})}
+
+
+
+write Writes the information about this \mbox{\hyperlink{class_docker}{Docker}} to the QJson\+Object given as a parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em json} & The QJson\+Object written into. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Client/models/Docker\+Field\+Model.\+h\item 
+Client/models/Docker\+Field\+Model.\+cpp\end{DoxyCompactItemize}
