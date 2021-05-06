@@ -28,6 +28,8 @@ private slots:
     void test_validateBeforeSaveChecksIfOK();
     void test_ordersGet();
     void test_ordersSet();
+    void test_getUnassignedProducts();
+    void test_getProductsOnShelf();
     void test_ifFieldChangedSignalEmitted();
     void test_ifMapCreatedSignalEmitted();
 
@@ -197,6 +199,27 @@ void TestClient::test_ifFieldChangedSignalEmitted()
 }
 
 
+void TestClient::test_getUnassignedProducts()
+{
+    MapEditorController m;
+    m.createNewMap(10);
+    m.addShelf(2,1);
+    m.addProduct(2,1,"alma");
+    m.addProduct(2,1,"banan");
+    m.addDropOffPoint(4,1,"alma");
+    QVERIFY(m.getUnassignedProducts()[0] == "banan");
+}
+
+void TestClient::test_getProductsOnShelf()
+{
+    MapEditorController m;
+    m.createNewMap(10);
+    m.addShelf(2,1);
+    m.addProduct(2,1,"alma");
+    m.addProduct(2,1,"banan");
+    QVERIFY(m.getProductsOnShelf(2,1)[0] == "alma");
+    QVERIFY(m.getProductsOnShelf(2,1).size() == 2);
+}
 QTEST_APPLESS_MAIN(TestClient)
 
 #include "tst_testclient.moc"
