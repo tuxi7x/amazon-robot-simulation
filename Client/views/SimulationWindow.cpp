@@ -2,6 +2,7 @@
 
 SimulationWindow::SimulationWindow(Connection *connection, QWidget *parent) : QMainWindow(parent)
 {
+    statusBar()->showMessage("");
     _connection = connection;
     setFixedSize(1024,728);
     setWindowTitle("Szimuláció");
@@ -17,12 +18,14 @@ SimulationWindow::SimulationWindow(Connection *connection, QWidget *parent) : QM
     _gridContainer = new QVBoxLayout;
     _gridContainer->addLayout(_mapGrid);
 
+    _mainLayout->addSpacerItem(new QSpacerItem(90,728));
     _mainLayout->addLayout(_gridContainer);
     _mainLayout->addLayout(_sidePanel);
-    _mainLayout->setAlignment(_gridContainer,Qt::AlignCenter);
+    _mainLayout->setAlignment(_gridContainer,Qt::AlignLeft);
+    _mainLayout->setAlignment(_gridContainer,Qt::AlignVCenter);
     _sidePanel->setSpacing(35);
     _mainLayout->setSpacing(25);
-    _sidePanel->setAlignment(Qt::AlignVCenter);
+    _mainLayout->setAlignment(_sidePanel,Qt::AlignCenter);
 
     _speedLabel = new QLabel("Sebesség: 1"); //Just for testing the UI
     _speedSlider = new QSlider(Qt::Horizontal);
@@ -67,6 +70,8 @@ SimulationWindow::SimulationWindow(Connection *connection, QWidget *parent) : QM
     connect(_connection, &Connection::pauseStateChanged, this, &SimulationWindow::onPauseStateChangedSignal);
     connect(_pauseResumeButton, SIGNAL(clicked()), this, SLOT(onPauseResumeButtonClicked()));
     connect(_newOrderButton, SIGNAL(clicked()), this, SLOT(onNewOrderButtonClicked()));
+    connect(_speedSlider, &QSlider::actionTriggered, this, &SimulationWindow::onSpeedSliderValueChanged);
+    connect(_connection, &Connection::productDelivered, this, [&](QString product){this->statusBar()->showMessage(QString("%1 kiszállítva").arg(product));});
 
     _paused = false;
     onCreateMapSignal(6); //An initial map to when still loading
@@ -143,21 +148,31 @@ void SimulationWindow::onFieldToEmptySignal(int row, int col)
 
 void SimulationWindow::onFieldToShelfSignal(int row, int col)
 {
-    bool l = _buttons[row][col]->styleSheet().contains("#ef476e;");
+    bool robotOnIt = _connection->robotOnField(row,col);
+    bool atDropOff = _connection->dropOffInPosition(row,col);
     _buttons[row][col]->setStyleSheet("background-color: #06d6a0; color:white; font-size: 30px; border: 1px solid black;");
-    if(l) _buttons[row][col]->setStyleSheet(_buttons[row][col]->styleSheet() + "border-image:url(:/Resources/resources/robotpolc.png);");
+    if(robotOnIt && atDropOff) _buttons[row][col]->setStyleSheet(_buttons[row][col]->styleSheet() + "border-image:url(:/Resources/resources/robotpolccelallomas.png);");
+    else if(robotOnIt) _buttons[row][col]->setStyleSheet(_buttons[row][col]->styleSheet() + "border-image:url(:/Resources/resources/robotpolc.png);");
     _buttons[row][col]->setText("P");
 }
 
-void SimulationWindow::onFieldToDropOffSignal(int row, int col)
+void SimulationWindow::onFieldToDropOffSignal(int row, int col, QString product)
 {
-    _buttons[row][col]->setStyleSheet("background-color: #907f9f; color:white; font-size: 30px; border: 1px solid black;");
-    _buttons[row][col]->setText("C");
+    int fontSize = 30;
+    if(product.length() > 5 || _connection->getSize() > 7) fontSize-= 10;
+    if(_connection->getSize()>9) fontSize-=5;
+    QString font = QString::number(fontSize);
+
+
+    _buttons[row][col]->setStyleSheet(QString("background-color: #907f9f; color:white; font-size: %1px; border: 1px solid black;").arg(font));
+    _buttons[row][col]->setText(QString("C\n(%1)").arg(product));
 }
 
 void SimulationWindow::onFieldtoDockerSignal(int row, int col)
 {
+    bool robotOnIt = _connection->robotOnField(row,col);
     _buttons[row][col]->setStyleSheet("background-color: #f26419; color:white; font-size: 30px; border: 1px solid black;");
+    if(robotOnIt) _buttons[row][col]->setStyleSheet(_buttons[row][col]->styleSheet() + "border-image:url(:/Resources/resources/robotpolc.png);");
     _buttons[row][col]->setText("D");
 }
 
@@ -202,19 +217,19 @@ void SimulationWindow::onFieldButtonPressed()
 
 void SimulationWindow::onFinishButtonClicked()
 {
-    emit simulationClosed(this->geometry());
     _connection->finishSimulation();
+    emit simulationClosed(this->geometry());
 }
 
 void SimulationWindow::onDisconnectButtonClicked()
 {
-    emit simulationClosed(this->geometry());
     _connection->disconnectSimulation();
+    emit simulationClosed(this->geometry());
 }
 
 void SimulationWindow::onNewOrderButtonClicked()
 {
-    QVector<ProductModel*> products = _connection->getOriginalProducts();
+    QVector<ProductModel*> products = _connection->getProducts();
     QVector<QString> orders = _connection->getOrders();
     QVector<QString> newOrders;
 
@@ -224,7 +239,14 @@ void SimulationWindow::onNewOrderButtonClicked()
             newOrders.append(nod.getOrders()[i]);
         }
         _connection->addNewOrders(newOrders);
+        _connection->newOrder();
     }
-    _connection->newOrder();
 
 }
+
+void SimulationWindow::onSpeedSliderValueChanged()
+{
+    _connection->speedChanged(_speedSlider->sliderPosition());
+}
+
+

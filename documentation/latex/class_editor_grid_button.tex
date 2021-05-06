@@ -1,0 +1,197 @@
+\hypertarget{class_editor_grid_button}{}\doxysection{Editor\+Grid\+Button Class Reference}
+\label{class_editor_grid_button}\index{EditorGridButton@{EditorGridButton}}
+
+
+The \mbox{\hyperlink{class_editor_grid_button}{Editor\+Grid\+Button}} class is a special QPush\+Button that is only used in the grid of the Editor window. It is mainly used to correctly handle drag and drop actions, but it implements switching stylesheets of this button. It stores the row of the column of this button in the editor grid.  
+
+
+
+
+{\ttfamily \#include $<$Editor\+Grid\+Button.\+h$>$}
+
+Inheritance diagram for Editor\+Grid\+Button\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_editor_grid_button}
+\end{center}
+\end{figure}
+\doxysubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_editor_grid_button_a0c027742bf925badbf5d69db127854d4}{button\+Dropped}} (int row, int col, \mbox{\hyperlink{class_side_bar_button}{Side\+Bar\+Button}} $\ast$dropped\+Button)
+\begin{DoxyCompactList}\small\item\em button\+Dropped This signal gets called when a \mbox{\hyperlink{class_side_bar_button}{Side\+Bar\+Button}} gets dropped onto this Button. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_editor_grid_button_a40a7253d6a34617229adeac4046fe962}{Editor\+Grid\+Button}} (int row, int col)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_editor_grid_button}{Editor\+Grid\+Button}} A constructor for the \mbox{\hyperlink{class_editor_grid_button}{Editor\+Grid\+Button}} that only takes in the row and the column of this button. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_editor_grid_button_a6bb1b27cba98f95d25f38577ca88586c}\label{class_editor_grid_button_a6bb1b27cba98f95d25f38577ca88586c}} 
+void \mbox{\hyperlink{class_editor_grid_button_a6bb1b27cba98f95d25f38577ca88586c}{set\+Empty\+Button\+Style\+Sheet}} ()
+\begin{DoxyCompactList}\small\item\em set\+Empty\+Button\+Style\+Sheet Sets the stylesheet of this button to represent an empty field. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_editor_grid_button_ae5b149fcf7dcde3c76a789238d94bab6}\label{class_editor_grid_button_ae5b149fcf7dcde3c76a789238d94bab6}} 
+void \mbox{\hyperlink{class_editor_grid_button_ae5b149fcf7dcde3c76a789238d94bab6}{set\+Robot\+Button\+Style\+Sheet}} ()
+\begin{DoxyCompactList}\small\item\em set\+Robot\+Button\+Style\+Sheet Sets the stylesheet of this button to represent a field with a \mbox{\hyperlink{class_robot}{Robot}} on it. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_editor_grid_button_a79bb2c68747d45dc80c5398cbeb6362f}\label{class_editor_grid_button_a79bb2c68747d45dc80c5398cbeb6362f}} 
+void \mbox{\hyperlink{class_editor_grid_button_a79bb2c68747d45dc80c5398cbeb6362f}{set\+Docker\+Button\+Style\+Sheet}} ()
+\begin{DoxyCompactList}\small\item\em set\+Docker\+Button\+Style\+Sheet Sets the stylesheet of this button to represent a field with a \mbox{\hyperlink{class_docker}{Docker}} on it. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_editor_grid_button_a5cc51c0918d0d6fb1e3311082017800c}\label{class_editor_grid_button_a5cc51c0918d0d6fb1e3311082017800c}} 
+void \mbox{\hyperlink{class_editor_grid_button_a5cc51c0918d0d6fb1e3311082017800c}{set\+Unselected\+Shelf\+Button\+Style\+Sheet}} ()
+\begin{DoxyCompactList}\small\item\em set\+Unselected\+Shelf\+Button\+Style\+Sheet Sets the stylesheet of this button to represent a field with an unselected shelf on it. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_editor_grid_button_a2092257a04007f19aca2b98b44f96aad}\label{class_editor_grid_button_a2092257a04007f19aca2b98b44f96aad}} 
+void \mbox{\hyperlink{class_editor_grid_button_a2092257a04007f19aca2b98b44f96aad}{set\+Selected\+Shelf\+Button\+Style\+Sheet}} ()
+\begin{DoxyCompactList}\small\item\em set\+Selected\+Shelf\+Button\+Style\+Sheet Sets the stylesheet of this button to represent a field with a selected shelf on it. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_editor_grid_button_a6b0dacffb3d61310f9da8305f7a8a230}\label{class_editor_grid_button_a6b0dacffb3d61310f9da8305f7a8a230}} 
+void \mbox{\hyperlink{class_editor_grid_button_a6b0dacffb3d61310f9da8305f7a8a230}{set\+Drop\+Off\+Point\+Button\+Style\+Sheet}} (QString product)
+\begin{DoxyCompactList}\small\item\em set\+Drop\+Off\+Point\+Button\+Style\+Sheet Sets the stylesheet of this button to represent a field with a drop off point on it. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_editor_grid_button_a97f11ac18b3ab05aa416a4d68151120b}{set\+Robot\+Orientation}} (int orientation)
+\begin{DoxyCompactList}\small\item\em set\+Robot\+Orientation Sets the direction of the robot on this field. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_editor_grid_button_a2dd371fa6edcae3e803be16c3342b1bf}{get\+Row}} () const
+\begin{DoxyCompactList}\small\item\em get\+Row A getter for the row of the \mbox{\hyperlink{class_robot}{Robot}} \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_editor_grid_button_aad1d3069a9465e4388d09d63dfb8d201}{get\+Col}} () const
+\begin{DoxyCompactList}\small\item\em get\+Row A getter for the row of the \mbox{\hyperlink{class_robot}{Robot}} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_editor_grid_button_af16d1e3cc626723a69ce9a83530e0e6f}{drag\+Enter\+Event}} (QDrag\+Enter\+Event $\ast$event) override
+\begin{DoxyCompactList}\small\item\em drag\+Enter\+Event Paints the Button grey when a button has been dragged onto it. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_editor_grid_button_a2fafe0b8f55f17d23c308575ea5c59aa}{drag\+Leave\+Event}} (QDrag\+Leave\+Event $\ast$event) override
+\begin{DoxyCompactList}\small\item\em drag\+Leave\+Event Paints the Button back to normal when a dragged Button leaves the area of this Button. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_editor_grid_button_a2402b36a6111d4753d57eebdd6c6e636}{drop\+Event}} (QDrop\+Event $\ast$event) override
+\begin{DoxyCompactList}\small\item\em drop\+Event Handles the event when a \mbox{\hyperlink{class_side_bar_button}{Side\+Bar\+Button}} has been dropped onto this Button. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{class_editor_grid_button}{Editor\+Grid\+Button}} class is a special QPush\+Button that is only used in the grid of the Editor window. It is mainly used to correctly handle drag and drop actions, but it implements switching stylesheets of this button. It stores the row of the column of this button in the editor grid. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_editor_grid_button_a40a7253d6a34617229adeac4046fe962}\label{class_editor_grid_button_a40a7253d6a34617229adeac4046fe962}} 
+\index{EditorGridButton@{EditorGridButton}!EditorGridButton@{EditorGridButton}}
+\index{EditorGridButton@{EditorGridButton}!EditorGridButton@{EditorGridButton}}
+\doxysubsubsection{\texorpdfstring{EditorGridButton()}{EditorGridButton()}}
+{\footnotesize\ttfamily Editor\+Grid\+Button\+::\+Editor\+Grid\+Button (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_editor_grid_button}{Editor\+Grid\+Button}} A constructor for the \mbox{\hyperlink{class_editor_grid_button}{Editor\+Grid\+Button}} that only takes in the row and the column of this button. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & The row of the button. \\
+\hline
+{\em col} & The column of the button. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_editor_grid_button_a0c027742bf925badbf5d69db127854d4}\label{class_editor_grid_button_a0c027742bf925badbf5d69db127854d4}} 
+\index{EditorGridButton@{EditorGridButton}!buttonDropped@{buttonDropped}}
+\index{buttonDropped@{buttonDropped}!EditorGridButton@{EditorGridButton}}
+\doxysubsubsection{\texorpdfstring{buttonDropped}{buttonDropped}}
+{\footnotesize\ttfamily void Editor\+Grid\+Button\+::button\+Dropped (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col,  }\item[{\mbox{\hyperlink{class_side_bar_button}{Side\+Bar\+Button}} $\ast$}]{dropped\+Button }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+button\+Dropped This signal gets called when a \mbox{\hyperlink{class_side_bar_button}{Side\+Bar\+Button}} gets dropped onto this Button. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & The row of this button \\
+\hline
+{\em col} & The column of this button \\
+\hline
+{\em dropped\+Button} & The \mbox{\hyperlink{class_side_bar_button}{Side\+Bar\+Button}} that was dropped. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_editor_grid_button_af16d1e3cc626723a69ce9a83530e0e6f}\label{class_editor_grid_button_af16d1e3cc626723a69ce9a83530e0e6f}} 
+\index{EditorGridButton@{EditorGridButton}!dragEnterEvent@{dragEnterEvent}}
+\index{dragEnterEvent@{dragEnterEvent}!EditorGridButton@{EditorGridButton}}
+\doxysubsubsection{\texorpdfstring{dragEnterEvent()}{dragEnterEvent()}}
+{\footnotesize\ttfamily void Editor\+Grid\+Button\+::drag\+Enter\+Event (\begin{DoxyParamCaption}\item[{QDrag\+Enter\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+drag\+Enter\+Event Paints the Button grey when a button has been dragged onto it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & The QDrag\+Enter\+Event contains the information about the specific drag. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_editor_grid_button_a2fafe0b8f55f17d23c308575ea5c59aa}\label{class_editor_grid_button_a2fafe0b8f55f17d23c308575ea5c59aa}} 
+\index{EditorGridButton@{EditorGridButton}!dragLeaveEvent@{dragLeaveEvent}}
+\index{dragLeaveEvent@{dragLeaveEvent}!EditorGridButton@{EditorGridButton}}
+\doxysubsubsection{\texorpdfstring{dragLeaveEvent()}{dragLeaveEvent()}}
+{\footnotesize\ttfamily void Editor\+Grid\+Button\+::drag\+Leave\+Event (\begin{DoxyParamCaption}\item[{QDrag\+Leave\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+drag\+Leave\+Event Paints the Button back to normal when a dragged Button leaves the area of this Button. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & QDrag\+Leave\+Event contains the information about the specific drag. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_editor_grid_button_a2402b36a6111d4753d57eebdd6c6e636}\label{class_editor_grid_button_a2402b36a6111d4753d57eebdd6c6e636}} 
+\index{EditorGridButton@{EditorGridButton}!dropEvent@{dropEvent}}
+\index{dropEvent@{dropEvent}!EditorGridButton@{EditorGridButton}}
+\doxysubsubsection{\texorpdfstring{dropEvent()}{dropEvent()}}
+{\footnotesize\ttfamily void Editor\+Grid\+Button\+::drop\+Event (\begin{DoxyParamCaption}\item[{QDrop\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+drop\+Event Handles the event when a \mbox{\hyperlink{class_side_bar_button}{Side\+Bar\+Button}} has been dropped onto this Button. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & QDrop\+Event containts the information about the specific drag. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_editor_grid_button_aad1d3069a9465e4388d09d63dfb8d201}\label{class_editor_grid_button_aad1d3069a9465e4388d09d63dfb8d201}} 
+\index{EditorGridButton@{EditorGridButton}!getCol@{getCol}}
+\index{getCol@{getCol}!EditorGridButton@{EditorGridButton}}
+\doxysubsubsection{\texorpdfstring{getCol()}{getCol()}}
+{\footnotesize\ttfamily int Editor\+Grid\+Button\+::get\+Col (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Row A getter for the row of the \mbox{\hyperlink{class_robot}{Robot}} 
+
+\begin{DoxyReturn}{Returns}
+Returns the row of the \mbox{\hyperlink{class_robot}{Robot}} as an int. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_editor_grid_button_a2dd371fa6edcae3e803be16c3342b1bf}\label{class_editor_grid_button_a2dd371fa6edcae3e803be16c3342b1bf}} 
+\index{EditorGridButton@{EditorGridButton}!getRow@{getRow}}
+\index{getRow@{getRow}!EditorGridButton@{EditorGridButton}}
+\doxysubsubsection{\texorpdfstring{getRow()}{getRow()}}
+{\footnotesize\ttfamily int Editor\+Grid\+Button\+::get\+Row (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get\+Row A getter for the row of the \mbox{\hyperlink{class_robot}{Robot}} 
+
+\begin{DoxyReturn}{Returns}
+Returns the row of the \mbox{\hyperlink{class_robot}{Robot}} as an int. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_editor_grid_button_a97f11ac18b3ab05aa416a4d68151120b}\label{class_editor_grid_button_a97f11ac18b3ab05aa416a4d68151120b}} 
+\index{EditorGridButton@{EditorGridButton}!setRobotOrientation@{setRobotOrientation}}
+\index{setRobotOrientation@{setRobotOrientation}!EditorGridButton@{EditorGridButton}}
+\doxysubsubsection{\texorpdfstring{setRobotOrientation()}{setRobotOrientation()}}
+{\footnotesize\ttfamily void Editor\+Grid\+Button\+::set\+Robot\+Orientation (\begin{DoxyParamCaption}\item[{int}]{orientation }\end{DoxyParamCaption})}
+
+
+
+set\+Robot\+Orientation Sets the direction of the robot on this field. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em orientation} & The new orientation of the robot. 0 = north, 1 = east, 2 = south, 3 = west \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Client/library/buttons/editor/Editor\+Grid\+Button.\+h\item 
+Client/library/buttons/editor/Editor\+Grid\+Button.\+cpp\end{DoxyCompactItemize}

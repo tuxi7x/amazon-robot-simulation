@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Amazon raktarszimulacio: Server/Controller.h Source File</title>
+<title>Amazon robot simulation: Server/Controller.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Amazon raktarszimulacio
+   <div id="projectname">Amazon robot simulation
    </div>
   </td>
  </tr>
@@ -110,109 +110,114 @@ $(function() {
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_controller.html#a7867c6bcc573172f89d486d562f7b54d">setSize</a>(<span class="keywordtype">int</span> size);</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_controller.html#a22c29b94b632958dc69cb766ed4b9c47">setSpeed</a>(<span class="keywordtype">int</span> speed);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    QVector&lt;Robot*&gt; <a class="code" href="class_controller.html#aaae7886356365b64762e11793235ca15">getRobots</a>();</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    QVector&lt;Docker*&gt; <a class="code" href="class_controller.html#afda21e60e333b0fea8662f6bab5f62e9">getDockers</a>();</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    QVector&lt;DropOffPoint*&gt; <a class="code" href="class_controller.html#aa500f91067e13d08b1cb298c5ea9bfda">getDropOffPoints</a>();</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    QVector&lt;Shelf*&gt; <a class="code" href="class_controller.html#ada01bb33d0e6d1b7f763ddb45636aa0a">getShelves</a>();</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    QVector&lt;Product*&gt; <a class="code" href="class_controller.html#a191f9b8c07269c4dece0f1afaa93830e">getProducts</a>();</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    QVector&lt;QString&gt; <a class="code" href="class_controller.html#a31c0a9db06b2fd59f3252cf7328693fe">getOrders</a>();</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    QVector&lt;QString&gt; <a class="code" href="class_controller.html#ac5c6ab7746f9a9ae9d288c42e35d7890">getAlreadyOrdered</a>();</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_controller.html#ad9a5bff30fdfbb6948452c351bd70a12">getSize</a>();</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_controller.html#a28c27e51a843634a1e1d538f4dbf787e">getSpeed</a>();</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_controller.html#a23335ef642c7a04c64466022217537d9">getPaused</a>();</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_controller.html#a86d17771acbaa4b04d56cc07e20b8430">startSimulation</a>();</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_controller.html#a92d1f1318e64c103a16771ddec4a8528">stopSimulation</a>();</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_controller.html#a185e3fc3b7aa5d623a9b5e89698151d1">pauseSimulation</a>();</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_controller.html#a2757d9481a35783337396cd29ef94bfa">resumeSimulation</a>();</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_controller.html#a27f037017946b22c95eadbbe9463efb8">sumConsumedEnergy</a>();</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    QVector&lt;Robot*&gt; _robots;</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    QVector&lt;Docker*&gt; _dockers;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    QVector&lt;DropOffPoint*&gt; _dropOffPoints;</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    QVector&lt;Shelf*&gt; _shelves;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    QVector&lt;Product*&gt; _products;</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    QVector&lt;QString&gt; _orders;</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    QVector&lt;QString&gt; _alreadyOrdered;</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="comment">//The timetable is used by the pathfinding algorithm to determine whether a certain node is free at a given time</span></div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    QSet&lt;PathNode&gt; _timeTable;</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keywordtype">int</span> _size;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    QTimer* _timer;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordtype">int</span> _elapsedTime;</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="keywordtype">bool</span> _paused;</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keywordtype">int</span> _speed;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="keywordtype">int</span> _steps;</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordtype">bool</span> saveGame();</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="comment">//Tries to find a path with a robot to a certain destination. Adds the route to the route stack of the robot. Returns true if there was a path</span></div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keywordtype">bool</span> planPathForRobot (<a class="code" href="class_robot.html">Robot</a>* r, <span class="keywordtype">int</span> destinationRow, <span class="keywordtype">int</span> destinationCol);</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keywordtype">int</span> calculateHeuristicValue(<span class="keywordtype">int</span> startX, <span class="keywordtype">int</span> startY, <span class="keywordtype">int</span> goalX, <span class="keywordtype">int</span> goalY);</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordtype">int</span> calculateGValue (<span class="keywordtype">int</span> startX, <span class="keywordtype">int</span> startY, <span class="keywordtype">int</span> goalX, <span class="keywordtype">int</span> goalY, <span class="keywordtype">int</span> startTime, <span class="keywordtype">int</span> goalTime);</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="keywordtype">bool</span> fieldIsValid (<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col, <a class="code" href="class_robot.html">Robot</a>* r, <span class="keywordtype">int</span> goalRow, <span class="keywordtype">int</span> goalCol);</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="keywordtype">int</span> nextOrientation (<span class="keywordtype">int</span> orientation);</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keywordtype">int</span> prevOrientation (<span class="keywordtype">int</span> orientation);</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <a class="code" href="class_shelf.html">Shelf</a>* getShelfWithPosition (<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col);</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <a class="code" href="class_drop_off_point.html">DropOffPoint</a>* getDropOffPointForProduct (QString product);</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <a class="code" href="class_docker.html">Docker</a>* getNearestDocker (<a class="code" href="class_robot.html">Robot</a>* r);</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="keywordtype">void</span> removeProduct (<a class="code" href="class_product.html">Product</a>* p);</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <a class="code" href="class_product.html">Product</a>* getProductWithName (QString product);</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <a class="code" href="class_robot.html">Robot</a>* getRobotNearestToShelf (<a class="code" href="class_shelf.html">Shelf</a>* s);</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="keyword">private</span> slots:</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="keywordtype">void</span> tickHandler();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">void</span> setSimSpeed();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    QVector&lt;Robot*&gt; <a class="code" href="class_controller.html#aaae7886356365b64762e11793235ca15">getRobots</a>();</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    QVector&lt;Docker*&gt; <a class="code" href="class_controller.html#afda21e60e333b0fea8662f6bab5f62e9">getDockers</a>();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    QVector&lt;DropOffPoint*&gt; <a class="code" href="class_controller.html#aa500f91067e13d08b1cb298c5ea9bfda">getDropOffPoints</a>();</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    QVector&lt;Shelf*&gt; <a class="code" href="class_controller.html#ada01bb33d0e6d1b7f763ddb45636aa0a">getShelves</a>();</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    QVector&lt;Product*&gt; <a class="code" href="class_controller.html#a191f9b8c07269c4dece0f1afaa93830e">getProducts</a>();</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    QVector&lt;QString&gt; <a class="code" href="class_controller.html#a31c0a9db06b2fd59f3252cf7328693fe">getOrders</a>();</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    QVector&lt;QString&gt; <a class="code" href="class_controller.html#ac5c6ab7746f9a9ae9d288c42e35d7890">getAlreadyOrdered</a>();</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_controller.html#ad9a5bff30fdfbb6948452c351bd70a12">getSize</a>();</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_controller.html#a28c27e51a843634a1e1d538f4dbf787e">getSpeed</a>();</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_controller.html#a23335ef642c7a04c64466022217537d9">getPaused</a>();</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_controller.html#a86d17771acbaa4b04d56cc07e20b8430">startSimulation</a>();</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_controller.html#a92d1f1318e64c103a16771ddec4a8528">stopSimulation</a>();</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_controller.html#a185e3fc3b7aa5d623a9b5e89698151d1">pauseSimulation</a>();</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_controller.html#a2757d9481a35783337396cd29ef94bfa">resumeSimulation</a>();</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_controller.html#a27f037017946b22c95eadbbe9463efb8">sumConsumedEnergy</a>();</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    QVector&lt;Robot*&gt; _robots;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    QVector&lt;Docker*&gt; _dockers;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    QVector&lt;DropOffPoint*&gt; _dropOffPoints;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    QVector&lt;Shelf*&gt; _shelves;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    QVector&lt;Product*&gt; _products;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    QVector&lt;QString&gt; _orders;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    QVector&lt;QString&gt; _alreadyOrdered;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="comment">//The timetable is used by the pathfinding algorithm to determine whether a certain node is free at a given time</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    QSet&lt;PathNode&gt; _timeTable;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordtype">int</span> _size;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    QTimer* _timer;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="keywordtype">int</span> _elapsedTime;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keywordtype">bool</span> _paused;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="keywordtype">int</span> _speed;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordtype">int</span> _steps;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordtype">bool</span> saveGame();</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="comment">//Tries to find a path with a robot to a certain destination. Adds the route to the route stack of the robot. Returns true if there was a path</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keywordtype">bool</span> planPathForRobot (<a class="code" href="class_robot.html">Robot</a>* r, <span class="keywordtype">int</span> destinationRow, <span class="keywordtype">int</span> destinationCol);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordtype">int</span> calculateHeuristicValue(<span class="keywordtype">int</span> startX, <span class="keywordtype">int</span> startY, <span class="keywordtype">int</span> goalX, <span class="keywordtype">int</span> goalY);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="keywordtype">int</span> calculateGValue (<span class="keywordtype">int</span> startX, <span class="keywordtype">int</span> startY, <span class="keywordtype">int</span> goalX, <span class="keywordtype">int</span> goalY, <span class="keywordtype">int</span> startTime, <span class="keywordtype">int</span> goalTime);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="keywordtype">bool</span> fieldIsValid (<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col, <a class="code" href="class_robot.html">Robot</a>* r, <span class="keywordtype">int</span> goalRow, <span class="keywordtype">int</span> goalCol);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keywordtype">int</span> nextOrientation (<span class="keywordtype">int</span> orientation);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="keywordtype">int</span> prevOrientation (<span class="keywordtype">int</span> orientation);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <a class="code" href="class_shelf.html">Shelf</a>* getShelfWithPosition (<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <a class="code" href="class_drop_off_point.html">DropOffPoint</a>* getDropOffPointForProduct (QString product);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <a class="code" href="class_docker.html">Docker</a>* getNearestDocker (<a class="code" href="class_robot.html">Robot</a>* r);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="keywordtype">void</span> removeProduct (<a class="code" href="class_product.html">Product</a>* p);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <a class="code" href="class_product.html">Product</a>* getProductWithName (QString product);</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <a class="code" href="class_robot.html">Robot</a>* getRobotNearestToShelf (<a class="code" href="class_shelf.html">Shelf</a>* s);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <a class="code" href="class_docker.html">Docker</a>* getDockerWithPosition (<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col);</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="keywordtype">bool</span> freeInTable(<a class="code" href="class_path_node.html">PathNode</a> p, <a class="code" href="class_robot.html">Robot</a>* r);</div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160; </div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;signals:</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="keywordtype">void</span> updateState();</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="keyword">private</span> slots:</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="keywordtype">void</span> tickHandler();</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; </div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;};</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CONTROLLER_H</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;signals:</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="keywordtype">void</span> updateState();</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="keywordtype">void</span> productDelivered (QString prodName);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;};</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// CONTROLLER_H</span></div>
 <div class="ttc" id="aclass_controller_html"><div class="ttname"><a href="class_controller.html">Controller</a></div><div class="ttdoc">Controller class responsible for controlling the simmulation.</div><div class="ttdef"><b>Definition:</b> Controller.h:27</div></div>
 <div class="ttc" id="aclass_controller_html_a0abb4c6912b5061427f1d41ef0f6d498"><div class="ttname"><a href="class_controller.html#a0abb4c6912b5061427f1d41ef0f6d498">Controller::addRobot</a></div><div class="ttdeci">void addRobot(int row, int col, int orientation)</div><div class="ttdoc">addRobot Adds a new robot to the simulation (uses the Robot model)</div><div class="ttdef"><b>Definition:</b> Controller.cpp:16</div></div>
 <div class="ttc" id="aclass_controller_html_a13849d63ff0dc27f7c58de63376fbe99"><div class="ttname"><a href="class_controller.html#a13849d63ff0dc27f7c58de63376fbe99">Controller::alreadyOrdered</a></div><div class="ttdeci">void alreadyOrdered(QString name)</div><div class="ttdoc">alreadyOrdered Takes note that the product is already ordered</div><div class="ttdef"><b>Definition:</b> Controller.cpp:36</div></div>
-<div class="ttc" id="aclass_controller_html_a185e3fc3b7aa5d623a9b5e89698151d1"><div class="ttname"><a href="class_controller.html#a185e3fc3b7aa5d623a9b5e89698151d1">Controller::pauseSimulation</a></div><div class="ttdeci">void pauseSimulation()</div><div class="ttdoc">pauseSimulation Pauses the simulation</div><div class="ttdef"><b>Definition:</b> Controller.cpp:78</div></div>
-<div class="ttc" id="aclass_controller_html_a191f9b8c07269c4dece0f1afaa93830e"><div class="ttname"><a href="class_controller.html#a191f9b8c07269c4dece0f1afaa93830e">Controller::getProducts</a></div><div class="ttdeci">QVector&lt; Product * &gt; getProducts()</div><div class="ttdoc">getProducts Getter for products</div><div class="ttdef"><b>Definition:</b> Controller.cpp:382</div></div>
+<div class="ttc" id="aclass_controller_html_a185e3fc3b7aa5d623a9b5e89698151d1"><div class="ttname"><a href="class_controller.html#a185e3fc3b7aa5d623a9b5e89698151d1">Controller::pauseSimulation</a></div><div class="ttdeci">void pauseSimulation()</div><div class="ttdoc">pauseSimulation Pauses the simulation</div><div class="ttdef"><b>Definition:</b> Controller.cpp:90</div></div>
+<div class="ttc" id="aclass_controller_html_a191f9b8c07269c4dece0f1afaa93830e"><div class="ttname"><a href="class_controller.html#a191f9b8c07269c4dece0f1afaa93830e">Controller::getProducts</a></div><div class="ttdeci">QVector&lt; Product * &gt; getProducts()</div><div class="ttdoc">getProducts Getter for products</div><div class="ttdef"><b>Definition:</b> Controller.cpp:435</div></div>
 <div class="ttc" id="aclass_controller_html_a22c29b94b632958dc69cb766ed4b9c47"><div class="ttname"><a href="class_controller.html#a22c29b94b632958dc69cb766ed4b9c47">Controller::setSpeed</a></div><div class="ttdeci">void setSpeed(int speed)</div><div class="ttdoc">setSpeed Sets the speed of the simulation</div><div class="ttdef"><b>Definition:</b> Controller.cpp:49</div></div>
-<div class="ttc" id="aclass_controller_html_a23335ef642c7a04c64466022217537d9"><div class="ttname"><a href="class_controller.html#a23335ef642c7a04c64466022217537d9">Controller::getPaused</a></div><div class="ttdeci">bool getPaused()</div><div class="ttdoc">getPaused Checks whether the simulation is paused or not</div><div class="ttdef"><b>Definition:</b> Controller.cpp:98</div></div>
+<div class="ttc" id="aclass_controller_html_a23335ef642c7a04c64466022217537d9"><div class="ttname"><a href="class_controller.html#a23335ef642c7a04c64466022217537d9">Controller::getPaused</a></div><div class="ttdeci">bool getPaused()</div><div class="ttdoc">getPaused Checks whether the simulation is paused or not</div><div class="ttdef"><b>Definition:</b> Controller.cpp:110</div></div>
 <div class="ttc" id="aclass_controller_html_a23b308dc9783406b02d2e61e42df17c9"><div class="ttname"><a href="class_controller.html#a23b308dc9783406b02d2e61e42df17c9">Controller::addOrder</a></div><div class="ttdeci">void addOrder(QString name)</div><div class="ttdoc">addOrder Adds a new order to the simulation</div><div class="ttdef"><b>Definition:</b> Controller.cpp:32</div></div>
-<div class="ttc" id="aclass_controller_html_a2757d9481a35783337396cd29ef94bfa"><div class="ttname"><a href="class_controller.html#a2757d9481a35783337396cd29ef94bfa">Controller::resumeSimulation</a></div><div class="ttdeci">void resumeSimulation()</div><div class="ttdoc">resumeSimulation Resumes the paused simulation</div><div class="ttdef"><b>Definition:</b> Controller.cpp:84</div></div>
-<div class="ttc" id="aclass_controller_html_a27f037017946b22c95eadbbe9463efb8"><div class="ttname"><a href="class_controller.html#a27f037017946b22c95eadbbe9463efb8">Controller::sumConsumedEnergy</a></div><div class="ttdeci">int sumConsumedEnergy()</div><div class="ttdoc">sumConsumedEnergy Counts the amount of energy used</div><div class="ttdef"><b>Definition:</b> Controller.cpp:89</div></div>
-<div class="ttc" id="aclass_controller_html_a28c27e51a843634a1e1d538f4dbf787e"><div class="ttname"><a href="class_controller.html#a28c27e51a843634a1e1d538f4dbf787e">Controller::getSpeed</a></div><div class="ttdeci">int getSpeed()</div><div class="ttdoc">getSpeed Getter for speed</div><div class="ttdef"><b>Definition:</b> Controller.cpp:353</div></div>
-<div class="ttc" id="aclass_controller_html_a31c0a9db06b2fd59f3252cf7328693fe"><div class="ttname"><a href="class_controller.html#a31c0a9db06b2fd59f3252cf7328693fe">Controller::getOrders</a></div><div class="ttdeci">QVector&lt; QString &gt; getOrders()</div><div class="ttdoc">getOrders Getter for orders</div><div class="ttdef"><b>Definition:</b> Controller.cpp:373</div></div>
+<div class="ttc" id="aclass_controller_html_a2757d9481a35783337396cd29ef94bfa"><div class="ttname"><a href="class_controller.html#a2757d9481a35783337396cd29ef94bfa">Controller::resumeSimulation</a></div><div class="ttdeci">void resumeSimulation()</div><div class="ttdoc">resumeSimulation Resumes the paused simulation</div><div class="ttdef"><b>Definition:</b> Controller.cpp:96</div></div>
+<div class="ttc" id="aclass_controller_html_a27f037017946b22c95eadbbe9463efb8"><div class="ttname"><a href="class_controller.html#a27f037017946b22c95eadbbe9463efb8">Controller::sumConsumedEnergy</a></div><div class="ttdeci">int sumConsumedEnergy()</div><div class="ttdoc">sumConsumedEnergy Counts the amount of energy used</div><div class="ttdef"><b>Definition:</b> Controller.cpp:101</div></div>
+<div class="ttc" id="aclass_controller_html_a28c27e51a843634a1e1d538f4dbf787e"><div class="ttname"><a href="class_controller.html#a28c27e51a843634a1e1d538f4dbf787e">Controller::getSpeed</a></div><div class="ttdeci">int getSpeed()</div><div class="ttdoc">getSpeed Getter for speed</div><div class="ttdef"><b>Definition:</b> Controller.cpp:406</div></div>
+<div class="ttc" id="aclass_controller_html_a31c0a9db06b2fd59f3252cf7328693fe"><div class="ttname"><a href="class_controller.html#a31c0a9db06b2fd59f3252cf7328693fe">Controller::getOrders</a></div><div class="ttdeci">QVector&lt; QString &gt; getOrders()</div><div class="ttdoc">getOrders Getter for orders</div><div class="ttdef"><b>Definition:</b> Controller.cpp:426</div></div>
 <div class="ttc" id="aclass_controller_html_a7867c6bcc573172f89d486d562f7b54d"><div class="ttname"><a href="class_controller.html#a7867c6bcc573172f89d486d562f7b54d">Controller::setSize</a></div><div class="ttdeci">void setSize(int size)</div><div class="ttdoc">setSize Sets the size of the simulation grid</div><div class="ttdef"><b>Definition:</b> Controller.cpp:45</div></div>
-<div class="ttc" id="aclass_controller_html_a86d17771acbaa4b04d56cc07e20b8430"><div class="ttname"><a href="class_controller.html#a86d17771acbaa4b04d56cc07e20b8430">Controller::startSimulation</a></div><div class="ttdeci">void startSimulation()</div><div class="ttdoc">startSimulation Starts the simulation</div><div class="ttdef"><b>Definition:</b> Controller.cpp:53</div></div>
-<div class="ttc" id="aclass_controller_html_a92d1f1318e64c103a16771ddec4a8528"><div class="ttname"><a href="class_controller.html#a92d1f1318e64c103a16771ddec4a8528">Controller::stopSimulation</a></div><div class="ttdeci">void stopSimulation()</div><div class="ttdoc">stopSimulation Stops the simulation</div><div class="ttdef"><b>Definition:</b> Controller.cpp:59</div></div>
-<div class="ttc" id="aclass_controller_html_aa500f91067e13d08b1cb298c5ea9bfda"><div class="ttname"><a href="class_controller.html#aa500f91067e13d08b1cb298c5ea9bfda">Controller::getDropOffPoints</a></div><div class="ttdeci">QVector&lt; DropOffPoint * &gt; getDropOffPoints()</div><div class="ttdoc">getDropOffPoints Getter for dropoff points</div><div class="ttdef"><b>Definition:</b> Controller.cpp:365</div></div>
-<div class="ttc" id="aclass_controller_html_aaae7886356365b64762e11793235ca15"><div class="ttname"><a href="class_controller.html#aaae7886356365b64762e11793235ca15">Controller::getRobots</a></div><div class="ttdeci">QVector&lt; Robot * &gt; getRobots()</div><div class="ttdoc">getRobots Getter for robots</div><div class="ttdef"><b>Definition:</b> Controller.cpp:357</div></div>
+<div class="ttc" id="aclass_controller_html_a86d17771acbaa4b04d56cc07e20b8430"><div class="ttname"><a href="class_controller.html#a86d17771acbaa4b04d56cc07e20b8430">Controller::startSimulation</a></div><div class="ttdeci">void startSimulation()</div><div class="ttdoc">startSimulation Starts the simulation</div><div class="ttdef"><b>Definition:</b> Controller.cpp:65</div></div>
+<div class="ttc" id="aclass_controller_html_a92d1f1318e64c103a16771ddec4a8528"><div class="ttname"><a href="class_controller.html#a92d1f1318e64c103a16771ddec4a8528">Controller::stopSimulation</a></div><div class="ttdeci">void stopSimulation()</div><div class="ttdoc">stopSimulation Stops the simulation</div><div class="ttdef"><b>Definition:</b> Controller.cpp:71</div></div>
+<div class="ttc" id="aclass_controller_html_aa500f91067e13d08b1cb298c5ea9bfda"><div class="ttname"><a href="class_controller.html#aa500f91067e13d08b1cb298c5ea9bfda">Controller::getDropOffPoints</a></div><div class="ttdeci">QVector&lt; DropOffPoint * &gt; getDropOffPoints()</div><div class="ttdoc">getDropOffPoints Getter for dropoff points</div><div class="ttdef"><b>Definition:</b> Controller.cpp:418</div></div>
+<div class="ttc" id="aclass_controller_html_aaae7886356365b64762e11793235ca15"><div class="ttname"><a href="class_controller.html#aaae7886356365b64762e11793235ca15">Controller::getRobots</a></div><div class="ttdeci">QVector&lt; Robot * &gt; getRobots()</div><div class="ttdoc">getRobots Getter for robots</div><div class="ttdef"><b>Definition:</b> Controller.cpp:410</div></div>
 <div class="ttc" id="aclass_controller_html_ab5b57a0f9031178bd02e2d511c6ce6cf"><div class="ttname"><a href="class_controller.html#ab5b57a0f9031178bd02e2d511c6ce6cf">Controller::addDropOffPoint</a></div><div class="ttdeci">void addDropOffPoint(int row, int col, QString product)</div><div class="ttdoc">addDropOffPoint Adds a new dropoff point to the simulation (uses the DropOffPoint model)</div><div class="ttdef"><b>Definition:</b> Controller.cpp:28</div></div>
 <div class="ttc" id="aclass_controller_html_ac30ba667950b6bb0faa3909ce0730a06"><div class="ttname"><a href="class_controller.html#ac30ba667950b6bb0faa3909ce0730a06">Controller::addProduct</a></div><div class="ttdeci">void addProduct(QString name, int shelf)</div><div class="ttdoc">addProduct Adds a new product to the simulation (uses the Product model)</div><div class="ttdef"><b>Definition:</b> Controller.cpp:20</div></div>
-<div class="ttc" id="aclass_controller_html_ac5c6ab7746f9a9ae9d288c42e35d7890"><div class="ttname"><a href="class_controller.html#ac5c6ab7746f9a9ae9d288c42e35d7890">Controller::getAlreadyOrdered</a></div><div class="ttdeci">QVector&lt; QString &gt; getAlreadyOrdered()</div><div class="ttdoc">getAlreadyOrdered Getter for already ordered products</div><div class="ttdef"><b>Definition:</b> Controller.cpp:377</div></div>
+<div class="ttc" id="aclass_controller_html_ac5c6ab7746f9a9ae9d288c42e35d7890"><div class="ttname"><a href="class_controller.html#ac5c6ab7746f9a9ae9d288c42e35d7890">Controller::getAlreadyOrdered</a></div><div class="ttdeci">QVector&lt; QString &gt; getAlreadyOrdered()</div><div class="ttdoc">getAlreadyOrdered Getter for already ordered products</div><div class="ttdef"><b>Definition:</b> Controller.cpp:430</div></div>
 <div class="ttc" id="aclass_controller_html_acb24aea492906f3c81663f856e6235cf"><div class="ttname"><a href="class_controller.html#acb24aea492906f3c81663f856e6235cf">Controller::addDocker</a></div><div class="ttdeci">void addDocker(int row, int col)</div><div class="ttdoc">addDocker Adds a new docker to the simulation (uses the Docker model)</div><div class="ttdef"><b>Definition:</b> Controller.cpp:24</div></div>
 <div class="ttc" id="aclass_controller_html_acea25f885e6e2139ea86c128731ebe81"><div class="ttname"><a href="class_controller.html#acea25f885e6e2139ea86c128731ebe81">Controller::addShelf</a></div><div class="ttdeci">void addShelf(int row, int col)</div><div class="ttdoc">addShelf Adds a new shelf to the simulation (uses the Shelf model)</div><div class="ttdef"><b>Definition:</b> Controller.cpp:41</div></div>
-<div class="ttc" id="aclass_controller_html_ad9a5bff30fdfbb6948452c351bd70a12"><div class="ttname"><a href="class_controller.html#ad9a5bff30fdfbb6948452c351bd70a12">Controller::getSize</a></div><div class="ttdeci">int getSize()</div><div class="ttdoc">getSize Getter for size</div><div class="ttdef"><b>Definition:</b> Controller.cpp:349</div></div>
-<div class="ttc" id="aclass_controller_html_ada01bb33d0e6d1b7f763ddb45636aa0a"><div class="ttname"><a href="class_controller.html#ada01bb33d0e6d1b7f763ddb45636aa0a">Controller::getShelves</a></div><div class="ttdeci">QVector&lt; Shelf * &gt; getShelves()</div><div class="ttdoc">getShelves Getter for shelves</div><div class="ttdef"><b>Definition:</b> Controller.cpp:369</div></div>
+<div class="ttc" id="aclass_controller_html_ad9a5bff30fdfbb6948452c351bd70a12"><div class="ttname"><a href="class_controller.html#ad9a5bff30fdfbb6948452c351bd70a12">Controller::getSize</a></div><div class="ttdeci">int getSize()</div><div class="ttdoc">getSize Getter for size</div><div class="ttdef"><b>Definition:</b> Controller.cpp:402</div></div>
+<div class="ttc" id="aclass_controller_html_ada01bb33d0e6d1b7f763ddb45636aa0a"><div class="ttname"><a href="class_controller.html#ada01bb33d0e6d1b7f763ddb45636aa0a">Controller::getShelves</a></div><div class="ttdeci">QVector&lt; Shelf * &gt; getShelves()</div><div class="ttdoc">getShelves Getter for shelves</div><div class="ttdef"><b>Definition:</b> Controller.cpp:422</div></div>
 <div class="ttc" id="aclass_controller_html_af888a35f7a377692726d81332edf08ab"><div class="ttname"><a href="class_controller.html#af888a35f7a377692726d81332edf08ab">Controller::Controller</a></div><div class="ttdeci">Controller(QObject *parent=nullptr)</div><div class="ttdoc">Controller Default constructor for Controller class.</div><div class="ttdef"><b>Definition:</b> Controller.cpp:5</div></div>
-<div class="ttc" id="aclass_controller_html_afda21e60e333b0fea8662f6bab5f62e9"><div class="ttname"><a href="class_controller.html#afda21e60e333b0fea8662f6bab5f62e9">Controller::getDockers</a></div><div class="ttdeci">QVector&lt; Docker * &gt; getDockers()</div><div class="ttdoc">getDockers Getter for dockers</div><div class="ttdef"><b>Definition:</b> Controller.cpp:361</div></div>
+<div class="ttc" id="aclass_controller_html_afda21e60e333b0fea8662f6bab5f62e9"><div class="ttname"><a href="class_controller.html#afda21e60e333b0fea8662f6bab5f62e9">Controller::getDockers</a></div><div class="ttdeci">QVector&lt; Docker * &gt; getDockers()</div><div class="ttdoc">getDockers Getter for dockers</div><div class="ttdef"><b>Definition:</b> Controller.cpp:414</div></div>
 <div class="ttc" id="aclass_docker_html"><div class="ttname"><a href="class_docker.html">Docker</a></div><div class="ttdoc">Model class containg information about a docker.</div><div class="ttdef"><b>Definition:</b> Docker.h:11</div></div>
 <div class="ttc" id="aclass_drop_off_point_html"><div class="ttname"><a href="class_drop_off_point.html">DropOffPoint</a></div><div class="ttdoc">Model class containing information about a dropoff point.</div><div class="ttdef"><b>Definition:</b> DropOffPoint.h:10</div></div>
+<div class="ttc" id="aclass_path_node_html"><div class="ttname"><a href="class_path_node.html">PathNode</a></div><div class="ttdoc">The PathNode class is used by the multi agent pathfinding algorithm. It contains all the necessary in...</div><div class="ttdef"><b>Definition:</b> PathNode.h:22</div></div>
 <div class="ttc" id="aclass_product_html"><div class="ttname"><a href="class_product.html">Product</a></div><div class="ttdoc">Model class containing information about a product.</div><div class="ttdef"><b>Definition:</b> Product.h:10</div></div>
-<div class="ttc" id="aclass_robot_html"><div class="ttname"><a href="class_robot.html">Robot</a></div><div class="ttdoc">Model class containing information about a robot.</div><div class="ttdef"><b>Definition:</b> Robot.h:20</div></div>
+<div class="ttc" id="aclass_robot_html"><div class="ttname"><a href="class_robot.html">Robot</a></div><div class="ttdoc">Model class containing information about a robot.</div><div class="ttdef"><b>Definition:</b> Robot.h:24</div></div>
 <div class="ttc" id="aclass_shelf_html"><div class="ttname"><a href="class_shelf.html">Shelf</a></div><div class="ttdoc">Model class containing information about a shelf.</div><div class="ttdef"><b>Definition:</b> Shelf.h:12</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

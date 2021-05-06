@@ -16,10 +16,18 @@
 #include <QTimer>
 #include "controllers/Connection.h"
 
+/**
+ * @brief The StartSimFromFileDialog class A dialog class used by the main menu to allow the user to start a new simulation on a specific
+ * server with a map given by the user.
+ */
 class StartSimFromFileDialog : public DialogBase
 {
     Q_OBJECT
 public:
+    /**
+     * @brief StartSimFromFileDialog
+     * @param connection The connection object of this application with dependency injection.
+     */
     StartSimFromFileDialog(Connection* connection);
     ~StartSimFromFileDialog();
 
@@ -43,7 +51,6 @@ private:
     QMovie* _progressGif;
     Connection* _connection;
     QTimer* _timer;
-
     QFile* _file;
 
 };

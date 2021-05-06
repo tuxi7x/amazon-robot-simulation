@@ -13,17 +13,25 @@
 #include "library/buttons/SimulationButton.h"
 #include "library/dialogs/RobotInfoDialog.h"
 #include "library/dialogs/NewOrderDialog.h"
+#include <QStatusBar>
 
+/**
+ * @brief The SimulationWindow class One of the main views of the application. Displays the simulation itself, with the grid and some side buttons.
+ */
 class SimulationWindow : public QMainWindow
 {
     Q_OBJECT
 public:
+    /**
+     * @brief SimulationWindow Constructor for this class.
+     * @param connection The connection of the application as dependency injection.
+     * @param parent parent of this QWidget.
+     */
     explicit SimulationWindow(Connection* connection, QWidget *parent = nullptr);
     ~SimulationWindow();
 
 signals:
     void simulationClosed(QRect pos);
-
 
 private:
     QVector<QVector<SimulationButton*>> _buttons;
@@ -42,15 +50,13 @@ private:
     bool _paused;
     void createMap();
 
-
-
 private slots:
     void onCreateMapSignal (int size);
     //Orientations: 0 = up, 1 = right, 2 = down, 3 = left
     void onFieldToRobotSignal (int row, int col, int orientation, int battery);
     void onFieldToEmptySignal (int row, int col);
     void onFieldToShelfSignal (int row, int col);
-    void onFieldToDropOffSignal (int row, int col);
+    void onFieldToDropOffSignal (int row, int col, QString product);
     void onFieldtoDockerSignal (int row, int col);
     void onGameSpeedChangedSignal (int newSpeed);
     void onPauseStateChangedSignal (bool paused);
@@ -59,6 +65,7 @@ private slots:
     void onFinishButtonClicked();
     void onDisconnectButtonClicked();
     void onNewOrderButtonClicked();
+    void onSpeedSliderValueChanged();
 
 };
 

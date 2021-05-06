@@ -8,12 +8,24 @@
 #include "QFormLayout"
 #include "QLabel"
 
+/**
+ * @brief The OrderDialog class A special dialog class used by the editor to allow setting the orders that are already made at the start of the simulation.
+ */
 class OrderDialog : public DialogBase
 {
     Q_OBJECT
 public:
+    /**
+     * @brief OrderDialog The constructor for this class.
+     * @param products The products on the shelves.
+     * @param orders The products that are not available because they are already ordered.
+     */
     explicit OrderDialog(QVector<QString> products, QVector<QString> orders);
     ~OrderDialog();
+    /**
+     * @brief getOrders A getter for the new orders selected in this dialog.
+     * @return The list of the orders as a QVector containing QString.
+     */
     QVector<QString> getOrders();
 
     private:

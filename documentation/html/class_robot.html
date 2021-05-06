@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Amazon raktarszimulacio: Robot Class Reference</title>
+<title>Amazon robot simulation: Robot Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Amazon raktarszimulacio
+   <div id="projectname">Amazon robot simulation
    </div>
   </td>
  </tr>
@@ -83,73 +83,468 @@ Inheritance diagram for Robot:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad68a647a016a8b8daaad2bdf060e0235"><td class="memItemLeft" align="right" valign="top"><a id="ad68a647a016a8b8daaad2bdf060e0235"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Robot</b> (QObject *parent=nullptr)</td></tr>
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD explicit <a class="el" href="class_robot.html">Robot</a>(QObject *parent=nullptr);<a class="el" href="class_robot.html">Robot</a>(int row, int col, int direction);=======&gt;&gt;&gt;&gt;&gt;&gt; dev&#160;</td><td class="memItemRight" valign="bottom"><b>Robot</b> (QObject *parent=nullptr)</td></tr>
 <tr class="separator:ad68a647a016a8b8daaad2bdf060e0235"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1c682d9d34744c35bbc906ade9f2c2f"><td class="memItemLeft" align="right" valign="top"><a id="ad1c682d9d34744c35bbc906ade9f2c2f"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Robot</b> (int row, int col, int direction)</td></tr>
 <tr class="separator:ad1c682d9d34744c35bbc906ade9f2c2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ae097b389376fef01fda3251f99412e"><td class="memItemLeft" align="right" valign="top"><a id="a6ae097b389376fef01fda3251f99412e"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getRow</b> ()</td></tr>
+<tr class="memitem:a6ae097b389376fef01fda3251f99412e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot.html#a6ae097b389376fef01fda3251f99412e">getRow</a> ()</td></tr>
+<tr class="memdesc:a6ae097b389376fef01fda3251f99412e"><td class="mdescLeft">&#160;</td><td class="mdescRight">getRow A getter for the row of the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a> in the warehouse.  <a href="class_robot.html#a6ae097b389376fef01fda3251f99412e">More...</a><br /></td></tr>
 <tr class="separator:a6ae097b389376fef01fda3251f99412e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad651686c3cbcc29b946b483cdcbcc28c"><td class="memItemLeft" align="right" valign="top"><a id="ad651686c3cbcc29b946b483cdcbcc28c"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getCol</b> ()</td></tr>
+<tr class="memitem:ad651686c3cbcc29b946b483cdcbcc28c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot.html#ad651686c3cbcc29b946b483cdcbcc28c">getCol</a> ()</td></tr>
+<tr class="memdesc:ad651686c3cbcc29b946b483cdcbcc28c"><td class="mdescLeft">&#160;</td><td class="mdescRight">getCol A getter for the column of the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a> in the warehouse.  <a href="class_robot.html#ad651686c3cbcc29b946b483cdcbcc28c">More...</a><br /></td></tr>
 <tr class="separator:ad651686c3cbcc29b946b483cdcbcc28c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d75a06d329340f8bc153e8e299221c1"><td class="memItemLeft" align="right" valign="top"><a id="a2d75a06d329340f8bc153e8e299221c1"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getDirection</b> ()</td></tr>
+<tr class="memitem:a2d75a06d329340f8bc153e8e299221c1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot.html#a2d75a06d329340f8bc153e8e299221c1">getDirection</a> ()</td></tr>
+<tr class="memdesc:a2d75a06d329340f8bc153e8e299221c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">getDirection A getter for the direction of the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a>. 0 = north, 1 = east, 2 = south, 3 = west.  <a href="class_robot.html#a2d75a06d329340f8bc153e8e299221c1">More...</a><br /></td></tr>
 <tr class="separator:a2d75a06d329340f8bc153e8e299221c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05176f8885eab473bc5ab9f7b2cff877"><td class="memItemLeft" align="right" valign="top"><a id="a05176f8885eab473bc5ab9f7b2cff877"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getBattery</b> ()</td></tr>
+<tr class="memitem:a05176f8885eab473bc5ab9f7b2cff877"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot.html#a05176f8885eab473bc5ab9f7b2cff877">getBattery</a> ()</td></tr>
+<tr class="memdesc:a05176f8885eab473bc5ab9f7b2cff877"><td class="mdescLeft">&#160;</td><td class="mdescRight">getBattery A getter for the current battery of the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a>.  <a href="class_robot.html#a05176f8885eab473bc5ab9f7b2cff877">More...</a><br /></td></tr>
 <tr class="separator:a05176f8885eab473bc5ab9f7b2cff877"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab52af71fa96f94015d65a8405a4903f8"><td class="memItemLeft" align="right" valign="top"><a id="ab52af71fa96f94015d65a8405a4903f8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>pushToPath</b> (<a class="el" href="class_path_node.html">PathNode</a> *x)</td></tr>
+<tr class="memitem:ab52af71fa96f94015d65a8405a4903f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot.html#ab52af71fa96f94015d65a8405a4903f8">pushToPath</a> (<a class="el" href="class_path_node.html">PathNode</a> *x)</td></tr>
+<tr class="memdesc:ab52af71fa96f94015d65a8405a4903f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">pushToPath Adds a node to the path stack of the robot. The <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a> pop off a <a class="el" href="class_path_node.html" title="The PathNode class is used by the multi agent pathfinding algorithm. It contains all the necessary in...">PathNode</a> from its Stack in every tick of the Simulation and steps according to that Node.  <a href="class_robot.html#ab52af71fa96f94015d65a8405a4903f8">More...</a><br /></td></tr>
 <tr class="separator:ab52af71fa96f94015d65a8405a4903f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49cfd6de89e48fefa03a34422f566652"><td class="memItemLeft" align="right" valign="top"><a id="a49cfd6de89e48fefa03a34422f566652"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>pathIsEmpty</b> ()</td></tr>
+<tr class="memitem:a49cfd6de89e48fefa03a34422f566652"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot.html#a49cfd6de89e48fefa03a34422f566652">pathIsEmpty</a> ()</td></tr>
+<tr class="memdesc:a49cfd6de89e48fefa03a34422f566652"><td class="mdescLeft">&#160;</td><td class="mdescRight">pathIsEmpty This function is used to check whether the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a>'s path is empty or not.  <a href="class_robot.html#a49cfd6de89e48fefa03a34422f566652">More...</a><br /></td></tr>
 <tr class="separator:a49cfd6de89e48fefa03a34422f566652"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb2d8d53ff841f037a872b5c8fcc9c0d"><td class="memItemLeft" align="right" valign="top"><a id="acb2d8d53ff841f037a872b5c8fcc9c0d"></a>
-<a class="el" href="class_path_node.html">PathNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>stepOnPath</b> ()</td></tr>
+<tr class="memitem:acb2d8d53ff841f037a872b5c8fcc9c0d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_path_node.html">PathNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot.html#acb2d8d53ff841f037a872b5c8fcc9c0d">stepOnPath</a> ()</td></tr>
+<tr class="memdesc:acb2d8d53ff841f037a872b5c8fcc9c0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">stepOnPath pops off a <a class="el" href="class_path_node.html" title="The PathNode class is used by the multi agent pathfinding algorithm. It contains all the necessary in...">PathNode</a> from the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a>'s stack and steps according to that Node. it also decreases the battery of the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a> by one.  <a href="class_robot.html#acb2d8d53ff841f037a872b5c8fcc9c0d">More...</a><br /></td></tr>
 <tr class="separator:acb2d8d53ff841f037a872b5c8fcc9c0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d32840d81fcecc2fcecef40fc8ba10f"><td class="memItemLeft" align="right" valign="top"><a id="a5d32840d81fcecc2fcecef40fc8ba10f"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getOriginalRow</b> () const</td></tr>
+<tr class="memitem:a5d32840d81fcecc2fcecef40fc8ba10f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot.html#a5d32840d81fcecc2fcecef40fc8ba10f">getOriginalRow</a> () const</td></tr>
+<tr class="memdesc:a5d32840d81fcecc2fcecef40fc8ba10f"><td class="mdescLeft">&#160;</td><td class="mdescRight">getOriginalRow A getter for the original row of the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a> in the warehouse.  <a href="class_robot.html#a5d32840d81fcecc2fcecef40fc8ba10f">More...</a><br /></td></tr>
 <tr class="separator:a5d32840d81fcecc2fcecef40fc8ba10f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ae01f1a16f99a922aeb584db905b732"><td class="memItemLeft" align="right" valign="top"><a id="a6ae01f1a16f99a922aeb584db905b732"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getOriginalCol</b> () const</td></tr>
+<tr class="memitem:a6ae01f1a16f99a922aeb584db905b732"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot.html#a6ae01f1a16f99a922aeb584db905b732">getOriginalCol</a> () const</td></tr>
+<tr class="memdesc:a6ae01f1a16f99a922aeb584db905b732"><td class="mdescLeft">&#160;</td><td class="mdescRight">getOriginalCol A getter for the original column of the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a> in the warehouse.  <a href="class_robot.html#a6ae01f1a16f99a922aeb584db905b732">More...</a><br /></td></tr>
 <tr class="separator:a6ae01f1a16f99a922aeb584db905b732"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0354ec3ab75f3c271feee079827c871e"><td class="memItemLeft" align="right" valign="top"><a id="a0354ec3ab75f3c271feee079827c871e"></a>
-RobotStates&#160;</td><td class="memItemRight" valign="bottom"><b>getState</b> () const</td></tr>
+<tr class="memitem:a0354ec3ab75f3c271feee079827c871e"><td class="memItemLeft" align="right" valign="top">RobotStates&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot.html#a0354ec3ab75f3c271feee079827c871e">getState</a> () const</td></tr>
+<tr class="memdesc:a0354ec3ab75f3c271feee079827c871e"><td class="mdescLeft">&#160;</td><td class="mdescRight">getState A getter for the current state of the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a>. For the possible states see the RobotStates enum type.  <a href="class_robot.html#a0354ec3ab75f3c271feee079827c871e">More...</a><br /></td></tr>
 <tr class="separator:a0354ec3ab75f3c271feee079827c871e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7560dc04afcaf2c8a6e675b09ca7ba3"><td class="memItemLeft" align="right" valign="top"><a id="ad7560dc04afcaf2c8a6e675b09ca7ba3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setState</b> (const RobotStates &amp;state)</td></tr>
+<tr class="memitem:ad7560dc04afcaf2c8a6e675b09ca7ba3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot.html#ad7560dc04afcaf2c8a6e675b09ca7ba3">setState</a> (const RobotStates &amp;state)</td></tr>
+<tr class="memdesc:ad7560dc04afcaf2c8a6e675b09ca7ba3"><td class="mdescLeft">&#160;</td><td class="mdescRight">setState Sets the current state of the robot. For possible states see the RobotStates enum type.  <a href="class_robot.html#ad7560dc04afcaf2c8a6e675b09ca7ba3">More...</a><br /></td></tr>
 <tr class="separator:ad7560dc04afcaf2c8a6e675b09ca7ba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29443dfbd4dbc3096a95488a3656f1ee"><td class="memItemLeft" align="right" valign="top"><a id="a29443dfbd4dbc3096a95488a3656f1ee"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setCurrentShelf</b> (<a class="el" href="class_shelf.html">Shelf</a> *currentShelf)</td></tr>
+<tr class="memitem:a29443dfbd4dbc3096a95488a3656f1ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot.html#a29443dfbd4dbc3096a95488a3656f1ee">setCurrentShelf</a> (<a class="el" href="class_shelf.html">Shelf</a> *currentShelf)</td></tr>
+<tr class="memdesc:a29443dfbd4dbc3096a95488a3656f1ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">setCurrentShelf Sets the current shelf carried by this <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a>.  <a href="class_robot.html#a29443dfbd4dbc3096a95488a3656f1ee">More...</a><br /></td></tr>
 <tr class="separator:a29443dfbd4dbc3096a95488a3656f1ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a02ce7d1cfac5af22cb6ef8f8d8a98e"><td class="memItemLeft" align="right" valign="top"><a id="a0a02ce7d1cfac5af22cb6ef8f8d8a98e"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getMaxBattery</b> () const</td></tr>
+<tr class="memitem:a0a02ce7d1cfac5af22cb6ef8f8d8a98e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot.html#a0a02ce7d1cfac5af22cb6ef8f8d8a98e">getMaxBattery</a> () const</td></tr>
+<tr class="memdesc:a0a02ce7d1cfac5af22cb6ef8f8d8a98e"><td class="mdescLeft">&#160;</td><td class="mdescRight">getMaxBattery Return the maximum battery possible for this <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a>.  <a href="class_robot.html#a0a02ce7d1cfac5af22cb6ef8f8d8a98e">More...</a><br /></td></tr>
 <tr class="separator:a0a02ce7d1cfac5af22cb6ef8f8d8a98e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45d75bbf2408879b9c5061a28974f333"><td class="memItemLeft" align="right" valign="top"><a id="a45d75bbf2408879b9c5061a28974f333"></a>
-<a class="el" href="class_product.html">Product</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getCurrentProduct</b> () const</td></tr>
+<tr class="memitem:a45d75bbf2408879b9c5061a28974f333"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_product.html">Product</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot.html#a45d75bbf2408879b9c5061a28974f333">getCurrentProduct</a> () const</td></tr>
+<tr class="memdesc:a45d75bbf2408879b9c5061a28974f333"><td class="mdescLeft">&#160;</td><td class="mdescRight">getCurrentProduct A getter for the product that the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a> wants to deliver right now.  <a href="class_robot.html#a45d75bbf2408879b9c5061a28974f333">More...</a><br /></td></tr>
 <tr class="separator:a45d75bbf2408879b9c5061a28974f333"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6981fd1ed903f1c3b8a6bae5c0e910f8"><td class="memItemLeft" align="right" valign="top"><a id="a6981fd1ed903f1c3b8a6bae5c0e910f8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setCurrentProduct</b> (<a class="el" href="class_product.html">Product</a> *currentProduct)</td></tr>
+<tr class="memitem:a6981fd1ed903f1c3b8a6bae5c0e910f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot.html#a6981fd1ed903f1c3b8a6bae5c0e910f8">setCurrentProduct</a> (<a class="el" href="class_product.html">Product</a> *currentProduct)</td></tr>
+<tr class="memdesc:a6981fd1ed903f1c3b8a6bae5c0e910f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">setCurrentProduct Sets the product that the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a> wants to deliver right now.  <a href="class_robot.html#a6981fd1ed903f1c3b8a6bae5c0e910f8">More...</a><br /></td></tr>
 <tr class="separator:a6981fd1ed903f1c3b8a6bae5c0e910f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55002f0deb1e171d80bc34133e17b727"><td class="memItemLeft" align="right" valign="top"><a id="a55002f0deb1e171d80bc34133e17b727"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clearPath</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot.html#a55002f0deb1e171d80bc34133e17b727">clearPath</a> ()</td></tr>
+<tr class="memdesc:a55002f0deb1e171d80bc34133e17b727"><td class="mdescLeft">&#160;</td><td class="mdescRight">clearPath Clears the path of the robot. (Sets its Stack to empty) <br /></td></tr>
 <tr class="separator:a55002f0deb1e171d80bc34133e17b727"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51ef0c236f07bb1b35fc33507ea427ff"><td class="memItemLeft" align="right" valign="top"><a id="a51ef0c236f07bb1b35fc33507ea427ff"></a>
-<a class="el" href="class_shelf.html">Shelf</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getCurrentShelf</b> () const</td></tr>
+<tr class="memitem:a51ef0c236f07bb1b35fc33507ea427ff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_shelf.html">Shelf</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot.html#a51ef0c236f07bb1b35fc33507ea427ff">getCurrentShelf</a> () const</td></tr>
+<tr class="memdesc:a51ef0c236f07bb1b35fc33507ea427ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">getCurrentShelf A getter for the current <a class="el" href="class_shelf.html" title="Model class containing information about a shelf.">Shelf</a> carried by the robot.  <a href="class_robot.html#a51ef0c236f07bb1b35fc33507ea427ff">More...</a><br /></td></tr>
 <tr class="separator:a51ef0c236f07bb1b35fc33507ea427ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a752e6e702c194915eb8729dd0de9f60e"><td class="memItemLeft" align="right" valign="top"><a id="a752e6e702c194915eb8729dd0de9f60e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setBattery</b> (int battery)</td></tr>
+<tr class="memitem:a752e6e702c194915eb8729dd0de9f60e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot.html#a752e6e702c194915eb8729dd0de9f60e">setBattery</a> (int battery)</td></tr>
+<tr class="memdesc:a752e6e702c194915eb8729dd0de9f60e"><td class="mdescLeft">&#160;</td><td class="mdescRight">setBattery Sets the current battery of the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a>.  <a href="class_robot.html#a752e6e702c194915eb8729dd0de9f60e">More...</a><br /></td></tr>
 <tr class="separator:a752e6e702c194915eb8729dd0de9f60e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29943649e1e6e37cb57beb37141337a2"><td class="memItemLeft" align="right" valign="top"><a id="a29943649e1e6e37cb57beb37141337a2"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getConsumedEnergy</b> ()</td></tr>
+<tr class="memitem:a29943649e1e6e37cb57beb37141337a2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot.html#a29943649e1e6e37cb57beb37141337a2">getConsumedEnergy</a> ()</td></tr>
+<tr class="memdesc:a29943649e1e6e37cb57beb37141337a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">getConsumedEnergy A getter for the sum of the total consumed energy by this robot during the Simulation.  <a href="class_robot.html#a29943649e1e6e37cb57beb37141337a2">More...</a><br /></td></tr>
 <tr class="separator:a29943649e1e6e37cb57beb37141337a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af74a1fc3be77e87ceb7cc34a94c710bc"><td class="memItemLeft" align="right" valign="top"><a id="af74a1fc3be77e87ceb7cc34a94c710bc"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>incrementConsumedEnergy</b> ()</td></tr>
+<tr class="separator:af74a1fc3be77e87ceb7cc34a94c710bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Model class containing information about a robot. </p>
 <p><a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a> Model class which ships with methods used for moving the robot </p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a05176f8885eab473bc5ab9f7b2cff877"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05176f8885eab473bc5ab9f7b2cff877">&#9670;&nbsp;</a></span>getBattery()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Robot::getBattery </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getBattery A getter for the current battery of the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>The current battery as an integer. </dd></dl>
+
+</div>
+</div>
+<a id="ad651686c3cbcc29b946b483cdcbcc28c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad651686c3cbcc29b946b483cdcbcc28c">&#9670;&nbsp;</a></span>getCol()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Robot::getCol </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getCol A getter for the column of the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a> in the warehouse. </p>
+<dl class="section return"><dt>Returns</dt><dd>The column of the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a>. </dd></dl>
+
+</div>
+</div>
+<a id="a29943649e1e6e37cb57beb37141337a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29943649e1e6e37cb57beb37141337a2">&#9670;&nbsp;</a></span>getConsumedEnergy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Robot::getConsumedEnergy </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getConsumedEnergy A getter for the sum of the total consumed energy by this robot during the Simulation. </p>
+<dl class="section return"><dt>Returns</dt><dd>The sum of the consumed energy as an integer. </dd></dl>
+
+</div>
+</div>
+<a id="a45d75bbf2408879b9c5061a28974f333"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45d75bbf2408879b9c5061a28974f333">&#9670;&nbsp;</a></span>getCurrentProduct()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_product.html">Product</a> * Robot::getCurrentProduct </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getCurrentProduct A getter for the product that the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a> wants to deliver right now. </p>
+<dl class="section return"><dt>Returns</dt><dd>The product that the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a> wants to deliver now, or NULL if the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a> isn't delivering. </dd></dl>
+
+</div>
+</div>
+<a id="a51ef0c236f07bb1b35fc33507ea427ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51ef0c236f07bb1b35fc33507ea427ff">&#9670;&nbsp;</a></span>getCurrentShelf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_shelf.html">Shelf</a> * Robot::getCurrentShelf </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getCurrentShelf A getter for the current <a class="el" href="class_shelf.html" title="Model class containing information about a shelf.">Shelf</a> carried by the robot. </p>
+<dl class="section return"><dt>Returns</dt><dd>The current <a class="el" href="class_shelf.html" title="Model class containing information about a shelf.">Shelf</a> carried or NULL if it isn't carrying a <a class="el" href="class_shelf.html" title="Model class containing information about a shelf.">Shelf</a> right now. </dd></dl>
+
+</div>
+</div>
+<a id="a2d75a06d329340f8bc153e8e299221c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d75a06d329340f8bc153e8e299221c1">&#9670;&nbsp;</a></span>getDirection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Robot::getDirection </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getDirection A getter for the direction of the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a>. 0 = north, 1 = east, 2 = south, 3 = west. </p>
+<dl class="section return"><dt>Returns</dt><dd>The direction of the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a>. </dd></dl>
+
+</div>
+</div>
+<a id="a0a02ce7d1cfac5af22cb6ef8f8d8a98e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a02ce7d1cfac5af22cb6ef8f8d8a98e">&#9670;&nbsp;</a></span>getMaxBattery()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Robot::getMaxBattery </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getMaxBattery Return the maximum battery possible for this <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>The value of the maximum battery. </dd></dl>
+
+</div>
+</div>
+<a id="a6ae01f1a16f99a922aeb584db905b732"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ae01f1a16f99a922aeb584db905b732">&#9670;&nbsp;</a></span>getOriginalCol()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Robot::getOriginalCol </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getOriginalCol A getter for the original column of the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a> in the warehouse. </p>
+<dl class="section return"><dt>Returns</dt><dd>The original column of the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a>. </dd></dl>
+
+</div>
+</div>
+<a id="a5d32840d81fcecc2fcecef40fc8ba10f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d32840d81fcecc2fcecef40fc8ba10f">&#9670;&nbsp;</a></span>getOriginalRow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Robot::getOriginalRow </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getOriginalRow A getter for the original row of the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a> in the warehouse. </p>
+<dl class="section return"><dt>Returns</dt><dd>The original row of the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a>. </dd></dl>
+
+</div>
+</div>
+<a id="a6ae097b389376fef01fda3251f99412e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ae097b389376fef01fda3251f99412e">&#9670;&nbsp;</a></span>getRow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Robot::getRow </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getRow A getter for the row of the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a> in the warehouse. </p>
+<dl class="section return"><dt>Returns</dt><dd>The row of the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a>. </dd></dl>
+
+</div>
+</div>
+<a id="a0354ec3ab75f3c271feee079827c871e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0354ec3ab75f3c271feee079827c871e">&#9670;&nbsp;</a></span>getState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">RobotStates Robot::getState </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getState A getter for the current state of the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a>. For the possible states see the RobotStates enum type. </p>
+<dl class="section return"><dt>Returns</dt><dd>A RobotStates enum type. </dd></dl>
+
+</div>
+</div>
+<a id="a49cfd6de89e48fefa03a34422f566652"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49cfd6de89e48fefa03a34422f566652">&#9670;&nbsp;</a></span>pathIsEmpty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Robot::pathIsEmpty </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>pathIsEmpty This function is used to check whether the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a>'s path is empty or not. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if the path is empty and false is it is not empty. </dd></dl>
+
+</div>
+</div>
+<a id="ab52af71fa96f94015d65a8405a4903f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab52af71fa96f94015d65a8405a4903f8">&#9670;&nbsp;</a></span>pushToPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Robot::pushToPath </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_path_node.html">PathNode</a> *&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>pushToPath Adds a node to the path stack of the robot. The <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a> pop off a <a class="el" href="class_path_node.html" title="The PathNode class is used by the multi agent pathfinding algorithm. It contains all the necessary in...">PathNode</a> from its Stack in every tick of the Simulation and steps according to that Node. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>THe <a class="el" href="class_path_node.html" title="The PathNode class is used by the multi agent pathfinding algorithm. It contains all the necessary in...">PathNode</a> needed to be added to the Stack. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a752e6e702c194915eb8729dd0de9f60e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a752e6e702c194915eb8729dd0de9f60e">&#9670;&nbsp;</a></span>setBattery()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Robot::setBattery </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>battery</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>setBattery Sets the current battery of the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">battery</td><td>The new battery value of the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6981fd1ed903f1c3b8a6bae5c0e910f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6981fd1ed903f1c3b8a6bae5c0e910f8">&#9670;&nbsp;</a></span>setCurrentProduct()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Robot::setCurrentProduct </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_product.html">Product</a> *&#160;</td>
+          <td class="paramname"><em>currentProduct</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>setCurrentProduct Sets the product that the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a> wants to deliver right now. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">currentProduct</td><td>The new <a class="el" href="class_product.html" title="Model class containing information about a product.">Product</a> that the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a> has to deliver. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a29443dfbd4dbc3096a95488a3656f1ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29443dfbd4dbc3096a95488a3656f1ee">&#9670;&nbsp;</a></span>setCurrentShelf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Robot::setCurrentShelf </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_shelf.html">Shelf</a> *&#160;</td>
+          <td class="paramname"><em>currentShelf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>setCurrentShelf Sets the current shelf carried by this <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">currentShelf</td><td>The shelf that the robot is holding right now. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad7560dc04afcaf2c8a6e675b09ca7ba3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7560dc04afcaf2c8a6e675b09ca7ba3">&#9670;&nbsp;</a></span>setState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Robot::setState </td>
+          <td>(</td>
+          <td class="paramtype">const RobotStates &amp;&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>setState Sets the current state of the robot. For possible states see the RobotStates enum type. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td>The new state of the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="acb2d8d53ff841f037a872b5c8fcc9c0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb2d8d53ff841f037a872b5c8fcc9c0d">&#9670;&nbsp;</a></span>stepOnPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_path_node.html">PathNode</a> * Robot::stepOnPath </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>stepOnPath pops off a <a class="el" href="class_path_node.html" title="The PathNode class is used by the multi agent pathfinding algorithm. It contains all the necessary in...">PathNode</a> from the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a>'s stack and steps according to that Node. it also decreases the battery of the <a class="el" href="class_robot.html" title="Model class containing information about a robot.">Robot</a> by one. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if the step was successful and false if it wasn't. </dd></dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>Server/models/<a class="el" href="_robot_8h_source.html">Robot.h</a></li>
 <li>Server/models/Robot.cpp</li>
 </ul>

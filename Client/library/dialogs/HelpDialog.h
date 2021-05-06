@@ -8,10 +8,16 @@
 #include <QGraphicsDropShadowEffect>
 #include <QIcon>
 
+/**
+ * @brief The HelpDialog class A special Dialog class used in the main menu to display important informations for the users.
+ */
 class HelpDialog : public DialogBase
 {
     Q_OBJECT
 public:
+    /**
+     * @brief HelpDialog Default constructor.
+     */
     HelpDialog();
     ~HelpDialog();
 };

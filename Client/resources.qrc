@@ -7,5 +7,6 @@
         <file>resources/robot_right.png</file>
         <file>resources/robot_up.png</file>
         <file>resources/robotpolc.png</file>
+        <file>resources/robotpolccelallomas.png</file>
     </qresource>
 </RCC>

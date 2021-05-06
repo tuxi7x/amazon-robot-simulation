@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Amazon raktarszimulacio: Server/models/Docker.h Source File</title>
+<title>Amazon robot simulation: Server/models/Docker.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Amazon raktarszimulacio
+   <div id="projectname">Amazon robot simulation
    </div>
   </td>
  </tr>
@@ -87,21 +87,25 @@ $(function() {
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_docker.html#ae9dea76edec552cc2d0094bd3f6aa2c9">getRow</a>();</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_docker.html#a6ea6b0d218653ead42fe9dc22e071077">getCol</a>();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">int</span> _row;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">int</span> _col;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="class_robot.html">Robot</a> _robot;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">int</span> _timer;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;signals:</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;};</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">bool</span> getIsOccupied() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> setIsOccupied(<span class="keywordtype">bool</span> value);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">int</span> _row;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">int</span> _col;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="class_robot.html">Robot</a> _robot;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">int</span> _timer;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">bool</span> isOccupied;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// DOCKER_H</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;signals:</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;};</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// DOCKER_H</span></div>
 <div class="ttc" id="aclass_docker_html"><div class="ttname"><a href="class_docker.html">Docker</a></div><div class="ttdoc">Model class containg information about a docker.</div><div class="ttdef"><b>Definition:</b> Docker.h:11</div></div>
 <div class="ttc" id="aclass_docker_html_a6ea6b0d218653ead42fe9dc22e071077"><div class="ttname"><a href="class_docker.html#a6ea6b0d218653ead42fe9dc22e071077">Docker::getCol</a></div><div class="ttdeci">int getCol()</div><div class="ttdoc">getCol Getter for the column of Docker</div><div class="ttdef"><b>Definition:</b> Docker.cpp:17</div></div>
 <div class="ttc" id="aclass_docker_html_ae9dea76edec552cc2d0094bd3f6aa2c9"><div class="ttname"><a href="class_docker.html#ae9dea76edec552cc2d0094bd3f6aa2c9">Docker::getRow</a></div><div class="ttdeci">int getRow()</div><div class="ttdoc">getRow Getter for row of Docker</div><div class="ttdef"><b>Definition:</b> Docker.cpp:13</div></div>
-<div class="ttc" id="aclass_robot_html"><div class="ttname"><a href="class_robot.html">Robot</a></div><div class="ttdoc">Model class containing information about a robot.</div><div class="ttdef"><b>Definition:</b> Robot.h:20</div></div>
+<div class="ttc" id="aclass_robot_html"><div class="ttname"><a href="class_robot.html">Robot</a></div><div class="ttdoc">Model class containing information about a robot.</div><div class="ttdef"><b>Definition:</b> Robot.h:24</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

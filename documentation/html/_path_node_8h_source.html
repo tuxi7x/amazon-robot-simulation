@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Amazon raktarszimulacio: Server/models/PathNode.h Source File</title>
+<title>Amazon robot simulation: Server/models/PathNode.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Amazon raktarszimulacio
+   <div id="projectname">Amazon robot simulation
    </div>
   </td>
  </tr>
@@ -71,66 +71,82 @@ $(function() {
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef PATHNODE_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define PATHNODE_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;qhashfunctions.h&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;QtGlobal&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#if QT_VERSION &lt; QT_VERSION_CHECK(6, 0, 0)</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">using</span> qhash_result_t = uint;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> qhash_result_t = size_t;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;qhashfunctions.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;QtGlobal&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#if QT_VERSION &lt; QT_VERSION_CHECK(6, 0, 0)</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> qhash_result_t = uint;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using</span> qhash_result_t = size_t;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_path_node.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_path_node.html">PathNode</a></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="class_path_node.html">PathNode</a>();</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="class_path_node.html">PathNode</a>(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col, <span class="keywordtype">int</span> orientation, <span class="keywordtype">int</span> time, <a class="code" href="class_path_node.html">PathNode</a>* parent = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="comment">//The f value is the sum of the g and h values.</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">int</span> fValue();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">int</span> getRow() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">int</span> getCol() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">int</span> getOrientation() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">int</span> getTime() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="class_path_node.html">PathNode</a> *getParent() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> setGValue(<span class="keywordtype">int</span> gValue);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> setHValue(<span class="keywordtype">int</span> hValue);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">int</span> getGValue() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">int</span> _row;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">int</span> _col;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">int</span> _orientation;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">int</span> _time;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">//The g value represents the distance between the starting point and this node.</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">int</span> _gValue;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">//the h value represents an estimate of the distance between the starting point and this node.</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">int</span> _hValue;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="class_path_node.html">PathNode</a>* _parent;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;};</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> operator== (<span class="keyword">const</span> <a class="code" href="class_path_node.html">PathNode</a>&amp; a, <span class="keyword">const</span> <a class="code" href="class_path_node.html">PathNode</a>&amp; b)</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment">//Two nodes are considered equal if they are in the same position in the same time.</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> a.getRow() == b.getRow() &amp;&amp; a.getCol() == b.getCol() &amp;&amp; a.getTime() == b.getTime();</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">inline</span> qhash_result_t qHash (<span class="keyword">const</span> <a class="code" href="class_path_node.html">PathNode</a>&amp; a, <span class="keyword">const</span> qhash_result_t&amp; seed)</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    qhash_result_t newSeed = seed;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    QtPrivate::QHashCombine hash;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    newSeed = hash(newSeed,a.getCol());</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    newSeed = hash(newSeed,a.getRow());</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    newSeed = hash(newSeed,a.getTime());</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">return</span> newSeed;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// PATHNODE_H</span></div>
-<div class="ttc" id="aclass_path_node_html"><div class="ttname"><a href="class_path_node.html">PathNode</a></div><div class="ttdef"><b>Definition:</b> PathNode.h:14</div></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">class </span><a class="code" href="class_robot.html">Robot</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_path_node.html">   21</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_path_node.html">PathNode</a></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="class_path_node.html#a8407a02423706e133bfea2b4c872289a">PathNode</a>();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="class_path_node.html#a8407a02423706e133bfea2b4c872289a">PathNode</a>(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col, <span class="keywordtype">int</span> orientation, <span class="keywordtype">int</span> time, <a class="code" href="class_path_node.html">PathNode</a> *parent = <span class="keyword">nullptr</span>, <a class="code" href="class_robot.html">Robot</a> *reserver = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_path_node.html#aa1875fea1903995c9cbada8685c3a459">fValue</a>();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_path_node.html#aed427da884c88c5c1c66a41e9ef2d243">getRow</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_path_node.html#a4e38ed90e058f60c84b645b49098684b">getCol</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_path_node.html#affddb06ff9247245d95eb069b6d0cc9b">getOrientation</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_path_node.html#a47ad76cca287cf8df9ec520f6ac8a0c2">getTime</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="class_path_node.html">PathNode</a> *<a class="code" href="class_path_node.html#a1c9ef6768f40128978a367ec2e4c5fc3">getParent</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_path_node.html#a1873cd0aaab9e9d74e6df951d1d2d951">setGValue</a>(<span class="keywordtype">int</span> gValue);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_path_node.html#a5978c41239d27485533ae9932099cd68">setHValue</a>(<span class="keywordtype">int</span> hValue);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_path_node.html#ae4b02dd60db98bbfdb31c2987d73b4ff">getGValue</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <a class="code" href="class_robot.html">Robot</a> *getReserver() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">int</span> _row;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">int</span> _col;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">int</span> _orientation;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">int</span> _time;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="comment">//The g value represents the distance between the starting point and this node.</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">int</span> _gValue;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="comment">//the h value represents an estimate of the distance between the starting point and this node.</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">int</span> _hValue;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <a class="code" href="class_path_node.html">PathNode</a>* _parent;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="class_robot.html">Robot</a>* _reserver;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;};</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> operator== (<span class="keyword">const</span> <a class="code" href="class_path_node.html">PathNode</a>&amp; a, <span class="keyword">const</span> <a class="code" href="class_path_node.html">PathNode</a>&amp; b)</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;{</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="comment">//Two nodes are considered equal if they are in the same position in the same time.</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">return</span> a.<a class="code" href="class_path_node.html#aed427da884c88c5c1c66a41e9ef2d243">getRow</a>() == b.<a class="code" href="class_path_node.html#aed427da884c88c5c1c66a41e9ef2d243">getRow</a>() &amp;&amp; a.<a class="code" href="class_path_node.html#a4e38ed90e058f60c84b645b49098684b">getCol</a>() == b.<a class="code" href="class_path_node.html#a4e38ed90e058f60c84b645b49098684b">getCol</a>() &amp;&amp; a.<a class="code" href="class_path_node.html#a47ad76cca287cf8df9ec520f6ac8a0c2">getTime</a>() == b.<a class="code" href="class_path_node.html#a47ad76cca287cf8df9ec520f6ac8a0c2">getTime</a>();</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keyword">inline</span> qhash_result_t qHash (<span class="keyword">const</span> <a class="code" href="class_path_node.html">PathNode</a>&amp; a, <span class="keyword">const</span> qhash_result_t&amp; seed)</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;{</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    qhash_result_t newSeed = seed;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    QtPrivate::QHashCombine hash;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    newSeed = hash(newSeed,a.<a class="code" href="class_path_node.html#a4e38ed90e058f60c84b645b49098684b">getCol</a>());</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    newSeed = hash(newSeed,a.<a class="code" href="class_path_node.html#aed427da884c88c5c1c66a41e9ef2d243">getRow</a>());</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    newSeed = hash(newSeed,a.<a class="code" href="class_path_node.html#a47ad76cca287cf8df9ec520f6ac8a0c2">getTime</a>());</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">return</span> newSeed;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// PATHNODE_H</span></div>
+<div class="ttc" id="aclass_path_node_html"><div class="ttname"><a href="class_path_node.html">PathNode</a></div><div class="ttdoc">The PathNode class is used by the multi agent pathfinding algorithm. It contains all the necessary in...</div><div class="ttdef"><b>Definition:</b> PathNode.h:22</div></div>
+<div class="ttc" id="aclass_path_node_html_a1873cd0aaab9e9d74e6df951d1d2d951"><div class="ttname"><a href="class_path_node.html#a1873cd0aaab9e9d74e6df951d1d2d951">PathNode::setGValue</a></div><div class="ttdeci">void setGValue(int gValue)</div><div class="ttdoc">A setter for the G value of this node, used by the A* algorithm.</div><div class="ttdef"><b>Definition:</b> PathNode.cpp:39</div></div>
+<div class="ttc" id="aclass_path_node_html_a1c9ef6768f40128978a367ec2e4c5fc3"><div class="ttname"><a href="class_path_node.html#a1c9ef6768f40128978a367ec2e4c5fc3">PathNode::getParent</a></div><div class="ttdeci">PathNode * getParent() const</div><div class="ttdoc">getParent A getter for the parent of this node. The parent of this node is the node before this one i...</div><div class="ttdef"><b>Definition:</b> PathNode.cpp:34</div></div>
+<div class="ttc" id="aclass_path_node_html_a47ad76cca287cf8df9ec520f6ac8a0c2"><div class="ttname"><a href="class_path_node.html#a47ad76cca287cf8df9ec520f6ac8a0c2">PathNode::getTime</a></div><div class="ttdeci">int getTime() const</div><div class="ttdoc">getTime return the time elapsed since the start of the simulation when the robot will be stepping on ...</div><div class="ttdef"><b>Definition:</b> PathNode.cpp:59</div></div>
+<div class="ttc" id="aclass_path_node_html_a4e38ed90e058f60c84b645b49098684b"><div class="ttname"><a href="class_path_node.html#a4e38ed90e058f60c84b645b49098684b">PathNode::getCol</a></div><div class="ttdeci">int getCol() const</div><div class="ttdoc">getRow getter for the x position of this node in the warehouse.</div><div class="ttdef"><b>Definition:</b> PathNode.cpp:23</div></div>
+<div class="ttc" id="aclass_path_node_html_a5978c41239d27485533ae9932099cd68"><div class="ttname"><a href="class_path_node.html#a5978c41239d27485533ae9932099cd68">PathNode::setHValue</a></div><div class="ttdeci">void setHValue(int hValue)</div><div class="ttdoc">A setter for the H value of this node, used by the A* algorithm.</div><div class="ttdef"><b>Definition:</b> PathNode.cpp:44</div></div>
+<div class="ttc" id="aclass_path_node_html_a8407a02423706e133bfea2b4c872289a"><div class="ttname"><a href="class_path_node.html#a8407a02423706e133bfea2b4c872289a">PathNode::PathNode</a></div><div class="ttdeci">PathNode()</div><div class="ttdoc">PathNode Default constructor for the PathNode class.</div><div class="ttdef"><b>Definition:</b> PathNode.cpp:3</div></div>
+<div class="ttc" id="aclass_path_node_html_aa1875fea1903995c9cbada8685c3a459"><div class="ttname"><a href="class_path_node.html#aa1875fea1903995c9cbada8685c3a459">PathNode::fValue</a></div><div class="ttdeci">int fValue()</div><div class="ttdoc">getter for the f value of this node. The f value is used by A* algorithm to rank nodes.</div><div class="ttdef"><b>Definition:</b> PathNode.cpp:13</div></div>
+<div class="ttc" id="aclass_path_node_html_ae4b02dd60db98bbfdb31c2987d73b4ff"><div class="ttname"><a href="class_path_node.html#ae4b02dd60db98bbfdb31c2987d73b4ff">PathNode::getGValue</a></div><div class="ttdeci">int getGValue() const</div><div class="ttdoc">A getter for the G value of this node, used by the A* algorithm.</div><div class="ttdef"><b>Definition:</b> PathNode.cpp:49</div></div>
+<div class="ttc" id="aclass_path_node_html_aed427da884c88c5c1c66a41e9ef2d243"><div class="ttname"><a href="class_path_node.html#aed427da884c88c5c1c66a41e9ef2d243">PathNode::getRow</a></div><div class="ttdeci">int getRow() const</div><div class="ttdoc">getRow getter for the y position of this node in the warehouse.</div><div class="ttdef"><b>Definition:</b> PathNode.cpp:18</div></div>
+<div class="ttc" id="aclass_path_node_html_affddb06ff9247245d95eb069b6d0cc9b"><div class="ttname"><a href="class_path_node.html#affddb06ff9247245d95eb069b6d0cc9b">PathNode::getOrientation</a></div><div class="ttdeci">int getOrientation() const</div><div class="ttdoc">getOrientation returns the direction in which the robot will be facing when stepping on this node....</div><div class="ttdef"><b>Definition:</b> PathNode.cpp:28</div></div>
+<div class="ttc" id="aclass_robot_html"><div class="ttname"><a href="class_robot.html">Robot</a></div><div class="ttdoc">Model class containing information about a robot.</div><div class="ttdef"><b>Definition:</b> Robot.h:24</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

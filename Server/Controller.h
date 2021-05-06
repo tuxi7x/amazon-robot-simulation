@@ -93,6 +93,7 @@ public:
      * @param speed The new speed of the simulation
      */
     void setSpeed(int speed);
+    void setSimSpeed();
 
     /**
      * @brief getRobots Getter for robots
@@ -211,12 +212,15 @@ private:
     void removeProduct (Product* p);
     Product* getProductWithName (QString product);
     Robot* getRobotNearestToShelf (Shelf* s);
+    Docker* getDockerWithPosition (int row, int col);
+    bool freeInTable(PathNode p, Robot* r);
 
 private slots:
     void tickHandler();
 
 signals:
     void updateState();
+    void productDelivered (QString prodName);
 
 
 };

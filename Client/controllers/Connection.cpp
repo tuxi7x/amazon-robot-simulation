@@ -89,7 +89,6 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
 
     // Read products and write to server
     _products.clear();
-    _originalProducts.clear();
     QVector<QString> productParams;
     QJsonArray products = loadDoc["products"].toArray();
     for (int productIndex = 0; productIndex < products.size(); ++productIndex) {
@@ -99,7 +98,6 @@ void Connection::connectAndSend(QString host, int port, QFile* file) {
             productParams.append(name);
             productParams.append(QString::number(shelf));
             _products.append(new ProductModel(name, shelf));
-            _originalProducts.append(new ProductModel(name, shelf));
     }
 
 
@@ -258,14 +256,16 @@ void Connection::processMessage(QString header, QVector<QString> params) {
 
         }
     } else if (header == "DROPOFF") {
+        _dropOffPoints.clear();
         if (params.length() > 0 && params.length() % 3 == 0) {
             for (int i = 0; i < params.length(); i+=3) {
+                _dropOffPoints.append(new DropOffPointFieldModel(params[i].toInt(),params[i+1].toInt(),params[i+2]));
                 /*
                  * params[i]: row
                  * params[i+1]: col
                  * params[i+2]: product
                  */
-                emit fieldToDropOff(params[i].toInt(), params[i+1].toInt());
+                emit fieldToDropOff(params[i].toInt(), params[i+1].toInt(),params[i+2]);
             }
 
         }
@@ -274,6 +274,11 @@ void Connection::processMessage(QString header, QVector<QString> params) {
     }
     else if (header == "RESUMED") {
             emit pauseStateChanged(params[0] == "1" ? true : false);
+    }
+    else if (header == "SPEEDCHANGED") {
+            emit gameSpeedChanged(params[0].toInt());
+    } else if (header == "DELIVERED") {
+        emit productDelivered(params[0]);
     }
 
 }
@@ -296,6 +301,13 @@ void Connection::onConnect() {
 
 bool Connection::isSuccessful() {
     return !_error;
+}
+
+void Connection::speedChanged(int newSpeed)
+{
+    QVector<QString> args;
+    args.append(QString::number(newSpeed));
+    writeToServer("SPEED", args);
 }
 
 QPair<Connection::FieldTypes, QObject*> Connection::getField(int row, int col)
@@ -334,6 +346,11 @@ QVector<QString> Connection::getProductsOnShelf(int row, int col)
 void Connection::disconnectSimulation()
 {
     QVector<QString> args;
+    _products.clear();
+    _robots.clear();
+    _shelves.clear();
+    _dropOffPoints.clear();
+    _orders.clear();
     writeToServer("CLOSE", args);
 }
 
@@ -351,6 +368,12 @@ void Connection::newOrder()
 void Connection::finishSimulation()
 {
     QVector<QString> args;
+    _products.clear();
+    _robots.clear();
+    _shelves.clear();
+    _dropOffPoints.clear();
+    _orders.clear();
+    _newOrders.clear();
     writeToServer("STOP", args);
 }
 
@@ -365,27 +388,31 @@ void Connection::addNewOrders(QVector<QString> newOrders)
 
 QVector<ProductModel *> Connection::getProducts()
 {
-    QVector<ProductModel*> l;
-
-    for(int j=0; j<_products.size();j++) {
-            l.append(new ProductModel(_products[j]->getName(), _products[j]->getShelf()));
-    }
-    return l;
+    return _products;
 }
 
-QVector<ProductModel *> Connection::getOriginalProducts()
-{
-    QVector<ProductModel*> l;
 
-    for(int j=0; j<_originalProducts.size();j++) {
-            l.append(new ProductModel(_originalProducts[j]->getName(), _originalProducts[j]->getShelf()));
+
+bool Connection::robotOnField(int row, int col)
+{
+    for(RobotFieldModel* r : _robots) {
+        if(r->getRow() == row && r->getCol() == col) return true;
     }
-    return l;
+    return false;
 }
 
-QVector<QString> Connection::getNewOrders()
+bool Connection::dropOffInPosition(int row, int col)
 {
-    return _newOrders;
+    for(DropOffPointFieldModel* d : _dropOffPoints)
+    {
+        if(d->getRow() == row && d->getCol() == col) return true;
+    }
+    return false;
+}
+
+int Connection::getSize() const
+{
+    return _size;
 }
 
 QVector<QString> Connection::getOrders()
