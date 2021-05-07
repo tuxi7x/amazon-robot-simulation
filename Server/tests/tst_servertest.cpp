@@ -14,6 +14,13 @@ public:
 private slots:
     void test_controller_constructor();
     void test_model_constructors();
+    void test_productsInController();
+    void test_ordersInController();
+    void test_alreadyOrdered();
+    void test_pauseSim();
+    void test_resumeSim();
+    void test_consumedEnergy();
+    void test_robotBattery();
 
 };
 
@@ -71,6 +78,61 @@ void ServerTest::test_model_constructors()
 }
 
 
+void ServerTest::test_productsInController()
+{
+    Controller c;
+    c.addShelf(1,1);
+    c.addProduct("alma", 0);
+    QVERIFY(c.getProducts()[0]->getName() == "alma");
+}
+void ServerTest::test_ordersInController()
+{
+    Controller c;
+    c.addShelf(1,1);
+    c.addProduct("alma", 0);
+    c.addOrder("alma");
+    QVERIFY(c.getOrders()[0] == "alma");
+}
+
+void ServerTest::test_alreadyOrdered()
+{
+    Controller c;
+    c.alreadyOrdered("alma");
+    c.alreadyOrdered("banan");
+
+    QVERIFY(c.getAlreadyOrdered()[0] == "alma");
+    QVERIFY(c.getAlreadyOrdered().size() == 2);
+
+}
+
+void ServerTest::test_pauseSim()
+{
+    Controller c;
+    c.pauseSimulation();
+    QVERIFY(c.getPaused() == true);
+}
+void ServerTest::test_resumeSim()
+{
+    Controller c;
+    c.resumeSimulation();
+    QVERIFY(c.getPaused() == false);
+}
+
+void ServerTest::test_consumedEnergy()
+{
+    Controller c;
+    c.addRobot(1,1,0);
+    QVERIFY(c.getRobots()[0]->getConsumedEnergy() == 0);
+    QVERIFY(c.sumConsumedEnergy() == 0);
+}
+void ServerTest::test_robotBattery()
+{
+    Controller c;
+    c.addRobot(1,1,0);
+    QVERIFY(c.getRobots()[0]->getBattery() == 100);
+    c.getRobots()[0]->setBattery(50);
+    QVERIFY(c.getRobots()[0]->getBattery() == 50);
+}
 
 
 QTEST_APPLESS_MAIN(ServerTest)
