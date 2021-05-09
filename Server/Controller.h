@@ -180,6 +180,7 @@ public:
      * @return The amount of energy used by the robots during the simulation
      */
     int sumConsumedEnergy();
+    void tickForTest();
 
 private:
     QVector<Robot*> _robots;

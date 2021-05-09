@@ -4,6 +4,7 @@
 
 Controller::Controller(QObject *parent) : QObject(parent)
 {
+
     _speed = 1;
     _paused = false;
     _elapsedTime = 0;
@@ -114,7 +115,7 @@ bool Controller::getPaused()
 
 bool Controller::planPathForRobot(Robot *r, int destinationRow, int destinationCol)
 {
-    _timer->stop();
+    //_timer->stop();
     int startRow = r->getRow();
     int startCol = r->getCol();
     int startOrientation = r->getDirection();
@@ -170,7 +171,7 @@ bool Controller::planPathForRobot(Robot *r, int destinationRow, int destinationC
                     _timeTable.insert(PathNode(neighbour->getRow(),neighbour->getCol(),neighbour->getOrientation(),neighbour->getTime()));
                     neighbour = neighbour->getParent();
                 }
-                _timer->start();
+                //_timer->start();
                 return true;
             }
             neighbour->setGValue(currentNode->getGValue() + calculateGValue(row,col,neighbour->getRow(),neighbour->getCol(),time,neighbour->getTime()));
@@ -189,7 +190,7 @@ bool Controller::planPathForRobot(Robot *r, int destinationRow, int destinationC
         }
     closedSet.push_back(currentNode);
     }
-    _timer->start();
+    //_timer->start();
     return false;
 }
 
@@ -456,4 +457,7 @@ bool Controller::saveGame()
 
     return true;
 }
-
+ void Controller::tickForTest()
+{
+     tickHandler();
+}
